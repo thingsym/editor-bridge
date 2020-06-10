@@ -1,0 +1,12 @@
+.wp-block-group {
+	&.has-parallax {
+		background-attachment: fixed;
+	}
+
+	&.has-repete {
+		background-repeat: repeat;
+	}
+	&.has-no-repete {
+		background-repeat: no-repeat;
+	}
+}

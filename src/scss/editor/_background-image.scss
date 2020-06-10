@@ -1,0 +1,16 @@
+.has-background-image {
+	> .wp-block-group {
+		background-color: unset !important;
+	}
+
+	&.has-parallax {
+		background-attachment: fixed;
+	}
+
+	&.has-repete {
+		background-repeat: repeat;
+	}
+	&.has-no-repete {
+		background-repeat: no-repeat;
+	}
+}

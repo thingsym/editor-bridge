@@ -1,0 +1,98 @@
+/** buttons **/
+.block-editor-block-list__block[data-type="core/buttons"] .is-block-content,
+.wp-block-buttons .block-editor-inner-blocks {
+	width: 100%;
+}
+
+.block-editor-block-list__block[data-type="core/buttons"] {
+	.block-editor-block-list__layout {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	/** button align **/
+	&[data-align=left],
+	&[data-align=right],
+	&[data-align=center] {
+		height: unset;
+		text-align: unset;
+		> .is-block-content {
+			float: none;
+			margin-left: 0;
+		}
+	}
+
+	&[data-align=left] {
+		> .is-block-content {
+			.block-editor-block-list__layout {
+				justify-content: flex-start;
+			}
+		}
+	}
+	&[data-align=right] {
+		> .is-block-content {
+			.block-editor-block-list__layout {
+				justify-content: flex-end;
+			}
+		}
+	}
+	&[data-align=center] {
+		> .is-block-content {
+			.block-editor-block-list__layout {
+				justify-content: center;
+			}
+		}
+	}
+
+	.block-editor-block-list__block[data-type="core/button"] {
+		margin-left: unset;
+		margin-right: unset;
+	}
+
+}
+
+.wp-block-buttons {
+	.wp-block.block-editor-block-list__block[data-type="core/button"] {
+		display: block;
+		width: unset;
+
+		/** button width **/
+		&[data-button-width=quarter] {
+			width: 25%;
+		}
+		&[data-button-width=half] {
+			width: 50%;
+		}
+		&[data-button-width=full] {
+			width: 100%;
+		}
+
+		/** button size **/
+		&[data-button-size=small] {
+			.wp-block-button__link {
+				font-size: 80%;
+				padding: .5rem 2rem;
+			}
+		}
+		&[data-button-size=large] {
+			.wp-block-button__link {
+				font-size: 140%;
+				padding: 1rem 3rem;
+			}
+		}
+
+		/** for style **/
+		&[data-button-size=small] {
+			.is-style-bt-triangle-icon {
+				.wp-block-button__link:after {
+					border-width: 0 0 10px 10px;
+				}
+			}
+		}
+	}
+
+	.wp-block-button .wp-block-button__link {
+		width: 100%;
+	}
+
+}

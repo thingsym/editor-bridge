@@ -1,0 +1,130 @@
+{
+  "name": "guten-bridge",
+  "version": "0.1.0",
+  "description": "A template for WordPress plugin that extends Gutenberg.",
+  "author": "Thingsym",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "WordPress",
+    "Gutenberg"
+  ],
+  "homepage": "https://github.com/thingsym/guten-bridge",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thingsym/guten-bridge.git"
+  },
+  "bugs": "https://github.com/thingsym/guten-bridge/issues",
+  "main": "dist/js/blocks.js",
+  "dependencies": {
+    "classnames": "^2.2.6",
+    "lodash": "^4.17.15",
+    "lodash.assign": "^4.2.0"
+  },
+  "devDependencies": {
+    "@wordpress/babel-plugin-makepot": "^3.2.0",
+    "@wordpress/browserslist-config": "^2.5.0",
+    "@wordpress/jest-preset-default": "^5.4.0",
+    "@wordpress/scripts": "^7.1.2",
+    "autoprefixer": "^9.7.4",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "cpy-cli": "^3.1.0",
+    "cross-env": "^7.0.1",
+    "eslint": "^6.8.0",
+    "eslint-config-wordpress": "^2.0.0",
+    "eslint-plugin-jest": "^23.8.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "jest": "^25.2.4",
+    "jest-puppeteer": "^4.4.0",
+    "node-sass": "^4.13.1",
+    "npm-run-all": "^4.1.5",
+    "po2json": "^1.0.0-alpha",
+    "postcss-cli": "^7.1.0",
+    "prettier": "^2.0.2",
+    "puppeteer": "^2.1.1",
+    "stylelint": "^13.2.0",
+    "stylelint-config-recommended": "^3.0.0",
+    "stylelint-config-recommended-scss": "^4.2.0",
+    "stylelint-scss": "^3.14.2",
+    "webpack": "4.41.0"
+  },
+  "browserslist": [
+    "extends @wordpress/browserslist-config"
+  ],
+  "stylelint": {
+    "extends": [
+      "stylelint-config-recommended",
+      "stylelint-scss",
+      "stylelint-config-recommended-scss"
+    ],
+    "rules": {
+      "no-descending-specificity": null,
+      "no-duplicate-selectors": null,
+      "block-no-empty": null
+    }
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "extends": "eslint:recommended",
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly",
+      "jQuery": true,
+      "$": false,
+      "wp": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2018
+    },
+    "rules": {
+      "no-func-assign": "off",
+      "no-unused-vars": "off",
+      "no-prototype-builtins": "off",
+      "no-sparse-arrays": "off",
+      "no-undef": "off"
+    }
+  },
+  "scripts": {
+    "makepot:php": "php /usr/local/share/wp-i18n/makepot.php wp-plugin ../guten-bridge ../guten-bridge/languages/guten-bridge.pot",
+    "makepot:wpcli": "wp i18n make-pot ./ ./languages/guten-bridge.pot --exclude=dist,bin,tests,node_modules,vendor",
+    "msgfmt:ja": "msgfmt languages/guten-bridge-ja.po -o languages/guten-bridge-ja.mo",
+    "msgfmt": "run-p msgfmt:*",
+    "po2json:ja": "po2json languages/guten-bridge-ja.po languages/guten-bridge-ja-guten-bridge-script.json -f jed",
+    "po2json:wpcli:ja": "wp i18n make-json languages/guten-bridge-ja.po --no-purge",
+    "po2json": "run-p po2json:*",
+    "sass:blocks:style": "node-sass src/scss/blocks.scss dist/css/blocks.css --output-style expanded && postcss --use autoprefixer --no-map -r dist/css/blocks.css",
+    "sass:blocks:style:minify": "node-sass src/scss/blocks.scss dist/css/blocks.min.css --output-style compressed && postcss --use autoprefixer --no-map -r dist/css/blocks.min.css",
+    "sass:editor:style": "node-sass src/scss/block-editor-style.scss dist/css/block-editor-style.css --output-style expanded && postcss --use autoprefixer --no-map -r dist/css/block-editor-style.css",
+    "sass:editor:style:minify": "node-sass src/scss/block-editor-style.scss dist/css/block-editor-style.min.css --output-style compressed && postcss --use autoprefixer --no-map -r dist/css/block-editor-style.min.css",
+    "webpack": "cross-env BABEL_ENV=default NODE_ENV=production webpack",
+    "deprecated:build:js": "npm-run-all -p webpack",
+    "build:js": "wp-scripts build src/js/blocks --output-path=dist/js",
+    "build:css": "run-p sass:**",
+    "build:i18n": "run-s msgfmt:* po2json:*",
+    "build": "run-p build:*",
+    "lint:js": "wp-scripts lint-js ./dist",
+    "lint:es": "eslint ./dist/js/*.js",
+    "lint:css": "stylelint dist/css/*.css dist/css/**/*.css !static/css/*.min.css !css/**/*.min.css",
+    "lint:scss": "stylelint src/scss/*.scss src/scss/**/*.scss",
+    "lint:pkg-json": "wp-scripts lint-pkg-json ./package.json",
+    "lint:md": "wp-scripts lint-md-docs ./README.md && wp-scripts lint-md-js ./README.md",
+    "lint": "run-p lint:*",
+    "test:jest": "jest --config ./tests/jest/jest.config.js",
+    "test:e2e": "jest --config ./tests/e2e/jest.config.js",
+    "test": "run-p test:jest",
+    "format:js": "wp-scripts format-js ./src/blocks",
+    "watch": "wp-scripts start src/js/blocks --output-path=dist/js",
+    "archive:package": "mkdir -p ./guten-bridge && cpy '**/*' '!./.DS_Store' '!./bin' '!./vendor' '!./composer.json' '!./composer.lock' '!./node_modules' '!./package.json' '!./package-lock.json' '!./phpcs.ruleset.xml' '!./phpmd.ruleset.xml' '!./phpstan.neon' '!./phpunit.xml' '!./webpack.config.js' '!./src' '!./tests' '!./guten-bridge-v*.zip' './guten-bridge' --parents",
+    "archive:zip": "zip -9 -qmr guten-bridge-v$npm_package_version.zip ./guten-bridge",
+    "archive": "run-s build archive:package archive:zip"
+  }
+}

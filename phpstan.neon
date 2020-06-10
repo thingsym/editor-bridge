@@ -1,0 +1,10 @@
+parameters:
+  level: max
+  paths: 
+    - ./
+  excludes_analyse:
+    - ./tests
+    - ./vendor
+    - ./node_modules
+  autoload_files:
+    - ./tests/phpunit/bootstrap.php

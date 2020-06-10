@@ -1,0 +1,11 @@
+$default-font-size: 100%;
+$default-line-space: 8px;
+$default-line-height: line-height($default-line-space, $default-font-size);
+$default-stack: stack($default-line-height, $default-font-size) * 4;
+
+$default-border-color: #ddd;
+
+$space-none: 0;
+$space-small: $default-stack / 2;
+$space-medium: $default-stack;
+$space-large: $default-stack * 2;

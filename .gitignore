@@ -1,0 +1,6 @@
+node_modules/
+vendor/
+.DS_Store
+dist/
+tests/report/
+*.zip

@@ -1,0 +1,95 @@
+.is-margin-none {
+	margin-top: $space-none;
+}
+.is-margin-small {
+	margin-top: $space-small;
+}
+.is-margin-medium {
+	margin-top: $space-medium;
+}
+.is-margin-large {
+	margin-top: $space-large;
+}
+
+/** for Specificity blocks **/
+.wp-block-button,
+.wp-block-image,
+.wp-block-table,
+
+.wp-block-group,
+.wp-block-columns,
+.wp-block-column {
+	&.is-margin-none {
+		margin-top: $space-none;
+	}
+	&.is-margin-small {
+		margin-top: $space-small;
+	}
+	&.is-margin-medium {
+		margin-top: $space-medium;
+	}
+	&.is-margin-large {
+		margin-top: $space-large;
+	}
+}
+
+/** for stash **/
+.entry-content {
+	* {
+		+ h1, + h2, + h3, + h4, + h5, + h6,
+		+ p, + ul, + ol {
+			&.is-margin-none {
+				margin-top: $space-none;
+			}
+			&.is-margin-small {
+				margin-top: $space-small;
+			}
+			&.is-margin-medium {
+				margin-top: $space-medium;
+			}
+			&.is-margin-large {
+				margin-top: $space-large;
+			}
+		}
+	}
+}
+
+.is-padding-none,
+.is-padding-none.has-background,
+.wp-block-group.is-padding-none.has-background {
+	padding: $space-none;
+}
+.is-padding-small,
+.is-padding-small.has-background,
+.wp-block-group.is-padding-small.has-background {
+	padding: $space-small;
+}
+.is-padding-medium,
+.is-padding-medium.has-background,
+.wp-block-group.is-padding-medium.has-background {
+	padding: $space-medium;
+}
+.is-padding-large,
+.is-padding-large.has-background,
+.wp-block-group.is-padding-large.has-background {
+	padding: $space-large;
+}
+
+/** for alignwide and alignfull **/
+[class^="wp-block-"] {
+	&.alignwide,
+	&.alignfull {
+		&.is-padding-none {
+			padding: $space-none;
+		}
+		&.is-padding-small {
+			padding: $space-small;
+		}
+		&.is-padding-medium {
+			padding: $space-medium;
+		}
+		&.is-padding-large {
+			padding: $space-large;
+		}
+	}
+}

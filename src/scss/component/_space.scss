@@ -1,14 +1,14 @@
 .is-margin-none {
-	margin-top: $space-none;
+	margin-top: var(--guten-bridge-space-margin-none, unset);
 }
 .is-margin-small {
-	margin-top: $space-small;
+	margin-top: var(--guten-bridge-space-margin-small, unset);
 }
 .is-margin-medium {
-	margin-top: $space-medium;
+	margin-top: var(--guten-bridge-space-margin-medium, unset);
 }
 .is-margin-large {
-	margin-top: $space-large;
+	margin-top: var(--guten-bridge-space-margin-large, unset);
 }
 
 /** for Specificity blocks **/
@@ -20,16 +20,16 @@
 .wp-block-columns,
 .wp-block-column {
 	&.is-margin-none {
-		margin-top: $space-none;
+		margin-top: var(--guten-bridge-space-margin-none, unset);
 	}
 	&.is-margin-small {
-		margin-top: $space-small;
+		margin-top: var(--guten-bridge-space-margin-small, unset);
 	}
 	&.is-margin-medium {
-		margin-top: $space-medium;
+		margin-top: var(--guten-bridge-space-margin-medium, unset);
 	}
 	&.is-margin-large {
-		margin-top: $space-large;
+		margin-top: var(--guten-bridge-space-margin-large, unset);
 	}
 }
 
@@ -39,16 +39,16 @@
 		+ h1, + h2, + h3, + h4, + h5, + h6,
 		+ p, + ul, + ol {
 			&.is-margin-none {
-				margin-top: $space-none;
+				margin-top: var(--guten-bridge-space-margin-none, unset);
 			}
 			&.is-margin-small {
-				margin-top: $space-small;
+				margin-top: var(--guten-bridge-space-margin-small, unset);
 			}
 			&.is-margin-medium {
-				margin-top: $space-medium;
+				margin-top: var(--guten-bridge-space-margin-medium, unset);
 			}
 			&.is-margin-large {
-				margin-top: $space-large;
+				margin-top: var(--guten-bridge-space-margin-large, unset);
 			}
 		}
 	}
@@ -57,22 +57,22 @@
 .is-padding-none,
 .is-padding-none.has-background,
 .wp-block-group.is-padding-none.has-background {
-	padding: $space-none;
+	padding: var(--guten-bridge-space-padding-none, unset);
 }
 .is-padding-small,
 .is-padding-small.has-background,
 .wp-block-group.is-padding-small.has-background {
-	padding: $space-small;
+	padding: var(--guten-bridge-space-padding-small, unset);
 }
 .is-padding-medium,
 .is-padding-medium.has-background,
 .wp-block-group.is-padding-medium.has-background {
-	padding: $space-medium;
+	padding: var(--guten-bridge-space-padding-medium, unset);
 }
 .is-padding-large,
 .is-padding-large.has-background,
 .wp-block-group.is-padding-large.has-background {
-	padding: $space-large;
+	padding: var(--guten-bridge-space-padding-large, unset);
 }
 
 /** for alignwide and alignfull **/
@@ -80,16 +80,16 @@
 	&.alignwide,
 	&.alignfull {
 		&.is-padding-none {
-			padding: $space-none;
+			padding: var(--guten-bridge-space-padding-none, unset);
 		}
 		&.is-padding-small {
-			padding: $space-small;
+			padding: var(--guten-bridge-space-padding-small, unset);
 		}
 		&.is-padding-medium {
-			padding: $space-medium;
+			padding: var(--guten-bridge-space-padding-medium, unset);
 		}
 		&.is-padding-large {
-			padding: $space-large;
+			padding: var(--guten-bridge-space-padding-large, unset);
 		}
 	}
 }

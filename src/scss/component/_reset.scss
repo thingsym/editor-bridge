@@ -23,19 +23,19 @@
 .wp-block-table {
 	table {
 		width: auto;
-		border: 1px solid #ddd;
+		border: 1px solid var(--guten-bridge-border-color, unset);
 	}
 	td,
 	th {
 		border: unset;
-		border-top: 1px solid #ddd;
-		border-right: 1px solid #ddd;
+		border-top: 1px solid var(--guten-bridge-border-color, unset);
+		border-right: 1px solid var(--guten-bridge-border-color, unset);
 		padding: .6rem;
 	}
 
 	&.is-style-regular {
 		table {
-			border: 1px solid #ddd;
+			border: 1px solid var(--guten-bridge-border-color, unset);
 		}
 	}
 

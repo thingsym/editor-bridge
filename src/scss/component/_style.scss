@@ -329,13 +329,13 @@
 		tr:first-child {
 			th,
 			td {
-				border-top: 1px solid $default-border-color;
+				border-top: 1px solid var(--guten-bridge-border-color, unset);
 			}
 		}
 		th,
 		td {
 			border: none;
-			border-bottom: 1px solid $default-border-color;
+			border-bottom: 1px solid var(--guten-bridge-border-color, unset);
 		}
 		th {
 			background: unset;
@@ -350,17 +350,17 @@
 		tr:first-child {
 			th,
 			td {
-				border-top: 1px solid $default-border-color;
+				border-top: 1px solid var(--guten-bridge-border-color, unset);
 			}
 		}
 		th {
 			background: unset;
 			border: none;
-			border-bottom: 2px solid $default-border-color;
+			border-bottom: 2px solid var(--guten-bridge-border-color, unset);
 		}
 		td {
 			border: none;
-			border-bottom: 1px solid $default-border-color;
+			border-bottom: 1px solid var(--guten-bridge-border-color, unset);
 		}
 		thead {
 			border-bottom: unset;
@@ -378,13 +378,13 @@
 		tr:first-child {
 			th,
 			td {
-				border-top: 1px dashed $default-border-color;
+				border-top: 1px dashed var(--guten-bridge-border-color, unset);
 			}
 		}
 		th,
 		td {
 			border: none;
-			border-bottom: 1px dashed $default-border-color;
+			border-bottom: 1px dashed var(--guten-bridge-border-color, unset);
 		}
 		th {
 			background: unset;
@@ -399,7 +399,7 @@
 
 	&.is-style-tb-round-corners {
 		table {
-			border: 1px solid $default-border-color;
+			border: 1px solid var(--guten-bridge-border-color, unset);
 			border-collapse: separate;
 			border-spacing: 0;
 			border-radius: 10px;
@@ -409,8 +409,8 @@
 		td {
 			background: unset;
 			border-top: unset;
-			border-bottom: 1px solid $default-border-color;
-			border-right: 1px solid $default-border-color;
+			border-bottom: 1px solid var(--guten-bridge-border-color, unset);
+			border-right: 1px solid var(--guten-bridge-border-color, unset);
 		}
 		tr:last-child {
 			th,
@@ -425,13 +425,13 @@
 		thead tr:last-child {
 			th,
 			td {
-				border-bottom: 1px solid $default-border-color;
+				border-bottom: 1px solid var(--guten-bridge-border-color, unset);
 			}
 		}
 		tfoot tr:first-child {
 			th,
 			td {
-				border-top: 1px solid $default-border-color;
+				border-top: 1px solid var(--guten-bridge-border-color, unset);
 			}
 		}
 	}

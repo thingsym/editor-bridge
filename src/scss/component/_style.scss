@@ -56,6 +56,15 @@
 	}
 }
 
+.is-style-bt-stand-out {
+	.wp-block-button__link {
+		transition: all 0.2s 0s ease;
+		&:hover {
+			box-shadow: 0 0 5px rgba(0, 0, 0, .3);
+		}
+	}
+}
+
 .is-style-img-rounded-corners {
 	img {
 		border-radius: 12px;
@@ -71,6 +80,27 @@
 
 .is-style-hd-underline {
 	border-bottom: 2px solid;
+}
+
+.is-style-hd-thick-underline {
+	border-bottom: 4px solid;
+}
+
+.is-style-hd-two-color-underline {
+	border-bottom: 1px solid var(--guten-bridge-border-color, unset);
+	&:after {
+		position: absolute;
+		content: '';
+		display: block;
+		width: 240px;
+		height: 1px;
+		background: currentcolor;
+	}
+}
+
+.is-style-hd-updown {
+	border-top: 1px solid;
+	border-bottom: 1px solid;
 }
 
 .is-style-hd-accent {
@@ -471,7 +501,8 @@
 	}
 
 	&.is-style-hr-dotted,
-	&.is-style-hr-thick-line {
+	&.is-style-hr-thick-line,
+	&.is-style-hr-circle-mark {
 		&:not(.is-style-wide):not(.is-style-dots) {
 			max-width: unset;
 			height: 0;
@@ -489,6 +520,26 @@
 	&.is-style-hr-thick-line {
 		&:not(.is-style-wide):not(.is-style-dots) {
 			border-bottom: 4px solid;
+		}
+	}
+
+	&.is-style-hr-circle-mark {
+		&:not(.is-style-wide):not(.is-style-dots) {
+			border-bottom: 1px solid;
+		}
+		&:after {
+			display: block;
+			content: '';
+			width: 8px;
+			height: 8px;
+			border: 1px solid;
+			position: absolute;
+			bottom: -3px;
+			left: 50%;
+			margin-left: -5px;
+			background: #fff;
+			border-radius: 100%;
+			box-shadow: #fff 0 0 0 5px;
 		}
 	}
 }

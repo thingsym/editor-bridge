@@ -7,6 +7,21 @@ wp.blocks.registerBlockStyle( 'core/heading', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {
+	name: 'hd-thick-underline',
+	label: __( 'Thick Underline', 'guten-bridge' ),
+} );
+
+wp.blocks.registerBlockStyle( 'core/heading', {
+	name: 'hd-two-color-underline',
+	label: __( 'Two Color Underline', 'guten-bridge' ),
+} );
+
+wp.blocks.registerBlockStyle( 'core/heading', {
+	name: 'hd-updown',
+	label: __( 'Up Down line', 'guten-bridge' ),
+} );
+
+wp.blocks.registerBlockStyle( 'core/heading', {
 	name: 'hd-accent',
 	label: __( 'Accent Line', 'guten-bridge' ),
 } );

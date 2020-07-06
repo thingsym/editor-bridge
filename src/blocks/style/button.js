@@ -20,3 +20,9 @@ wp.blocks.registerBlockStyle( 'core/button', {
 	name: 'bt-expansion',
 	label: __( 'Expansion', 'guten-bridge' ),
 } );
+
+wp.blocks.registerBlockStyle( 'core/button', {
+	name: 'bt-stand-out',
+	label: __( 'Stand out', 'guten-bridge' ),
+} );
+

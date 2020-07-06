@@ -49,6 +49,10 @@ const spaceSettingsOptions = [
 		label: __( 'Large', 'guten-bridge' ),
 		value: 'large',
 	},
+	{
+		label: __( 'Huge', 'guten-bridge' ),
+		value: 'huge',
+	},
 ];
 
 /**

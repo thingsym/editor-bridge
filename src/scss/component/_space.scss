@@ -10,6 +10,9 @@
 .is-margin-large {
 	margin-top: var(--guten-bridge-space-margin-large, unset);
 }
+.is-margin-huge {
+	margin-top: var(--guten-bridge-space-margin-huge, unset);
+}
 
 /** for Specificity blocks **/
 .wp-block-button,
@@ -31,6 +34,9 @@
 	&.is-margin-large {
 		margin-top: var(--guten-bridge-space-margin-large, unset);
 	}
+	&.is-margin-huge {
+		margin-top: var(--guten-bridge-space-margin-huge, unset);
+	}
 }
 
 /** for stash **/
@@ -49,6 +55,9 @@
 			}
 			&.is-margin-large {
 				margin-top: var(--guten-bridge-space-margin-large, unset);
+			}
+			&.is-margin-huge {
+				margin-top: var(--guten-bridge-space-margin-huge, unset);
 			}
 		}
 	}
@@ -74,6 +83,11 @@
 .wp-block-group.is-padding-large.has-background {
 	padding: var(--guten-bridge-space-padding-large, unset);
 }
+.is-padding-huge,
+.is-padding-huge.has-background,
+.wp-block-group.is-padding-huge.has-background {
+	padding: var(--guten-bridge-space-padding-huge, unset);
+}
 
 /** for alignwide and alignfull **/
 [class^="wp-block-"] {
@@ -90,6 +104,9 @@
 		}
 		&.is-padding-large {
 			padding: var(--guten-bridge-space-padding-large, unset);
+		}
+		&.is-padding-huge {
+			padding: var(--guten-bridge-space-padding-huge, unset);
 		}
 	}
 }

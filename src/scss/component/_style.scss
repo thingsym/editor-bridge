@@ -341,6 +341,10 @@
 		th {
 			background: unset;
 		}
+		thead,
+		tfoot {
+			border-color: var(--guten-bridge-border-color, unset);
+		}
 	}
 
 	&.is-style-tb-underline-emphasis {

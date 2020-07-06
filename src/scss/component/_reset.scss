@@ -32,10 +32,20 @@
 		border-right: 1px solid var(--guten-bridge-border-color, unset);
 		padding: .6rem;
 	}
+	thead {
+		border-bottom: 2px solid;
+	}
+	tfoot {
+		border-top: 2px solid;
+	}
 
 	&.is-style-regular {
 		table {
 			border: 1px solid var(--guten-bridge-border-color, unset);
+		}
+		thead,
+		tfoot {
+			border-color: var(--guten-bridge-border-color, unset);
 		}
 	}
 
@@ -44,6 +54,10 @@
 
 		table {
 			border: unset;
+		}
+		thead,
+		tfoot {
+			border-color: var(--guten-bridge-border-color, unset);
 		}
 	}
 

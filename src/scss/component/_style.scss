@@ -144,11 +144,12 @@
 	}
 }
 
-.is-style-hd-single-line {
+.is-style-hd-single-box {
 	border: 1px solid;
 	padding: .4rem;
 }
-.is-style-hd-double-line {
+
+.is-style-hd-double-box {
 	border: 3px double;
 	padding: .4rem;
 }
@@ -186,7 +187,7 @@
 		background: repeating-linear-gradient(-45deg, currentColor, currentColor 3px, #fff 3px, #fff 6px);
 	}
 }
-.is-style-hd-cross-line {
+.is-style-hd-cross-box {
 	position: relative;
   padding: 0.25em 1em;
   border-top: solid 2px currentColor;
@@ -471,7 +472,7 @@
 	}
 
 	&.is-style-hr-dotted,
-	&.is-style-hr-bold-line {
+	&.is-style-hr-thick-line {
 		&:not(.is-style-wide):not(.is-style-dots) {
 			max-width: unset;
 			height: 0;
@@ -486,7 +487,7 @@
 		}
 	}
 
-	&.is-style-hr-bold-line {
+	&.is-style-hr-thick-line {
 		&:not(.is-style-wide):not(.is-style-dots) {
 			border-bottom: 4px solid;
 		}

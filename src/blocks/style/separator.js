@@ -2,8 +2,8 @@
 const { __ } = wp.i18n;
 
 wp.blocks.registerBlockStyle( 'core/separator', {
-	name: 'hr-bold-line',
-	label: __( 'Bold line', 'guten-bridge' ),
+	name: 'hr-thick-line',
+	label: __( 'Thick line', 'guten-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/separator', {

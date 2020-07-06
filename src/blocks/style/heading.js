@@ -17,13 +17,13 @@ wp.blocks.registerBlockStyle( 'core/heading', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {
-	name: 'hd-single-line',
-	label: __( 'Single Line', 'guten-bridge' ),
+	name: 'hd-single-box',
+	label: __( 'Single Box', 'guten-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {
-	name: 'hd-double-line',
-	label: __( 'Double Line', 'guten-bridge' ),
+	name: 'hd-double-box',
+	label: __( 'Double Box', 'guten-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {
@@ -62,8 +62,8 @@ wp.blocks.registerBlockStyle( 'core/heading', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {
-	name: 'hd-cross-line',
-	label: __( 'Cross Line', 'guten-bridge' ),
+	name: 'hd-cross-box',
+	label: __( 'Cross Box', 'guten-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {

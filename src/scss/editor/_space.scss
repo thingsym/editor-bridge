@@ -151,7 +151,7 @@
 	> .is-block-content > .wp-block-columns.has-background,
 	> [class^="wp-block-"]:not(.wp-block-group__inner-container),
 	> .is-block-content > [class^="wp-block-"]:not(.wp-block-group__inner-container) {
-		padding: var(--guten-bridge-space-large, unset);
+		padding: var(--guten-bridge-space-padding-large, unset);
 	}
 }
 

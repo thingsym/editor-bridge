@@ -18,12 +18,13 @@ const enableSpaceBlocks = [
 	'core/image',
 	'core/button',
 	'core/buttons',
+	'core/media-text',
 
 	'core/list',
 	'core/table',
 
-	'core/column',
 	'core/columns',
+	'core/column',
 	'core/group',
 	'core/cover',
 ];
@@ -64,7 +65,7 @@ const spaceSettingsOptions = [
  * @returns {object} Modified block settings.
  */
 const addAttributes = ( settings, name ) => {
-	if ( enableSpaceBlocks.includes( settings.name ) ) {
+	if ( enableSpaceBlocks.includes( name ) ) {
 		if ( ! settings.supports ) {
 			settings.supports = {};
 		}
@@ -74,7 +75,13 @@ const addAttributes = ( settings, name ) => {
 			SpacePadding: true,
 		} );
 
-		if ( settings.name == 'core/button' || settings.name == 'core/list' || settings.name == 'core/table' ) {
+		if ( name == 'core/column' ) {
+			settings.supports = assign( settings.supports, {
+				SpaceMargin: false,
+			} );
+		}
+
+		if ( name == 'core/button' || name == 'core/list' || name == 'core/table' || name == 'core/media-text' ) {
 			settings.supports = assign( settings.supports, {
 				SpacePadding: false,
 			} );
@@ -258,7 +265,7 @@ const withSpaceBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 			customData[ 'data-padding-slug' ] = paddingSlug;
 		}
 
-		let wrapperProps 	= props.wrapperProps;
+		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 
 		wrapperProps = {
 			...wrapperProps,

@@ -29,6 +29,11 @@ import {
 const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
 
 const enableBackgroundImageBlocks = [
+	'core/heading',
+	'core/paragraph',
+
+	'core/column',
+	'core/columns',
 	'core/group',
 ];
 
@@ -56,7 +61,7 @@ const backgroundSizeOptions = [
  * @returns {object} Modified block settings.
  */
 const addAttributes = ( settings, name ) => {
-	if ( enableBackgroundImageBlocks.includes( settings.name ) ) {
+	if ( enableBackgroundImageBlocks.includes( name ) ) {
 		if ( ! settings.supports ) {
 			settings.supports = {};
 		}
@@ -176,12 +181,17 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 
 		const pClassName = classnames(
 			{
+				'guten-bridge-is-content': true,
 				'has-parallax': hasParallax,
 				'has-repete': hasRepete,
 				'has-no-repete': ! hasRepete,
 				'has-background-image': url,
 			}
 		);
+
+		// console.log(props);
+		// 見出しや段落、カラムでは
+		// guten-bridge-is-contentレイヤーをなくす
 
 		return (
 			<Fragment>
@@ -317,7 +327,7 @@ const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockLi
 			customData[ 'data-background-size' ] = backgroundSize;
 		}
 
-		let wrapperProps 	= props.wrapperProps;
+		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 
 		wrapperProps = {
 			...wrapperProps,
@@ -370,6 +380,7 @@ const getSaveBackgroundImageContent = ( extraProps, blockType, attributes ) => {
 		extraProps.className = classnames(
 			extraProps.className,
 			{
+				'has-backgrond-image': url ? true : false,
 				'has-parallax': hasParallax,
 				'has-repete': hasRepete,
 				'has-no-repete': ! hasRepete,

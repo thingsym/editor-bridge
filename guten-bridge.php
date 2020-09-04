@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Guten Bridge
  * Plugin URI: https://github.com/thingsym/guten-bridge
- * Description: A extends Gutenberg.
+ * Description: A extended Block Editor (Gutenberg).
  * Version: 0.1.0
  * Author: thingsym
- * Author URI:  http://www.thingslabo.com/
+ * Author URI:  https://www.thingslabo.com/
  * License:     GPL2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: guten-bridge

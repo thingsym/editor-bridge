@@ -13,3 +13,6 @@ import '../blocks/style/button.js';
 import '../blocks/style/table.js';
 import '../blocks/style/image.js';
 import '../blocks/style/separator.js';
+
+// format
+import '../blocks/format/index.js';

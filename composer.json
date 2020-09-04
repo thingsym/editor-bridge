@@ -1,28 +1,29 @@
 {
-    "description": "composer.json for testing WordPress theme/plugin",
-    "license": "GPL2 or later",
-    "require": {},
-    "require-dev": {
-      "squizlabs/php_codesniffer": "*",
-      "wp-coding-standards/wpcs": "2.*",
-      "phpmd/phpmd": "2.*",
-      "phpstan/phpstan": "*",
-      "phpunit/phpunit": "^7"
-    },
-    "scripts": {
-      "phpcs:config-set": "phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs",
-      "phpcs": "phpcs -p -s -v -n ./ --standard=./phpcs.ruleset.xml --extensions=php",
-      "phpcs:warning": "phpcs -p -s -v ./ --standard=./phpcs.ruleset.xml --extensions=php",
-      "format:phpcbf": "phpcbf -p -s -v ./ --standard=./phpcs.ruleset.xml --extensions=php",
-      "phpmd": "phpmd ./ text ./phpmd.ruleset.xml --suffixes php --exclude /tests,/vendor,/node_modules",
-      "phpstan": "phpstan analyse",
-      "phpunit": "phpunit",
-      "coverage": "phpunit --coverage-html ./tests/report",
-      "ci": [
-        "@phpunit",
-        "@phpcs",
-        "@phpmd",
-        "@phpstan"
-      ]
-    }
+  "description": "composer.json for testing WordPress theme/plugin",
+  "license": "GPL2 or later",
+  "require": {},
+  "require-dev": {
+    "squizlabs/php_codesniffer": "*",
+    "wp-coding-standards/wpcs": "*",
+    "phpmd/phpmd": "2.*",
+    "phpstan/phpstan": "*",
+    "phpunit/phpunit": "^7"
+  },
+  "scripts": {
+    "phpcs:config-set": "phpcs --config-set installed_paths vendor/wp-coding-standards/wpcs",
+    "phpcs": "phpcs -p -s -v -n ./ --standard=./phpcs.ruleset.xml --extensions=php",
+    "phpcs:warning": "phpcs -p -s -v ./ --standard=./phpcs.ruleset.xml --extensions=php",
+    "format:phpcbf": "phpcbf -p -s -v ./ --standard=./phpcs.ruleset.xml --extensions=php",
+    "phpmd": "phpmd ./ text ./phpmd.ruleset.xml --suffixes php --exclude /languages,/tests,/vendor",
+    "phpstan": "phpstan analyse",
+    "phpunit": "phpunit",
+    "coverage": "phpunit --coverage-html ./tests/report",
+    "ci": [
+      "@phpunit",
+      "@phpcs:config-set",
+      "@phpcs",
+      "@phpmd",
+      "@phpstan"
+    ]
   }
+}

@@ -16,12 +16,11 @@ namespace Guten_Bridge;
  */
 class Guten_Bridge {
 	public function __construct() {
-		add_action( 'init', array( $this, 'load_textdomain' ) );
+		add_action( 'plugins_loaded', [ $this, 'init' ] );
 
 		add_action( 'enqueue_block_assets', array( $this, 'enqueue_styles' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_blocks_scripts' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_styles' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'load_block_editor_translations' ) );
 	}
 
 	/**
@@ -96,5 +95,14 @@ class Guten_Bridge {
 			'20200904',
 			'all'
 		);
+	}
+	public function init() {
+		if ( ! function_exists( 'register_block_type' ) ) {
+			return;
+		}
+
+		add_action( 'init', [ $this, 'load_textdomain' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'load_block_editor_translations' ] );
+
 	}
 }

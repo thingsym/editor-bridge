@@ -61,21 +61,13 @@ class Guten_Bridge {
 	}
 
 	public function enqueue_blocks_scripts() {
+		$asset_file = include( GUTEN_BRIDGE_PATH . 'dist/js/blocks.asset.php' );
+
 		wp_enqueue_script(
 			'guten-bridge-script',
 			plugins_url( 'dist/js/blocks.js', GUTEN_BRIDGE ),
-			array(
-				'wp-blocks',
-				'wp-element',
-				'wp-components',
-				'wp-editor',
-				'wp-block-editor',
-				'wp-rich-text',
-				'wp-data',
-				'wp-i18n',
-				// 'wp-server-side-render',
-			),
-			'',
+			$asset_file['dependencies'],
+			$asset_file['version'],
 			true
 		);
 	}

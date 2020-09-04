@@ -1,16 +1,18 @@
 import classnames from 'classnames/dedupe';
 import assign from 'lodash.assign';
 
-const { __ } = wp.i18n;
-const { hasBlockSupport } = wp.blocks;
-const { addFilter } = wp.hooks;
-const { Fragment } = wp.element;
-const { InspectorControls } = wp.blockEditor;
-const { createHigherOrderComponent } = wp.compose;
-const {
+/**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+import { hasBlockSupport } from '@wordpress/blocks';
+import { addFilter } from '@wordpress/hooks';
+import { InspectorControls } from '@wordpress/block-editor';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import {
 	PanelBody,
 	SelectControl
-} = wp.components;
+} from '@wordpress/components';
 
 const enableSpaceBlocks = [
 	'core/heading',

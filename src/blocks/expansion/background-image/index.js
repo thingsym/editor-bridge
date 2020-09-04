@@ -1,24 +1,34 @@
 import classnames from 'classnames/dedupe';
 import assign from 'lodash.assign';
 
-const { __ } = wp.i18n;
-const { hasBlockSupport } = wp.blocks;
-const { addFilter } = wp.hooks;
-const { Fragment } = wp.element;
-const {
+/**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
+import { hasBlockSupport } from '@wordpress/blocks';
+import { addFilter } from '@wordpress/hooks';
+import { createRef } from '@wordpress/element';
+import { useSelect } from '@wordpress/data';
+import {
 	BlockControls,
 	MediaUpload,
 	MediaUploadCheck,
 	InspectorControls,
-} = wp.blockEditor;
-const { createHigherOrderComponent } = wp.compose;
-const {
+} from '@wordpress/block-editor';
+import { createHigherOrderComponent } from '@wordpress/compose';
+import {
+	FormFileUpload,
+	NavigableMenu,
+	Dropdown,
 	Toolbar,
+	ToolbarGroup,
+	ToolbarButton,
+	MenuItem,
 	IconButton,
   PanelBody,
   SelectControl,
 	ToggleControl,
-} = wp.components;
+} from '@wordpress/components';
 
 import {
 	IMAGE_BACKGROUND_TYPE,

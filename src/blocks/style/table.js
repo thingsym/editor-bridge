@@ -1,5 +1,9 @@
 'use strict';
-const { __ } = wp.i18n;
+
+/**
+ * WordPress dependencies
+ */
+import { __ } from '@wordpress/i18n';
 
 wp.blocks.registerBlockStyle( 'core/table', {
 	name: 'tb-no-style',

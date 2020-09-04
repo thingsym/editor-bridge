@@ -4,6 +4,7 @@
  * External dependencies
  */
 import classnames from 'classnames/dedupe';
+import { noop } from 'lodash';
 import assign from 'lodash.assign';
 
 /**
@@ -189,72 +190,122 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 			} );
 		};
 
-		const style = {
-			backgroundImage: "url(" + url + ")",
-			backgroundSize: backgroundSize,
-		}
+		const onFilesUpload = noop;
 
-		const pClassName = classnames(
-			{
-				'guten-bridge-is-content': true,
-				'has-parallax': hasParallax,
-				'has-repete': hasRepete,
-				'has-no-repete': ! hasRepete,
-				'has-background-image': url,
+		const mediaUpload = useSelect( ( select ) => {
+			return select( 'core/block-editor' ).getSettings().mediaUpload;
+		}, [] );
+
+		const onError = ( message ) => {};
+
+		const uploadFiles = ( event ) => {
+			const files = event.target.files;
+			onFilesUpload( files );
+			const setMedia = ( [ media ] ) => {
+				onSelectMedia( media );
+			};
+			mediaUpload( {
+				allowedTypes: ALLOWED_MEDIA_TYPES,
+				filesList: files,
+				onFileChange: setMedia,
+				onError,
+			} );
+		};
+
+		const openOnArrowDown = ( event ) => {
+			if ( event.keyCode === DOWN ) {
+				event.preventDefault();
+				event.stopPropagation();
+				event.target.click();
 			}
-		);
+		};
 
-		// console.log(props);
-		// 見出しや段落、カラムでは
-		// guten-bridge-is-contentレイヤーをなくす
+		const accept = "image/*, video/*";
+		const editMediaButtonRef = createRef();
+		const POPOVER_PROPS = {
+			isAlternate: true,
+		};
 
 		return (
-			<Fragment>
-				{ ! url && (
-					<BlockEdit { ...props } />
-				) }
-				{ url && (
-					<div style={ style } className={ pClassName }>
-					<BlockEdit { ...props } />
-					</div>
-				) }
+			<>
+				<BlockEdit { ...props } />
 
 				<BlockControls>
-					<MediaUploadCheck>
-						<Toolbar>
-							<MediaUpload
-								onSelect={ onSelectMedia }
-								allowedTypes={ ALLOWED_MEDIA_TYPES }
-								value={ id }
-								render={ ( { open } ) => (
-									<IconButton
-										className="components-toolbar__control"
-										label={ __( 'Edit Background Image', 'guten-bridge' ) }
-										icon='format-image'
-										onClick={ open }
-									/>
-								) }
-							/>
-						</Toolbar>
-						{ !! url && (
-							<Toolbar>
-								<IconButton
-									className="components-button components-icon-button components-toolbar__control"
-									label={ __( 'Remove Background Image', 'guten-bridge' ) }
-									icon='no'
-									onClick={ () => {
-										setAttributes( {
-											url: undefined,
-											id: undefined,
-											backgroundSize: undefined,
-											hasParallax: undefined,
-											hasRepete: undefined,
-										} );
-									} }
-								/>
-							</Toolbar>
+					<Dropdown
+						popoverProps={ POPOVER_PROPS }
+						contentClassName="block-editor-guten-bridge-backgound-image__options"
+						renderToggle={ ( { isOpen, onToggle } ) => (
+							<ToolbarGroup className="guten-bridge-backgound-image">
+								<ToolbarButton
+									ref={ editMediaButtonRef }
+									aria-expanded={ isOpen }
+									onClick={ onToggle }
+									onKeyDown={ openOnArrowDown }
+									icon='format-image'
+									isPressed={ url ? true : false }
+									label={ __( 'Edit Background Image', 'guten-bridge' ) }
+								>
+								</ToolbarButton>
+							</ToolbarGroup>
 						) }
-					</MediaUploadCheck>
+						renderContent={ ( { onClose } ) => (
+							<>
+								<NavigableMenu className="block-editor-guten-bridge-backgound-image__media-upload-menu">
+									<MediaUpload
+										onSelect={ onSelectMedia }
+										allowedTypes={ ALLOWED_MEDIA_TYPES }
+										value={ id }
+										render={ ( { open } ) => (
+											<MenuItem
+												icon='admin-media'
+												onClick={ open }
+											>
+												{ __( 'Open Media Library', 'guten-bridge' ) }
+											</MenuItem>
+										) }
+									/>
+
+									<MediaUploadCheck>
+										<FormFileUpload
+											onChange={ ( event ) => {
+												uploadFiles( event, onClose );
+											} }
+											accept={ accept }
+											render={ ( { openFileDialog } ) => {
+												return (
+													<MenuItem
+													icon='upload'
+														onClick={ () => {
+															openFileDialog();
+														} }
+													>
+														{ __( 'Upload Background Image', 'guten-bridge' ) }
+													</MenuItem>
+												);
+											} }
+										/>
+									</MediaUploadCheck>
+
+									{ !! url && (
+										<MenuItem
+											icon='no'
+											onClick={ () => {
+												setAttributes( {
+													url: undefined,
+													id: undefined,
+													backgroundSize: undefined,
+													hasParallax: undefined,
+													hasRepete: undefined,
+												} );
+											} }
+										>
+											{ __( 'Remove Background Image', 'guten-bridge' ) }
+										</MenuItem>
+									) }
+								</NavigableMenu>
+							</>
+						) }
+					/>
 				</BlockControls>
 
 				<InspectorControls>
@@ -263,39 +314,38 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 							title={ __( 'Background Image Settings', 'guten-bridge' ) }
 							initialOpen={ true }
 						>
-						<SelectControl
-							label={ __( 'Image Size', 'guten-bridge' ) }
-							value={ backgroundSize }
-							options={ backgroundSizeOptions }
-							onChange={ ( newBackgroundSize ) => {
-								props.setAttributes( {
-									backgroundSize: newBackgroundSize,
-								} );
-							} }
-						/>
-						<ToggleControl
-							label={ __( 'Fixed Background', 'guten-bridge' ) }
-							checked={ hasParallax }
-							onChange={ () => {
-								setAttributes( {
-									hasParallax: ! hasParallax,
-								} );
-							} }
-						/>
-						<ToggleControl
-							label={ __( 'Repeat Background', 'guten-bridge' ) }
-							checked={ hasRepete }
-							onChange={ () => {
-								setAttributes( {
-									hasRepete: ! hasRepete,
-								} );
-							} }
-						/>
+							<SelectControl
+								label={ __( 'Image Size', 'guten-bridge' ) }
+								value={ backgroundSize }
+								options={ backgroundSizeOptions }
+								onChange={ ( newBackgroundSize ) => {
+									props.setAttributes( {
+										backgroundSize: newBackgroundSize,
+									} );
+								} }
+							/>
+							<ToggleControl
+								label={ __( 'Fixed Background', 'guten-bridge' ) }
+								checked={ hasParallax }
+								onChange={ () => {
+									setAttributes( {
+										hasParallax: ! hasParallax,
+									} );
+								} }
+							/>
+							<ToggleControl
+								label={ __( 'Repeat Background', 'guten-bridge' ) }
+								checked={ hasRepete }
+								onChange={ () => {
+									setAttributes( {
+										hasRepete: ! hasRepete,
+									} );
+								} }
+							/>
 						</PanelBody>
 					) }
 				</InspectorControls>
-
-			</Fragment>
+			</>
 		);
 	};
 }, 'withBackgroundImageControl' );
@@ -331,7 +381,19 @@ const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockLi
 			hasRepete,
 		} = props.attributes;
 
-		const className = classnames();
+		const className = classnames(
+			{
+				'has-parallax': hasParallax,
+				'has-repete': hasRepete,
+				'has-no-repete': ! hasRepete,
+				'has-background-image': url,
+			}
+		);
+
+		const style = {
+			backgroundImage: url ? "url(" + url + ")" : undefined,
+			backgroundSize: backgroundSize ? backgroundSize : undefined,
+		}
 
 		let customData = {};
 
@@ -347,9 +409,13 @@ const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockLi
 		wrapperProps = {
 			...wrapperProps,
 			...customData,
+			style: {
+				...( wrapperProps && { ...wrapperProps.style } ),
+				...style,
+			},
 		};
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } className={ className } />;
 	};
 }, 'withBackgroundImageBlockAttributes' );
 

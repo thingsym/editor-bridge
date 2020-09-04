@@ -1,9 +1,11 @@
 'use strict';
 
-import '../blocks/extend/button-size/index.js';
-import '../blocks/extend/space/index.js';
-import '../blocks/extend/background-image/index.js';
+// expansion
+import '../blocks/expansion/button-size/index.js';
+import '../blocks/expansion/space/index.js';
+import '../blocks/expansion/background-image/index.js';
 
+// style
 import '../blocks/style/heading.js';
 import '../blocks/style/button.js';
 import '../blocks/style/table.js';

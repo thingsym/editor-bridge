@@ -1,3 +1,8 @@
+'use strict';
+
+/**
+ * External dependencies
+ */
 import classnames from 'classnames/dedupe';
 import assign from 'lodash.assign';
 
@@ -36,9 +41,7 @@ import {
 	backgroundImageStyles,
 } from './shared';
 
-const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
-
-const enableBackgroundImageBlocks = [
+const enableBlocks = [
 	'core/heading',
 	'core/paragraph',
 
@@ -62,6 +65,8 @@ const backgroundSizeOptions = [
 	},
 ];
 
+const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
+
 /**
  * Add attribute to settings.
  *
@@ -71,7 +76,7 @@ const backgroundSizeOptions = [
  * @returns {object} Modified block settings.
  */
 const addAttributes = ( settings, name ) => {
-	if ( enableBackgroundImageBlocks.includes( name ) ) {
+	if ( enableBlocks.includes( name ) ) {
 		if ( ! settings.supports ) {
 			settings.supports = {};
 		}
@@ -348,7 +353,7 @@ const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockLi
 	};
 }, 'withBackgroundImageBlockAttributes' );
 
-wp.hooks.addFilter(
+addFilter(
 	'editor.BlockListBlock',
 	'guten-bridge/expansion/background-image/with-block-attributes',
 	withBackgroundImageBlockAttributes

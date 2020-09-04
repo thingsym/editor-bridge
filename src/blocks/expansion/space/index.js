@@ -1,3 +1,8 @@
+'use strict';
+
+/**
+ * External dependencies
+ */
 import classnames from 'classnames/dedupe';
 import assign from 'lodash.assign';
 
@@ -14,7 +19,7 @@ import {
 	SelectControl
 } from '@wordpress/components';
 
-const enableSpaceBlocks = [
+const enableBlocks = [
 	'core/heading',
 	'core/paragraph',
 	'core/image',
@@ -67,7 +72,7 @@ const spaceSettingsOptions = [
  * @returns {object} Modified block settings.
  */
 const addAttributes = ( settings, name ) => {
-	if ( enableSpaceBlocks.includes( name ) ) {
+	if ( enableBlocks.includes( name ) ) {
 		if ( ! settings.supports ) {
 			settings.supports = {};
 		}
@@ -149,20 +154,6 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 			className,
 		} = props.attributes;
 
-		// const newClassNames = classnames(
-		// 	className,
-		// 	{
-		// 		[`is-margin-${ marginSlug }`]: marginSlug,
-		// 		[`is-padding-${ paddingSlug }`]: paddingSlug,
-		// 	}
-		// );
-
-		// props.attributes.className = newClassNames;
-
-		// props.setAttributes( {
-		// 	className: newClassNames,
-		// } );
-
 		if ( ! isSelected ) {
 			return (
 				<BlockEdit { ...props } />
@@ -170,7 +161,7 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		return (
-			<Fragment>
+			<>
 				<BlockEdit { ...props } />
 
 				<InspectorControls>
@@ -187,16 +178,6 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 									props.setAttributes( {
 										marginSlug: newMarginSlug,
 									} );
-
-									// const newClassNames = classnames(
-									// 	props.attributes.className,
-									// 	{
-									// 		[`is-margin-${ marginSlug }`]: false,
-									// 		[`is-margin-${ newMarginSlug }`]: newMarginSlug,
-									// 	}
-									// );
-
-									// props.attributes.className = newClassNames;
 								} }
 							/>
 						) }
@@ -209,22 +190,12 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 									props.setAttributes( {
 										paddingSlug: newPaddingSlug,
 									} );
-
-									// const newClassNames = classnames(
-									// 	props.attributes.className,
-									// 	{
-									// 		[`is-padding-${ paddingSlug }`]: false,
-									// 		[`is-padding-${ newPaddingSlug }`]: newPaddingSlug,
-									// 	}
-									// );
-
-									// props.attributes.className = newClassNames;
 								} }
 							/>
 						) }
 					</PanelBody>
 				</InspectorControls>
-			</Fragment>
+			</>
 		);
 	};
 }, 'withSpaceControl' );
@@ -278,7 +249,7 @@ const withSpaceBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 	};
 }, 'withSpaceBlockAttributes' );
 
-wp.hooks.addFilter(
+addFilter(
 	'editor.BlockListBlock',
 	'guten-bridge/expansion/space/with-block-attributes',
 	withSpaceBlockAttributes

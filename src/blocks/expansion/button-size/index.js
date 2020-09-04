@@ -1,3 +1,8 @@
+'use strict';
+
+/**
+ * External dependencies
+ */
 import classnames from 'classnames/dedupe';
 import assign from 'lodash.assign';
 
@@ -14,11 +19,11 @@ import {
 	SelectControl
 } from '@wordpress/components';
 
-const enableButtonSizeBlocks = [
+const enableBlocks = [
 	'core/button',
 ];
 
-const ButtonSizeSettingsOptions = [
+const buttonSizeSettingsOptions = [
 	{
 		label: __( 'Small', 'guten-bridge' ),
 		value: 'small',
@@ -33,7 +38,7 @@ const ButtonSizeSettingsOptions = [
 	},
 ];
 
-const ButtonWidthSettingsOptions = [
+const buttonWidthSettingsOptions = [
 	{
 		label: __( 'Not set', 'guten-bridge' ),
 		value: '',
@@ -61,7 +66,7 @@ const ButtonWidthSettingsOptions = [
  * @returns {object} Modified block settings.
  */
 const addAttributes = ( settings, name ) => {
-	if ( enableButtonSizeBlocks.includes( settings.name ) ) {
+	if ( enableBlocks.includes( name ) ) {
 		if ( ! settings.supports ) {
 			settings.supports = {};
 		}
@@ -81,7 +86,7 @@ const addAttributes = ( settings, name ) => {
 		settings.attributes = assign( settings.attributes, {
 			buttonSizeSlug: {
 				type: 'string',
-				default: ButtonSizeSettingsOptions[ 1 ].value,
+				default: buttonSizeSettingsOptions[ 1 ].value,
 			},
 		} );
 	}
@@ -90,7 +95,7 @@ const addAttributes = ( settings, name ) => {
 		settings.attributes = assign( settings.attributes, {
 			buttonWidthSlug: {
 				type: 'string',
-				default: ButtonWidthSettingsOptions[ 0 ].value,
+				default: buttonWidthSettingsOptions[ 0 ].value,
 			},
 		} );
 	}
@@ -129,16 +134,6 @@ const withButtonSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
 			className,
 		} = props.attributes;
 
-		// const newClassNames = classnames(
-		// 	className,
-		// 	{
-		// 		[`is-button-size-${ buttonSizeSlug }`]: buttonSizeSlug,
-		// 		[`is-button-width-${ buttonWidthSlug }`]: buttonWidthSlug,
-		// 	}
-		// );
-
-		// props.attributes.className = newClassNames;
-
 		if ( ! isSelected ) {
 			return (
 				<BlockEdit { ...props } />
@@ -146,7 +141,7 @@ const withButtonSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		return (
-			<Fragment>
+			<>
 				<BlockEdit { ...props } />
 
 				<InspectorControls>
@@ -157,46 +152,26 @@ const withButtonSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
 						<SelectControl
 							label={ __( 'Size', 'guten-bridge' ) }
 							value={ buttonSizeSlug }
-							options={ ButtonSizeSettingsOptions }
+							options={ buttonSizeSettingsOptions }
 							onChange={ ( newButtonSizeSlug ) => {
 								props.setAttributes( {
 									buttonSizeSlug: newButtonSizeSlug,
 								} );
-
-								// const newClassNames = classnames(
-								// 	props.attributes.className,
-								// 	{
-								// 		[`is-button-size-${ buttonSizeSlug }`]: false,
-								// 		[`is-button-size-${ newButtonSizeSlug }`]: newButtonSizeSlug,
-								// 	}
-								// );
-
-								// props.attributes.className = newClassNames;
 							} }
 						/>
 						<SelectControl
 							label={ __( 'Width', 'guten-bridge' ) }
 							value={ buttonWidthSlug }
-							options={ ButtonWidthSettingsOptions }
+							options={ buttonWidthSettingsOptions }
 							onChange={ ( newButtonWidthSlug ) => {
 								props.setAttributes( {
 									buttonWidthSlug: newButtonWidthSlug,
 								} );
-
-								// const newClassNames = classnames(
-								// 	props.attributes.className,
-								// 	{
-								// 		[`is-button-width-${ buttonWidthSlug }`]: false,
-								// 		[`is-button-width-${ newButtonWidthSlug }`]: newButtonWidthSlug,
-								// 	}
-								// );
-
-								// props.attributes.className = newClassNames;
 							} }
 						/>
 					</PanelBody>
 				</InspectorControls>
-			</Fragment>
+			</>
 		);
 	};
 }, 'withButtonSizeControl' );
@@ -239,7 +214,7 @@ const withButtonSizeBlockAttributes = createHigherOrderComponent( ( BlockListBlo
 			customData['data-button-width'] = buttonWidthSlug;
 		}
 
-		let wrapperProps 	= props.wrapperProps;
+		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 
 		wrapperProps = {
 			...wrapperProps,
@@ -250,7 +225,7 @@ const withButtonSizeBlockAttributes = createHigherOrderComponent( ( BlockListBlo
 	};
 }, 'withSpaceBlockAttributes' );
 
-wp.hooks.addFilter(
+addFilter(
 	'editor.BlockListBlock',
 	'guten-bridge/expansion/button-size/with-block-attributes',
 	withButtonSizeBlockAttributes

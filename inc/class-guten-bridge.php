@@ -18,9 +18,9 @@ class Guten_Bridge {
 	public function __construct() {
 		add_action( 'plugins_loaded', [ $this, 'init' ] );
 
-		add_action( 'enqueue_block_assets', array( $this, 'enqueue_styles' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_blocks_scripts' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_styles' ) );
+		add_action( 'enqueue_block_assets', [ $this, 'enqueue_styles' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_blocks_scripts' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
 	}
 
 	/**

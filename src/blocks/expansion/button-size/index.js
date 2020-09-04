@@ -66,11 +66,11 @@ const addAttributes = ( settings, name ) => {
 			settings.supports = {};
 		}
 		settings.supports = assign( settings.supports, {
-			ButtonSize: true,
+			gutenBridgeButtonSize: true,
 		} );
 	}
 
-	if ( ! hasBlockSupport( settings, 'ButtonSize' ) ) {
+	if ( ! hasBlockSupport( settings, 'gutenBridgeButtonSize' ) ) {
 		return settings;
 	}
 	if ( typeof settings.attributes === 'undefined' ) {
@@ -117,7 +117,7 @@ const withButtonSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'ButtonSize' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenBridgeButtonSize' ) ) {
 			return (
 				<BlockEdit { ...props } />
 			);
@@ -217,7 +217,7 @@ const withButtonSizeBlockAttributes = createHigherOrderComponent( ( BlockListBlo
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'ButtonSize' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenBridgeButtonSize' ) ) {
 			return (
 				<BlockListBlock { ...props } />
 			);
@@ -266,7 +266,7 @@ wp.hooks.addFilter(
 * @returns {object} Modified props of save element.
 */
 const getSaveButtonSizeContent = ( extraProps, blockType, attributes ) => {
-	if ( ! hasBlockSupport( blockType.name, 'ButtonSize' ) ) {
+	if ( ! hasBlockSupport( blockType.name, 'gutenBridgeButtonSize' ) ) {
 		return extraProps;
 	}
 

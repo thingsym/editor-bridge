@@ -72,25 +72,25 @@ const addAttributes = ( settings, name ) => {
 			settings.supports = {};
 		}
 		settings.supports = assign( settings.supports, {
-			Space: true,
-			SpaceMargin: true,
-			SpacePadding: true,
+			gutenBridgeSpace: true,
+			gutenBridgeSpaceMargin: true,
+			gutenBridgeSpacePadding: true,
 		} );
 
 		if ( name == 'core/column' ) {
 			settings.supports = assign( settings.supports, {
-				SpaceMargin: false,
+				gutenBridgeSpaceMargin: false,
 			} );
 		}
 
 		if ( name == 'core/button' || name == 'core/list' || name == 'core/table' || name == 'core/media-text' ) {
 			settings.supports = assign( settings.supports, {
-				SpacePadding: false,
+				gutenBridgeSpacePadding: false,
 			} );
 		}
 	}
 
-	if ( ! hasBlockSupport( settings, 'Space' ) ) {
+	if ( ! hasBlockSupport( settings, 'gutenBridgeSpace' ) ) {
 		return settings;
 	}
 	if ( typeof settings.attributes === 'undefined' ) {
@@ -137,7 +137,7 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'Space' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenBridgeSpace' ) ) {
 			return (
 				<BlockEdit { ...props } />
 			);
@@ -178,7 +178,7 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 						title={ __( 'Space Settings', 'guten-bridge' ) }
 						initialOpen={ true }
 					>
-						{ hasBlockSupport( name, 'SpaceMargin' ) && (
+						{ hasBlockSupport( name, 'gutenBridgeSpaceMargin' ) && (
 							<SelectControl
 								label={ __( 'Margin', 'guten-bridge' ) }
 								value={ marginSlug }
@@ -200,7 +200,7 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 								} }
 							/>
 						) }
-						{ hasBlockSupport( name, 'SpacePadding' ) && (
+						{ hasBlockSupport( name, 'gutenBridgeSpacePadding' ) && (
 							<SelectControl
 								label={ __( 'Padding', 'guten-bridge' ) }
 								value={ paddingSlug }
@@ -245,7 +245,7 @@ const withSpaceBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'Space' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenBridgeSpace' ) ) {
 			return (
 				<BlockListBlock { ...props } />
 			);
@@ -294,15 +294,15 @@ wp.hooks.addFilter(
  * @returns {object} Modified props of save element.
  */
 const getSaveSpaceContent = ( extraProps, blockType, attributes ) => {
-	if ( ! hasBlockSupport( blockType.name, 'Space' ) ) {
+	if ( ! hasBlockSupport( blockType.name, 'gutenBridgeSpace' ) ) {
 		return extraProps;
 	}
 
 	extraProps.className = classnames(
 		extraProps.className,
 		{
-			[ `is-margin-${ attributes.marginSlug }` ]: hasBlockSupport( blockType.name, 'SpaceMargin' ) && attributes.marginSlug,
-			[ `is-padding-${ attributes.paddingSlug }` ]: hasBlockSupport( blockType.name, 'SpacePadding' ) && attributes.paddingSlug,
+			[ `is-margin-${ attributes.marginSlug }` ]: hasBlockSupport( blockType.name, 'gutenBridgeSpaceMargin' ) && attributes.marginSlug,
+			[ `is-padding-${ attributes.paddingSlug }` ]: hasBlockSupport( blockType.name, 'gutenBridgeSpacePadding' ) && attributes.paddingSlug,
 		}
 	);
 

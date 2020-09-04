@@ -76,11 +76,11 @@ const addAttributes = ( settings, name ) => {
 			settings.supports = {};
 		}
 		settings.supports = assign( settings.supports, {
-			BackgroundImage: true,
+			gutenBridgeBackgroundImage: true,
 		} );
 	}
 
-	if ( ! hasBlockSupport( settings, 'BackgroundImage' ) ) {
+	if ( ! hasBlockSupport( settings, 'gutenBridgeBackgroundImage' ) ) {
 		return settings;
 	}
 	if ( typeof settings.attributes === 'undefined' ) {
@@ -136,7 +136,7 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'BackgroundImage' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenBridgeBackgroundImage' ) ) {
 			return (
 				<BlockEdit { ...props } />
 			);
@@ -311,7 +311,7 @@ const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockLi
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'BackgroundImage' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenBridgeBackgroundImage' ) ) {
 			return (
 				<BlockListBlock { ...props } />
 			);
@@ -364,7 +364,7 @@ wp.hooks.addFilter(
  * @returns {object} Modified props of save element.
  */
 const getSaveBackgroundImageContent = ( extraProps, blockType, attributes ) => {
-	if ( ! hasBlockSupport( blockType.name, 'BackgroundImage' ) ) {
+	if ( ! hasBlockSupport( blockType.name, 'gutenBridgeBackgroundImage' ) ) {
 		return extraProps;
 	}
 
@@ -376,7 +376,7 @@ const getSaveBackgroundImageContent = ( extraProps, blockType, attributes ) => {
 		hasRepete,
 	} = attributes;
 
-	if ( hasBlockSupport( blockType.name, 'BackgroundImage' ) && url ) {
+	if ( hasBlockSupport( blockType.name, 'gutenBridgeBackgroundImage' ) && url ) {
 		const style = backgroundType === IMAGE_BACKGROUND_TYPE ?
 			backgroundImageStyles( url ) :
 			{};

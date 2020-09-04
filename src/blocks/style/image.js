@@ -14,3 +14,8 @@ wp.blocks.registerBlockStyle( 'core/image', {
 	name: 'img-frame',
 	label: __( 'Frame', 'guten-bridge' ),
 } );
+
+wp.blocks.registerBlockStyle( 'core/image', {
+	name: 'img-shadow',
+	label: __( 'Shadow', 'guten-bridge' ),
+} );

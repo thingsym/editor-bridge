@@ -7,7 +7,7 @@
  * @since 1.0.0
  */
 
-namespace Guten_Bridge\Plugins;
+namespace Guten_Bridge;
 
 /**
  * Core class Guten_Bridge

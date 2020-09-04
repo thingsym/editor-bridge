@@ -22,6 +22,6 @@ define( 'GUTEN_BRIDGE', __FILE__ );
 
 require_once plugin_dir_path( __FILE__ ) . 'inc/class-guten-bridge.php';
 
-if ( class_exists( 'Guten_Bridge\Plugins\Guten_Bridge' ) ) {
-	new \Guten_Bridge\Plugins\Guten_Bridge();
+if ( class_exists( 'Guten_Bridge\Guten_Bridge' ) ) {
+	new \Guten_Bridge\Guten_Bridge();
 };

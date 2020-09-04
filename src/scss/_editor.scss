@@ -1,5 +1,8 @@
+:root {
+	--guten-bridge-block-edior-max-width: #{$block-edior-max-width};
+}
+
 @import 'editor/uiux-experience';
 @import 'editor/space';
 @import 'editor/buttons';
-// @import 'editor/extend';
 @import 'editor/background-image';

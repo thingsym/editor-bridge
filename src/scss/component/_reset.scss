@@ -83,3 +83,9 @@
 		}
 	}
 }
+
+.wp-block-group {
+	&.has-background {
+		padding: var(--guten-bridge-space-padding-medium, unset);
+	}
+}

@@ -14,28 +14,50 @@
 	margin-top: var(--guten-bridge-space-margin-huge, unset);
 }
 
-/** for Specificity blocks **/
-.wp-block-button,
-.wp-block-image,
-.wp-block-table,
+.entry-content {
+	* {
+		&.is-margin-none {
+			margin-top: var(--guten-bridge-space-margin-none, unset);
+		}
+		&.is-margin-small {
+			margin-top: var(--guten-bridge-space-margin-small, unset);
+		}
+		&.is-margin-medium {
+			margin-top: var(--guten-bridge-space-margin-medium, unset);
+		}
+		&.is-margin-large {
+			margin-top: var(--guten-bridge-space-margin-large, unset);
+		}
+		&.is-margin-huge {
+			margin-top: var(--guten-bridge-space-margin-huge, unset);
+		}
+	}
+}
 
-.wp-block-group,
-.wp-block-columns,
-.wp-block-column {
-	&.is-margin-none {
-		margin-top: var(--guten-bridge-space-margin-none, unset);
-	}
-	&.is-margin-small {
-		margin-top: var(--guten-bridge-space-margin-small, unset);
-	}
-	&.is-margin-medium {
-		margin-top: var(--guten-bridge-space-margin-medium, unset);
-	}
-	&.is-margin-large {
-		margin-top: var(--guten-bridge-space-margin-large, unset);
-	}
-	&.is-margin-huge {
-		margin-top: var(--guten-bridge-space-margin-huge, unset);
+/** for Specificity blocks **/
+.entry-content {
+	.wp-block-button,
+	.wp-block-image,
+	.wp-block-table,
+	.wp-block-media-text,
+	.wp-block-group,
+	.wp-block-columns,
+	.wp-block-column {
+		&.is-margin-none {
+			margin-top: var(--guten-bridge-space-margin-none, unset);
+		}
+		&.is-margin-small {
+			margin-top: var(--guten-bridge-space-margin-small, unset);
+		}
+		&.is-margin-medium {
+			margin-top: var(--guten-bridge-space-margin-medium, unset);
+		}
+		&.is-margin-large {
+			margin-top: var(--guten-bridge-space-margin-large, unset);
+		}
+		&.is-margin-huge {
+			margin-top: var(--guten-bridge-space-margin-huge, unset);
+		}
 	}
 }
 
@@ -43,7 +65,14 @@
 .entry-content {
 	* {
 		+ h1, + h2, + h3, + h4, + h5, + h6,
-		+ p, + ul, + ol {
+		+ p, + ul, + ol,
+		+ .wp-block-image,
+		+ .wp-block-table,
+		+ .wp-block-button,
+		+ .wp-block-buttons,
+		+ .wp-block-group,
+		+ .wp-block-columns,
+		+ .wp-block-media-text {
 			&.is-margin-none {
 				margin-top: var(--guten-bridge-space-margin-none, unset);
 			}

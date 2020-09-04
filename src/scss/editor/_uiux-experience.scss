@@ -1,4 +1,41 @@
 /** ui/ux experience **/
 .wp-block {
-	max-width: 980px;
+	max-width: var(--guten-bridge-block-edior-max-width, 580px);
+}
+
+.wp-block-group {
+	&.has-background {
+		padding: var(--guten-bridge-space-padding-medium, unset);
+	}
+}
+
+.components-inline-color-popover,
+.components-inline-fontsize-popover,
+.components-inline-badge-popover,
+.components-inline-highligh-popover {
+	.components-popover__content > div {
+		padding: 20px 18px;
+	}
+
+	.components-font-size-picker__controls {
+		margin-bottom: 0;
+	}
+}
+.components-popover.is-flex-dir-column {
+	.block-editor-url-popover__row {
+		flex-direction: column;
+	}
+}
+
+// Hack to hide when the media modal is open
+// Otherwise in Firefox the popover remains visible on top of the modal
+// Changing the z-index of Popovers have wider implications.
+.modal-open .block-editor-guten-bridge-backgound-image__options {
+	display: none;
+}
+
+// Forcing some space above the list of options in
+// the dropdown to visually balance them.
+.block-editor-guten-bridge-backgound-image__options .components-popover__content > div {
+	padding-top: 20px;
 }

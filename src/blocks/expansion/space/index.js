@@ -120,7 +120,7 @@ const addAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'guten-bridge/extend/space/add-attributes',
+	'guten-bridge/expansion/space/add-attributes',
 	addAttributes
 );
 
@@ -231,7 +231,7 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 addFilter(
 	'editor.BlockEdit',
-	'guten-bridge/extend/space/with-control',
+	'guten-bridge/expansion/space/with-control',
 	withSpaceControl
 );
 
@@ -280,7 +280,7 @@ const withSpaceBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 
 wp.hooks.addFilter(
 	'editor.BlockListBlock',
-	'guten-bridge/extend/space/with-block-attributes',
+	'guten-bridge/expansion/space/with-block-attributes',
 	withSpaceBlockAttributes
 );
 
@@ -311,6 +311,6 @@ const getSaveSpaceContent = ( extraProps, blockType, attributes ) => {
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'guten-bridge/extend/space/get-save-content',
+	'guten-bridge/expansion/space/get-save-content',
 	getSaveSpaceContent
 );

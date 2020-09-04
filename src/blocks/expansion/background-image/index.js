@@ -119,7 +119,7 @@ const addAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'guten-bridge/extend/background-image/add-attributes',
+	'guten-bridge/expansion/background-image/add-attributes',
 	addAttributes
 );
 
@@ -297,7 +297,7 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 
 addFilter(
 	'editor.BlockEdit',
-	'guten-bridge/extend/background-image/with-control',
+	'guten-bridge/expansion/background-image/with-control',
 	withBackgroundImageControl
 );
 
@@ -350,7 +350,7 @@ const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockLi
 
 wp.hooks.addFilter(
 	'editor.BlockListBlock',
-	'guten-bridge/extend/background-image/with-block-attributes',
+	'guten-bridge/expansion/background-image/with-block-attributes',
 	withBackgroundImageBlockAttributes
 );
 
@@ -403,6 +403,6 @@ const getSaveBackgroundImageContent = ( extraProps, blockType, attributes ) => {
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'guten-bridge/extend/background-image/get-save-content',
+	'guten-bridge/expansion/background-image/get-save-content',
 	getSaveBackgroundImageContent
 );

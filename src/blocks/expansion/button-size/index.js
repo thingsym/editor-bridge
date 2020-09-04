@@ -252,7 +252,7 @@ const withButtonSizeBlockAttributes = createHigherOrderComponent( ( BlockListBlo
 
 wp.hooks.addFilter(
 	'editor.BlockListBlock',
-	'guten-bridge/extend/button-size/with-block-attributes',
+	'guten-bridge/expansion/button-size/with-block-attributes',
 	withButtonSizeBlockAttributes
 );
 

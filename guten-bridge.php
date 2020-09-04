@@ -19,8 +19,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'GUTEN_BRIDGE', __FILE__ );
+define( 'GUTEN_BRIDGE_PATH', plugin_dir_path( GUTEN_BRIDGE ) );
 
-require_once plugin_dir_path( __FILE__ ) . 'inc/class-guten-bridge.php';
+require_once GUTEN_BRIDGE_PATH . 'inc/class-guten-bridge.php';
 
 if ( class_exists( 'Guten_Bridge\Guten_Bridge' ) ) {
 	new \Guten_Bridge\Guten_Bridge();

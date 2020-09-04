@@ -37,7 +37,7 @@ class Guten_Bridge {
 		load_plugin_textdomain(
 			'guten-bridge',
 			false,
-			dirname( plugin_basename( GUTEN_BRIDGE ) ) . '/languages/'
+			GUTEN_BRIDGE_PATH . '/languages/'
 		);
 	}
 
@@ -55,7 +55,7 @@ class Guten_Bridge {
 			wp_set_script_translations(
 				'guten-bridge-script',
 				'guten-bridge',
-				plugin_dir_path( GUTEN_BRIDGE ) . '/languages'
+				GUTEN_BRIDGE_PATH . '/languages'
 			);
 		}
 	}

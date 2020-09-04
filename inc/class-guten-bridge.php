@@ -75,7 +75,10 @@ class Guten_Bridge {
 	public function enqueue_block_editor_styles() {
 		wp_enqueue_style(
 			'guten-bridge-editor-style',
-			plugins_url( 'dist/css/block-editor-style.min.css', GUTEN_BRIDGE )
+			plugins_url( 'dist/css/block-editor-style.min.css', GUTEN_BRIDGE ),
+			[],
+			'20200904',
+			'all'
 		);
 
 		$styles = wp_get_custom_css();
@@ -88,7 +91,10 @@ class Guten_Bridge {
 	public function enqueue_styles() {
 		wp_enqueue_style(
 			'guten-bridge-style',
-			plugins_url( 'dist/css/blocks.min.css', GUTEN_BRIDGE )
+			plugins_url( 'dist/css/blocks.min.css', GUTEN_BRIDGE ),
+			[],
+			'20200904',
+			'all'
 		);
 	}
 }

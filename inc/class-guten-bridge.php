@@ -19,6 +19,7 @@ class Guten_Bridge {
 		add_action( 'plugins_loaded', [ $this, 'init' ] );
 
 		add_action( 'enqueue_block_assets', [ $this, 'enqueue_styles' ] );
+		add_action( 'enqueue_block_assets', [ $this, 'enqueue_block_asset_styles' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_blocks_scripts' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
 	}
@@ -96,6 +97,17 @@ class Guten_Bridge {
 			'all'
 		);
 	}
+
+	public function enqueue_block_asset_styles() {
+		wp_enqueue_style(
+			'guten-bridge-block-asset',
+			plugins_url( 'dist/css/block-asset.min.css', GUTEN_BRIDGE ),
+			[],
+			'20200922',
+			'all'
+		);
+	}
+
 	public function init() {
 		if ( ! function_exists( 'register_block_type' ) ) {
 			return;

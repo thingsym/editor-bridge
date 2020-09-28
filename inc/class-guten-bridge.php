@@ -74,7 +74,7 @@ class Guten_Bridge {
 
 	public function enqueue_block_editor_styles() {
 		wp_enqueue_style(
-			'guten-bridge-editor-style',
+			'guten-bridge-block-editor',
 			plugins_url( 'dist/css/block-editor-style.min.css', GUTEN_BRIDGE ),
 			[],
 			'20200904',
@@ -84,13 +84,13 @@ class Guten_Bridge {
 		$styles = wp_get_custom_css();
 		if ( $styles ) {
 			$styles = '/* Insert custom css */' . $styles;
-			wp_add_inline_style( 'guten-bridge-editor-style', $styles );
+			wp_add_inline_style( 'guten-bridge-editor', $styles );
 		}
 	}
 
 	public function enqueue_styles() {
 		wp_enqueue_style(
-			'guten-bridge-style',
+			'guten-bridge',
 			plugins_url( 'dist/css/blocks.min.css', GUTEN_BRIDGE ),
 			[],
 			'20200904',

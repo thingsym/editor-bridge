@@ -46,11 +46,6 @@ wp.blocks.registerBlockStyle( 'core/heading', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {
-	name: 'hd-marker',
-	label: __( 'Marker Line', 'guten-bridge' ),
-} );
-
-wp.blocks.registerBlockStyle( 'core/heading', {
 	name: 'hd-left-line',
 	label: __( 'Left Line', 'guten-bridge' ),
 } );
@@ -63,21 +58,6 @@ wp.blocks.registerBlockStyle( 'core/heading', {
 wp.blocks.registerBlockStyle( 'core/heading', {
 	name: 'hd-stripe',
 	label: __( 'Stripe', 'guten-bridge' ),
-} );
-
-// wp.blocks.registerBlockStyle( 'core/heading', {
-//   name: 'hd-callout',
-//   label: __( 'Callout', 'guten-bridge' ),
-// } );
-
-wp.blocks.registerBlockStyle( 'core/heading', {
-	name: 'hd-slash',
-	label: __( 'Slash', 'guten-bridge' ),
-} );
-
-wp.blocks.registerBlockStyle( 'core/heading', {
-	name: 'hd-slash-symmetry',
-	label: __( 'Slash symmetry', 'guten-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {

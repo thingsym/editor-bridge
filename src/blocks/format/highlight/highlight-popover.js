@@ -85,16 +85,24 @@ export function getActiveColorHex( formatName, formatValue, colors ) {
 
 	if ( currentStyle ) {
 		if ( currentClass === 'is-highlight-style-highlight' ) {
-			const colorRbg = currentStyle.replace( new RegExp( `^background: linear-gradient\\(transparent 70%, (.*?) 70%\\);` ), '$1' );
+			const colorRbg = currentStyle.replace( new RegExp( `^background: linear-gradient\\(transparent 70%, (.*?) 30%\\);` ), '$1' );
 			const colorHex = rgb2hex( colorRbg ).hex;
 			return colorHex;
 		}
-		else if ( currentClass === 'is-highlight-style-marker' ) {
-			const color = currentStyle.match( /^background-color:\s(.*?);/ );
+		else {
+			let regex;
+			if ( currentClass === 'is-highlight-style-marker' ) {
+				regex = /^background-color:\s(.*?);/
+			}
+			else if ( currentClass === 'is-highlight-style-underline' ) {
+				regex = /border-bottom:\ssolid\s2px\s(.*?);/
+			}
+
+			const color = currentStyle.match( regex );
+
 			if (color === null) {
 				return null;
 			}
-
 			return color[1] ? color[1] : null;
 		}
 	}
@@ -196,6 +204,7 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 		options={ [
 			{ label: __( 'Highlight', 'guten-bridge' ), value: 'highlight' },
 			{ label: __( 'Marker', 'guten-bridge' ), value: 'marker' },
+			{ label: __( 'Underline', 'guten-bridge' ), value: 'underline' },
 		] }
 		onChange={ onStyleChange }
 	/>;
@@ -210,10 +219,13 @@ export function setStyle( styleSlug, color ) {
 	}
 
 	if ( styleSlug === 'highlight' ) {
-		return `background: linear-gradient(transparent 70%, ${ hexToRgba( color, 0.5 ) } 70%);`;
+		return `background: linear-gradient(transparent 70%, ${ hexToRgba( color, 0.6 ) } 30%);`;
 	}
 	else if ( styleSlug === 'marker' ) {
 		return `background-color: ${ color };`;
+	}
+	else if ( styleSlug === 'underline' ) {
+		return `border-bottom: solid 2px ${ color };`;
 	}
 
 	return;

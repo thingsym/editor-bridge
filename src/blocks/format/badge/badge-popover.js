@@ -82,11 +82,19 @@ export function getActiveColorHex( formatName, formatValue, colors ) {
 	const currentStyle = activeFormat.attributes.style;
 
 	if ( currentStyle ) {
-		const color = currentStyle.match( /background-color:\s(.*?);/ );
+		let regex;
+		if ( currentClass === 'is-badge-style-status' ) {
+			regex = /border:\ssolid\s1px\s(.*?);/
+		}
+		else {
+			regex = /background-color:\s(.*?);/
+		}
+
+		const color = currentStyle.match( regex );
+
 		if (color === null) {
 			return null;
 		}
-
 		return color[1] ? color[1] : null;
 	}
 
@@ -187,6 +195,7 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 			{ label: __( 'Default', 'guten-bridge' ), value: 'default' },
 			{ label: __( 'Round Conner', 'guten-bridge' ), value: 'round-conner' },
 			{ label: __( 'Round', 'guten-bridge' ), value: 'round' },
+			{ label: __( 'Status', 'guten-bridge' ), value: 'status' },
 			{ label: __( 'Perfect Circle', 'guten-bridge' ), value: 'perfect-circle' },
 		] }
 		onChange={ onStyleChange }
@@ -202,13 +211,16 @@ export function setStyle( styleSlug, color ) {
 	}
 
 	if ( styleSlug === 'default' ) {
-		return `background-color: ${ color };padding: .2rem .8rem;`;
+		return `background-color: ${ color };padding: .2rem .8em;`;
 	}
 	else if ( styleSlug === 'round-conner' ) {
-		return `background-color: ${ color };padding: .2rem .8rem;border-radius: .4rem;`;
+		return `background-color: ${ color };padding: .2rem .8em;border-radius: .5rem;`;
 	}
 	else if ( styleSlug === 'round' ) {
-		return `background-color: ${ color };padding: .2rem .8rem;border-radius: 1rem;`;
+		return `background-color: ${ color };padding: .2rem .8em;border-radius: 2rem;`;
+	}
+	else if ( styleSlug === 'status' ) {
+		return `background-color: #fff;border: solid 1px ${ color };padding: .2rem .8em;border-radius: 2rem;`;
 	}
 	else if ( styleSlug === 'perfect-circle' ) {
 		return `background-color: ${ color };border-radius: 50%;display: inline-block;text-align: center;`;

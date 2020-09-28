@@ -44,7 +44,7 @@
 	.wp-block-button__link {
 		&:hover {
 			animation: expansion_btn 0.4s both;
-	 }
+	}
 	}
 }
 @keyframes expansion_btn {
@@ -64,13 +64,6 @@
 		transition: box-shadow 0.2s ease;
 		&:hover {
 			box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
-		}
-	}
-}
-	.wp-block-button__link {
-		transition: all 0.2s 0s ease;
-		&:hover {
-			box-shadow: 0 0 5px rgba(0, 0, 0, .3);
 		}
 	}
 }

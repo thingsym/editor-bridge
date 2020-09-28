@@ -21,11 +21,6 @@ wp.blocks.registerBlockStyle( 'core/table', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/table', {
-	name: 'tb-underline-emphasis',
-	label: __( 'Underline Emphasis', 'guten-bridge' ),
-} );
-
-wp.blocks.registerBlockStyle( 'core/table', {
 	name: 'tb-dashed',
 	label: __( 'Dashed', 'guten-bridge' ),
 } );

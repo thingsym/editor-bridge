@@ -1,35 +1,45 @@
 .is-margin-none {
-	margin-top: var(--guten-bridge-space-margin-none, unset);
+	margin-top: var(--guten-bridge-space-margin-top-none, unset);
+	margin-bottom: var(--guten-bridge-space-margin-bottom-none, unset);
 }
 .is-margin-small {
-	margin-top: var(--guten-bridge-space-margin-small, unset);
+	margin-top: var(--guten-bridge-space-margin-top-small, unset);
+	margin-bottom: var(--guten-bridge-space-margin-bottom-small, unset);
 }
 .is-margin-medium {
-	margin-top: var(--guten-bridge-space-margin-medium, unset);
+	margin-top: var(--guten-bridge-space-margin-top-medium, unset);
+	margin-bottom: var(--guten-bridge-space-margin-bottom-medium, unset);
 }
 .is-margin-large {
-	margin-top: var(--guten-bridge-space-margin-large, unset);
+	margin-top: var(--guten-bridge-space-margin-top-large, unset);
+	margin-bottom: var(--guten-bridge-space-margin-bottom-large, unset);
 }
 .is-margin-huge {
-	margin-top: var(--guten-bridge-space-margin-huge, unset);
+	margin-top: var(--guten-bridge-space-margin-top-huge, unset);
+	margin-bottom: var(--guten-bridge-space-margin-bottom-huge, unset);
 }
 
 .entry-content {
 	* {
 		&.is-margin-none {
-			margin-top: var(--guten-bridge-space-margin-none, unset);
+			margin-top: var(--guten-bridge-space-margin-top-none, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-none, unset);
 		}
 		&.is-margin-small {
-			margin-top: var(--guten-bridge-space-margin-small, unset);
+			margin-top: var(--guten-bridge-space-margin-top-small, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-small, unset);
 		}
 		&.is-margin-medium {
-			margin-top: var(--guten-bridge-space-margin-medium, unset);
+			margin-top: var(--guten-bridge-space-margin-top-medium, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-medium, unset);
 		}
 		&.is-margin-large {
-			margin-top: var(--guten-bridge-space-margin-large, unset);
+			margin-top: var(--guten-bridge-space-margin-top-large, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-large, unset);
 		}
 		&.is-margin-huge {
-			margin-top: var(--guten-bridge-space-margin-huge, unset);
+			margin-top: var(--guten-bridge-space-margin-top-huge, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-huge, unset);
 		}
 	}
 }
@@ -44,19 +54,24 @@
 	.wp-block-columns,
 	.wp-block-column {
 		&.is-margin-none {
-			margin-top: var(--guten-bridge-space-margin-none, unset);
+			margin-top: var(--guten-bridge-space-margin-top-none, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-none, unset);
 		}
 		&.is-margin-small {
-			margin-top: var(--guten-bridge-space-margin-small, unset);
+			margin-top: var(--guten-bridge-space-margin-top-small, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-small, unset);
 		}
 		&.is-margin-medium {
-			margin-top: var(--guten-bridge-space-margin-medium, unset);
+			margin-top: var(--guten-bridge-space-margin-top-medium, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-medium, unset);
 		}
 		&.is-margin-large {
-			margin-top: var(--guten-bridge-space-margin-large, unset);
+			margin-top: var(--guten-bridge-space-margin-top-large, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-large, unset);
 		}
 		&.is-margin-huge {
-			margin-top: var(--guten-bridge-space-margin-huge, unset);
+			margin-top: var(--guten-bridge-space-margin-top-huge, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-huge, unset);
 		}
 	}
 }
@@ -74,19 +89,24 @@
 		+ .wp-block-columns,
 		+ .wp-block-media-text {
 			&.is-margin-none {
-				margin-top: var(--guten-bridge-space-margin-none, unset);
+				margin-top: var(--guten-bridge-space-margin-top-none, unset);
+				margin-bottom: var(--guten-bridge-space-margin-bottom-none, unset);
 			}
 			&.is-margin-small {
-				margin-top: var(--guten-bridge-space-margin-small, unset);
+				margin-top: var(--guten-bridge-space-margin-top-small, unset);
+				margin-bottom: var(--guten-bridge-space-margin-bottom-small, unset);
 			}
 			&.is-margin-medium {
-				margin-top: var(--guten-bridge-space-margin-medium, unset);
+				margin-top: var(--guten-bridge-space-margin-top-medium, unset);
+				margin-bottom: var(--guten-bridge-space-margin-bottom-medium, unset);
 			}
 			&.is-margin-large {
-				margin-top: var(--guten-bridge-space-margin-large, unset);
+				margin-top: var(--guten-bridge-space-margin-top-large, unset);
+				margin-bottom: var(--guten-bridge-space-margin-bottom-large, unset);
 			}
 			&.is-margin-huge {
-				margin-top: var(--guten-bridge-space-margin-huge, unset);
+				margin-top: var(--guten-bridge-space-margin-top-huge, unset);
+				margin-bottom: var(--guten-bridge-space-margin-bottom-huge, unset);
 			}
 		}
 	}

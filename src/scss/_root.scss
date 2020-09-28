@@ -1,9 +1,11 @@
 :root {
-	--guten-bridge-space-margin-none: #{$space-none};
-	--guten-bridge-space-margin-small: #{$space-small};
-	--guten-bridge-space-margin-medium: #{$space-medium};
-	--guten-bridge-space-margin-large: #{$space-large};
-	--guten-bridge-space-margin-huge: #{$space-huge};
+	--guten-bridge-const-stack: #{$default-stack};
+
+	--guten-bridge-space-margin-top-none: #{$space-none};
+	--guten-bridge-space-margin-top-small: #{$space-small};
+	--guten-bridge-space-margin-top-medium: #{$space-medium};
+	--guten-bridge-space-margin-top-large: #{$space-large};
+	--guten-bridge-space-margin-top-huge: #{$space-huge};
 
 	--guten-bridge-space-padding-none: #{$space-none};
 	--guten-bridge-space-padding-small: #{$space-small};

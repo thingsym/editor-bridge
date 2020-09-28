@@ -1,19 +1,24 @@
 // WordPress 5.5 / Gutenberg v8.4
 .editor-styles-wrapper .is-root-container {
 	[data-margin-slug=none] {
-		margin-top: var(--guten-bridge-space-margin-none, unset);
+		margin-top: var(--guten-bridge-space-margin-top-none, unset);
+		margin-bottom: var(--guten-bridge-space-margin-bottom-none, unset);
 	}
 	[data-margin-slug=small] {
-		margin-top: var(--guten-bridge-space-margin-small, unset);
+		margin-top: var(--guten-bridge-space-margin-top-small, unset);
+		margin-bottom: var(--guten-bridge-space-margin-bottom-small, unset);
 	}
 	[data-margin-slug=medium] {
-		margin-top: var(--guten-bridge-space-margin-medium, unset);
+		margin-top: var(--guten-bridge-space-margin-top-medium, unset);
+		margin-bottom: var(--guten-bridge-space-margin-bottom-medium, unset);
 	}
 	[data-margin-slug=large] {
-		margin-top: var(--guten-bridge-space-margin-large, unset);
+		margin-top: var(--guten-bridge-space-margin-top-large, unset);
+		margin-bottom: var(--guten-bridge-space-margin-bottom-large, unset);
 	}
 	[data-margin-slug=huge] {
-		margin-top: var(--guten-bridge-space-margin-huge, unset);
+		margin-top: var(--guten-bridge-space-margin-top-huge, unset);
+		margin-bottom: var(--guten-bridge-space-margin-bottom-huge, unset);
 	}
 
 	/** for Specificity blocks **/
@@ -25,19 +30,24 @@
 	.wp-block-columns,
 	.wp-block-media-text {
 		&[data-margin-slug=none] {
-			margin-top: var(--guten-bridge-space-margin-none, unset);
+			margin-top: var(--guten-bridge-space-margin-top-none, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-none, unset);
 		}
 		&[data-margin-slug=small] {
-			margin-top: var(--guten-bridge-space-margin-small, unset);
+			margin-top: var(--guten-bridge-space-margin-top-small, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-small, unset);
 		}
 		&[data-margin-slug=medium] {
-			margin-top: var(--guten-bridge-space-margin-medium, unset);
+			margin-top: var(--guten-bridge-space-margin-top-medium, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-medium, unset);
 		}
 		&[data-margin-slug=large] {
-			margin-top: var(--guten-bridge-space-margin-large, unset);
+			margin-top: var(--guten-bridge-space-margin-top-large, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-large, unset);
 		}
 		&[data-margin-slug=huge] {
-			margin-top: var(--guten-bridge-space-margin-huge, unset);
+			margin-top: var(--guten-bridge-space-margin-top-huge, unset);
+			margin-bottom: var(--guten-bridge-space-margin-bottom-huge, unset);
 		}
 	}
 
@@ -46,19 +56,24 @@
 		+ h1, + h2, + h3, + h4, + h5, + h6,
 		+ p, + ul, + ol {
 			&[data-margin-slug=none] {
-				margin-top: var(--guten-bridge-space-margin-none, unset);
+				margin-top: var(--guten-bridge-space-margin-top-none, unset);
+				margin-bottom: var(--guten-bridge-space-margin-bottom-none, unset);
 			}
 			&[data-margin-slug=small] {
-				margin-top: var(--guten-bridge-space-margin-small, unset);
+				margin-top: var(--guten-bridge-space-margin-top-small, unset);
+				margin-bottom: var(--guten-bridge-space-margin-bottom-small, unset);
 			}
 			&[data-margin-slug=medium] {
-				margin-top: var(--guten-bridge-space-margin-medium, unset);
+				margin-top: var(--guten-bridge-space-margin-top-medium, unset);
+				margin-bottom: var(--guten-bridge-space-margin-bottom-medium, unset);
 			}
 			&[data-margin-slug=large] {
-				margin-top: var(--guten-bridge-space-margin-large, unset);
+				margin-top: var(--guten-bridge-space-margin-top-large, unset);
+				margin-bottom: var(--guten-bridge-space-margin-bottom-large, unset);
 			}
 			&[data-margin-slug=huge] {
-				margin-top: var(--guten-bridge-space-margin-huge, unset);
+				margin-top: var(--guten-bridge-space-margin-top-huge, unset);
+				margin-bottom: var(--guten-bridge-space-margin-bottom-huge, unset);
 			}
 		}
 	}
@@ -91,27 +106,32 @@
 
 	[data-margin-slug=none],
 	figure.wp-block-image[data-margin-slug=none]:not(.wp-block) {
-		margin-top: var(--guten-bridge-space-margin-none, unset);
+		margin-top: var(--guten-bridge-space-margin-top-none, unset);
+		margin-bottom: var(--guten-bridge-space-margin-bottom-none, unset);
 	}
 
 	[data-margin-slug=small],
 	figure.wp-block-image[data-margin-slug=small]:not(.wp-block) {
-		margin-top: calc(var(--guten-bridge-space-margin-small, unset));
+		margin-top: var(--guten-bridge-space-margin-top-small, unset);
+		margin-bottom: var(--guten-bridge-space-margin-bottom-small, unset);
 	}
 
 	[data-margin-slug=medium],
 	figure.wp-block-image[data-margin-slug=medium]:not(.wp-block) {
-		margin-top: calc(var(--guten-bridge-space-margin-medium, unset));
+		margin-top: var(--guten-bridge-space-margin-top-medium, unset);
+		margin-bottom: var(--guten-bridge-space-margin-bottom-medium, unset);
 	}
 
 	[data-margin-slug=large],
 	figure.wp-block-image[data-margin-slug=large]:not(.wp-block) {
-		margin-top: calc(var(--guten-bridge-space-margin-large, unset));
+		margin-top: var(--guten-bridge-space-margin-top-large, unset);
+		margin-bottom: var(--guten-bridge-space-margin-bottom-large, unset);
 	}
 
 	[data-margin-slug=huge],
 	figure.wp-block-image[data-margin-slug=huge]:not(.wp-block) {
-		margin-top: calc(var(--guten-bridge-space-margin-huge, unset));
+		margin-top: var(--guten-bridge-space-margin-top-huge, unset);
+		margin-bottom: var(--guten-bridge-space-margin-bottom-huge, unset);
 	}
 
 	[data-padding-slug=none],

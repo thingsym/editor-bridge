@@ -193,7 +193,7 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 		value={ activeStyle ? activeStyle : 'default' }
 		options={ [
 			{ label: __( 'Default', 'guten-bridge' ), value: 'default' },
-			{ label: __( 'Round Conner', 'guten-bridge' ), value: 'round-conner' },
+			{ label: __( 'Round Corner', 'guten-bridge' ), value: 'round-corner' },
 			{ label: __( 'Round', 'guten-bridge' ), value: 'round' },
 			{ label: __( 'Status', 'guten-bridge' ), value: 'status' },
 			{ label: __( 'Perfect Circle', 'guten-bridge' ), value: 'perfect-circle' },
@@ -213,7 +213,7 @@ export function setStyle( styleSlug, color ) {
 	if ( styleSlug === 'default' ) {
 		return `background-color: ${ color };padding: .2rem .8em;`;
 	}
-	else if ( styleSlug === 'round-conner' ) {
+	else if ( styleSlug === 'round-corner' ) {
 		return `background-color: ${ color };padding: .2rem .8em;border-radius: .5rem;`;
 	}
 	else if ( styleSlug === 'round' ) {

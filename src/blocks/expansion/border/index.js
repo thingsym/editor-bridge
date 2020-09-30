@@ -133,7 +133,7 @@ function BorderPanel( {
 		<PanelBody title={ __( 'Border settings', 'guten-bridge' ) }>
 			<RangeControl
 				value={ borderWidth }
-				label={ __( 'Width', 'guten-bridge' ) }
+				label={ __( 'Border width', 'guten-bridge' ) }
 				min={ MIN_BORDER_WIDTH_VALUE }
 				max={ MAX_BORDER_WIDTH_VALUE }
 				onChange={ setBorderWidth }

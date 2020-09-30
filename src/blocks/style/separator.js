@@ -7,20 +7,20 @@ import { __ } from '@wordpress/i18n';
 
 wp.blocks.registerBlockStyle( 'core/separator', {
 	name: 'hr-thick-line',
-	label: __( 'Thick line', 'guten-bridge' ),
+	label: __( 'Thick line', 'guten-plus' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/separator', {
 	name: 'hr-dotted',
-	label: __( 'Dotted', 'guten-bridge' ),
+	label: __( 'Dotted', 'guten-plus' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/separator', {
 	name: 'hr-shadow',
-	label: __( 'Shadow', 'guten-bridge' ),
+	label: __( 'Shadow', 'guten-plus' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/separator', {
 	name: 'hr-circle-mark',
-	label: __( 'Circle Mark', 'guten-bridge' ),
+	label: __( 'Circle Mark', 'guten-plus' ),
 } );

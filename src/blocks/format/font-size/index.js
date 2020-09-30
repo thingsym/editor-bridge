@@ -22,8 +22,8 @@ import {
 } from './font-size-popover.js';
 import { fontSolid } from './icons';
 
-const name  = 'guten-bridge/font-size';
-const title = __( 'Font Size', 'guten-bridge' );
+const name  = 'guten-plus/font-size';
+const title = __( 'Font Size', 'guten-plus' );
 
 function FontSizeEdit( { value, onChange, isActive, activeAttributes } ) {
 	const [ isAddingFontSize, setIsAddingFontSize ] = useState( false );
@@ -76,7 +76,7 @@ export const font_size = {
 	name,
 	title,
 	tagName: 'span',
-	className: 'guten-bridge-has-font-size',
+	className: 'guten-plus-has-font-size',
 	attributes: {
 		style: 'style',
 		class: 'class',

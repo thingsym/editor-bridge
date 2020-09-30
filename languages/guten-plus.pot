@@ -1,9 +1,9 @@
 # Copyright (C) 2020 thingsym
-# This file is distributed under the same license as the Guten Bridge plugin.
+# This file is distributed under the same license as the Guten Plus plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Guten Bridge 0.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/guten-bridge\n"
+"Project-Id-Version: Guten Plus 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/guten-plus\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -12,14 +12,14 @@ msgstr ""
 "POT-Creation-Date: 2020-09-30T09:37:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
-"X-Domain: guten-bridge\n"
+"X-Domain: guten-plus\n"
 
 #. Plugin Name of the plugin
-msgid "Guten Bridge"
+msgid "Guten Plus"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://github.com/thingsym/guten-bridge"
+msgid "https://github.com/thingsym/guten-plus"
 msgstr ""
 
 #. Description of the plugin

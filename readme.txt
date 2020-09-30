@@ -1,7 +1,7 @@
-=== Guten Bridge ===
+=== Guten Plus ===
 
 Contributors: thingsym
-Link: https://github.com/thingsym/guten-bridge
+Link: https://github.com/thingsym/guten-plus
 Stable tag: 0.1.0
 Tested up to: 5.4
 Requires at least: 5.4

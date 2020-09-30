@@ -38,27 +38,27 @@ const enableBlocks = [
 
 const spaceSettingsOptions = [
 	{
-		label: __( 'Not set', 'guten-bridge' ),
+		label: __( 'Not set', 'guten-plus' ),
 		value: '',
 	},
 	{
-		label: __( 'None', 'guten-bridge' ),
+		label: __( 'None', 'guten-plus' ),
 		value: 'none',
 	},
 	{
-		label: __( 'Small', 'guten-bridge' ),
+		label: __( 'Small', 'guten-plus' ),
 		value: 'small',
 	},
 	{
-		label: __( 'Medium', 'guten-bridge' ),
+		label: __( 'Medium', 'guten-plus' ),
 		value: 'medium',
 	},
 	{
-		label: __( 'Large', 'guten-bridge' ),
+		label: __( 'Large', 'guten-plus' ),
 		value: 'large',
 	},
 	{
-		label: __( 'Huge', 'guten-bridge' ),
+		label: __( 'Huge', 'guten-plus' ),
 		value: 'huge',
 	},
 ];
@@ -77,25 +77,25 @@ const addAttributes = ( settings, name ) => {
 			settings.supports = {};
 		}
 		settings.supports = assign( settings.supports, {
-			gutenBridgeSpace: true,
-			gutenBridgeSpaceMargin: true,
-			gutenBridgeSpacePadding: true,
+			gutenPlusSpace: true,
+			gutenPlusSpaceMargin: true,
+			gutenPlusSpacePadding: true,
 		} );
 
 		if ( name == 'core/column' ) {
 			settings.supports = assign( settings.supports, {
-				gutenBridgeSpaceMargin: false,
+				gutenPlusSpaceMargin: false,
 			} );
 		}
 
 		if ( name == 'core/button' || name == 'core/list' || name == 'core/table' || name == 'core/media-text' ) {
 			settings.supports = assign( settings.supports, {
-				gutenBridgeSpacePadding: false,
+				gutenPlusSpacePadding: false,
 			} );
 		}
 	}
 
-	if ( ! hasBlockSupport( settings, 'gutenBridgeSpace' ) ) {
+	if ( ! hasBlockSupport( settings, 'gutenPlusSpace' ) ) {
 		return settings;
 	}
 	if ( typeof settings.attributes === 'undefined' ) {
@@ -125,7 +125,7 @@ const addAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'guten-bridge/expansion/space/add-attributes',
+	'guten-plus/expansion/space/add-attributes',
 	addAttributes
 );
 
@@ -142,7 +142,7 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'gutenBridgeSpace' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenPlusSpace' ) ) {
 			return (
 				<BlockEdit { ...props } />
 			);
@@ -166,12 +166,12 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 				<InspectorControls>
 					<PanelBody
-						title={ __( 'Space Settings', 'guten-bridge' ) }
+						title={ __( 'Space Settings', 'guten-plus' ) }
 						initialOpen={ true }
 					>
-						{ hasBlockSupport( name, 'gutenBridgeSpaceMargin' ) && (
+						{ hasBlockSupport( name, 'gutenPlusSpaceMargin' ) && (
 							<SelectControl
-								label={ __( 'Margin', 'guten-bridge' ) }
+								label={ __( 'Margin', 'guten-plus' ) }
 								value={ marginSlug }
 								options={ spaceSettingsOptions }
 								onChange={ ( newMarginSlug ) => {
@@ -181,9 +181,9 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 								} }
 							/>
 						) }
-						{ hasBlockSupport( name, 'gutenBridgeSpacePadding' ) && (
+						{ hasBlockSupport( name, 'gutenPlusSpacePadding' ) && (
 							<SelectControl
-								label={ __( 'Padding', 'guten-bridge' ) }
+								label={ __( 'Padding', 'guten-plus' ) }
 								value={ paddingSlug }
 								options={ spaceSettingsOptions }
 								onChange={ ( newPaddingSlug ) => {
@@ -202,7 +202,7 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 addFilter(
 	'editor.BlockEdit',
-	'guten-bridge/expansion/space/with-control',
+	'guten-plus/expansion/space/with-control',
 	withSpaceControl
 );
 
@@ -216,7 +216,7 @@ const withSpaceBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'gutenBridgeSpace' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenPlusSpace' ) ) {
 			return (
 				<BlockListBlock { ...props } />
 			);
@@ -251,7 +251,7 @@ const withSpaceBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 
 addFilter(
 	'editor.BlockListBlock',
-	'guten-bridge/expansion/space/with-block-attributes',
+	'guten-plus/expansion/space/with-block-attributes',
 	withSpaceBlockAttributes
 );
 
@@ -265,15 +265,15 @@ addFilter(
  * @returns {object} Modified props of save element.
  */
 const getSaveSpaceContent = ( extraProps, blockType, attributes ) => {
-	if ( ! hasBlockSupport( blockType.name, 'gutenBridgeSpace' ) ) {
+	if ( ! hasBlockSupport( blockType.name, 'gutenPlusSpace' ) ) {
 		return extraProps;
 	}
 
 	extraProps.className = classnames(
 		extraProps.className,
 		{
-			[ `is-margin-${ attributes.marginSlug }` ]: hasBlockSupport( blockType.name, 'gutenBridgeSpaceMargin' ) && attributes.marginSlug,
-			[ `is-padding-${ attributes.paddingSlug }` ]: hasBlockSupport( blockType.name, 'gutenBridgeSpacePadding' ) && attributes.paddingSlug,
+			[ `is-margin-${ attributes.marginSlug }` ]: hasBlockSupport( blockType.name, 'gutenPlusSpaceMargin' ) && attributes.marginSlug,
+			[ `is-padding-${ attributes.paddingSlug }` ]: hasBlockSupport( blockType.name, 'gutenPlusSpacePadding' ) && attributes.paddingSlug,
 		}
 	);
 
@@ -282,6 +282,6 @@ const getSaveSpaceContent = ( extraProps, blockType, attributes ) => {
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'guten-bridge/expansion/space/get-save-content',
+	'guten-plus/expansion/space/get-save-content',
 	getSaveSpaceContent
 );

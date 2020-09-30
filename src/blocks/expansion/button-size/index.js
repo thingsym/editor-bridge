@@ -25,34 +25,34 @@ const enableBlocks = [
 
 const buttonSizeSettingsOptions = [
 	{
-		label: __( 'Small', 'guten-bridge' ),
+		label: __( 'Small', 'guten-plus' ),
 		value: 'small',
 	},
 	{
-		label: __( 'Medium (Not set)', 'guten-bridge' ),
+		label: __( 'Medium (Not set)', 'guten-plus' ),
 		value: '',
 	},
 	{
-		label: __( 'Large', 'guten-bridge' ),
+		label: __( 'Large', 'guten-plus' ),
 		value: 'large',
 	},
 ];
 
 const buttonWidthSettingsOptions = [
 	{
-		label: __( 'Not set', 'guten-bridge' ),
+		label: __( 'Not set', 'guten-plus' ),
 		value: '',
 	},
 	{
-		label: __( 'Quarter', 'guten-bridge' ),
+		label: __( 'Quarter', 'guten-plus' ),
 		value: 'quarter',
 	},
 	{
-		label: __( 'Half', 'guten-bridge' ),
+		label: __( 'Half', 'guten-plus' ),
 		value: 'half',
 	},
 	{
-		label: __( 'Full', 'guten-bridge' ),
+		label: __( 'Full', 'guten-plus' ),
 		value: 'full',
 	},
 ];
@@ -71,11 +71,11 @@ const addAttributes = ( settings, name ) => {
 			settings.supports = {};
 		}
 		settings.supports = assign( settings.supports, {
-			gutenBridgeButtonSize: true,
+			gutenPlusButtonSize: true,
 		} );
 	}
 
-	if ( ! hasBlockSupport( settings, 'gutenBridgeButtonSize' ) ) {
+	if ( ! hasBlockSupport( settings, 'gutenPlusButtonSize' ) ) {
 		return settings;
 	}
 	if ( typeof settings.attributes === 'undefined' ) {
@@ -105,7 +105,7 @@ const addAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'guten-bridge/button-size/add-attributes',
+	'guten-plus/button-size/add-attributes',
 	addAttributes
 );
 
@@ -122,7 +122,7 @@ const withButtonSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'gutenBridgeButtonSize' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenPlusButtonSize' ) ) {
 			return (
 				<BlockEdit { ...props } />
 			);
@@ -146,11 +146,11 @@ const withButtonSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 				<InspectorControls>
 					<PanelBody
-						title={ __( 'Size Settings', 'guten-bridge' ) }
+						title={ __( 'Size Settings', 'guten-plus' ) }
 						initialOpen={ true }
 					>
 						<SelectControl
-							label={ __( 'Size', 'guten-bridge' ) }
+							label={ __( 'Size', 'guten-plus' ) }
 							value={ buttonSizeSlug }
 							options={ buttonSizeSettingsOptions }
 							onChange={ ( newButtonSizeSlug ) => {
@@ -160,7 +160,7 @@ const withButtonSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
 							} }
 						/>
 						<SelectControl
-							label={ __( 'Width', 'guten-bridge' ) }
+							label={ __( 'Width', 'guten-plus' ) }
 							value={ buttonWidthSlug }
 							options={ buttonWidthSettingsOptions }
 							onChange={ ( newButtonWidthSlug ) => {
@@ -178,7 +178,7 @@ const withButtonSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 addFilter(
 	'editor.BlockEdit',
-	'guten-bridge/button-size/with-control',
+	'guten-plus/button-size/with-control',
 	withButtonSizeControl
 );
 
@@ -192,7 +192,7 @@ const withButtonSizeBlockAttributes = createHigherOrderComponent( ( BlockListBlo
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'gutenBridgeButtonSize' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenPlusButtonSize' ) ) {
 			return (
 				<BlockListBlock { ...props } />
 			);
@@ -227,7 +227,7 @@ const withButtonSizeBlockAttributes = createHigherOrderComponent( ( BlockListBlo
 
 addFilter(
 	'editor.BlockListBlock',
-	'guten-bridge/expansion/button-size/with-block-attributes',
+	'guten-plus/expansion/button-size/with-block-attributes',
 	withButtonSizeBlockAttributes
 );
 
@@ -241,7 +241,7 @@ addFilter(
 * @returns {object} Modified props of save element.
 */
 const getSaveButtonSizeContent = ( extraProps, blockType, attributes ) => {
-	if ( ! hasBlockSupport( blockType.name, 'gutenBridgeButtonSize' ) ) {
+	if ( ! hasBlockSupport( blockType.name, 'gutenPlusButtonSize' ) ) {
 		return extraProps;
 	}
 
@@ -258,6 +258,6 @@ const getSaveButtonSizeContent = ( extraProps, blockType, attributes ) => {
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'guten-bridge/button-size/get-save-content',
+	'guten-plus/button-size/get-save-content',
 	getSaveButtonSizeContent
 );

@@ -109,23 +109,23 @@ const FontWeightPicker = ( { label, name, value, onChange } ) => {
 		label={ label }
 		value={ activeFontWeight ? activeFontWeight : '' }
 		options={ [
-			{ label: __( 'Default', 'guten-bridge' ), value: '' },
-			{ label: __( 'Bold', 'guten-bridge' ), value: 'bold' },
-			{ label: __( 'Normal', 'guten-bridge' ), value: 'normal' },
-			{ label: __( 'Initial', 'guten-bridge' ), value: 'initial' },
-			{ label: __( 'Bolder', 'guten-bridge' ), value: 'bolder' },
-			{ label: __( 'Lighter', 'guten-bridge' ), value: 'lighter' },
-			{ label: __( '100', 'guten-bridge' ), value: '100' },
-			{ label: __( '200', 'guten-bridge' ), value: '200' },
-			{ label: __( '300', 'guten-bridge' ), value: '300' },
-			{ label: __( '400', 'guten-bridge' ), value: '400' },
-			{ label: __( '500', 'guten-bridge' ), value: '500' },
-			{ label: __( '600', 'guten-bridge' ), value: '600' },
-			{ label: __( '700', 'guten-bridge' ), value: '700' },
-			{ label: __( '800', 'guten-bridge' ), value: '800' },
-			{ label: __( '900', 'guten-bridge' ), value: '900' },
-			{ label: __( 'Revert', 'guten-bridge' ), value: 'revert' },
-			{ label: __( 'Unset', 'guten-bridge' ), value: 'unset' },
+			{ label: __( 'Default', 'guten-plus' ), value: '' },
+			{ label: __( 'Bold', 'guten-plus' ), value: 'bold' },
+			{ label: __( 'Normal', 'guten-plus' ), value: 'normal' },
+			{ label: __( 'Initial', 'guten-plus' ), value: 'initial' },
+			{ label: __( 'Bolder', 'guten-plus' ), value: 'bolder' },
+			{ label: __( 'Lighter', 'guten-plus' ), value: 'lighter' },
+			{ label: __( '100', 'guten-plus' ), value: '100' },
+			{ label: __( '200', 'guten-plus' ), value: '200' },
+			{ label: __( '300', 'guten-plus' ), value: '300' },
+			{ label: __( '400', 'guten-plus' ), value: '400' },
+			{ label: __( '500', 'guten-plus' ), value: '500' },
+			{ label: __( '600', 'guten-plus' ), value: '600' },
+			{ label: __( '700', 'guten-plus' ), value: '700' },
+			{ label: __( '800', 'guten-plus' ), value: '800' },
+			{ label: __( '900', 'guten-plus' ), value: '900' },
+			{ label: __( 'Revert', 'guten-plus' ), value: 'revert' },
+			{ label: __( 'Unset', 'guten-plus' ), value: 'unset' },
 		] }
 		onChange={ onStyleChange }
 	/>;
@@ -172,13 +172,13 @@ const InlineFontWeightUI = ( {
 		>
 
 			<FontWeightPicker
-				label={ __( 'Font Weight', 'guten-bridge' ) }
+				label={ __( 'Font Weight', 'guten-plus' ) }
 				name={ name }
 				value={ value }
 				onChange={ onChange }
 			/>
 			<ResetButton
-				label={ __( 'Reset', 'guten-bridge' ) }
+				label={ __( 'Reset', 'guten-plus' ) }
 				name={ name }
 				value={ value }
 				onChange={ onChange }

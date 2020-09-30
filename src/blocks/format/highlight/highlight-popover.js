@@ -202,9 +202,9 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 		label={ label }
 		value={ activeStyle ? activeStyle : 'highlight' }
 		options={ [
-			{ label: __( 'Highlight', 'guten-bridge' ), value: 'highlight' },
-			{ label: __( 'Marker', 'guten-bridge' ), value: 'marker' },
-			{ label: __( 'Underline', 'guten-bridge' ), value: 'underline' },
+			{ label: __( 'Highlight', 'guten-plus' ), value: 'highlight' },
+			{ label: __( 'Marker', 'guten-plus' ), value: 'marker' },
+			{ label: __( 'Underline', 'guten-plus' ), value: 'underline' },
 		] }
 		onChange={ onStyleChange }
 	/>;
@@ -248,13 +248,13 @@ const InlineHighlightUI = ( {
 			className="components-inline-highligh-popover is-flex-dir-column"
 		>
 			<ColorPicker
-				label={ __( 'Color', 'guten-bridge' ) }
+				label={ __( 'Color', 'guten-plus' ) }
 				name={ name }
 				value={ value }
 				onChange={ onChange }
 			/>
 			<StylePicker
-				label={ __( 'Style', 'guten-bridge' ) }
+				label={ __( 'Style', 'guten-plus' ) }
 				name={ name }
 				value={ value }
 				onChange={ onChange }

@@ -1,5 +1,5 @@
 {
-  "name": "guten-bridge",
+  "name": "guten-plus",
   "version": "0.1.0",
   "description": "A template for WordPress plugin that extends Gutenberg.",
   "author": "Thingsym",
@@ -8,12 +8,12 @@
     "WordPress",
     "Gutenberg"
   ],
-  "homepage": "https://github.com/thingsym/guten-bridge",
+  "homepage": "https://github.com/thingsym/guten-plus",
   "repository": {
     "type": "git",
-    "url": "https://github.com/thingsym/guten-bridge.git"
+    "url": "https://github.com/thingsym/guten-plus.git"
   },
-  "bugs": "https://github.com/thingsym/guten-bridge/issues",
+  "bugs": "https://github.com/thingsym/guten-plus/issues",
   "main": "dist/js/blocks.js",
   "dependencies": {
     "classnames": "^2.2.6",
@@ -106,12 +106,12 @@
     }
   },
   "scripts": {
-    "makepot:php": "php /usr/local/share/wp-i18n/makepot.php wp-plugin ../guten-bridge ../guten-bridge/languages/guten-bridge.pot",
-    "makepot:wpcli": "wp i18n make-pot ./ ./languages/guten-bridge.pot --exclude=dist,bin,tests,node_modules,vendor",
-    "msgfmt:ja": "msgfmt languages/guten-bridge-ja.po -o languages/guten-bridge-ja.mo",
+    "makepot:php": "php /usr/local/share/wp-i18n/makepot.php wp-plugin ../guten-plus ../guten-plus/languages/guten-plus.pot",
+    "makepot:wpcli": "wp i18n make-pot ./ ./languages/guten-plus.pot --exclude=dist,bin,tests,node_modules,vendor",
+    "msgfmt:ja": "msgfmt languages/guten-plus-ja.po -o languages/guten-plus-ja.mo",
     "msgfmt": "run-p msgfmt:*",
-    "po2json:ja": "po2json languages/guten-bridge-ja.po languages/guten-bridge-ja-guten-bridge-script.json -f jed",
-    "po2json:wpcli:ja": "wp i18n make-json languages/guten-bridge-ja.po --no-purge",
+    "po2json:ja": "po2json languages/guten-plus-ja.po languages/guten-plus-ja-guten-plus-script.json -f jed",
+    "po2json:wpcli:ja": "wp i18n make-json languages/guten-plus-ja.po --no-purge",
     "po2json": "run-p po2json:*",
     "sass:blocks:style": "node-sass src/scss/blocks.scss dist/css/blocks.css --output-style expanded && postcss --use autoprefixer --no-map -r dist/css/blocks.css",
     "sass:blocks:style:minify": "node-sass src/scss/blocks.scss dist/css/blocks.min.css --output-style expanded && postcss --use autoprefixer --use cssnano --no-map -r dist/css/blocks.min.css",
@@ -137,8 +137,8 @@
     "test": "run-p test:jest",
     "format:js": "wp-scripts format-js ./src/blocks",
     "watch": "wp-scripts start src/js/blocks --output-path=dist/js",
-    "archive:package": "mkdir -p ./guten-bridge && cpy '**/*' '!./.DS_Store' '!./bin' '!./vendor' '!./composer.json' '!./composer.lock' '!./node_modules' '!./package.json' '!./package-lock.json' '!./phpcs.ruleset.xml' '!./phpmd.ruleset.xml' '!./phpstan.neon' '!./phpunit.xml' '!./webpack.config.js' '!./src' '!./tests' '!./guten-bridge-v*.zip' './guten-bridge' --parents",
-    "archive:zip": "zip -9 -qmr guten-bridge-v$npm_package_version.zip ./guten-bridge",
+    "archive:package": "mkdir -p ./guten-plus && cpy '**/*' '!./.DS_Store' '!./bin' '!./vendor' '!./composer.json' '!./composer.lock' '!./node_modules' '!./package.json' '!./package-lock.json' '!./phpcs.ruleset.xml' '!./phpmd.ruleset.xml' '!./phpstan.neon' '!./phpunit.xml' '!./webpack.config.js' '!./src' '!./tests' '!./guten-plus-v*.zip' './guten-plus' --parents",
+    "archive:zip": "zip -9 -qmr guten-plus-v$npm_package_version.zip ./guten-plus",
     "archive": "run-s build archive:package archive:zip"
   }
 }

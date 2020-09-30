@@ -7,15 +7,15 @@ import { __ } from '@wordpress/i18n';
 
 wp.blocks.registerBlockStyle( 'core/image', {
 	name: 'img-round-corner',
-	label: __( 'Round Corner', 'guten-bridge' ),
+	label: __( 'Round Corner', 'guten-plus' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/image', {
 	name: 'img-frame',
-	label: __( 'Frame', 'guten-bridge' ),
+	label: __( 'Frame', 'guten-plus' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/image', {
 	name: 'img-shadow',
-	label: __( 'Shadow', 'guten-bridge' ),
+	label: __( 'Shadow', 'guten-plus' ),
 } );

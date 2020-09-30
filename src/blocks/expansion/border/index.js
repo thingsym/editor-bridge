@@ -45,11 +45,11 @@ const addAttributes = ( settings, name ) => {
 			settings.supports = {};
 		}
 		settings.supports = assign( settings.supports, {
-			gutenBridgeBorder: true,
+			gutenPlusBorder: true,
 		} );
 	}
 
-	if ( ! hasBlockSupport( settings, 'gutenBridgeBorder' ) ) {
+	if ( ! hasBlockSupport( settings, 'gutenPlusBorder' ) ) {
 		return settings;
 	}
 
@@ -57,7 +57,7 @@ const addAttributes = ( settings, name ) => {
 		return settings;
 	}
 
-	if ( ! settings.attributes.gutenBridgeBorder ) {
+	if ( ! settings.attributes.gutenPlusBorder ) {
 		settings.attributes = assign( settings.attributes, {
 			borderWidth: {
 				type: 'number',
@@ -83,7 +83,7 @@ const addAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'guten-bridge/expansion/border/add-attributes',
+	'guten-plus/expansion/border/add-attributes',
 	addAttributes
 );
 
@@ -130,33 +130,33 @@ function BorderPanel( {
 	);
 
 	return (
-		<PanelBody title={ __( 'Border settings', 'guten-bridge' ) }>
+		<PanelBody title={ __( 'Border settings', 'guten-plus' ) }>
 			<RangeControl
 				value={ borderWidth }
-				label={ __( 'Border width', 'guten-bridge' ) }
+				label={ __( 'Border width', 'guten-plus' ) }
 				min={ MIN_BORDER_WIDTH_VALUE }
 				max={ MAX_BORDER_WIDTH_VALUE }
 				onChange={ setBorderWidth }
 			/>
 			<ColorPaletteControl
-				label={ __( 'Color', 'guten-bridge' ) }
+				label={ __( 'Color', 'guten-plus' ) }
 				value={ borderColor }
 				onChange={ setBorderColor }
 			/>
 			<SelectControl
-				label={ __( 'Style', 'guten-bridge' ) }
+				label={ __( 'Style', 'guten-plus' ) }
 				value={ borderStyle }
 				options={ [
-					{ label: __( 'Solid', 'guten-bridge' ), value: 'solid' },
-					{ label: __( 'Dashed', 'guten-bridge' ), value: 'dashed' },
-					{ label: __( 'Dotted', 'guten-bridge' ), value: 'dotted' },
-					{ label: __( 'Double', 'guten-bridge' ), value: 'double' },
+					{ label: __( 'Solid', 'guten-plus' ), value: 'solid' },
+					{ label: __( 'Dashed', 'guten-plus' ), value: 'dashed' },
+					{ label: __( 'Dotted', 'guten-plus' ), value: 'dotted' },
+					{ label: __( 'Double', 'guten-plus' ), value: 'double' },
 				] }
 				onChange={ setBorderStyle }
 			/>
 			<RangeControl
 				value={ borderRadius }
-				label={ __( 'Border radius', 'guten-bridge' ) }
+				label={ __( 'Border radius', 'guten-plus' ) }
 				min={ MIN_BORDER_RADIUS_VALUE }
 				max={ MAX_BORDER_RADIUS_VALUE }
 				initialPosition={ INITIAL_BORDER_RADIUS_POSITION }
@@ -181,7 +181,7 @@ const withBorderControl = createHigherOrderComponent( ( BlockEdit ) => {
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'gutenBridgeBorder' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenPlusBorder' ) ) {
 			return (
 				<BlockEdit { ...props } />
 			);
@@ -221,7 +221,7 @@ const withBorderControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 addFilter(
 	'editor.BlockEdit',
-	'guten-bridge/expansion/border/with-control',
+	'guten-plus/expansion/border/with-control',
 	withBorderControl
 );
 
@@ -235,7 +235,7 @@ const withBorderBlockAttributes = createHigherOrderComponent( ( BlockListBlock )
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'gutenBridgeBorder' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenPlusBorder' ) ) {
 			return (
 				<BlockListBlock { ...props } />
 			);
@@ -288,7 +288,7 @@ const withBorderBlockAttributes = createHigherOrderComponent( ( BlockListBlock )
 
 addFilter(
 	'editor.BlockListBlock',
-	'guten-bridge/expansion/border/with-block-attributes',
+	'guten-plus/expansion/border/with-block-attributes',
 	withBorderBlockAttributes
 );
 
@@ -302,7 +302,7 @@ addFilter(
  * @returns {object} Modified props of save element.
  */
 const getSaveBorderContent = ( extraProps, blockType, attributes ) => {
-	if ( ! hasBlockSupport( blockType.name, 'gutenBridgeBorder' ) ) {
+	if ( ! hasBlockSupport( blockType.name, 'gutenPlusBorder' ) ) {
 		return extraProps;
 	}
 
@@ -338,6 +338,6 @@ const getSaveBorderContent = ( extraProps, blockType, attributes ) => {
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'guten-bridge/expansion/border/get-save-content',
+	'guten-plus/expansion/border/get-save-content',
 	getSaveBorderContent
 );

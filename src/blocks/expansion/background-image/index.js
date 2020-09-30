@@ -53,15 +53,15 @@ const enableBlocks = [
 
 const backgroundSizeOptions = [
 	{
-		label: __( 'Orignal', 'guten-bridge' ),
+		label: __( 'Orignal', 'guten-plus' ),
 		value: '',
 	},
 	{
-		label: __( 'Fit to Screen', 'guten-bridge' ),
+		label: __( 'Fit to Screen', 'guten-plus' ),
 		value: 'contain',
 	},
 	{
-		label: __( 'Fill Screen', 'guten-bridge' ),
+		label: __( 'Fill Screen', 'guten-plus' ),
 		value: 'cover',
 	},
 ];
@@ -82,11 +82,11 @@ const addAttributes = ( settings, name ) => {
 			settings.supports = {};
 		}
 		settings.supports = assign( settings.supports, {
-			gutenBridgeBackgroundImage: true,
+			gutenPlusBackgroundImage: true,
 		} );
 	}
 
-	if ( ! hasBlockSupport( settings, 'gutenBridgeBackgroundImage' ) ) {
+	if ( ! hasBlockSupport( settings, 'gutenPlusBackgroundImage' ) ) {
 		return settings;
 	}
 	if ( typeof settings.attributes === 'undefined' ) {
@@ -125,7 +125,7 @@ const addAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'guten-bridge/expansion/background-image/add-attributes',
+	'guten-plus/expansion/background-image/add-attributes',
 	addAttributes
 );
 
@@ -142,7 +142,7 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'gutenBridgeBackgroundImage' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenPlusBackgroundImage' ) ) {
 			return (
 				<BlockEdit { ...props } />
 			);
@@ -233,9 +233,9 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 				<BlockControls>
 					<Dropdown
 						popoverProps={ POPOVER_PROPS }
-						contentClassName="block-editor-guten-bridge-backgound-image__options"
+						contentClassName="block-editor-guten-plus-backgound-image__options"
 						renderToggle={ ( { isOpen, onToggle } ) => (
-							<ToolbarGroup className="guten-bridge-backgound-image">
+							<ToolbarGroup className="guten-plus-backgound-image">
 								<ToolbarButton
 									ref={ editMediaButtonRef }
 									aria-expanded={ isOpen }
@@ -243,14 +243,14 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 									onKeyDown={ openOnArrowDown }
 									icon='format-image'
 									isPressed={ url ? true : false }
-									label={ __( 'Edit Background Image', 'guten-bridge' ) }
+									label={ __( 'Edit Background Image', 'guten-plus' ) }
 								>
 								</ToolbarButton>
 							</ToolbarGroup>
 						) }
 						renderContent={ ( { onClose } ) => (
 							<>
-								<NavigableMenu className="block-editor-guten-bridge-backgound-image__media-upload-menu">
+								<NavigableMenu className="block-editor-guten-plus-backgound-image__media-upload-menu">
 									<MediaUpload
 										onSelect={ onSelectMedia }
 										allowedTypes={ ALLOWED_MEDIA_TYPES }
@@ -260,7 +260,7 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 												icon='admin-media'
 												onClick={ open }
 											>
-												{ __( 'Open Media Library', 'guten-bridge' ) }
+												{ __( 'Open Media Library', 'guten-plus' ) }
 											</MenuItem>
 										) }
 									/>
@@ -279,7 +279,7 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 															openFileDialog();
 														} }
 													>
-														{ __( 'Upload Background Image', 'guten-bridge' ) }
+														{ __( 'Upload Background Image', 'guten-plus' ) }
 													</MenuItem>
 												);
 											} }
@@ -299,7 +299,7 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 												} );
 											} }
 										>
-											{ __( 'Remove Background Image', 'guten-bridge' ) }
+											{ __( 'Remove Background Image', 'guten-plus' ) }
 										</MenuItem>
 									) }
 								</NavigableMenu>
@@ -311,11 +311,11 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 				<InspectorControls>
 					{ !! url && (
 						<PanelBody
-							title={ __( 'Background Image Settings', 'guten-bridge' ) }
+							title={ __( 'Background Image Settings', 'guten-plus' ) }
 							initialOpen={ true }
 						>
 							<SelectControl
-								label={ __( 'Image Size', 'guten-bridge' ) }
+								label={ __( 'Image Size', 'guten-plus' ) }
 								value={ backgroundSize }
 								options={ backgroundSizeOptions }
 								onChange={ ( newBackgroundSize ) => {
@@ -325,7 +325,7 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 								} }
 							/>
 							<ToggleControl
-								label={ __( 'Fixed Background', 'guten-bridge' ) }
+								label={ __( 'Fixed Background', 'guten-plus' ) }
 								checked={ hasParallax }
 								onChange={ () => {
 									setAttributes( {
@@ -334,7 +334,7 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 								} }
 							/>
 							<ToggleControl
-								label={ __( 'Repeat Background', 'guten-bridge' ) }
+								label={ __( 'Repeat Background', 'guten-plus' ) }
 								checked={ hasRepete }
 								onChange={ () => {
 									setAttributes( {
@@ -352,7 +352,7 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 
 addFilter(
 	'editor.BlockEdit',
-	'guten-bridge/expansion/background-image/with-control',
+	'guten-plus/expansion/background-image/with-control',
 	withBackgroundImageControl
 );
 
@@ -366,7 +366,7 @@ const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockLi
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'gutenBridgeBackgroundImage' ) ) {
+		if ( ! hasBlockSupport( name, 'gutenPlusBackgroundImage' ) ) {
 			return (
 				<BlockListBlock { ...props } />
 			);
@@ -421,7 +421,7 @@ const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockLi
 
 addFilter(
 	'editor.BlockListBlock',
-	'guten-bridge/expansion/background-image/with-block-attributes',
+	'guten-plus/expansion/background-image/with-block-attributes',
 	withBackgroundImageBlockAttributes
 );
 
@@ -435,7 +435,7 @@ addFilter(
  * @returns {object} Modified props of save element.
  */
 const getSaveBackgroundImageContent = ( extraProps, blockType, attributes ) => {
-	if ( ! hasBlockSupport( blockType.name, 'gutenBridgeBackgroundImage' ) ) {
+	if ( ! hasBlockSupport( blockType.name, 'gutenPlusBackgroundImage' ) ) {
 		return extraProps;
 	}
 
@@ -447,7 +447,7 @@ const getSaveBackgroundImageContent = ( extraProps, blockType, attributes ) => {
 		hasRepete,
 	} = attributes;
 
-	if ( hasBlockSupport( blockType.name, 'gutenBridgeBackgroundImage' ) && url ) {
+	if ( hasBlockSupport( blockType.name, 'gutenPlusBackgroundImage' ) && url ) {
 		const style = backgroundType === IMAGE_BACKGROUND_TYPE ?
 			backgroundImageStyles( url ) :
 			{};
@@ -474,6 +474,6 @@ const getSaveBackgroundImageContent = ( extraProps, blockType, attributes ) => {
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'guten-bridge/expansion/background-image/get-save-content',
+	'guten-plus/expansion/background-image/get-save-content',
 	getSaveBackgroundImageContent
 );

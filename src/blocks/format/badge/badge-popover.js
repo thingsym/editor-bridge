@@ -192,11 +192,11 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 		label={ label }
 		value={ activeStyle ? activeStyle : 'default' }
 		options={ [
-			{ label: __( 'Default', 'guten-bridge' ), value: 'default' },
-			{ label: __( 'Round Corner', 'guten-bridge' ), value: 'round-corner' },
-			{ label: __( 'Round', 'guten-bridge' ), value: 'round' },
-			{ label: __( 'Status', 'guten-bridge' ), value: 'status' },
-			{ label: __( 'Perfect Circle', 'guten-bridge' ), value: 'perfect-circle' },
+			{ label: __( 'Default', 'guten-plus' ), value: 'default' },
+			{ label: __( 'Round Corner', 'guten-plus' ), value: 'round-corner' },
+			{ label: __( 'Round', 'guten-plus' ), value: 'round' },
+			{ label: __( 'Status', 'guten-plus' ), value: 'status' },
+			{ label: __( 'Perfect Circle', 'guten-plus' ), value: 'perfect-circle' },
 		] }
 		onChange={ onStyleChange }
 	/>;
@@ -246,13 +246,13 @@ const InlineBadgeUI = ( {
 			className="components-inline-badge-popover is-flex-dir-column"
 		>
 			<ColorPicker
-				label={ __( 'Color', 'guten-bridge' ) }
+				label={ __( 'Color', 'guten-plus' ) }
 				name={ name }
 				value={ value }
 				onChange={ onChange }
 			/>
 			<StylePicker
-				label={ __( 'Style', 'guten-bridge' ) }
+				label={ __( 'Style', 'guten-plus' ) }
 				name={ name }
 				value={ value }
 				onChange={ onChange }

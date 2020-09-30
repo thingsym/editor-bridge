@@ -1,24 +1,24 @@
 // WordPress 5.5 / Gutenberg v8.4
 .editor-styles-wrapper .is-root-container {
 	[data-margin-slug=none] {
-		margin-top: var(--guten-bridge-space-margin-top-none, unset);
-		margin-bottom: var(--guten-bridge-space-margin-bottom-none, unset);
+		margin-top: var(--guten-plus-space-margin-top-none, unset);
+		margin-bottom: var(--guten-plus-space-margin-bottom-none, unset);
 	}
 	[data-margin-slug=small] {
-		margin-top: var(--guten-bridge-space-margin-top-small, unset);
-		margin-bottom: var(--guten-bridge-space-margin-bottom-small, unset);
+		margin-top: var(--guten-plus-space-margin-top-small, unset);
+		margin-bottom: var(--guten-plus-space-margin-bottom-small, unset);
 	}
 	[data-margin-slug=medium] {
-		margin-top: var(--guten-bridge-space-margin-top-medium, unset);
-		margin-bottom: var(--guten-bridge-space-margin-bottom-medium, unset);
+		margin-top: var(--guten-plus-space-margin-top-medium, unset);
+		margin-bottom: var(--guten-plus-space-margin-bottom-medium, unset);
 	}
 	[data-margin-slug=large] {
-		margin-top: var(--guten-bridge-space-margin-top-large, unset);
-		margin-bottom: var(--guten-bridge-space-margin-bottom-large, unset);
+		margin-top: var(--guten-plus-space-margin-top-large, unset);
+		margin-bottom: var(--guten-plus-space-margin-bottom-large, unset);
 	}
 	[data-margin-slug=huge] {
-		margin-top: var(--guten-bridge-space-margin-top-huge, unset);
-		margin-bottom: var(--guten-bridge-space-margin-bottom-huge, unset);
+		margin-top: var(--guten-plus-space-margin-top-huge, unset);
+		margin-bottom: var(--guten-plus-space-margin-bottom-huge, unset);
 	}
 
 	/** for Specificity blocks **/
@@ -30,24 +30,24 @@
 	.wp-block-columns,
 	.wp-block-media-text {
 		&[data-margin-slug=none] {
-			margin-top: var(--guten-bridge-space-margin-top-none, unset);
-			margin-bottom: var(--guten-bridge-space-margin-bottom-none, unset);
+			margin-top: var(--guten-plus-space-margin-top-none, unset);
+			margin-bottom: var(--guten-plus-space-margin-bottom-none, unset);
 		}
 		&[data-margin-slug=small] {
-			margin-top: var(--guten-bridge-space-margin-top-small, unset);
-			margin-bottom: var(--guten-bridge-space-margin-bottom-small, unset);
+			margin-top: var(--guten-plus-space-margin-top-small, unset);
+			margin-bottom: var(--guten-plus-space-margin-bottom-small, unset);
 		}
 		&[data-margin-slug=medium] {
-			margin-top: var(--guten-bridge-space-margin-top-medium, unset);
-			margin-bottom: var(--guten-bridge-space-margin-bottom-medium, unset);
+			margin-top: var(--guten-plus-space-margin-top-medium, unset);
+			margin-bottom: var(--guten-plus-space-margin-bottom-medium, unset);
 		}
 		&[data-margin-slug=large] {
-			margin-top: var(--guten-bridge-space-margin-top-large, unset);
-			margin-bottom: var(--guten-bridge-space-margin-bottom-large, unset);
+			margin-top: var(--guten-plus-space-margin-top-large, unset);
+			margin-bottom: var(--guten-plus-space-margin-bottom-large, unset);
 		}
 		&[data-margin-slug=huge] {
-			margin-top: var(--guten-bridge-space-margin-top-huge, unset);
-			margin-bottom: var(--guten-bridge-space-margin-bottom-huge, unset);
+			margin-top: var(--guten-plus-space-margin-top-huge, unset);
+			margin-bottom: var(--guten-plus-space-margin-bottom-huge, unset);
 		}
 	}
 
@@ -56,24 +56,24 @@
 		+ h1, + h2, + h3, + h4, + h5, + h6,
 		+ p, + ul, + ol {
 			&[data-margin-slug=none] {
-				margin-top: var(--guten-bridge-space-margin-top-none, unset);
-				margin-bottom: var(--guten-bridge-space-margin-bottom-none, unset);
+				margin-top: var(--guten-plus-space-margin-top-none, unset);
+				margin-bottom: var(--guten-plus-space-margin-bottom-none, unset);
 			}
 			&[data-margin-slug=small] {
-				margin-top: var(--guten-bridge-space-margin-top-small, unset);
-				margin-bottom: var(--guten-bridge-space-margin-bottom-small, unset);
+				margin-top: var(--guten-plus-space-margin-top-small, unset);
+				margin-bottom: var(--guten-plus-space-margin-bottom-small, unset);
 			}
 			&[data-margin-slug=medium] {
-				margin-top: var(--guten-bridge-space-margin-top-medium, unset);
-				margin-bottom: var(--guten-bridge-space-margin-bottom-medium, unset);
+				margin-top: var(--guten-plus-space-margin-top-medium, unset);
+				margin-bottom: var(--guten-plus-space-margin-bottom-medium, unset);
 			}
 			&[data-margin-slug=large] {
-				margin-top: var(--guten-bridge-space-margin-top-large, unset);
-				margin-bottom: var(--guten-bridge-space-margin-bottom-large, unset);
+				margin-top: var(--guten-plus-space-margin-top-large, unset);
+				margin-bottom: var(--guten-plus-space-margin-bottom-large, unset);
 			}
 			&[data-margin-slug=huge] {
-				margin-top: var(--guten-bridge-space-margin-top-huge, unset);
-				margin-bottom: var(--guten-bridge-space-margin-bottom-huge, unset);
+				margin-top: var(--guten-plus-space-margin-top-huge, unset);
+				margin-bottom: var(--guten-plus-space-margin-bottom-huge, unset);
 			}
 		}
 	}
@@ -81,81 +81,81 @@
 	[data-padding-slug=none],
 	[data-padding-slug=none].has-background,
 	.wp-block-group[data-padding-slug=none].has-background {
-		padding: var(--guten-bridge-space-padding-none, unset);
+		padding: var(--guten-plus-space-padding-none, unset);
 	}
 	[data-padding-slug=small],
 	[data-padding-slug=small].has-background,
 	.wp-block-group[data-padding-slug=small].has-background {
-		padding: var(--guten-bridge-space-padding-small, unset);
+		padding: var(--guten-plus-space-padding-small, unset);
 	}
 	[data-padding-slug=medium],
 	[data-padding-slug=medium].has-background,
 	.wp-block-group[data-padding-slug=medium].has-background {
-		padding: var(--guten-bridge-space-padding-medium, unset);
+		padding: var(--guten-plus-space-padding-medium, unset);
 	}
 	[data-padding-slug=large],
 	[data-padding-slug=large].has-background,
 	.wp-block-group[data-padding-slug=large].has-background {
-		padding: var(--guten-bridge-space-padding-large, unset);
+		padding: var(--guten-plus-space-padding-large, unset);
 	}
 	[data-padding-slug=huge],
 	[data-padding-slug=huge].has-background,
 	.wp-block-group[data-padding-slug=huge].has-background {
-		padding: var(--guten-bridge-space-padding-huge, unset);
+		padding: var(--guten-plus-space-padding-huge, unset);
 	}
 
 	[data-margin-slug=none],
 	figure.wp-block-image[data-margin-slug=none]:not(.wp-block) {
-		margin-top: var(--guten-bridge-space-margin-top-none, unset);
-		margin-bottom: var(--guten-bridge-space-margin-bottom-none, unset);
+		margin-top: var(--guten-plus-space-margin-top-none, unset);
+		margin-bottom: var(--guten-plus-space-margin-bottom-none, unset);
 	}
 
 	[data-margin-slug=small],
 	figure.wp-block-image[data-margin-slug=small]:not(.wp-block) {
-		margin-top: var(--guten-bridge-space-margin-top-small, unset);
-		margin-bottom: var(--guten-bridge-space-margin-bottom-small, unset);
+		margin-top: var(--guten-plus-space-margin-top-small, unset);
+		margin-bottom: var(--guten-plus-space-margin-bottom-small, unset);
 	}
 
 	[data-margin-slug=medium],
 	figure.wp-block-image[data-margin-slug=medium]:not(.wp-block) {
-		margin-top: var(--guten-bridge-space-margin-top-medium, unset);
-		margin-bottom: var(--guten-bridge-space-margin-bottom-medium, unset);
+		margin-top: var(--guten-plus-space-margin-top-medium, unset);
+		margin-bottom: var(--guten-plus-space-margin-bottom-medium, unset);
 	}
 
 	[data-margin-slug=large],
 	figure.wp-block-image[data-margin-slug=large]:not(.wp-block) {
-		margin-top: var(--guten-bridge-space-margin-top-large, unset);
-		margin-bottom: var(--guten-bridge-space-margin-bottom-large, unset);
+		margin-top: var(--guten-plus-space-margin-top-large, unset);
+		margin-bottom: var(--guten-plus-space-margin-bottom-large, unset);
 	}
 
 	[data-margin-slug=huge],
 	figure.wp-block-image[data-margin-slug=huge]:not(.wp-block) {
-		margin-top: var(--guten-bridge-space-margin-top-huge, unset);
-		margin-bottom: var(--guten-bridge-space-margin-bottom-huge, unset);
+		margin-top: var(--guten-plus-space-margin-top-huge, unset);
+		margin-bottom: var(--guten-plus-space-margin-bottom-huge, unset);
 	}
 
 	[data-padding-slug=none],
 	.wp-block-group[data-padding-slug=none].has-background {
-		padding: var(--guten-bridge-space-padding-none, unset);
+		padding: var(--guten-plus-space-padding-none, unset);
 	}
 
 	[data-padding-slug=small],
 	.wp-block-group[data-padding-slug=small].has-background {
-		padding: var(--guten-bridge-space-padding-small, unset);
+		padding: var(--guten-plus-space-padding-small, unset);
 	}
 
 	[data-padding-slug=medium],
 	.wp-block-group[data-padding-slug=medium].has-background {
-		padding: var(--guten-bridge-space-padding-medium, unset);
+		padding: var(--guten-plus-space-padding-medium, unset);
 	}
 
 	[data-padding-slug=large],
 	.wp-block-group[data-padding-slug=large].has-background {
-		padding: var(--guten-bridge-space-padding-large, unset);
+		padding: var(--guten-plus-space-padding-large, unset);
 	}
 
 	[data-padding-slug=huge],
 	.wp-block-group[data-padding-slug=huge].has-background {
-		padding: var(--guten-bridge-space-padding-huge, unset);
+		padding: var(--guten-plus-space-padding-huge, unset);
 	}
 }

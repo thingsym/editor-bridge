@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-30T08:43:57+00:00\n"
+"POT-Creation-Date: 2020-09-30T09:37:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: guten-bridge\n"
@@ -83,8 +83,7 @@ msgid "Border settings"
 msgstr ""
 
 #: src/blocks/expansion/border/index.js:136
-#: src/blocks/expansion/button-size/index.js:163
-msgid "Width"
+msgid "Border width"
 msgstr ""
 
 #: src/blocks/expansion/border/index.js:142
@@ -158,6 +157,10 @@ msgstr ""
 
 #: src/blocks/expansion/button-size/index.js:153
 msgid "Size"
+msgstr ""
+
+#: src/blocks/expansion/button-size/index.js:163
+msgid "Width"
 msgstr ""
 
 #: src/blocks/expansion/space/index.js:45

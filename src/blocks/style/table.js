@@ -26,6 +26,6 @@ wp.blocks.registerBlockStyle( 'core/table', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/table', {
-	name: 'tb-round-corners',
-	label: __( 'Rounded Corners', 'guten-bridge' ),
+	name: 'tb-round-corner',
+	label: __( 'Round Corner', 'guten-bridge' ),
 } );

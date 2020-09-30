@@ -6,8 +6,8 @@
 import { __ } from '@wordpress/i18n';
 
 wp.blocks.registerBlockStyle( 'core/image', {
-	name: 'img-rounded-corners',
-	label: __( 'Rounded Corners', 'guten-bridge' ),
+	name: 'img-round-corner',
+	label: __( 'Round Corner', 'guten-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/image', {

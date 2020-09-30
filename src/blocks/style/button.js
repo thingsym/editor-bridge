@@ -26,7 +26,7 @@ wp.blocks.registerBlockStyle( 'core/button', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/button', {
-	name: 'bt-stand-out',
-	label: __( 'Stand out', 'guten-bridge' ),
+	name: 'bt-emboss',
+	label: __( 'Emboss', 'guten-bridge' ),
 } );
 

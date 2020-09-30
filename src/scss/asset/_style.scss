@@ -59,7 +59,7 @@
 	}
 }
 
-.is-style-bt-stand-out {
+.is-style-bt-emboss {
 	.wp-block-button__link {
 		transition: box-shadow 0.2s ease;
 		&:hover {
@@ -68,7 +68,7 @@
 	}
 }
 
-.is-style-img-rounded-corners {
+.is-style-img-round-corner {
 	img {
 		border-radius: 12px;
 	}
@@ -417,7 +417,7 @@
 		}
 	}
 
-	&.is-style-tb-round-corners {
+	&.is-style-tb-round-corner {
 		table {
 			border: 1px solid var(--guten-bridge-border-color, unset);
 			border-collapse: separate;

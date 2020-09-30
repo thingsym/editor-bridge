@@ -172,7 +172,7 @@ const InlineFontWeightUI = ( {
 		>
 
 			<FontWeightPicker
-				label={ __( 'Weight', 'guten-bridge' ) }
+				label={ __( 'Font Weight', 'guten-bridge' ) }
 				name={ name }
 				value={ value }
 				onChange={ onChange }

@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-06-04T07:27:03+00:00\n"
+"POT-Creation-Date: 2020-09-30T08:43:57+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: guten-bridge\n"
@@ -23,7 +23,7 @@ msgid "https://github.com/thingsym/guten-bridge"
 msgstr ""
 
 #. Description of the plugin
-msgid "A extends Gutenberg."
+msgid "A extended Block Editor (Gutenberg)."
 msgstr ""
 
 #. Author of the plugin
@@ -31,241 +31,368 @@ msgid "thingsym"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "http://www.thingslabo.com/"
+msgid "https://www.thingslabo.com/"
 msgstr ""
 
-#: src/blocks/extend/background-image/index.js:37
+#: src/blocks/expansion/background-image/index.js:56
 msgid "Orignal"
 msgstr ""
 
-#: src/blocks/extend/background-image/index.js:41
+#: src/blocks/expansion/background-image/index.js:60
 msgid "Fit to Screen"
 msgstr ""
 
-#: src/blocks/extend/background-image/index.js:45
+#: src/blocks/expansion/background-image/index.js:64
 msgid "Fill Screen"
 msgstr ""
 
-#: src/blocks/extend/background-image/index.js:207
+#: src/blocks/expansion/background-image/index.js:255
 msgid "Edit Background Image"
 msgstr ""
 
-#: src/blocks/extend/background-image/index.js:218
+#: src/blocks/expansion/background-image/index.js:272
+msgid "Open Media Library"
+msgstr ""
+
+#: src/blocks/expansion/background-image/index.js:291
+msgid "Upload Background Image"
+msgstr ""
+
+#: src/blocks/expansion/background-image/index.js:311
 msgid "Remove Background Image"
 msgstr ""
 
-#: src/blocks/extend/background-image/index.js:238
+#: src/blocks/expansion/background-image/index.js:323
 msgid "Background Image Settings"
 msgstr ""
 
-#: src/blocks/extend/background-image/index.js:242
+#: src/blocks/expansion/background-image/index.js:327
 msgid "Image Size"
 msgstr ""
 
-#: src/blocks/extend/background-image/index.js:252
+#: src/blocks/expansion/background-image/index.js:337
 msgid "Fixed Background"
 msgstr ""
 
-#: src/blocks/extend/background-image/index.js:261
+#: src/blocks/expansion/background-image/index.js:346
 msgid "Repeat Background"
 msgstr ""
 
-#: src/blocks/extend/button-size/index.js:21
-#: src/blocks/extend/space/index.js:40
-#: src/blocks/extend/space/index copy.js:40
-msgid "Small"
+#: src/blocks/expansion/border/index.js:133
+msgid "Border settings"
 msgstr ""
 
-#: src/blocks/extend/button-size/index.js:25
-#: src/blocks/extend/button-size/index copy.js:25
-msgid "Medium (Not set)"
-msgstr ""
-
-#: src/blocks/extend/button-size/index.js:29
-#: src/blocks/extend/button-size/index copy.js:29
-#: src/blocks/extend/space/index.js:48
-#: src/blocks/extend/space/index copy.js:48
-msgid "Large"
-msgstr ""
-
-#: src/blocks/extend/button-size/index.js:36
-#: src/blocks/extend/button-size/index copy.js:36
-#: src/blocks/extend/space/index.js:32
-#: src/blocks/extend/space/index copy.js:32
-msgid "Not set"
-msgstr ""
-
-#: src/blocks/extend/button-size/index.js:40
-#: src/blocks/extend/button-size/index copy.js:40
-msgid "Quarter"
-msgstr ""
-
-#: src/blocks/extend/button-size/index.js:44
-#: src/blocks/extend/button-size/index copy.js:44
-msgid "Half"
-msgstr ""
-
-#: src/blocks/extend/button-size/index.js:48
-#: src/blocks/extend/button-size/index copy.js:48
-msgid "Full"
-msgstr ""
-
-#: src/blocks/extend/button-size/index.js:152
-#: src/blocks/extend/button-size/index copy.js:191
-msgid "Size Settings"
-msgstr ""
-
-#: src/blocks/extend/button-size/index.js:156
-#: src/blocks/extend/button-size/index copy.js:195
-msgid "Size"
-msgstr ""
-
-#: src/blocks/extend/button-size/index.js:176
-#: src/blocks/extend/button-size/index copy.js:232
+#: src/blocks/expansion/border/index.js:136
+#: src/blocks/expansion/button-size/index.js:163
 msgid "Width"
 msgstr ""
 
-#: src/blocks/extend/space/index.js:36
-#: src/blocks/extend/space/index copy.js:36
-msgid "None"
+#: src/blocks/expansion/border/index.js:142
+#: src/blocks/format/badge/badge-popover.js:249
+#: src/blocks/format/highlight/highlight-popover.js:251
+msgid "Color"
 msgstr ""
 
-#: src/blocks/extend/space/index.js:44
-#: src/blocks/extend/space/index copy.js:44
-msgid "Medium"
+#: src/blocks/expansion/border/index.js:147
+#: src/blocks/format/badge/badge-popover.js:255
+#: src/blocks/format/highlight/highlight-popover.js:257
+msgid "Style"
 msgstr ""
 
-#: src/blocks/extend/space/index.js:164
-#: src/blocks/extend/space/index copy.js:201
-msgid "Space Settings"
-msgstr ""
-
-#: src/blocks/extend/space/index.js:169
-#: src/blocks/extend/space/index copy.js:206
-msgid "Margin"
-msgstr ""
-
-#: src/blocks/extend/space/index.js:191
-#: src/blocks/extend/space/index copy.js:245
-msgid "Padding"
-msgstr ""
-
-#: src/blocks/style/button.js:6
-msgid "Triangle Icon"
-msgstr ""
-
-#: src/blocks/style/button.js:11
+#: src/blocks/expansion/border/index.js:150
 msgid "Solid"
 msgstr ""
 
-#: src/blocks/style/button.js:16
-msgid "Blur"
+#: src/blocks/expansion/border/index.js:151
+#: src/blocks/style/table.js:25
+msgid "Dashed"
 msgstr ""
 
-#: src/blocks/style/button.js:21
-#: src/blocks/style/separator.js:16
-msgid "Shadow"
-msgstr ""
-
-#: src/blocks/style/button.js:26
-msgid "Expansion"
-msgstr ""
-
-#: src/blocks/style/button.js:31
-msgid "Push"
-msgstr ""
-
-#: src/blocks/style/button.js:36
-msgid "Focused"
-msgstr ""
-
-#: src/blocks/style/heading.js:6
-#: src/blocks/style/table.js:11
-msgid "Underline"
-msgstr ""
-
-#: src/blocks/style/heading.js:11
-msgid "Accent Line"
-msgstr ""
-
-#: src/blocks/style/heading.js:16
-msgid "Kebab Line"
-msgstr ""
-
-#: src/blocks/style/heading.js:21
-msgid "Single Line"
-msgstr ""
-
-#: src/blocks/style/heading.js:26
-msgid "Double Line"
-msgstr ""
-
-#: src/blocks/style/heading.js:31
-msgid "Marker Line"
-msgstr ""
-
-#: src/blocks/style/heading.js:36
-msgid "Left Line"
-msgstr ""
-
-#: src/blocks/style/heading.js:41
-msgid "Gradation Line"
-msgstr ""
-
-#: src/blocks/style/heading.js:46
-msgid "Stripe"
-msgstr ""
-
-#: src/blocks/style/heading.js:56
-msgid "Slash"
-msgstr ""
-
-#: src/blocks/style/heading.js:61
-msgid "Slash symmetry"
-msgstr ""
-
-#: src/blocks/style/heading.js:66
-msgid "Cross Line"
-msgstr ""
-
-#: src/blocks/style/heading.js:71
-msgid "Brackets"
-msgstr ""
-
-#: src/blocks/style/heading.js:76
-msgid "Japanese quotation marks"
-msgstr ""
-
-#: src/blocks/style/image.js:6
-#: src/blocks/style/table.js:31
-msgid "Rounded Corners"
-msgstr ""
-
-#: src/blocks/style/image.js:11
-msgid "Frame"
-msgstr ""
-
-#: src/blocks/style/image.js:16
-msgid "Card"
-msgstr ""
-
-#: src/blocks/style/separator.js:6
-msgid "Bold line"
-msgstr ""
-
-#: src/blocks/style/separator.js:11
+#: src/blocks/expansion/border/index.js:152
+#: src/blocks/style/separator.js:15
 msgid "Dotted"
 msgstr ""
 
-#: src/blocks/style/table.js:6
+#: src/blocks/expansion/border/index.js:153
+msgid "Double"
+msgstr ""
+
+#: src/blocks/expansion/border/index.js:159
+msgid "Border radius"
+msgstr ""
+
+#: src/blocks/expansion/button-size/index.js:28
+#: src/blocks/expansion/space/index.js:49
+msgid "Small"
+msgstr ""
+
+#: src/blocks/expansion/button-size/index.js:32
+msgid "Medium (Not set)"
+msgstr ""
+
+#: src/blocks/expansion/button-size/index.js:36
+#: src/blocks/expansion/space/index.js:57
+msgid "Large"
+msgstr ""
+
+#: src/blocks/expansion/button-size/index.js:43
+#: src/blocks/expansion/space/index.js:41
+msgid "Not set"
+msgstr ""
+
+#: src/blocks/expansion/button-size/index.js:47
+msgid "Quarter"
+msgstr ""
+
+#: src/blocks/expansion/button-size/index.js:51
+msgid "Half"
+msgstr ""
+
+#: src/blocks/expansion/button-size/index.js:55
+msgid "Full"
+msgstr ""
+
+#: src/blocks/expansion/button-size/index.js:149
+msgid "Size Settings"
+msgstr ""
+
+#: src/blocks/expansion/button-size/index.js:153
+msgid "Size"
+msgstr ""
+
+#: src/blocks/expansion/space/index.js:45
+msgid "None"
+msgstr ""
+
+#: src/blocks/expansion/space/index.js:53
+msgid "Medium"
+msgstr ""
+
+#: src/blocks/expansion/space/index.js:61
+msgid "Huge"
+msgstr ""
+
+#: src/blocks/expansion/space/index.js:169
+msgid "Space Settings"
+msgstr ""
+
+#: src/blocks/expansion/space/index.js:174
+msgid "Margin"
+msgstr ""
+
+#: src/blocks/expansion/space/index.js:186
+msgid "Padding"
+msgstr ""
+
+#: src/blocks/format/badge/badge-popover.js:195
+#: src/blocks/format/font-weight/font-weight-popover.js:112
+msgid "Default"
+msgstr ""
+
+#: src/blocks/format/badge/badge-popover.js:196
+#: src/blocks/style/image.js:10
+#: src/blocks/style/table.js:30
+msgid "Round Corner"
+msgstr ""
+
+#: src/blocks/format/badge/badge-popover.js:197
+msgid "Round"
+msgstr ""
+
+#: src/blocks/format/badge/badge-popover.js:198
+msgid "Status"
+msgstr ""
+
+#: src/blocks/format/badge/badge-popover.js:199
+msgid "Perfect Circle"
+msgstr ""
+
+#: src/blocks/format/badge/index.js:35
+msgid "Badge"
+msgstr ""
+
+#: src/blocks/format/font-size/index.js:26
+msgid "Font Size"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:113
+msgid "Bold"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:114
+msgid "Normal"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:115
+msgid "Initial"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:116
+msgid "Bolder"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:117
+msgid "Lighter"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:118
+msgid "100"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:119
+msgid "200"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:120
+msgid "300"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:121
+msgid "400"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:122
+msgid "500"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:123
+msgid "600"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:124
+msgid "700"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:125
+msgid "800"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:126
+msgid "900"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:127
+msgid "Revert"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:128
+msgid "Unset"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:175
+#: src/blocks/format/font-weight/index.js:26
+msgid "Font Weight"
+msgstr ""
+
+#: src/blocks/format/font-weight/font-weight-popover.js:181
+msgid "Reset"
+msgstr ""
+
+#: src/blocks/format/highlight/highlight-popover.js:205
+#: src/blocks/format/highlight/index.js:35
+msgid "Highlight"
+msgstr ""
+
+#: src/blocks/format/highlight/highlight-popover.js:206
+msgid "Marker"
+msgstr ""
+
+#: src/blocks/format/highlight/highlight-popover.js:207
+#: src/blocks/style/heading.js:10
+#: src/blocks/style/table.js:15
+msgid "Underline"
+msgstr ""
+
+#: src/blocks/style/button.js:10
+msgid "Triangle Icon"
+msgstr ""
+
+#: src/blocks/style/button.js:15
+msgid "Blur"
+msgstr ""
+
+#: src/blocks/style/button.js:20
+#: src/blocks/style/image.js:20
+#: src/blocks/style/separator.js:20
+msgid "Shadow"
+msgstr ""
+
+#: src/blocks/style/button.js:25
+msgid "Expansion"
+msgstr ""
+
+#: src/blocks/style/button.js:30
+msgid "Emboss"
+msgstr ""
+
+#: src/blocks/style/heading.js:15
+msgid "Thick Underline"
+msgstr ""
+
+#: src/blocks/style/heading.js:20
+msgid "Two Color Underline"
+msgstr ""
+
+#: src/blocks/style/heading.js:25
+msgid "Up Down line"
+msgstr ""
+
+#: src/blocks/style/heading.js:30
+msgid "Accent Line"
+msgstr ""
+
+#: src/blocks/style/heading.js:35
+msgid "Kebab Line"
+msgstr ""
+
+#: src/blocks/style/heading.js:40
+msgid "Single Box"
+msgstr ""
+
+#: src/blocks/style/heading.js:45
+msgid "Double Box"
+msgstr ""
+
+#: src/blocks/style/heading.js:50
+msgid "Left Line"
+msgstr ""
+
+#: src/blocks/style/heading.js:55
+msgid "Gradation Line"
+msgstr ""
+
+#: src/blocks/style/heading.js:60
+msgid "Stripe"
+msgstr ""
+
+#: src/blocks/style/heading.js:65
+msgid "Cross Box"
+msgstr ""
+
+#: src/blocks/style/heading.js:70
+msgid "Brackets"
+msgstr ""
+
+#: src/blocks/style/heading.js:75
+msgid "Japanese quotation marks"
+msgstr ""
+
+#: src/blocks/style/image.js:15
+msgid "Frame"
+msgstr ""
+
+#: src/blocks/style/separator.js:10
+msgid "Thick line"
+msgstr ""
+
+#: src/blocks/style/separator.js:25
+msgid "Circle Mark"
+msgstr ""
+
+#: src/blocks/style/table.js:10
 msgid "No Style"
 msgstr ""
 
-#: src/blocks/style/table.js:16
-#: src/blocks/style/table.js:21
+#: src/blocks/style/table.js:20
 msgid "Underline Emphasis"
-msgstr ""
-
-#: src/blocks/style/table.js:26
-msgid "Dashed"
 msgstr ""

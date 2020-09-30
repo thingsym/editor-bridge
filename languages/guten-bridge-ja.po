@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-30T08:43:57+00:00\n"
+"POT-Creation-Date: 2020-09-30T09:37:16+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: guten-bridge\n"
@@ -83,9 +83,8 @@ msgid "Border settings"
 msgstr "枠線の設定"
 
 #: src/blocks/expansion/border/index.js:136
-#: src/blocks/expansion/button-size/index.js:163
-msgid "Width"
-msgstr "太さ"
+msgid "Border width"
+msgstr "線の太さ"
 
 #: src/blocks/expansion/border/index.js:142
 #: src/blocks/format/badge/badge-popover.js:249
@@ -160,6 +159,10 @@ msgstr "サイズの設定"
 msgid "Size"
 msgstr "サイズ"
 
+#: src/blocks/expansion/button-size/index.js:163
+msgid "Width"
+msgstr "横幅"
+
 #: src/blocks/expansion/space/index.js:45
 msgid "None"
 msgstr "なし"
@@ -190,6 +193,8 @@ msgid "Default"
 msgstr "デフォルト"
 
 #: src/blocks/format/badge/badge-popover.js:196
+#: src/blocks/style/image.js:10
+#: src/blocks/style/table.js:30
 msgid "Round Corner"
 msgstr "丸角"
 

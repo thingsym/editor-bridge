@@ -332,10 +332,6 @@
 	}
 }
 
-// .is-style-hd-callout {
-// 	border: 2px solid;
-// }
-
 .wp-block-table {
 	&.is-style-tb-underline {
 		table {
@@ -530,6 +526,10 @@
 			background: #fff;
 			border-radius: 100%;
 			box-shadow: #fff 0 0 0 5px;
+
+			.editor-styles-wrapper & {
+				bottom: 4px;
+			}
 		}
 	}
 }

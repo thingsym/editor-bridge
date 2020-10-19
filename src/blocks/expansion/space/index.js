@@ -26,6 +26,7 @@ const enableBlocks = [
 	'core/button',
 	'core/buttons',
 	'core/media-text',
+	'core/gallery',
 
 	'core/list',
 	'core/table',
@@ -88,7 +89,12 @@ const addAttributes = ( settings, name ) => {
 			} );
 		}
 
-		if ( name == 'core/button' || name == 'core/list' || name == 'core/table' || name == 'core/media-text' ) {
+		if ( name == 'core/button'
+			|| name == 'core/list'
+			|| name == 'core/table'
+			|| name == 'core/media-text'
+			|| name == 'core/gallery'
+		) {
 			settings.supports = assign( settings.supports, {
 				gutenPlusSpacePadding: false,
 			} );

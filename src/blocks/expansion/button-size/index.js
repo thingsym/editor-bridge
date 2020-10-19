@@ -147,7 +147,7 @@ const withButtonSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
 				<InspectorControls>
 					<PanelBody
 						title={ __( 'Size Settings', 'guten-plus' ) }
-						initialOpen={ true }
+						initialOpen={ false }
 					>
 						<SelectControl
 							label={ __( 'Size', 'guten-plus' ) }

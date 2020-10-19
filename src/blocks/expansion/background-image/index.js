@@ -312,7 +312,7 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 					{ !! url && (
 						<PanelBody
 							title={ __( 'Background Image Settings', 'guten-plus' ) }
-							initialOpen={ true }
+							initialOpen={ false }
 						>
 							<SelectControl
 								label={ __( 'Image Size', 'guten-plus' ) }

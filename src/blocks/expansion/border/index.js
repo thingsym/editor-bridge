@@ -130,7 +130,10 @@ function BorderPanel( {
 	);
 
 	return (
-		<PanelBody title={ __( 'Border settings', 'guten-plus' ) }>
+		<PanelBody
+			title={ __( 'Border settings', 'guten-plus' ) }
+			initialOpen={ false }
+		>
 			<RangeControl
 				value={ borderWidth }
 				label={ __( 'Border width', 'guten-plus' ) }

@@ -173,7 +173,7 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 				<InspectorControls>
 					<PanelBody
 						title={ __( 'Space Settings', 'guten-plus' ) }
-						initialOpen={ true }
+						initialOpen={ false }
 					>
 						{ hasBlockSupport( name, 'gutenPlusSpaceMargin' ) && (
 							<SelectControl

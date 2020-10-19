@@ -86,6 +86,9 @@ export function getActiveColorHex( formatName, formatValue, colors ) {
 		if ( currentClass === 'is-badge-style-status' ) {
 			regex = /border:\ssolid\s1px\s(.*?);/
 		}
+		else if ( currentClass === 'is-badge-style-outline' ) {
+			regex = /border:\ssolid\s1px\s(.*?);/
+		}
 		else {
 			regex = /background-color:\s(.*?);/
 		}
@@ -195,6 +198,7 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 			{ label: __( 'Default', 'guten-plus' ), value: 'default' },
 			{ label: __( 'Round Corner', 'guten-plus' ), value: 'round-corner' },
 			{ label: __( 'Round', 'guten-plus' ), value: 'round' },
+			{ label: __( 'Outline', 'guten-plus' ), value: 'outline' },
 			{ label: __( 'Status', 'guten-plus' ), value: 'status' },
 			{ label: __( 'Perfect Circle', 'guten-plus' ), value: 'perfect-circle' },
 		] }
@@ -218,6 +222,9 @@ export function setStyle( styleSlug, color ) {
 	}
 	else if ( styleSlug === 'round' ) {
 		return `background-color: ${ color };padding: .2rem .8em;border-radius: 2rem;`;
+	}
+	else if ( styleSlug === 'outline' ) {
+		return `background-color: #fff;border: solid 1px ${ color };padding: .2rem .8em;`;
 	}
 	else if ( styleSlug === 'status' ) {
 		return `background-color: #fff;border: solid 1px ${ color };padding: .2rem .8em;border-radius: 2rem;`;

@@ -2,7 +2,7 @@
 
 Contributors: thingsym
 Link: https://github.com/thingsym/guten-plus
-Stable tag: 0.1.0
+Stable tag: 1.0.0
 Tested up to: 5.5
 Requires at least: 5.5
 Requires PHP: 7.1

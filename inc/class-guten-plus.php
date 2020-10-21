@@ -50,7 +50,7 @@ class Guten_Plus {
 	 *
 	 * @since 1.0.0
 	 */
-	public function load_block_editor_translations() {
+	public function set_block_editor_translations() {
 		if ( function_exists( 'wp_set_script_translations' ) ) {
 			wp_set_script_translations(
 				'guten-plus-script',
@@ -114,7 +114,7 @@ class Guten_Plus {
 		}
 
 		add_action( 'init', [ $this, 'load_textdomain' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'load_block_editor_translations' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'set_block_editor_translations' ] );
 
 	}
 }

@@ -81,11 +81,11 @@ class Guten_Plus {
 			'all'
 		);
 
-		$styles = wp_get_custom_css();
-		if ( $styles ) {
-			$styles = '/* Insert custom css */' . $styles;
-			wp_add_inline_style( 'guten-plus-editor', $styles );
-		}
+		// $styles = wp_get_custom_css();
+		// if ( isset( $styles ) ) {
+		// 	$styles = '/* Insert custom css */' . $styles;
+		// 	wp_add_inline_style( 'guten-plus-block-asset', $styles );
+		// }
 	}
 
 	public function enqueue_styles() {

@@ -196,11 +196,15 @@ msgstr "デフォルト"
 #: src/blocks/style/image.js:10
 #: src/blocks/style/table.js:30
 msgid "Round Corner"
-msgstr "丸角"
+msgstr "角丸"
 
 #: src/blocks/format/badge/badge-popover.js:197
 msgid "Round"
 msgstr "円形"
+
+#: src/blocks/format/badge/badge-popover.js:198
+msgid "Outline"
+msgstr "アウトライン"
 
 #: src/blocks/format/badge/badge-popover.js:198
 msgid "Status"

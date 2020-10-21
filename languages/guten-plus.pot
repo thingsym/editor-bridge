@@ -203,6 +203,10 @@ msgid "Round"
 msgstr ""
 
 #: src/blocks/format/badge/badge-popover.js:198
+msgid "Outline"
+msgstr ""
+
+#: src/blocks/format/badge/badge-popover.js:198
 msgid "Status"
 msgstr ""
 

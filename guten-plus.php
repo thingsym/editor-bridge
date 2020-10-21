@@ -3,7 +3,7 @@
  * Plugin Name: Guten Plus
  * Plugin URI: https://github.com/thingsym/guten-plus
  * Description: A extended Block Editor (Gutenberg).
- * Version: 0.1.0
+ * Version: 1.0.0
  * Author: thingsym
  * Author URI:  https://www.thingslabo.com/
  * License:     GPL2 or later

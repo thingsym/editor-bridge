@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Guten Plus plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Guten Plus 0.1.0\n"
+"Project-Id-Version: Guten Plus 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/guten-plus\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"

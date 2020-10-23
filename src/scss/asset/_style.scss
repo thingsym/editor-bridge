@@ -98,7 +98,7 @@
 }
 
 .is-style-hd-two-color-underline {
-	border-bottom: 1px solid var(--guten-plus-border-color, unset);
+	border-bottom: 1px solid var(--editor-bridge-border-color, unset);
 	&:after {
 		position: absolute;
 		content: '';
@@ -341,20 +341,20 @@
 		tr:first-child {
 			th,
 			td {
-				border-top: 1px solid var(--guten-plus-border-color, unset);
+				border-top: 1px solid var(--editor-bridge-border-color, unset);
 			}
 		}
 		th,
 		td {
 			border: none;
-			border-bottom: 1px solid var(--guten-plus-border-color, unset);
+			border-bottom: 1px solid var(--editor-bridge-border-color, unset);
 		}
 		th {
 			background: unset;
 		}
 		thead,
 		tfoot {
-			border-color: var(--guten-plus-border-color, unset);
+			border-color: var(--editor-bridge-border-color, unset);
 		}
 	}
 
@@ -366,17 +366,17 @@
 		tr:first-child {
 			th,
 			td {
-				border-top: 1px solid var(--guten-plus-border-color, unset);
+				border-top: 1px solid var(--editor-bridge-border-color, unset);
 			}
 		}
 		th {
 			background: unset;
 			border: none;
-			border-bottom: 2px solid var(--guten-plus-border-color, unset);
+			border-bottom: 2px solid var(--editor-bridge-border-color, unset);
 		}
 		td {
 			border: none;
-			border-bottom: 1px solid var(--guten-plus-border-color, unset);
+			border-bottom: 1px solid var(--editor-bridge-border-color, unset);
 		}
 		thead {
 			border-bottom: unset;
@@ -394,13 +394,13 @@
 		tr:first-child {
 			th,
 			td {
-				border-top: 1px dashed var(--guten-plus-border-color, unset);
+				border-top: 1px dashed var(--editor-bridge-border-color, unset);
 			}
 		}
 		th,
 		td {
 			border: none;
-			border-bottom: 1px dashed var(--guten-plus-border-color, unset);
+			border-bottom: 1px dashed var(--editor-bridge-border-color, unset);
 		}
 		th {
 			background: unset;
@@ -415,7 +415,7 @@
 
 	&.is-style-tb-round-corner {
 		table {
-			border: 1px solid var(--guten-plus-border-color, unset);
+			border: 1px solid var(--editor-bridge-border-color, unset);
 			border-collapse: separate;
 			border-spacing: 0;
 			border-radius: 10px;
@@ -425,8 +425,8 @@
 		td {
 			background: unset;
 			border-top: unset;
-			border-bottom: 1px solid var(--guten-plus-border-color, unset);
-			border-right: 1px solid var(--guten-plus-border-color, unset);
+			border-bottom: 1px solid var(--editor-bridge-border-color, unset);
+			border-right: 1px solid var(--editor-bridge-border-color, unset);
 		}
 		tr:last-child {
 			th,
@@ -441,13 +441,13 @@
 		thead tr:last-child {
 			th,
 			td {
-				border-bottom: 1px solid var(--guten-plus-border-color, unset);
+				border-bottom: 1px solid var(--editor-bridge-border-color, unset);
 			}
 		}
 		tfoot tr:first-child {
 			th,
 			td {
-				border-top: 1px solid var(--guten-plus-border-color, unset);
+				border-top: 1px solid var(--editor-bridge-border-color, unset);
 			}
 		}
 	}

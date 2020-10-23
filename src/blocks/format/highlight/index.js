@@ -31,8 +31,8 @@ import {
 } from './highlight-popover.js';
 import { highlighterSolid } from './icons';
 
-const name  = 'guten-plus/highlight';
-const title = __( 'Highlight', 'guten-plus' );
+const name  = 'editor-bridge/highlight';
+const title = __( 'Highlight', 'editor-bridge' );
 
 const EMPTY_ARRAY = [];
 
@@ -123,7 +123,7 @@ export const highlight = {
 	name,
 	title,
 	tagName: 'span',
-	className: 'guten-plus-has-highlight',
+	className: 'editor-bridge-has-highlight',
 	attributes: {
 		style: 'style',
 		class: 'class',

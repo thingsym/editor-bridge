@@ -1,20 +1,20 @@
 <?php
 /**
- * Guten_Plus class
+ * Editor_Bridge class
  *
- * @package Guten_Plus
+ * @package Editor_Bridge
  *
  * @since 1.0.0
  */
 
-namespace Guten_Plus;
+namespace Editor_Bridge;
 
 /**
- * Core class Guten_Plus
+ * Core class Editor_Bridge
  *
  * @since 1.0.0
  */
-class Guten_Plus {
+class Editor_Bridge {
 	public function __construct() {
 		add_action( 'plugins_loaded', [ $this, 'init' ] );
 
@@ -35,9 +35,9 @@ class Guten_Plus {
 	 */
 	public function load_textdomain() {
 		load_plugin_textdomain(
-			'guten-plus',
+			'editor-bridge',
 			false,
-			GUTEN_PLUS_PATH . '/languages/'
+			EDITOR_BRIDGE_PATH . '/languages/'
 		);
 	}
 
@@ -53,19 +53,19 @@ class Guten_Plus {
 	public function set_block_editor_translations() {
 		if ( function_exists( 'wp_set_script_translations' ) ) {
 			wp_set_script_translations(
-				'guten-plus-script',
-				'guten-plus',
-				GUTEN_PLUS_PATH . '/languages'
+				'editor-bridge-script',
+				'editor-bridge',
+				EDITOR_BRIDGE_PATH . '/languages'
 			);
 		}
 	}
 
 	public function enqueue_blocks_scripts() {
-		$asset_file = include( GUTEN_PLUS_PATH . 'dist/js/blocks.asset.php' );
+		$asset_file = include( EDITOR_BRIDGE_PATH . 'dist/js/blocks.asset.php' );
 
 		wp_enqueue_script(
-			'guten-plus-script',
-			plugins_url( 'dist/js/blocks.js', GUTEN_PLUS ),
+			'editor-bridge-script',
+			plugins_url( 'dist/js/blocks.js', EDITOR_BRIDGE ),
 			$asset_file['dependencies'],
 			$asset_file['version'],
 			true
@@ -74,8 +74,8 @@ class Guten_Plus {
 
 	public function enqueue_block_editor_styles() {
 		wp_enqueue_style(
-			'guten-plus-block-editor',
-			plugins_url( 'dist/css/block-editor-style.min.css', GUTEN_PLUS ),
+			'editor-bridge-block-editor',
+			plugins_url( 'dist/css/block-editor-style.min.css', EDITOR_BRIDGE ),
 			[],
 			'20200904',
 			'all'
@@ -84,14 +84,14 @@ class Guten_Plus {
 		// $styles = wp_get_custom_css();
 		// if ( isset( $styles ) ) {
 		// 	$styles = '/* Insert custom css */' . $styles;
-		// 	wp_add_inline_style( 'guten-plus-block-asset', $styles );
+		// 	wp_add_inline_style( 'editor-bridge-block-asset', $styles );
 		// }
 	}
 
 	public function enqueue_styles() {
 		wp_enqueue_style(
-			'guten-plus',
-			plugins_url( 'dist/css/blocks.min.css', GUTEN_PLUS ),
+			'editor-bridge',
+			plugins_url( 'dist/css/blocks.min.css', EDITOR_BRIDGE ),
 			[],
 			'20200904',
 			'all'
@@ -100,8 +100,8 @@ class Guten_Plus {
 
 	public function enqueue_block_asset_styles() {
 		wp_enqueue_style(
-			'guten-plus-block-asset',
-			plugins_url( 'dist/css/block-asset.min.css', GUTEN_PLUS ),
+			'editor-bridge-block-asset',
+			plugins_url( 'dist/css/block-asset.min.css', EDITOR_BRIDGE ),
 			[],
 			'20200922',
 			'all'

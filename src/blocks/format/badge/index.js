@@ -31,8 +31,8 @@ import {
 } from './badge-popover.js';
 import { checkSquareSolid } from './icons';
 
-const name  = 'guten-plus/badge';
-const title = __( 'Badge', 'guten-plus' );
+const name  = 'editor-bridge/badge';
+const title = __( 'Badge', 'editor-bridge' );
 
 const EMPTY_ARRAY = [];
 
@@ -125,7 +125,7 @@ export const badge = {
 	name,
 	title,
 	tagName: 'span',
-	className: 'guten-plus-has-badge',
+	className: 'editor-bridge-has-badge',
 	attributes: {
 		style: 'style',
 		class: 'class',

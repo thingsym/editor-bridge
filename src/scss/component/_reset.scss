@@ -23,13 +23,13 @@
 .wp-block-table {
 	table {
 		width: auto;
-		border: 1px solid var(--guten-plus-border-color, unset);
+		border: 1px solid var(--editor-bridge-border-color, unset);
 	}
 	td,
 	th {
 		border: unset;
-		border-top: 1px solid var(--guten-plus-border-color, unset);
-		border-right: 1px solid var(--guten-plus-border-color, unset);
+		border-top: 1px solid var(--editor-bridge-border-color, unset);
+		border-right: 1px solid var(--editor-bridge-border-color, unset);
 		padding: .6rem;
 	}
 	thead {
@@ -41,11 +41,11 @@
 
 	&.is-style-regular {
 		table {
-			border: 1px solid var(--guten-plus-border-color, unset);
+			border: 1px solid var(--editor-bridge-border-color, unset);
 		}
 		thead,
 		tfoot {
-			border-color: var(--guten-plus-border-color, unset);
+			border-color: var(--editor-bridge-border-color, unset);
 		}
 	}
 
@@ -57,7 +57,7 @@
 		}
 		thead,
 		tfoot {
-			border-color: var(--guten-plus-border-color, unset);
+			border-color: var(--editor-bridge-border-color, unset);
 		}
 	}
 
@@ -86,6 +86,6 @@
 
 .wp-block-group {
 	&.has-background {
-		padding: var(--guten-plus-space-padding-medium, unset);
+		padding: var(--editor-bridge-space-padding-medium, unset);
 	}
 }

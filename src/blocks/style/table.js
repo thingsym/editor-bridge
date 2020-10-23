@@ -7,25 +7,25 @@ import { __ } from '@wordpress/i18n';
 
 wp.blocks.registerBlockStyle( 'core/table', {
 	name: 'tb-no-style',
-	label: __( 'No Style', 'guten-plus' )
+	label: __( 'No Style', 'editor-bridge' )
 } );
 
 wp.blocks.registerBlockStyle( 'core/table', {
 	name: 'tb-underline',
-	label: __( 'Underline', 'guten-plus' )
+	label: __( 'Underline', 'editor-bridge' )
 } );
 
 wp.blocks.registerBlockStyle( 'core/table', {
 	name: 'tb-underline-emphasis',
-	label: __( 'Underline Emphasis', 'guten-plus' ),
+	label: __( 'Underline Emphasis', 'editor-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/table', {
 	name: 'tb-dashed',
-	label: __( 'Dashed', 'guten-plus' ),
+	label: __( 'Dashed', 'editor-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/table', {
 	name: 'tb-round-corner',
-	label: __( 'Round Corner', 'guten-plus' ),
+	label: __( 'Round Corner', 'editor-bridge' ),
 } );

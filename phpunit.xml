@@ -14,7 +14,7 @@
   </testsuites>
   <filter>
     <whitelist processUncoveredFilesFromWhitelist="true">
-      <file>./guten-plus.php</file>
+      <file>./editor-bridge.php</file>
       <directory suffix=".php">./inc</directory>
       <directory suffix=".php">./dist/php</directory>
     </whitelist>

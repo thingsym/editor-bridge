@@ -7,26 +7,26 @@ import { __ } from '@wordpress/i18n';
 
 wp.blocks.registerBlockStyle( 'core/button', {
 	name: 'bt-triangle-icon',
-	label: __( 'Triangle Icon', 'guten-plus' ),
+	label: __( 'Triangle Icon', 'editor-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/button', {
 	name: 'bt-blur',
-	label: __( 'Blur', 'guten-plus' ),
+	label: __( 'Blur', 'editor-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/button', {
 	name: 'bt-shadow',
-	label: __( 'Shadow', 'guten-plus' ),
+	label: __( 'Shadow', 'editor-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/button', {
 	name: 'bt-expansion',
-	label: __( 'Expansion', 'guten-plus' ),
+	label: __( 'Expansion', 'editor-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/button', {
 	name: 'bt-emboss',
-	label: __( 'Emboss', 'guten-plus' ),
+	label: __( 'Emboss', 'editor-bridge' ),
 } );
 

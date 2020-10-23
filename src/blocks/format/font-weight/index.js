@@ -22,8 +22,8 @@ import {
 } from './font-weight-popover.js';
 import { fontWeightSolid } from './icons';
 
-const name  = 'guten-plus/font-weight';
-const title = __( 'Font Weight', 'guten-plus' );
+const name  = 'editor-bridge/font-weight';
+const title = __( 'Font Weight', 'editor-bridge' );
 
 function FontWeightEdit( { value, onChange, isActive, activeAttributes } ) {
 	const [ isAddingFontWeight, setIsAddingFontWeight ] = useState( false );
@@ -76,7 +76,7 @@ export const font_weight = {
 	name,
 	title,
 	tagName: 'span',
-	className: 'guten-plus-has-font-weight',
+	className: 'editor-bridge-has-font-weight',
 	attributes: {
 		style: 'style',
 		class: 'class',

@@ -1,7 +1,7 @@
-=== Guten Plus ===
+=== Editor Bridge ===
 
 Contributors: thingsym
-Link: https://github.com/thingsym/guten-plus
+Link: https://github.com/thingsym/editor-bridge
 Stable tag: 1.0.0
 Tested up to: 5.5
 Requires at least: 5.5
@@ -14,7 +14,7 @@ This WordPress plugin expands the functionality of blocks and adds styles and fo
 
 == Description ==
 
-WordPress plugin Guten Plus expand the Block Editor (Gutenberg).
+WordPress plugin Editor Bridge expand the Block Editor (Gutenberg).
 This WordPress plugin expands the functionality of blocks and adds styles and formats.
 
 = Compatibility =
@@ -72,14 +72,14 @@ There are three expansion points.
 
 = Test Matrix =
 
-For operation compatibility between PHP version and WordPress version, see below [Travis CI](https://travis-ci.org/thingsym/guten-plus).
+For operation compatibility between PHP version and WordPress version, see below [Travis CI](https://travis-ci.org/thingsym/editor-bridge).
 
 = Contribution =
 
 Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
 
-* [guten-plus - GitHub](https://github.com/thingsym/guten-plus)
-* [Guten Plus - WordPress Plugin](https://wordpress.org/plugins/guten-plus/)
+* [editor-bridge - GitHub](https://github.com/thingsym/editor-bridge)
+* [Editor Bridge - WordPress Plugin](https://wordpress.org/plugins/editor-bridge/)
 
 If you would like to contribute, here are some notes and guidlines.
 
@@ -90,8 +90,8 @@ If you would like to contribute, here are some notes and guidlines.
 
 == Installation ==
 
-1. Download and unzip files. Or install Guten Plus plugin using the WordPress plugin installer. In that case, skip 2.
-2. Upload "guten-plus" to the "/wp-content/plugins/" directory.
+1. Download and unzip files. Or install Editor Bridge plugin using the WordPress plugin installer. In that case, skip 2.
+2. Upload "editor-bridge" to the "/wp-content/plugins/" directory.
 3. Activate the plugin through the 'Plugins' menu in WordPress.
 4. Have fun!
 

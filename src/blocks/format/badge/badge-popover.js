@@ -195,12 +195,12 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 		label={ label }
 		value={ activeStyle ? activeStyle : 'default' }
 		options={ [
-			{ label: __( 'Default', 'guten-plus' ), value: 'default' },
-			{ label: __( 'Round Corner', 'guten-plus' ), value: 'round-corner' },
-			{ label: __( 'Round', 'guten-plus' ), value: 'round' },
-			{ label: __( 'Outline', 'guten-plus' ), value: 'outline' },
-			{ label: __( 'Status', 'guten-plus' ), value: 'status' },
-			{ label: __( 'Perfect Circle', 'guten-plus' ), value: 'perfect-circle' },
+			{ label: __( 'Default', 'editor-bridge' ), value: 'default' },
+			{ label: __( 'Round Corner', 'editor-bridge' ), value: 'round-corner' },
+			{ label: __( 'Round', 'editor-bridge' ), value: 'round' },
+			{ label: __( 'Outline', 'editor-bridge' ), value: 'outline' },
+			{ label: __( 'Status', 'editor-bridge' ), value: 'status' },
+			{ label: __( 'Perfect Circle', 'editor-bridge' ), value: 'perfect-circle' },
 		] }
 		onChange={ onStyleChange }
 	/>;
@@ -253,13 +253,13 @@ const InlineBadgeUI = ( {
 			className="components-inline-badge-popover is-flex-dir-column"
 		>
 			<ColorPicker
-				label={ __( 'Color', 'guten-plus' ) }
+				label={ __( 'Color', 'editor-bridge' ) }
 				name={ name }
 				value={ value }
 				onChange={ onChange }
 			/>
 			<StylePicker
-				label={ __( 'Style', 'guten-plus' ) }
+				label={ __( 'Style', 'editor-bridge' ) }
 				name={ name }
 				value={ value }
 				onChange={ onChange }

@@ -1,6 +1,6 @@
-# Guten Plus
+# Editor Bridge
 
-WordPress plugin Guten Plus expand the Block Editor (Gutenberg).
+WordPress plugin Editor Bridge expand the Block Editor (Gutenberg).
 This WordPress plugin expands the functionality of blocks and adds styles and formats.
 
 ## Expansion
@@ -53,8 +53,8 @@ There are three expansion points.
 
 ## Installation
 
-1. Download and unzip files. Or install Guten Plus plugin using the WordPress plugin installer. In that case, skip 2.
-2. Upload "guten-plus" to the "/wp-content/plugins/" directory.
+1. Download and unzip files. Or install Editor Bridge plugin using the WordPress plugin installer. In that case, skip 2.
+2. Upload "editor-bridge" to the "/wp-content/plugins/" directory.
 3. Activate the plugin through the 'Plugins' menu in WordPress.
 4. Have fun!
 
@@ -65,18 +65,18 @@ There are three expansion points.
 
 ## WordPress Plugin Directory
 
-Guten Plus is hosted on the WordPress Plugin Directory.
+Editor Bridge is hosted on the WordPress Plugin Directory.
 
-[https://wordpress.org/plugins/guten-plus/](https://wordpress.org/plugins/guten-plus/)
+[https://wordpress.org/plugins/editor-bridge/](https://wordpress.org/plugins/editor-bridge/)
 
 ## Test Matrix
 
-For operation compatibility between PHP version and WordPress version, see below [Travis CI](https://travis-ci.com/thingsym/guten-plus).
+For operation compatibility between PHP version and WordPress version, see below [Travis CI](https://travis-ci.com/thingsym/editor-bridge).
 
 ## Build development environment
 
 ```console
-cd /path/to/guten-plus
+cd /path/to/editor-bridge
 
 # Install package
 npm intall
@@ -91,7 +91,7 @@ npm run build
 ### PHP unit testing with PHPUnit
 
 ```console
-cd /path/to/guten-plus
+cd /path/to/editor-bridge
 
 # Install package
 composer intall
@@ -109,7 +109,7 @@ composer run phpunit
 
 Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
 
-1. Fork [Guten Plus](https://github.com/thingsym/guten-plus) from GitHub repository
+1. Fork [Editor Bridge](https://github.com/thingsym/editor-bridge) from GitHub repository
 2. Create a feature branch: git checkout -b my-new-feature
 3. Commit your changes: git commit -am 'Add some feature'
 4. Push to the branch: git push origin my-new-feature

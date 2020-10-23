@@ -2,7 +2,7 @@
 
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Tested up to: 5.5
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -97,5 +97,8 @@ If you would like to contribute, here are some notes and guidlines.
 
 == Changelog ==
 
-= 1.0.0 =
+= 1.0.1 - 2020.10.23 =
+* change the plugin name and slug to Editor Bridge
+
+= 1.0.0 - 2020.10.21 =
 * Initial release

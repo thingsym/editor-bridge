@@ -117,6 +117,10 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+### [1.0.1] - 2020.10.23 - for plugin review
+
+- change the plugin name and slug to Editor Bridge
+
 ### [1.0.0] - 2020.10.21
 
 - initial release

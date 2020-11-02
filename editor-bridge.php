@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Editor Bridge
  * Plugin URI: https://github.com/thingsym/editor-bridge
- * Description: A extended Block Editor (Gutenberg).
+ * Description: This WordPress plugin expands the functionality of blocks and adds styles and formats.
  * Version: 1.0.1
  * Author: thingsym
  * Author URI:  https://www.thingslabo.com/

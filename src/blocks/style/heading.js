@@ -21,12 +21,12 @@ wp.blocks.registerBlockStyle( 'core/heading', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {
-	name: 'hd-updown',
-	label: __( 'Up Down line', 'editor-bridge' ),
+	name: 'hd-updown-line',
+	label: __( 'Up Down Line', 'editor-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {
-	name: 'hd-accent',
+	name: 'hd-accent-line',
 	label: __( 'Accent Line', 'editor-bridge' ),
 } );
 
@@ -46,8 +46,8 @@ wp.blocks.registerBlockStyle( 'core/heading', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {
-	name: 'hd-left-line',
-	label: __( 'Left Line', 'editor-bridge' ),
+	name: 'hd-left-accent-line',
+	label: __( 'Left Accent Line', 'editor-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {
@@ -56,8 +56,8 @@ wp.blocks.registerBlockStyle( 'core/heading', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {
-	name: 'hd-stripe',
-	label: __( 'Stripe', 'editor-bridge' ),
+	name: 'hd-stripe-line',
+	label: __( 'Stripe Line', 'editor-bridge' ),
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {

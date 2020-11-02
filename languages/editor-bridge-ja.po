@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Editor Bridge plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Editor Bridge 1.0.1\n"
+"Project-Id-Version: Editor Bridge 1.0.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/editor-bridge\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -341,7 +341,7 @@ msgid "Two Color Underline"
 msgstr "2色アンダーライン"
 
 #: src/blocks/style/heading.js:25
-msgid "Up Down line"
+msgid "Up Down Line"
 msgstr "上下線"
 
 #: src/blocks/style/heading.js:30
@@ -361,15 +361,15 @@ msgid "Double Box"
 msgstr "2重囲み線"
 
 #: src/blocks/style/heading.js:50
-msgid "Left Line"
-msgstr "左ライン"
+msgid "Left Accent Line"
+msgstr "左アクセントライン"
 
 #: src/blocks/style/heading.js:55
 msgid "Gradation Line"
 msgstr "グラデーション"
 
 #: src/blocks/style/heading.js:60
-msgid "Stripe"
+msgid "Stripe Line"
 msgstr "ストライプ"
 
 #: src/blocks/style/heading.js:65
@@ -399,7 +399,3 @@ msgstr "円マーク"
 #: src/blocks/style/table.js:10
 msgid "No Style"
 msgstr "スタイルなし"
-
-#: src/blocks/style/table.js:20
-msgid "Underline Emphasis"
-msgstr "アンダーライン強調"

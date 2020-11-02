@@ -16,11 +16,6 @@ wp.blocks.registerBlockStyle( 'core/table', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/table', {
-	name: 'tb-underline-emphasis',
-	label: __( 'Underline Emphasis', 'editor-bridge' ),
-} );
-
-wp.blocks.registerBlockStyle( 'core/table', {
 	name: 'tb-dashed',
 	label: __( 'Dashed', 'editor-bridge' ),
 } );

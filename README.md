@@ -3,6 +3,9 @@
 WordPress plugin Editor Bridge expand the Block Editor (Gutenberg).
 This WordPress plugin expands the functionality of blocks and adds styles and formats.
 
+* [Demo sample (English)](https://cms.thingslabo.com/demo/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample/)
+* [デモサンプル (日本語)](https://cms.thingslabo.com/demo/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample-ja/)
+
 ## Expansion
 
 There are three expansion points.
@@ -116,6 +119,14 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 5. Create new Pull Request
 
 ## Changelog
+
+### [1.0.2] - 2020.11.02
+
+* add background color to image table block style 'Frame'
+* remove table block style 'Underline Emphasis'
+* fix separator block style 'Circle Mark'
+* redesign heading block style 'Stripe Line'
+* rename heading block style name
 
 ### [1.0.1] - 2020.10.23 - for plugin review
 

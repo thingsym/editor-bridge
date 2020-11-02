@@ -120,6 +120,14 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+### [1.0.2] - 2020.11.02
+
+* add background color to image table block style 'Frame'
+* remove table block style 'Underline Emphasis'
+* fix separator block style 'Circle Mark'
+* redesign heading block style 'Stripe Line'
+* rename heading block style name
+
 ### [1.0.1] - 2020.10.23 - for plugin review
 
 - change the plugin name and slug to Editor Bridge

@@ -2,7 +2,7 @@
 
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 Tested up to: 5.5
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -96,6 +96,14 @@ If you would like to contribute, here are some notes and guidlines.
 4. Have fun!
 
 == Changelog ==
+
+= 1.0.2 - 2020.11.02 =
+
+* add background color to image table block style 'Frame'
+* remove table block style 'Underline Emphasis'
+* fix separator block style 'Circle Mark'
+* redesign heading block style 'Stripe Line'
+* rename heading block style name
 
 = 1.0.1 - 2020.10.23 =
 * change the plugin name and slug to Editor Bridge

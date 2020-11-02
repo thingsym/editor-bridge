@@ -508,6 +508,12 @@
 	}
 
 	&.is-style-hr-circle-mark {
+		position: relative;
+
+		.editor-styles-wrapper & {
+			overflow: unset;
+		}
+
 		&:not(.is-style-wide):not(.is-style-dots) {
 			border-bottom: 1px solid;
 		}
@@ -518,16 +524,12 @@
 			height: 8px;
 			border: 1px solid;
 			position: absolute;
-			bottom: -3px;
+			bottom: -4px;
 			left: 50%;
 			margin-left: -5px;
 			background: #fff;
 			border-radius: 100%;
 			box-shadow: #fff 0 0 0 5px;
-
-			.editor-styles-wrapper & {
-				bottom: 4px;
-			}
 		}
 	}
 }

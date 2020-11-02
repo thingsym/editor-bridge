@@ -114,16 +114,14 @@
 	}
 }
 
-.is-style-hd-updown {
+.is-style-hd-updown-line {
 	border-top: 1px solid;
 	border-bottom: 1px solid;
 }
 
-.is-style-hd-accent {
+.is-style-hd-accent-line {
 	position: relative;
-}
 
-.is-style-hd-accent {
 	&:after {
 		position: absolute;
 		content: '';
@@ -204,7 +202,7 @@
 	padding: .4rem;
 }
 
-.is-style-hd-left-line {
+.is-style-hd-left-accent-line {
 	padding-left: .6rem;
 	border-left: solid 6px;
 }
@@ -222,7 +220,7 @@
 		}
 	}
 }
-.is-style-hd-stripe {
+.is-style-hd-stripe-line {
 	position: relative;
 	padding-bottom: .2rem;
 

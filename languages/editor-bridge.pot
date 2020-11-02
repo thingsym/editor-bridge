@@ -341,7 +341,7 @@ msgid "Two Color Underline"
 msgstr ""
 
 #: src/blocks/style/heading.js:25
-msgid "Up Down line"
+msgid "Up Down Line"
 msgstr ""
 
 #: src/blocks/style/heading.js:30
@@ -361,7 +361,7 @@ msgid "Double Box"
 msgstr ""
 
 #: src/blocks/style/heading.js:50
-msgid "Left Line"
+msgid "Left Accent Line"
 msgstr ""
 
 #: src/blocks/style/heading.js:55

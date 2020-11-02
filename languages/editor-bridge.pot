@@ -399,7 +399,3 @@ msgstr ""
 #: src/blocks/style/table.js:10
 msgid "No Style"
 msgstr ""
-
-#: src/blocks/style/table.js:20
-msgid "Underline Emphasis"
-msgstr ""

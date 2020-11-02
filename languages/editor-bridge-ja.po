@@ -399,7 +399,3 @@ msgstr "円マーク"
 #: src/blocks/style/table.js:10
 msgid "No Style"
 msgstr "スタイルなし"
-
-#: src/blocks/style/table.js:20
-msgid "Underline Emphasis"
-msgstr "アンダーライン強調"

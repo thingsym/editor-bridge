@@ -356,34 +356,6 @@
 		}
 	}
 
-	&.is-style-tb-underline-emphasis {
-		table {
-			border: none;
-			border-collapse: collapse;
-		}
-		tr:first-child {
-			th,
-			td {
-				border-top: 1px solid var(--editor-bridge-border-color, unset);
-			}
-		}
-		th {
-			background: unset;
-			border: none;
-			border-bottom: 2px solid var(--editor-bridge-border-color, unset);
-		}
-		td {
-			border: none;
-			border-bottom: 1px solid var(--editor-bridge-border-color, unset);
-		}
-		thead {
-			border-bottom: unset;
-		}
-		tfoot {
-			border-top: unset;
-		}
-	}
-
 	&.is-style-tb-dashed {
 		table {
 			border: none;

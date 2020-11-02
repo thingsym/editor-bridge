@@ -32,6 +32,7 @@ env:
 install:
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - composer global require "phpunit/phpunit=4.8.*|6.|7.*"
+  - phpunit --version
   # For building plugin
   - nvm install 12
   - npm install

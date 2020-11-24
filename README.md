@@ -22,6 +22,7 @@ There are three expansion points.
 	* core/heading
 	* core/paragraph
 	* core/group
+	* core/columns
 * Button size and width
 	* core/button
 * Space, Margin (upper margin as default) and Padding
@@ -41,18 +42,18 @@ There are three expansion points.
 
 ### Format
 
-* badge
-* font-size
-* font-weight
-* highlight
+* Badge
+* Font size
+* Font weight
+* Highlight
 
 ### Style
 
-* button
-* heading
-* image
-* separator
-* table
+* Button
+* Heading
+* Image
+* Separator
+* Table
 
 ## Installation
 

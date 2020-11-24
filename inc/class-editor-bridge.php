@@ -39,11 +39,6 @@ class Editor_Bridge {
 		add_action( 'plugins_loaded', [ $this, 'load_asset_file' ] );
 
 		add_action( 'plugins_loaded', [ $this, 'init' ] );
-
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
-		add_action( 'enqueue_block_assets', [ $this, 'enqueue_block_asset_styles' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_blocks_scripts' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
 	}
 
 	/**
@@ -166,5 +161,9 @@ class Editor_Bridge {
 		add_action( 'init', [ $this, 'load_textdomain' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'set_block_editor_translations' ] );
 
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+		add_action( 'enqueue_block_assets', [ $this, 'enqueue_block_asset_styles' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_blocks_scripts' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
 	}
 }

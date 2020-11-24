@@ -3,7 +3,6 @@
 /**
  * External dependencies
  */
-import classnames from 'classnames/dedupe';
 import assign from 'lodash.assign';
 
 /**
@@ -29,6 +28,7 @@ const enableBlocks = [
 	'core/heading',
 	'core/paragraph',
 	'core/group',
+	'core/columns',
 ];
 
 /**
@@ -63,13 +63,13 @@ const addAttributes = ( settings, name ) => {
 				type: 'number',
 				default: 0,
 			},
-			borderColor: {
-				type: 'string',
-				default: '#000000',
-			},
 			borderStyle: {
 				type: 'string',
-				default: 'solid',
+				default: undefined,
+			},
+			borderColor: {
+				type: 'string',
+				default: undefined,
 			},
 			borderRadius: {
 				type: 'number',
@@ -89,6 +89,7 @@ addFilter(
 
 const MIN_BORDER_WIDTH_VALUE = 0;
 const MAX_BORDER_WIDTH_VALUE = 10;
+const INITIAL_BORDER_WIDTH_POSITION = 0;
 const MIN_BORDER_RADIUS_VALUE = 0;
 const MAX_BORDER_RADIUS_VALUE = 50;
 const INITIAL_BORDER_RADIUS_POSITION = 5;
@@ -134,28 +135,31 @@ function BorderPanel( {
 			title={ __( 'Border settings', 'editor-bridge' ) }
 			initialOpen={ false }
 		>
-			<RangeControl
-				value={ borderWidth }
-				label={ __( 'Border width', 'editor-bridge' ) }
-				min={ MIN_BORDER_WIDTH_VALUE }
-				max={ MAX_BORDER_WIDTH_VALUE }
-				onChange={ setBorderWidth }
-			/>
-			<ColorPaletteControl
-				label={ __( 'Color', 'editor-bridge' ) }
-				value={ borderColor }
-				onChange={ setBorderColor }
-			/>
 			<SelectControl
 				label={ __( 'Style', 'editor-bridge' ) }
 				value={ borderStyle }
 				options={ [
+					{ label: __( 'None', 'editor-bridge' ), value: '' },
 					{ label: __( 'Solid', 'editor-bridge' ), value: 'solid' },
 					{ label: __( 'Dashed', 'editor-bridge' ), value: 'dashed' },
 					{ label: __( 'Dotted', 'editor-bridge' ), value: 'dotted' },
 					{ label: __( 'Double', 'editor-bridge' ), value: 'double' },
 				] }
 				onChange={ setBorderStyle }
+			/>
+			<RangeControl
+				value={ borderWidth }
+				label={ __( 'Border width', 'editor-bridge' ) }
+				min={ MIN_BORDER_WIDTH_VALUE }
+				max={ MAX_BORDER_WIDTH_VALUE }
+				initialPosition={ INITIAL_BORDER_WIDTH_POSITION }
+				allowReset
+				onChange={ setBorderWidth }
+			/>
+			<ColorPaletteControl
+				label={ __( 'Color', 'editor-bridge' ) }
+				value={ borderColor }
+				onChange={ setBorderColor }
 			/>
 			<RangeControl
 				value={ borderRadius }
@@ -175,7 +179,7 @@ function BorderPanel( {
  */
 const withBorderControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
-		// console.log(props);
+
 		const {
 			name,
 			clientId,
@@ -195,7 +199,6 @@ const withBorderControl = createHigherOrderComponent( ( BlockEdit ) => {
 			borderStyle,
 			borderColor,
 			borderRadius,
-			className,
 		} = props.attributes;
 
 		if ( ! isSelected ) {
@@ -251,27 +254,18 @@ const withBorderBlockAttributes = createHigherOrderComponent( ( BlockListBlock )
 			borderRadius,
 		} = props.attributes;
 
-		const className = classnames();
-
 		let customData = {};
 
 		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 
-		// console.log(wrapperProps);
-
-		const style =
-			borderWidth ? borderWidth + 'px ' : '' + ' '
-			+ borderStyle ? borderStyle : '' + ' '
-			+ borderColor ? borderColor : '';
-
 		wrapperProps.style = {
-			borderWidth: borderWidth
+			borderWidth: borderWidth && borderStyle
 				? borderWidth + 'px'
 				: undefined,
-			borderStyle: borderStyle && borderWidth
+			borderStyle: borderStyle
 				? borderStyle
 				: undefined,
-			borderColor: borderColor && borderWidth
+			borderColor: borderColor
 				? borderColor
 				: undefined,
 			borderRadius: borderRadius
@@ -309,8 +303,6 @@ const getSaveBorderContent = ( extraProps, blockType, attributes ) => {
 		return extraProps;
 	}
 
-	// console.log(extraProps.children.props);
-
 	const {
 		borderWidth,
 		borderStyle,
@@ -318,16 +310,14 @@ const getSaveBorderContent = ( extraProps, blockType, attributes ) => {
 		borderRadius,
 	} = attributes;
 
-	const style = borderWidth ? borderWidth + 'px' : '' + ' ' + borderStyle ? borderStyle : '' + ' ' + borderColor ? borderColor : '';
-
 	extraProps.style = {
-		borderWidth: borderWidth
+		borderWidth: borderWidth && borderStyle
 			? borderWidth + 'px'
 			: undefined,
-		borderStyle: borderStyle && borderWidth
+		borderStyle: borderStyle
 			? borderStyle
 			: undefined,
-		borderColor: borderColor && borderWidth
+		borderColor: borderColor
 			? borderColor
 			: undefined,
 		borderRadius: borderRadius

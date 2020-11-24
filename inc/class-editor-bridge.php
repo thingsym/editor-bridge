@@ -71,7 +71,7 @@ class Editor_Bridge {
 	 *
 	 * @return void
 	 *
-	 * @since 1.0.3
+	 * @since 1.1.0
 	 */
 	public function load_plugin_data() {
 		if ( !function_exists( 'get_plugin_data' ) ) {
@@ -88,7 +88,7 @@ class Editor_Bridge {
 	 *
 	 * @return void
 	 *
-	 * @since 1.0.3
+	 * @since 1.1.0
 	 */
 	public function load_asset_file() {
 		$this->asset_file = include( EDITOR_BRIDGE_PATH . 'dist/js/blocks.asset.php' );

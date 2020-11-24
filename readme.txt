@@ -2,7 +2,7 @@
 
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 Tested up to: 5.5
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -98,8 +98,22 @@ If you would like to contribute, here are some notes and guidlines.
 
 == Changelog ==
 
-= 1.0.2 - 2020.11.02 =
+= 1.1.0 - 2020.11.24 =
+* update japanese translation
+* update pot
+* improve border expansion
+* add Thin Underline style to core/heading block
+* add One Third button size
+* fix uninstall-wp-tests.sh
+* fix npm scripts
+* fix test case
+* move hooks
+* add load_asset_file method
+* add load_plugin_data method, change version number with wp_enqueue_*
+* remove .travis.yml, change CI/CD to Github Actions
+* add workflow for unit test
 
+= 1.0.2 - 2020.11.02 =
 * add background color to image table block style 'Frame'
 * remove table block style 'Underline Emphasis'
 * fix separator block style 'Circle Mark'

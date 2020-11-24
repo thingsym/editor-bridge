@@ -41,6 +41,20 @@ class Editor_Bridge {
 		add_action( 'plugins_loaded', [ $this, 'init' ] );
 	}
 
+	public function init() {
+		if ( ! function_exists( 'register_block_type' ) ) {
+			return;
+		}
+
+		add_action( 'init', [ $this, 'load_textdomain' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'set_block_editor_translations' ] );
+
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
+		add_action( 'enqueue_block_assets', [ $this, 'enqueue_block_asset_styles' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_blocks_scripts' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
+	}
+
 	/**
 	 * Load plugin data
 	 *
@@ -151,19 +165,5 @@ class Editor_Bridge {
 			$this->plugin_data['Version'],
 			'all'
 		);
-	}
-
-	public function init() {
-		if ( ! function_exists( 'register_block_type' ) ) {
-			return;
-		}
-
-		add_action( 'init', [ $this, 'load_textdomain' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'set_block_editor_translations' ] );
-
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
-		add_action( 'enqueue_block_assets', [ $this, 'enqueue_block_asset_styles' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_blocks_scripts' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
 	}
 }

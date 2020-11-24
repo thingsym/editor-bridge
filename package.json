@@ -106,12 +106,12 @@
     }
   },
   "scripts": {
-    "makepot:php": "php /usr/local/share/wp-i18n/makepot.php wp-plugin ../editor-bridge ../editor-bridge/languages/editor-bridge.pot",
-    "makepot:wpcli": "wp i18n make-pot ./ ./languages/editor-bridge.pot --exclude=dist,bin,tests,node_modules,vendor",
-    "msgfmt:ja": "msgfmt languages/editor-bridge-ja.po -o languages/editor-bridge-ja.mo",
+    "makepot:php": "php /usr/local/share/wp-i18n/makepot.php wp-plugin ../${npm_package_name} ../${npm_package_name}/languages/${npm_package_name}.pot",
+    "makepot:wpcli": "wp i18n make-pot ./ ./languages/${npm_package_name}.pot --exclude=dist,bin,tests,node_modules,vendor",
+    "msgfmt:ja": "msgfmt languages/${npm_package_name}-ja.po -o languages/${npm_package_name}-ja.mo",
     "msgfmt": "run-p msgfmt:*",
-    "po2json:ja": "po2json languages/editor-bridge-ja.po languages/editor-bridge-ja-editor-bridge-script.json -f jed",
-    "po2json:wpcli:ja": "wp i18n make-json languages/editor-bridge-ja.po --no-purge",
+    "po2json:ja": "po2json languages/${npm_package_name}-ja.po languages/${npm_package_name}-ja-${npm_package_name}-script.json -f jed",
+    "po2json:wpcli:ja": "wp i18n make-json languages/${npm_package_name}-ja.po --no-purge",
     "po2json": "run-p po2json:*",
     "sass:blocks:style": "node-sass src/scss/blocks.scss dist/css/blocks.css --output-style expanded && postcss --use autoprefixer --no-map -r dist/css/blocks.css",
     "sass:blocks:style:minify": "node-sass src/scss/blocks.scss dist/css/blocks.min.css --output-style expanded && postcss --use autoprefixer --use cssnano --no-map -r dist/css/blocks.min.css",
@@ -137,8 +137,8 @@
     "test": "run-p test:jest",
     "format:js": "wp-scripts format-js ./src/blocks",
     "watch": "wp-scripts start src/js/blocks --output-path=dist/js",
-    "archive:package": "mkdir -p ./editor-bridge && cpy '**/*' '!./.DS_Store' '!./bin' '!./vendor' '!./composer.json' '!./composer.lock' '!./node_modules' '!./package.json' '!./package-lock.json' '!./phpcs.ruleset.xml' '!./phpmd.ruleset.xml' '!./phpstan.neon' '!./phpunit.xml' '!./webpack.config.js' '!./src' '!./tests' '!./editor-bridge-v*.zip' './editor-bridge' --parents",
-    "archive:zip": "zip -9 -qmr editor-bridge-v$npm_package_version.zip ./editor-bridge",
+    "archive:package": "mkdir -p ./editor-bridge && cpy '**/*' '!./.DS_Store' '!./bin' '!./vendor' '!./composer.json' '!./composer.lock' '!./node_modules' '!./package.json' '!./package-lock.json' '!./phpcs.ruleset.xml' '!./phpmd.ruleset.xml' '!./phpstan.neon' '!./phpunit.xml' '!./webpack.config.js' '!./src' '!./tests' '!./editor-bridge' '!./editor-bridge-v*.zip' './editor-bridge' --parents",
+    "archive:zip": "zip -9 -qmr editor-bridge-v${npm_package_version}.zip ./editor-bridge",
     "archive": "run-s build archive:package archive:zip"
   }
 }

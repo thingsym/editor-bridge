@@ -34,12 +34,10 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	function constructor() {
-		$this->assertEquals( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'init' ] ) );
+		$this->assertEquals( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'load_plugin_data' ] ) );
+		$this->assertEquals( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'load_asset_file' ] ) );
 
-		$this->assertEquals( 10, has_filter( 'wp_enqueue_scripts', [ $this->editor_bridge, 'enqueue_styles' ] ) );
-		$this->assertEquals( 10, has_filter( 'enqueue_block_assets', [ $this->editor_bridge, 'enqueue_block_asset_styles' ] ) );
-		$this->assertEquals( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'enqueue_blocks_scripts' ] ) );
-		$this->assertEquals( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'enqueue_block_editor_styles' ] ) );
+		$this->assertEquals( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'init' ] ) );
 	}
 
 	/**
@@ -51,6 +49,33 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 
 		$this->assertEquals( 10, has_action( 'init', [ $this->editor_bridge, 'load_textdomain' ] ) );
 		$this->assertEquals( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'set_block_editor_translations' ] ) );
+
+		$this->assertEquals( 10, has_filter( 'wp_enqueue_scripts', [ $this->editor_bridge, 'enqueue_styles' ] ) );
+		$this->assertEquals( 10, has_filter( 'enqueue_block_assets', [ $this->editor_bridge, 'enqueue_block_asset_styles' ] ) );
+		$this->assertEquals( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'enqueue_blocks_scripts' ] ) );
+		$this->assertEquals( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'enqueue_block_editor_styles' ] ) );
+	}
+
+	/**
+	 * @test
+	 * @group basic
+	 */
+	public function load_plugin_data() {
+		$this->editor_bridge->load_plugin_data();
+		$result = $this->editor_bridge->plugin_data;
+
+		$this->assertTrue( is_array( $result ) );
+	}
+
+	/**
+	 * @test
+	 * @group basic
+	 */
+	public function load_asset_file() {
+		$this->editor_bridge->load_asset_file();
+		$result = $this->editor_bridge->asset_file;
+
+		$this->assertTrue( is_array( $result ) );
 	}
 
 	/**
@@ -75,6 +100,7 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	public function enqueue_blocks_scripts() {
+		$this->editor_bridge->load_asset_file();
 		$this->editor_bridge->enqueue_blocks_scripts();
 		$this->assertTrue( wp_script_is( 'editor-bridge-script' ) );
 	}
@@ -84,6 +110,7 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	public function enqueue_block_editor_styles() {
+		$this->editor_bridge->load_plugin_data();
 		$this->editor_bridge->enqueue_block_editor_styles();
 		$this->assertTrue( wp_style_is( 'editor-bridge-block-editor' ) );
 	}
@@ -93,6 +120,7 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	public function enqueue_styles() {
+		$this->editor_bridge->load_plugin_data();
 		$this->editor_bridge->enqueue_styles();
 		$this->assertTrue( wp_style_is( 'editor-bridge' ) );
 	}
@@ -102,6 +130,7 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	public function enqueue_block_asset_styles() {
+		$this->editor_bridge->load_plugin_data();
 		$this->editor_bridge->enqueue_block_asset_styles();
 		$this->assertTrue( wp_style_is( 'editor-bridge-block-asset' ) );
 	}

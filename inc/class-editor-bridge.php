@@ -15,13 +15,83 @@ namespace Editor_Bridge;
  * @since 1.0.0
  */
 class Editor_Bridge {
+
+	/**
+	 * Public value.
+	 *
+	 * @access public
+	 *
+	 * @var array|null $plugin_data
+	 */
+	public $plugin_data;
+
+	/**
+	 * Public value.
+	 *
+	 * @access public
+	 *
+	 * @var array|null $asset_file
+	 */
+	public $asset_file;
+
 	public function __construct() {
+		add_action( 'plugins_loaded', [ $this, 'load_plugin_data' ] );
+		add_action( 'plugins_loaded', [ $this, 'load_asset_file' ] );
+
 		add_action( 'plugins_loaded', [ $this, 'init' ] );
+	}
+
+	/**
+	 * Init
+	 *
+	 * @access public
+	 *
+	 * @return void
+	 *
+	 * @since 1.0.0
+	 */
+	public function init() {
+		if ( ! function_exists( 'register_block_type' ) ) {
+			return;
+		}
+
+		add_action( 'init', [ $this, 'load_textdomain' ] );
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 		add_action( 'enqueue_block_assets', [ $this, 'enqueue_block_asset_styles' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_blocks_scripts' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'set_block_editor_translations' ] );
+	}
+
+	/**
+	 * Load plugin data
+	 *
+	 * @access public
+	 *
+	 * @return void
+	 *
+	 * @since 1.1.0
+	 */
+	public function load_plugin_data() {
+		if ( !function_exists( 'get_plugin_data' ) ) {
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
+
+		$this->plugin_data = get_plugin_data( EDITOR_BRIDGE );
+	}
+
+	/**
+	 * Load asset file
+	 *
+	 * @access public
+	 *
+	 * @return void
+	 *
+	 * @since 1.1.0
+	 */
+	public function load_asset_file() {
+		$this->asset_file = include( EDITOR_BRIDGE_PATH . 'dist/js/blocks.asset.php' );
 	}
 
 	/**
@@ -37,12 +107,12 @@ class Editor_Bridge {
 		load_plugin_textdomain(
 			'editor-bridge',
 			false,
-			EDITOR_BRIDGE_PATH . '/languages/'
+			EDITOR_BRIDGE_PATH . 'languages'
 		);
 	}
 
 	/**
-	 * Load block editor translations
+	 * Set block editor translations
 	 *
 	 * @access public
 	 *
@@ -55,19 +125,17 @@ class Editor_Bridge {
 			wp_set_script_translations(
 				'editor-bridge-script',
 				'editor-bridge',
-				EDITOR_BRIDGE_PATH . '/languages'
+				EDITOR_BRIDGE_PATH . 'languages'
 			);
 		}
 	}
 
 	public function enqueue_blocks_scripts() {
-		$asset_file = include( EDITOR_BRIDGE_PATH . 'dist/js/blocks.asset.php' );
-
 		wp_enqueue_script(
 			'editor-bridge-script',
 			plugins_url( 'dist/js/blocks.js', EDITOR_BRIDGE ),
-			$asset_file['dependencies'],
-			$asset_file['version'],
+			$this->asset_file['dependencies'],
+			$this->asset_file['version'],
 			true
 		);
 	}
@@ -77,7 +145,7 @@ class Editor_Bridge {
 			'editor-bridge-block-editor',
 			plugins_url( 'dist/css/block-editor-style.min.css', EDITOR_BRIDGE ),
 			[],
-			'20200904',
+			$this->plugin_data['Version'],
 			'all'
 		);
 
@@ -93,7 +161,7 @@ class Editor_Bridge {
 			'editor-bridge',
 			plugins_url( 'dist/css/blocks.min.css', EDITOR_BRIDGE ),
 			[],
-			'20200904',
+			$this->plugin_data['Version'],
 			'all'
 		);
 	}
@@ -103,18 +171,8 @@ class Editor_Bridge {
 			'editor-bridge-block-asset',
 			plugins_url( 'dist/css/block-asset.min.css', EDITOR_BRIDGE ),
 			[],
-			'20200922',
+			$this->plugin_data['Version'],
 			'all'
 		);
-	}
-
-	public function init() {
-		if ( ! function_exists( 'register_block_type' ) ) {
-			return;
-		}
-
-		add_action( 'init', [ $this, 'load_textdomain' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'set_block_editor_translations' ] );
-
 	}
 }

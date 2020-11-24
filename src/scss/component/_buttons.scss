@@ -28,6 +28,7 @@
 /** button width **/
 .wp-block-button {
 	&.is-button-width-quarter,
+	&.is-button-width-one-third,
 	&.is-button-width-half,
 	&.is-button-width-full {
 		.wp-block-button__link {
@@ -37,6 +38,9 @@
 
 	&.is-button-width-quarter {
 		width: calc(25% - 8px);
+	}
+	&.is-button-width-one-third {
+		width: calc(33.33% - 8px);
 	}
 	&.is-button-width-half {
 		width: calc(50% - 8px);

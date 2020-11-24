@@ -11,6 +11,11 @@ wp.blocks.registerBlockStyle( 'core/heading', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/heading', {
+	name: 'hd-thin-underline',
+	label: __( 'Thin Underline', 'editor-bridge' ),
+} );
+
+wp.blocks.registerBlockStyle( 'core/heading', {
 	name: 'hd-thick-underline',
 	label: __( 'Thick Underline', 'editor-bridge' ),
 } );

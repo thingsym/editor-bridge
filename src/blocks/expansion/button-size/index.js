@@ -48,6 +48,10 @@ const buttonWidthSettingsOptions = [
 		value: 'quarter',
 	},
 	{
+		label: __( 'One Third', 'editor-bridge' ),
+		value: 'one-third',
+	},
+	{
 		label: __( 'Half', 'editor-bridge' ),
 		value: 'half',
 	},

@@ -61,6 +61,9 @@
 		&[data-button-width=quarter] {
 			width: calc(25% - 8px);
 		}
+		&[data-button-width=one-third] {
+			width: calc(33.33% - 8px);
+		}
 		&[data-button-width=half] {
 			width: calc(50% - 8px);
 		}

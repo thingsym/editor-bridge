@@ -22,6 +22,7 @@ There are three expansion points.
 	* core/heading
 	* core/paragraph
 	* core/group
+	* core/columns
 * Button size and width
 	* core/button
 * Space, Margin (upper margin as default) and Padding
@@ -41,18 +42,18 @@ There are three expansion points.
 
 ### Format
 
-* badge
-* font-size
-* font-weight
-* highlight
+* Badge
+* Font size
+* Font weight
+* Highlight
 
 ### Style
 
-* button
-* heading
-* image
-* separator
-* table
+* Button
+* Heading
+* Image
+* Separator
+* Table
 
 ## Installation
 
@@ -120,6 +121,22 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ## Changelog
 
+### [1.1.0] - 2020.11.24
+
+* update japanese translation
+* update pot
+* improve border expansion
+* add Thin Underline style to core/heading block
+* add One Third button size
+* fix uninstall-wp-tests.sh
+* fix npm scripts
+* fix test case
+* move hooks
+* add load_asset_file method
+* add load_plugin_data method, change version number with wp_enqueue_*
+* remove .travis.yml, change CI/CD to Github Actions
+* add workflow for unit test
+
 ### [1.0.2] - 2020.11.02
 
 * add background color to image table block style 'Frame'
@@ -130,11 +147,11 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 
 ### [1.0.1] - 2020.10.23 - for plugin review
 
-- change the plugin name and slug to Editor Bridge
+* change the plugin name and slug to Editor Bridge
 
 ### [1.0.0] - 2020.10.21
 
-- initial release
+* initial release
 
 ## License
 

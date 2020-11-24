@@ -38,7 +38,7 @@ delete_test_suite() {
 }
 
 drop_db() {
-	mysqladmin drop $DB_NAME --user="$DB_USER" --password="$DB_PASS"
+	mysqladmin drop -f $DB_NAME --user="$DB_USER" --password="$DB_PASS"
 }
 
 delete_wp

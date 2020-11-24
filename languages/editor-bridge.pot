@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-09-30T09:37:16+00:00\n"
+"POT-Creation-Date: 2020-11-24T11:45:04+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: editor-bridge\n"
@@ -23,7 +23,7 @@ msgid "https://github.com/thingsym/editor-bridge"
 msgstr ""
 
 #. Description of the plugin
-msgid "A extended Block Editor (Gutenberg)."
+msgid "This WordPress plugin expands the functionality of blocks and adds styles and formats."
 msgstr ""
 
 #. Author of the plugin
@@ -46,82 +46,87 @@ msgstr ""
 msgid "Fill Screen"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:255
+#: src/blocks/expansion/background-image/index.js:246
 msgid "Edit Background Image"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:272
+#: src/blocks/expansion/background-image/index.js:263
 msgid "Open Media Library"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:291
+#: src/blocks/expansion/background-image/index.js:282
 msgid "Upload Background Image"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:311
+#: src/blocks/expansion/background-image/index.js:302
 msgid "Remove Background Image"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:323
+#: src/blocks/expansion/background-image/index.js:314
 msgid "Background Image Settings"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:327
+#: src/blocks/expansion/background-image/index.js:318
 msgid "Image Size"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:337
+#: src/blocks/expansion/background-image/index.js:328
 msgid "Fixed Background"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:346
+#: src/blocks/expansion/background-image/index.js:337
 msgid "Repeat Background"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:133
+#: src/blocks/expansion/border/index.js:135
 msgid "Border settings"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:136
-msgid "Border width"
-msgstr ""
-
-#: src/blocks/expansion/border/index.js:142
-#: src/blocks/format/badge/badge-popover.js:249
-#: src/blocks/format/highlight/highlight-popover.js:251
-msgid "Color"
-msgstr ""
-
-#: src/blocks/expansion/border/index.js:147
-#: src/blocks/format/badge/badge-popover.js:255
+#: src/blocks/expansion/border/index.js:139
+#: src/blocks/format/badge/badge-popover.js:262
 #: src/blocks/format/highlight/highlight-popover.js:257
 msgid "Style"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:150
+#: src/blocks/expansion/border/index.js:142
+#: src/blocks/expansion/space/index.js:46
+msgid "None"
+msgstr ""
+
+#: src/blocks/expansion/border/index.js:143
 msgid "Solid"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:151
-#: src/blocks/style/table.js:25
+#: src/blocks/expansion/border/index.js:144
+#: src/blocks/style/table.js:20
 msgid "Dashed"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:152
+#: src/blocks/expansion/border/index.js:145
 #: src/blocks/style/separator.js:15
 msgid "Dotted"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:153
+#: src/blocks/expansion/border/index.js:146
 msgid "Double"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:159
+#: src/blocks/expansion/border/index.js:152
+msgid "Border width"
+msgstr ""
+
+#: src/blocks/expansion/border/index.js:160
+#: src/blocks/format/badge/badge-popover.js:256
+#: src/blocks/format/highlight/highlight-popover.js:251
+msgid "Color"
+msgstr ""
+
+#: src/blocks/expansion/border/index.js:166
 msgid "Border radius"
 msgstr ""
 
 #: src/blocks/expansion/button-size/index.js:28
-#: src/blocks/expansion/space/index.js:49
+#: src/blocks/expansion/space/index.js:50
 msgid "Small"
 msgstr ""
 
@@ -130,12 +135,12 @@ msgid "Medium (Not set)"
 msgstr ""
 
 #: src/blocks/expansion/button-size/index.js:36
-#: src/blocks/expansion/space/index.js:57
+#: src/blocks/expansion/space/index.js:58
 msgid "Large"
 msgstr ""
 
 #: src/blocks/expansion/button-size/index.js:43
-#: src/blocks/expansion/space/index.js:41
+#: src/blocks/expansion/space/index.js:42
 msgid "Not set"
 msgstr ""
 
@@ -144,73 +149,73 @@ msgid "Quarter"
 msgstr ""
 
 #: src/blocks/expansion/button-size/index.js:51
-msgid "Half"
+msgid "One Third"
 msgstr ""
 
 #: src/blocks/expansion/button-size/index.js:55
+msgid "Half"
+msgstr ""
+
+#: src/blocks/expansion/button-size/index.js:59
 msgid "Full"
 msgstr ""
 
-#: src/blocks/expansion/button-size/index.js:149
+#: src/blocks/expansion/button-size/index.js:153
 msgid "Size Settings"
 msgstr ""
 
-#: src/blocks/expansion/button-size/index.js:153
+#: src/blocks/expansion/button-size/index.js:157
 msgid "Size"
 msgstr ""
 
-#: src/blocks/expansion/button-size/index.js:163
+#: src/blocks/expansion/button-size/index.js:167
 msgid "Width"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:45
-msgid "None"
-msgstr ""
-
-#: src/blocks/expansion/space/index.js:53
+#: src/blocks/expansion/space/index.js:54
 msgid "Medium"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:61
+#: src/blocks/expansion/space/index.js:62
 msgid "Huge"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:169
+#: src/blocks/expansion/space/index.js:175
 msgid "Space Settings"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:174
+#: src/blocks/expansion/space/index.js:180
 msgid "Margin"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:186
+#: src/blocks/expansion/space/index.js:192
 msgid "Padding"
 msgstr ""
 
-#: src/blocks/format/badge/badge-popover.js:195
+#: src/blocks/format/badge/badge-popover.js:198
 #: src/blocks/format/font-weight/font-weight-popover.js:112
 msgid "Default"
 msgstr ""
 
-#: src/blocks/format/badge/badge-popover.js:196
+#: src/blocks/format/badge/badge-popover.js:199
 #: src/blocks/style/image.js:10
-#: src/blocks/style/table.js:30
+#: src/blocks/style/table.js:25
 msgid "Round Corner"
 msgstr ""
 
-#: src/blocks/format/badge/badge-popover.js:197
+#: src/blocks/format/badge/badge-popover.js:200
 msgid "Round"
 msgstr ""
 
-#: src/blocks/format/badge/badge-popover.js:198
+#: src/blocks/format/badge/badge-popover.js:201
 msgid "Outline"
 msgstr ""
 
-#: src/blocks/format/badge/badge-popover.js:198
+#: src/blocks/format/badge/badge-popover.js:202
 msgid "Status"
 msgstr ""
 
-#: src/blocks/format/badge/badge-popover.js:199
+#: src/blocks/format/badge/badge-popover.js:203
 msgid "Perfect Circle"
 msgstr ""
 
@@ -333,54 +338,58 @@ msgid "Emboss"
 msgstr ""
 
 #: src/blocks/style/heading.js:15
-msgid "Thick Underline"
+msgid "Thin Underline"
 msgstr ""
 
 #: src/blocks/style/heading.js:20
-msgid "Two Color Underline"
+msgid "Thick Underline"
 msgstr ""
 
 #: src/blocks/style/heading.js:25
-msgid "Up Down Line"
+msgid "Two Color Underline"
 msgstr ""
 
 #: src/blocks/style/heading.js:30
-msgid "Accent Line"
+msgid "Up Down Line"
 msgstr ""
 
 #: src/blocks/style/heading.js:35
-msgid "Kebab Line"
+msgid "Accent Line"
 msgstr ""
 
 #: src/blocks/style/heading.js:40
-msgid "Single Box"
+msgid "Kebab Line"
 msgstr ""
 
 #: src/blocks/style/heading.js:45
-msgid "Double Box"
+msgid "Single Box"
 msgstr ""
 
 #: src/blocks/style/heading.js:50
-msgid "Left Accent Line"
+msgid "Double Box"
 msgstr ""
 
 #: src/blocks/style/heading.js:55
-msgid "Gradation Line"
+msgid "Left Accent Line"
 msgstr ""
 
 #: src/blocks/style/heading.js:60
-msgid "Stripe"
+msgid "Gradation Line"
 msgstr ""
 
 #: src/blocks/style/heading.js:65
-msgid "Cross Box"
+msgid "Stripe Line"
 msgstr ""
 
 #: src/blocks/style/heading.js:70
-msgid "Brackets"
+msgid "Cross Box"
 msgstr ""
 
 #: src/blocks/style/heading.js:75
+msgid "Brackets"
+msgstr ""
+
+#: src/blocks/style/heading.js:80
 msgid "Japanese quotation marks"
 msgstr ""
 

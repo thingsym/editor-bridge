@@ -15,13 +15,41 @@ namespace Editor_Bridge;
  * @since 1.0.0
  */
 class Editor_Bridge {
+
+	/**
+	 * Public value.
+	 *
+	 * @access public
+	 *
+	 * @var array|null $plugin_data
+	 */
+	public $plugin_data;
+
 	public function __construct() {
+		add_action( 'plugins_loaded', [ $this, 'load_plugin_data' ] );
 		add_action( 'plugins_loaded', [ $this, 'init' ] );
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 		add_action( 'enqueue_block_assets', [ $this, 'enqueue_block_asset_styles' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_blocks_scripts' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
+	}
+
+	/**
+	 * Load plugin data
+	 *
+	 * @access public
+	 *
+	 * @return void
+	 *
+	 * @since 1.0.3
+	 */
+	public function load_plugin_data() {
+		if ( !function_exists( 'get_plugin_data' ) ) {
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
+
+		$this->plugin_data = get_plugin_data( EDITOR_BRIDGE );
 	}
 
 	/**
@@ -77,7 +105,7 @@ class Editor_Bridge {
 			'editor-bridge-block-editor',
 			plugins_url( 'dist/css/block-editor-style.min.css', EDITOR_BRIDGE ),
 			[],
-			'20200904',
+			$this->plugin_data['Version'],
 			'all'
 		);
 
@@ -93,7 +121,7 @@ class Editor_Bridge {
 			'editor-bridge',
 			plugins_url( 'dist/css/blocks.min.css', EDITOR_BRIDGE ),
 			[],
-			'20200904',
+			$this->plugin_data['Version'],
 			'all'
 		);
 	}
@@ -103,7 +131,7 @@ class Editor_Bridge {
 			'editor-bridge-block-asset',
 			plugins_url( 'dist/css/block-asset.min.css', EDITOR_BRIDGE ),
 			[],
-			'20200922',
+			$this->plugin_data['Version'],
 			'all'
 		);
 	}

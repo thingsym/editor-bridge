@@ -107,7 +107,7 @@ class Editor_Bridge {
 		load_plugin_textdomain(
 			'editor-bridge',
 			false,
-			EDITOR_BRIDGE_PATH . '/languages/'
+			EDITOR_BRIDGE_PATH . 'languages'
 		);
 	}
 
@@ -125,7 +125,7 @@ class Editor_Bridge {
 			wp_set_script_translations(
 				'editor-bridge-script',
 				'editor-bridge',
-				EDITOR_BRIDGE_PATH . '/languages'
+				EDITOR_BRIDGE_PATH . 'languages'
 			);
 		}
 	}

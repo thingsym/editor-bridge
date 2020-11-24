@@ -41,6 +41,15 @@ class Editor_Bridge {
 		add_action( 'plugins_loaded', [ $this, 'init' ] );
 	}
 
+	/**
+	 * Init
+	 *
+	 * @access public
+	 *
+	 * @return void
+	 *
+	 * @since 1.0.0
+	 */
 	public function init() {
 		if ( ! function_exists( 'register_block_type' ) ) {
 			return;
@@ -103,7 +112,7 @@ class Editor_Bridge {
 	}
 
 	/**
-	 * Load block editor translations
+	 * Set block editor translations
 	 *
 	 * @access public
 	 *

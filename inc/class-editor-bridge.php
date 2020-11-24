@@ -25,8 +25,19 @@ class Editor_Bridge {
 	 */
 	public $plugin_data;
 
+	/**
+	 * Public value.
+	 *
+	 * @access public
+	 *
+	 * @var array|null $asset_file
+	 */
+	public $asset_file;
+
 	public function __construct() {
 		add_action( 'plugins_loaded', [ $this, 'load_plugin_data' ] );
+		add_action( 'plugins_loaded', [ $this, 'load_asset_file' ] );
+
 		add_action( 'plugins_loaded', [ $this, 'init' ] );
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
@@ -50,6 +61,19 @@ class Editor_Bridge {
 		}
 
 		$this->plugin_data = get_plugin_data( EDITOR_BRIDGE );
+	}
+
+	/**
+	 * Load asset file
+	 *
+	 * @access public
+	 *
+	 * @return void
+	 *
+	 * @since 1.0.3
+	 */
+	public function load_asset_file() {
+		$this->asset_file = include( EDITOR_BRIDGE_PATH . 'dist/js/blocks.asset.php' );
 	}
 
 	/**
@@ -89,13 +113,11 @@ class Editor_Bridge {
 	}
 
 	public function enqueue_blocks_scripts() {
-		$asset_file = include( EDITOR_BRIDGE_PATH . 'dist/js/blocks.asset.php' );
-
 		wp_enqueue_script(
 			'editor-bridge-script',
 			plugins_url( 'dist/js/blocks.js', EDITOR_BRIDGE ),
-			$asset_file['dependencies'],
-			$asset_file['version'],
+			$this->asset_file['dependencies'],
+			$this->asset_file['version'],
 			true
 		);
 	}

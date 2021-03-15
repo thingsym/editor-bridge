@@ -74,11 +74,11 @@ There are three expansion points.
 
 = Test Matrix =
 
-For operation compatibility between PHP version and WordPress version, see below [Travis CI](https://travis-ci.org/thingsym/editor-bridge).
+For operation compatibility between PHP version and WordPress version, see below [GitHub Actions](https://github.com/thingsym/editor-bridge/actions).
 
 = Contribution =
 
-Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
+Small patches and bug reports can be submitted a issue tracker in GitHub. Forking on GitHub is another good way. You can send a pull request.
 
 * [editor-bridge - GitHub](https://github.com/thingsym/editor-bridge)
 * [Editor Bridge - WordPress Plugin](https://wordpress.org/plugins/editor-bridge/)
@@ -111,7 +111,7 @@ If you would like to contribute, here are some notes and guidlines.
 * move hooks
 * add load_asset_file method
 * add load_plugin_data method, change version number with wp_enqueue_*
-* remove .travis.yml, change CI/CD to Github Actions
+* remove .travis.yml, change CI/CD to GitHub Actions
 * add workflow for unit test
 
 = 1.0.2 - 2020.11.02 =

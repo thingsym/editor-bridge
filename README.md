@@ -75,7 +75,7 @@ Editor Bridge is hosted on the WordPress Plugin Directory.
 
 ## Test Matrix
 
-For operation compatibility between PHP version and WordPress version, see below [Travis CI](https://travis-ci.com/thingsym/editor-bridge).
+For operation compatibility between PHP version and WordPress version, see below [GitHub Actions](https://github.com/thingsym/editor-bridge/actions).
 
 ## Build development environment
 
@@ -111,7 +111,7 @@ composer run phpunit
 
 ### Patches and Bug Fixes
 
-Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
+Small patches and bug reports can be submitted a issue tracker in GitHub. Forking on GitHub is another good way. You can send a pull request.
 
 1. Fork [Editor Bridge](https://github.com/thingsym/editor-bridge) from GitHub repository
 2. Create a feature branch: git checkout -b my-new-feature
@@ -134,7 +134,7 @@ Small patches and bug reports can be submitted a issue tracker in Github. Forkin
 * move hooks
 * add load_asset_file method
 * add load_plugin_data method, change version number with wp_enqueue_*
-* remove .travis.yml, change CI/CD to Github Actions
+* remove .travis.yml, change CI/CD to GitHub Actions
 * add workflow for unit test
 
 ### [1.0.2] - 2020.11.02

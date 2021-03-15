@@ -2,6 +2,7 @@
 
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
+Donate link: https://github.com/sponsors/thingsym
 Stable tag: 1.1.0
 Tested up to: 5.5
 Requires at least: 5.5

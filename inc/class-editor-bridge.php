@@ -62,6 +62,8 @@ class Editor_Bridge {
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_blocks_scripts' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'set_block_editor_translations' ] );
+
+		add_filter( 'plugin_row_meta', array( $this, 'plugin_metadata_links' ), 10, 2 );
 	}
 
 	/**
@@ -109,6 +111,30 @@ class Editor_Bridge {
 			false,
 			EDITOR_BRIDGE_PATH . 'languages'
 		);
+	}
+
+	/**
+	 * Set links below a plugin on the Plugins page.
+	 *
+	 * Hooks to plugin_row_meta
+	 *
+	 * @see https://developer.wordpress.org/reference/hooks/plugin_row_meta/
+	 *
+	 * @access public
+	 *
+	 * @param array  $links  An array of the plugin's metadata.
+	 * @param string $file   Path to the plugin file relative to the plugins directory.
+	 *
+	 * @return array $links
+	 *
+	 * @since 1.1.1
+	 */
+	public function plugin_metadata_links( $links, $file ) {
+		if ( $file == plugin_basename( EDITOR_BRIDGE ) ) {
+			$links[] = '<a href="https://github.com/sponsors/thingsym">' . __( 'Become a sponsor', 'editor-bridge' ) . '</a>';
+		}
+
+		return $links;
 	}
 
 	/**

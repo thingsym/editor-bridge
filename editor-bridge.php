@@ -9,7 +9,7 @@
  * License:     GPL2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: editor-bridge
- * Domain Path: /languages/
+ * Domain Path: /languages
  *
  * @package Editor_Bridge
  */

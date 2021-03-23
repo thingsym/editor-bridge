@@ -1,15 +1,15 @@
-# Copyright (C) 2020 thingsym
+# Copyright (C) 2021 thingsym
 # This file is distributed under the same license as the Editor Bridge plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Editor Bridge 1.1.0\n"
+"Project-Id-Version: Editor Bridge 1.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/editor-bridge\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-11-24T11:45:04+00:00\n"
+"POT-Creation-Date: 2021-03-23T11:00:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: editor-bridge\n"
@@ -33,6 +33,10 @@ msgstr "thingsym"
 #. Author URI of the plugin
 msgid "https://www.thingslabo.com/"
 msgstr "https://www.thingslabo.com/"
+
+#: inc/class-editor-bridge.php:134
+msgid "Become a sponsor"
+msgstr "スポンサーになる"
 
 #: src/blocks/expansion/background-image/index.js:56
 msgid "Orignal"
@@ -156,7 +160,6 @@ msgstr "3分の1"
 msgid "Half"
 msgstr "半分"
 
-#: src/blocks/expansion/button-size/index.js:55
 #: src/blocks/expansion/button-size/index.js:59
 msgid "Full"
 msgstr "全幅"

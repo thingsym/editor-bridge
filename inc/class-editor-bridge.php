@@ -62,6 +62,8 @@ class Editor_Bridge {
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_blocks_scripts' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'set_block_editor_translations' ] );
+
+		add_filter( 'plugin_row_meta', array( $this, 'plugin_metadata_links' ), 10, 2 );
 	}
 
 	/**
@@ -74,7 +76,7 @@ class Editor_Bridge {
 	 * @since 1.1.0
 	 */
 	public function load_plugin_data() {
-		if ( !function_exists( 'get_plugin_data' ) ) {
+		if ( ! function_exists( 'get_plugin_data' ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		}
 
@@ -91,7 +93,7 @@ class Editor_Bridge {
 	 * @since 1.1.0
 	 */
 	public function load_asset_file() {
-		$this->asset_file = include( EDITOR_BRIDGE_PATH . 'dist/js/blocks.asset.php' );
+		$this->asset_file = include plugin_dir_path( EDITOR_BRIDGE ) . 'dist/js/blocks.asset.php';
 	}
 
 	/**
@@ -107,8 +109,32 @@ class Editor_Bridge {
 		load_plugin_textdomain(
 			'editor-bridge',
 			false,
-			EDITOR_BRIDGE_PATH . 'languages'
+			dirname( plugin_basename( EDITOR_BRIDGE ) ) . '/languages'
 		);
+	}
+
+	/**
+	 * Set links below a plugin on the Plugins page.
+	 *
+	 * Hooks to plugin_row_meta
+	 *
+	 * @see https://developer.wordpress.org/reference/hooks/plugin_row_meta/
+	 *
+	 * @access public
+	 *
+	 * @param array  $links  An array of the plugin's metadata.
+	 * @param string $file   Path to the plugin file relative to the plugins directory.
+	 *
+	 * @return array $links
+	 *
+	 * @since 1.1.1
+	 */
+	public function plugin_metadata_links( $links, $file ) {
+		if ( $file == plugin_basename( EDITOR_BRIDGE ) ) {
+			$links[] = '<a href="https://github.com/sponsors/thingsym">' . __( 'Become a sponsor', 'editor-bridge' ) . '</a>';
+		}
+
+		return $links;
 	}
 
 	/**
@@ -125,7 +151,7 @@ class Editor_Bridge {
 			wp_set_script_translations(
 				'editor-bridge-script',
 				'editor-bridge',
-				EDITOR_BRIDGE_PATH . 'languages'
+				plugin_dir_path( EDITOR_BRIDGE ) . 'languages'
 			);
 		}
 	}

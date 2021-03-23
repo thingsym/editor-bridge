@@ -25,8 +25,6 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 		// $this->assertRegExp( '#/editor-bridge/editor-bridge.php$#', EDITOR_BRIDGE );
 
 		$this->assertTrue( class_exists( '\Editor_Bridge\Editor_Bridge' ) );
-
-		$this->assertRegExp( '#' . plugin_dir_path( EDITOR_BRIDGE ) . '$#', EDITOR_BRIDGE_PATH );
 	}
 
 	/**
@@ -54,6 +52,8 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 		$this->assertEquals( 10, has_filter( 'enqueue_block_assets', [ $this->editor_bridge, 'enqueue_block_asset_styles' ] ) );
 		$this->assertEquals( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'enqueue_blocks_scripts' ] ) );
 		$this->assertEquals( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'enqueue_block_editor_styles' ] ) );
+
+		$this->assertEquals( 10, has_filter( 'plugin_row_meta', array( $this->editor_bridge, 'plugin_metadata_links' ) ) );
 	}
 
 	/**
@@ -85,6 +85,14 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	public function load_textdomain() {
 		$result = $this->editor_bridge->load_textdomain();
 		$this->assertNull( $result );
+	}
+
+	/**
+	 * @test
+	 * @group basic
+	 */
+	public function plugin_metadata_links() {
+		$this->markTestIncomplete( 'This test has not been implemented yet.' );
 	}
 
 	/**

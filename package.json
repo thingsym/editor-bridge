@@ -1,6 +1,6 @@
 {
   "name": "editor-bridge",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A template for WordPress plugin that extends Gutenberg.",
   "author": "Thingsym",
   "license": "GPL-2.0-or-later",
@@ -18,32 +18,35 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "hex-to-rgba": "^2.0.1",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "lodash.assign": "^4.2.0",
-    "rgb2hex": "^0.2.0"
+    "rgb2hex": "^0.2.5"
   },
   "devDependencies": {
-    "@wordpress/babel-plugin-makepot": "^3.7.0",
-    "@wordpress/browserslist-config": "^2.7.0",
-    "@wordpress/jest-preset-default": "^6.2.0",
-    "@wordpress/scripts": "^12.1.1",
-    "autoprefixer": "^9.8.6",
+    "@wordpress/babel-plugin-makepot": "^4.1.0",
+    "@wordpress/browserslist-config": "^3.0.1",
+    "@wordpress/jest-preset-default": "^7.0.1",
+    "@wordpress/scripts": "^14.0.1",
+    "autoprefixer": "^10.2.5",
     "cpy-cli": "^3.1.1",
     "cssnano": "^4.1.10",
-    "eslint": "^7.7.0",
+    "eslint": "^7.22.0",
     "eslint-config-wordpress": "^2.0.0",
-    "eslint-plugin-jest": "^23.20.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react": "^7.20.6",
-    "jest": "^26.4.2",
+    "eslint-plugin-jest": "^24.3.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "jest": "^26.6.3",
     "jest-puppeteer": "^4.4.0",
+    "node-sass": "^5.0.0",
+    "npm-check-updates": "^11.3.0",
     "npm-run-all": "^4.1.5",
     "po2json": "^1.0.0-alpha",
-    "postcss-cli": "^7.1.1",
-    "stylelint": "^13.6.1",
-    "stylelint-config-recommended": "^3.0.0",
+    "postcss": "^8.2.8",
+    "postcss-cli": "^8.3.1",
+    "stylelint": "^13.12.0",
+    "stylelint-config-recommended": "^4.0.0",
     "stylelint-config-recommended-scss": "^4.2.0",
-    "stylelint-scss": "^3.18.0"
+    "stylelint-scss": "^3.19.0"
   },
   "browserslist": [
     "extends @wordpress/browserslist-config"
@@ -72,8 +75,7 @@
     "extends": [
       "stylelint-config-recommended",
       "stylelint-scss",
-      "stylelint-config-recommended-scss",
-      "stylelint-config-wordpress"
+      "stylelint-config-recommended-scss"
     ],
     "rules": {
       "no-descending-specificity": null,
@@ -122,7 +124,7 @@
     "webpack": "cross-env BABEL_ENV=default NODE_ENV=production webpack",
     "deprecated:build:js": "npm-run-all -p webpack",
     "build:js": "wp-scripts build src/js/blocks --output-path=dist/js",
-    "build:css": "run-p sass:**",
+    "build:css": "run-s sass:**",
     "build:i18n": "run-s msgfmt:* po2json:*",
     "build": "run-p build:*",
     "lint:js": "wp-scripts lint-js ./dist",

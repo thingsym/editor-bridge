@@ -2,8 +2,9 @@
 
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
-Stable tag: 1.1.0
-Tested up to: 5.5
+Donate link: https://github.com/sponsors/thingsym
+Stable tag: 1.1.1
+Tested up to: 5.7.0
 Requires at least: 5.5
 Requires PHP: 7.1
 License: GPL2 or later
@@ -73,11 +74,11 @@ There are three expansion points.
 
 = Test Matrix =
 
-For operation compatibility between PHP version and WordPress version, see below [Travis CI](https://travis-ci.org/thingsym/editor-bridge).
+For operation compatibility between PHP version and WordPress version, see below [GitHub Actions](https://github.com/thingsym/editor-bridge/actions).
 
 = Contribution =
 
-Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
+Small patches and bug reports can be submitted a issue tracker in GitHub. Forking on GitHub is another good way. You can send a pull request.
 
 * [editor-bridge - GitHub](https://github.com/thingsym/editor-bridge)
 * [Editor Bridge - WordPress Plugin](https://wordpress.org/plugins/editor-bridge/)
@@ -98,6 +99,23 @@ If you would like to contribute, here are some notes and guidlines.
 
 == Changelog ==
 
+= 1.1.1 - 2021.03.23 =
+* remove EDITOR_BRIDGE_PATH constant
+* update japanese translation
+* update pot
+* update package.json
+* fix width with components popover of font size format
+* fix margin with backgound image icon on the toolbar
+* fix button block for wordpress 5.7
+* change integer value
+* fix .editorconfig
+* fix font size
+* add test case
+* add sponsor link
+* update wordpress-test-matrix
+* add FUNDING.yml
+* add donate link
+
 = 1.1.0 - 2020.11.24 =
 * update japanese translation
 * update pot
@@ -110,7 +128,7 @@ If you would like to contribute, here are some notes and guidlines.
 * move hooks
 * add load_asset_file method
 * add load_plugin_data method, change version number with wp_enqueue_*
-* remove .travis.yml, change CI/CD to Github Actions
+* remove .travis.yml, change CI/CD to GitHub Actions
 * add workflow for unit test
 
 = 1.0.2 - 2020.11.02 =

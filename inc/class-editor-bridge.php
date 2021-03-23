@@ -93,7 +93,7 @@ class Editor_Bridge {
 	 * @since 1.1.0
 	 */
 	public function load_asset_file() {
-		$this->asset_file = include( EDITOR_BRIDGE_PATH . 'dist/js/blocks.asset.php' );
+		$this->asset_file = include plugin_dir_path( EDITOR_BRIDGE ) . 'dist/js/blocks.asset.php';
 	}
 
 	/**
@@ -109,7 +109,7 @@ class Editor_Bridge {
 		load_plugin_textdomain(
 			'editor-bridge',
 			false,
-			EDITOR_BRIDGE_PATH . 'languages'
+			dirname( plugin_basename( EDITOR_BRIDGE ) ) . '/languages'
 		);
 	}
 
@@ -151,7 +151,7 @@ class Editor_Bridge {
 			wp_set_script_translations(
 				'editor-bridge-script',
 				'editor-bridge',
-				EDITOR_BRIDGE_PATH . 'languages'
+				plugin_dir_path( EDITOR_BRIDGE ) . 'languages'
 			);
 		}
 	}

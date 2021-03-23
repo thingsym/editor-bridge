@@ -25,8 +25,6 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 		// $this->assertRegExp( '#/editor-bridge/editor-bridge.php$#', EDITOR_BRIDGE );
 
 		$this->assertTrue( class_exists( '\Editor_Bridge\Editor_Bridge' ) );
-
-		$this->assertRegExp( '#' . plugin_dir_path( EDITOR_BRIDGE ) . '$#', EDITOR_BRIDGE_PATH );
 	}
 
 	/**

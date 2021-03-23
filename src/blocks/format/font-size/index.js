@@ -48,8 +48,8 @@ function FontSizeEdit( { value, onChange, isActive, activeAttributes } ) {
 						<Icon
 							icon={ fontSolid }
 							style={{
-								width: '18px',
-								height: '18px',
+								width: '16px',
+								height: '16px',
 							}}
 						/>
 					</>

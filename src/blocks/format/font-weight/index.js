@@ -48,8 +48,8 @@ function FontWeightEdit( { value, onChange, isActive, activeAttributes } ) {
 						<Icon
 							icon={ fontWeightSolid }
 							style={{
-								width: '18px',
-								height: '18px',
+								width: '16px',
+								height: '16px',
 							}}
 						/>
 					</>

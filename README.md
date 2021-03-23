@@ -64,8 +64,8 @@ There are three expansion points.
 
 ## Compatibility
 
-- WordPress version 5.5 or later
-- Gutenberg version 8.5 or later
+* WordPress version 5.5 or later
+* Gutenberg version 8.5 or later
 
 ## WordPress Plugin Directory
 
@@ -120,6 +120,24 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 5. Create new Pull Request
 
 ## Changelog
+
+### [1.1.1] - 2021.03.23
+
+* remove EDITOR_BRIDGE_PATH constant
+* update japanese translation
+* update pot
+* update package.json
+* fix width with components popover of font size format
+* fix margin with backgound image icon on the toolbar
+* fix button block for wordpress 5.7
+* change integer value
+* fix .editorconfig
+* fix font size
+* add test case
+* add sponsor link
+* update wordpress-test-matrix
+* add FUNDING.yml
+* add donate link
 
 ### [1.1.0] - 2020.11.24
 

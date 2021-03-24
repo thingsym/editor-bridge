@@ -3,7 +3,7 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Tested up to: 5.7.0
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -98,6 +98,23 @@ If you would like to contribute, here are some notes and guidlines.
 4. Have fun!
 
 == Changelog ==
+
+= 1.1.1 - 2021.03.23 =
+* remove EDITOR_BRIDGE_PATH constant
+* update japanese translation
+* update pot
+* update package.json
+* fix width with components popover of font size format
+* fix margin with backgound image icon on the toolbar
+* fix button block for wordpress 5.7
+* change integer value
+* fix .editorconfig
+* fix font size
+* add test case
+* add sponsor link
+* update wordpress-test-matrix
+* add FUNDING.yml
+* add donate link
 
 = 1.1.0 - 2020.11.24 =
 * update japanese translation

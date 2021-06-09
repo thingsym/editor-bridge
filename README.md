@@ -121,6 +121,11 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 
 ## Changelog
 
+### [1.1.2] - 2021.06.09
+
+* fix image block styles
+* add asset-release workflow
+
 ### [1.1.1] - 2021.03.23
 
 * remove EDITOR_BRIDGE_PATH constant

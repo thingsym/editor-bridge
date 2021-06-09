@@ -3,7 +3,7 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Tested up to: 5.7.0
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -98,6 +98,10 @@ If you would like to contribute, here are some notes and guidlines.
 4. Have fun!
 
 == Changelog ==
+
+= 1.1.2 - 2021.06.09 =
+* fix image block styles
+* add asset-release workflow
 
 = 1.1.1 - 2021.03.23 =
 * remove EDITOR_BRIDGE_PATH constant

@@ -104,6 +104,14 @@
 		padding: var(--editor-bridge-space-padding-huge, unset);
 	}
 
+	[data-disable-padding-horizontal=true],
+	[data-disable-padding-horizontal=true].has-background,
+	.wp-block-group[data-disable-padding-horizontal=true].has-background {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+
 	[data-margin-slug=none],
 	figure.wp-block-image[data-margin-slug=none]:not(.wp-block) {
 		margin-top: var(--editor-bridge-space-margin-top-none, unset);

@@ -16,7 +16,8 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import {
 	PanelBody,
-	SelectControl
+	SelectControl,
+	CheckboxControl
 } from '@wordpress/components';
 
 const enableBlocks = [
@@ -124,6 +125,12 @@ const addAttributes = ( settings, name ) => {
 				default: spaceSettingsOptions[ 0 ].value,
 			},
 		} );
+		settings.attributes = assign( settings.attributes, {
+			disablePaddingHorizontal: {
+				type: 'boolean',
+				default: false,
+			},
+		} );
 	}
 
 	return settings;
@@ -157,6 +164,7 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 		const {
 			marginSlug,
 			paddingSlug,
+			disablePaddingHorizontal,
 			className,
 		} = props.attributes;
 
@@ -199,6 +207,16 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 								} }
 							/>
 						) }
+						{ hasBlockSupport( name, 'editorBridgeSpacePadding' ) && !( paddingSlug == '' || paddingSlug == 'none' ) && (
+							<CheckboxControl
+								label={ __( 'Disable the horizontal setting', 'editor-bridge' ) }
+								value={ disablePaddingHorizontal }
+								checked={ disablePaddingHorizontal }
+								onChange={(value) =>
+									setAttributes({ disablePaddingHorizontal: value })
+								}
+							/>
+						) }
 					</PanelBody>
 				</InspectorControls>
 			</>
@@ -231,6 +249,7 @@ const withSpaceBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 		const {
 			marginSlug,
 			paddingSlug,
+			disablePaddingHorizontal,
 		} = props.attributes;
 
 		const className = classnames();
@@ -242,6 +261,9 @@ const withSpaceBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 		}
 		if ( paddingSlug ) {
 			customData[ 'data-padding-slug' ] = paddingSlug;
+		}
+		if ( disablePaddingHorizontal && !( paddingSlug == '' || paddingSlug == 'none' ) ) {
+			customData[ 'data-disable-padding-horizontal' ] = disablePaddingHorizontal;
 		}
 
 		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
@@ -280,6 +302,7 @@ const getSaveSpaceContent = ( extraProps, blockType, attributes ) => {
 		{
 			[ `is-margin-${ attributes.marginSlug }` ]: hasBlockSupport( blockType.name, 'editorBridgeSpaceMargin' ) && attributes.marginSlug,
 			[ `is-padding-${ attributes.paddingSlug }` ]: hasBlockSupport( blockType.name, 'editorBridgeSpacePadding' ) && attributes.paddingSlug,
+			[ `disable-padding-horizontal` ]: hasBlockSupport( blockType.name, 'editorBridgeSpacePadding' ) && attributes.paddingSlug && !( attributes.paddingSlug == '' || attributes.paddingSlug == 'none' ) && attributes.disablePaddingHorizontal,
 		}
 	);
 

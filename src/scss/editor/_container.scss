@@ -1,0 +1,10 @@
+.wp-block[data-align=full] > [data-disable-inner-container-width=true] {
+	.wp-block-cover__inner-container,
+	.wp-block-group__inner-container {
+		> .block-editor-block-list__block {
+			max-width: 100%;
+			margin-left: unset;
+			margin-right: unset;
+		}
+	}
+}

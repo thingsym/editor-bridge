@@ -1,5 +1,5 @@
 # Copyright (C) 2021 thingsym
-# This file is distributed under the same license as the Editor Bridge plugin.
+# This file is distributed under the GPL2 or later.
 msgid ""
 msgstr ""
 "Project-Id-Version: Editor Bridge 1.1.2\n"
@@ -9,9 +9,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-03-23T11:00:53+00:00\n"
+"POT-Creation-Date: 2021-06-21T11:46:51+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.4.0\n"
+"X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: editor-bridge\n"
 
 #. Plugin Name of the plugin
@@ -93,7 +93,7 @@ msgid "Style"
 msgstr ""
 
 #: src/blocks/expansion/border/index.js:142
-#: src/blocks/expansion/space/index.js:46
+#: src/blocks/expansion/space/index.js:47
 msgid "None"
 msgstr ""
 
@@ -130,7 +130,7 @@ msgid "Border radius"
 msgstr ""
 
 #: src/blocks/expansion/button-size/index.js:28
-#: src/blocks/expansion/space/index.js:50
+#: src/blocks/expansion/space/index.js:51
 msgid "Small"
 msgstr ""
 
@@ -139,12 +139,12 @@ msgid "Medium (Not set)"
 msgstr ""
 
 #: src/blocks/expansion/button-size/index.js:36
-#: src/blocks/expansion/space/index.js:58
+#: src/blocks/expansion/space/index.js:59
 msgid "Large"
 msgstr ""
 
 #: src/blocks/expansion/button-size/index.js:43
-#: src/blocks/expansion/space/index.js:42
+#: src/blocks/expansion/space/index.js:43
 msgid "Not set"
 msgstr ""
 
@@ -161,39 +161,55 @@ msgid "Half"
 msgstr ""
 
 #: src/blocks/expansion/button-size/index.js:59
+msgid "Three Quarters"
+msgstr ""
+
+#: src/blocks/expansion/button-size/index.js:63
 msgid "Full"
 msgstr ""
 
-#: src/blocks/expansion/button-size/index.js:153
+#: src/blocks/expansion/button-size/index.js:157
 msgid "Size Settings"
 msgstr ""
 
-#: src/blocks/expansion/button-size/index.js:157
+#: src/blocks/expansion/button-size/index.js:161
 msgid "Size"
 msgstr ""
 
-#: src/blocks/expansion/button-size/index.js:167
+#: src/blocks/expansion/button-size/index.js:171
 msgid "Width"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:54
+#: src/blocks/expansion/container/index.js:107
+msgid "Container Settings"
+msgstr ""
+
+#: src/blocks/expansion/container/index.js:111
+msgid "Disable inner container width"
+msgstr ""
+
+#: src/blocks/expansion/space/index.js:55
 msgid "Medium"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:62
+#: src/blocks/expansion/space/index.js:63
 msgid "Huge"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:175
+#: src/blocks/expansion/space/index.js:183
 msgid "Space Settings"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:180
+#: src/blocks/expansion/space/index.js:188
 msgid "Margin"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:192
+#: src/blocks/expansion/space/index.js:200
 msgid "Padding"
+msgstr ""
+
+#: src/blocks/expansion/space/index.js:212
+msgid "Disable the horizontal setting"
 msgstr ""
 
 #: src/blocks/format/badge/badge-popover.js:198

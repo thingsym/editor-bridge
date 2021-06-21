@@ -80,6 +80,9 @@
 		&[data-button-width=half] {
 			width: calc(50% - 8px);
 		}
+		&[data-button-width=three-quarters] {
+			width: calc(75% - 8px);
+		}
 		&[data-button-width=full] {
 			width: 100%;
 		}

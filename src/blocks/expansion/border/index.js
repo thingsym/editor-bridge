@@ -61,7 +61,7 @@ const addAttributes = ( settings, name ) => {
 		settings.attributes = assign( settings.attributes, {
 			borderWidth: {
 				type: 'number',
-				default: 0,
+				default: undefined,
 			},
 			borderStyle: {
 				type: 'string',
@@ -73,7 +73,7 @@ const addAttributes = ( settings, name ) => {
 			},
 			borderRadius: {
 				type: 'number',
-				default: 0,
+				default: undefined,
 			},
 		} );
 	}
@@ -92,7 +92,7 @@ const MAX_BORDER_WIDTH_VALUE = 10;
 const INITIAL_BORDER_WIDTH_POSITION = 0;
 const MIN_BORDER_RADIUS_VALUE = 0;
 const MAX_BORDER_RADIUS_VALUE = 50;
-const INITIAL_BORDER_RADIUS_POSITION = 5;
+const INITIAL_BORDER_RADIUS_POSITION = 0;
 
 function BorderPanel( {
 	borderWidth = '',
@@ -104,7 +104,7 @@ function BorderPanel( {
 
 	const setBorderWidth = useCallback(
 		( newBorderWidth ) => {
-			setAttributes( { borderWidth: newBorderWidth } );
+			setAttributes( { borderWidth: newBorderWidth ? newBorderWidth : 0 } );
 		},
 		[ setAttributes ]
 	);
@@ -125,7 +125,7 @@ function BorderPanel( {
 
 	const setBorderRadius = useCallback(
 		( newBorderRadius ) => {
-			setAttributes( { borderRadius: newBorderRadius } );
+			setAttributes( { borderRadius: newBorderRadius ? newBorderRadius : 0 } );
 		},
 		[ setAttributes ]
 	);
@@ -259,16 +259,16 @@ const withBorderBlockAttributes = createHigherOrderComponent( ( BlockListBlock )
 		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 
 		wrapperProps.style = {
-			borderWidth: borderWidth && borderStyle
+			borderWidth: borderWidth != null && borderStyle
 				? borderWidth + 'px'
 				: undefined,
 			borderStyle: borderStyle
 				? borderStyle
 				: undefined,
-			borderColor: borderColor
+			borderColor: borderColor != null
 				? borderColor
 				: undefined,
-			borderRadius: borderRadius
+			borderRadius: borderRadius != null
 				? borderRadius + 'px'
 				: undefined,
 			...wrapperProps.style,
@@ -311,16 +311,16 @@ const getSaveBorderContent = ( extraProps, blockType, attributes ) => {
 	} = attributes;
 
 	extraProps.style = {
-		borderWidth: borderWidth && borderStyle
+		borderWidth: borderWidth != null && borderStyle
 			? borderWidth + 'px'
 			: undefined,
 		borderStyle: borderStyle
 			? borderStyle
 			: undefined,
-		borderColor: borderColor
+		borderColor: borderColor != null
 			? borderColor
 			: undefined,
-		borderRadius: borderRadius
+		borderRadius: borderRadius != null
 			? borderRadius + 'px'
 			: undefined,
 		...extraProps.style,

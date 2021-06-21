@@ -138,6 +138,13 @@
 	padding: var(--editor-bridge-space-padding-huge, unset);
 }
 
+.disable-padding-horizontal,
+.disable-padding-horizontal.has-background,
+.disable-padding-horizontal.is-padding-huge.has-background {
+	padding-left: 0;
+	padding-right: 0;
+}
+
 /** for alignwide and alignfull **/
 [class^="wp-block-"] {
 	&.alignwide,
@@ -156,6 +163,11 @@
 		}
 		&.is-padding-huge {
 			padding: var(--editor-bridge-space-padding-huge, unset);
+		}
+
+		&.disable-padding-horizontal {
+			padding-left: 0;
+			padding-right: 0;
 		}
 	}
 }

@@ -1,0 +1,10 @@
+[class^="wp-block-"] {
+	&.alignfull {
+		&.disable-inner-container-width {
+			> .wp-block-cover__inner-container,
+			> .wp-block-group__inner-container {
+				max-width: unset;
+			}
+		}
+	}
+}

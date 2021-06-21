@@ -121,6 +121,20 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 
 ## Changelog
 
+### [1.2.0] - 2021.06.21
+
+* exclude README.md with archive:package npm script
+* update japanese translation
+* update pot
+* add container expansion
+* remove duplicate settings
+* add disable the horizontal setting with padding
+* improve border expansion, change default attributes
+* add Three Quarters size button
+* merge style settings with existing ones
+* fix popover width
+* fix return color value
+
 ### [1.1.2] - 2021.06.09
 
 * fix image block styles

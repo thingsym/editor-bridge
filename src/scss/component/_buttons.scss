@@ -25,11 +25,67 @@
 
 }
 
+.wp-block-buttons {
+	/** button width **/
+	.wp-block-button {
+		&.is-button-width-quarter,
+		&.is-button-width-one-third,
+		&.is-button-width-half,
+		&.is-button-width-three-quarters,
+		&.is-button-width-full {
+			.wp-block-button__link {
+				width: 100%;
+			}
+		}
+
+		&.is-button-width-quarter {
+			width: calc(25% - 8px);
+		}
+		&.is-button-width-one-third {
+			width: calc(33.33% - 8px);
+		}
+		&.is-button-width-half {
+			width: calc(50% - 8px);
+		}
+		&.is-button-width-three-quarters {
+			width: calc(75% - 8px);
+		}
+		&.is-button-width-full {
+			width: 100%;
+			margin-right: 0;
+		}
+	}
+
+	/** button size **/
+	.wp-block-button {
+		&:hover {
+			.wp-block-button__link {
+				text-decoration: none;
+			}
+		}
+
+		&.is-button-size-small {
+			.wp-block-button__link {
+				font-size: 90%;
+				padding: .3rem 2rem;
+			}
+		}
+		&.is-button-size-large {
+			.wp-block-button__link {
+				font-size: 140%;
+				padding: .8rem 2rem;
+			}
+		}
+	}
+}
+
 /** button width **/
+// for Old Single Button
 .wp-block-button {
 	&.is-button-width-quarter,
 	&.is-button-width-one-third,
 	&.is-button-width-half,
+	&.is-button-width-three-quarters,
 	&.is-button-width-full {
 		.wp-block-button__link {
 			width: 100%;
@@ -44,6 +100,9 @@
 	}
 	&.is-button-width-half {
 		width: calc(50% - 8px);
+	}
+	&.is-button-width-three-quarters {
+		width: calc(75% - 8px);
 	}
 	&.is-button-width-full {
 		width: 100%;

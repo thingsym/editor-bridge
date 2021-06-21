@@ -77,7 +77,7 @@ const HighlightPopoverAtLink = ( { addingColor, ...props } ) => {
 export function getActiveColorHex( formatName, formatValue, colors ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
-		return null;
+		return undefined;
 	}
 
 	const currentStyle = activeFormat.attributes.style;
@@ -101,9 +101,9 @@ export function getActiveColorHex( formatName, formatValue, colors ) {
 			const color = currentStyle.match( regex );
 
 			if (color === null) {
-				return null;
+				return undefined;
 			}
-			return color[1] ? color[1] : null;
+			return color[1] ? color[1] : undefined;
 		}
 	}
 

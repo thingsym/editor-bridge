@@ -22,6 +22,11 @@
 		margin-bottom: 0;
 	}
 }
+.components-inline-fontweight-popover {
+	.components-popover__content > div {
+		width: 180px;
+	}
+}
 .components-popover.is-flex-dir-column {
 	.block-editor-url-popover__row {
 		flex-direction: column;

@@ -456,7 +456,7 @@ const getSaveBackgroundImageContent = ( extraProps, blockType, attributes ) => {
 			style.backgroundSize = backgroundSize;
 		}
 
-		extraProps.style = style;
+		extraProps.style = Object.assign( style, extraProps.style );
 
 		extraProps.className = classnames(
 			extraProps.className,

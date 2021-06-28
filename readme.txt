@@ -29,20 +29,23 @@ There are three expansion points.
 
 = Expanded block =
 
-* Background image
+* Background image settings
 	* core/heading
 	* core/paragraph
 	* core/column
 	* core/columns
 	* core/group
-* Border
+* Border settings
 	* core/heading
 	* core/paragraph
 	* core/group
 	* core/columns
-* Button size and width
+* Button size and width settings
 	* core/button
-* Space, Margin (upper margin as default) and Padding
+* Container settings
+	* core/group
+	* core/cover
+* Space settings, Margin (upper margin as default) and Padding
 	* core/heading
 	* core/paragraph
 	* core/image

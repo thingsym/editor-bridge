@@ -49,9 +49,9 @@ const addAttributes = ( settings, name ) => {
 		return settings;
 	}
 
-	if ( ! settings.attributes.disableInnerContainerWidth ) {
+	if ( ! settings.attributes.fixedLayoutWidth ) {
 		settings.attributes = assign( settings.attributes, {
-			disableInnerContainerWidth: {
+			fixedLayoutWidth: {
 				type: 'boolean',
 				default: false,
 			},
@@ -87,7 +87,7 @@ const withContainerControl = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		const {
-			disableInnerContainerWidth,
+			fixedLayoutWidth,
 			align,
 			className,
 		} = props.attributes;
@@ -108,11 +108,11 @@ const withContainerControl = createHigherOrderComponent( ( BlockEdit ) => {
 							initialOpen={ false }
 						>
 							<CheckboxControl
-								label={ __( 'Disable inner container width', 'editor-bridge' ) }
-								value={ disableInnerContainerWidth }
-								checked={ disableInnerContainerWidth }
+								label={ __( 'Fix layout width', 'editor-bridge' ) }
+								value={ fixedLayoutWidth }
+								checked={ fixedLayoutWidth }
 								onChange={(value) =>
-									setAttributes({ disableInnerContainerWidth: value })
+									setAttributes({ fixedLayoutWidth: value })
 								}
 							/>
 						</PanelBody>
@@ -146,14 +146,14 @@ const withContainerBlockAttributes = createHigherOrderComponent( ( BlockListBloc
 		}
 
 		const {
-			disableInnerContainerWidth,
+			fixedLayoutWidth,
 		} = props.attributes;
 
 		const className = classnames();
 
 		let customData = {};
-		if ( disableInnerContainerWidth ) {
-			customData[ 'data-disable-inner-container-width' ] = disableInnerContainerWidth;
+		if ( fixedLayoutWidth ) {
+			customData[ 'data-fixed-layout-width' ] = fixedLayoutWidth;
 		}
 
 		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
@@ -190,7 +190,7 @@ const getSaveContainerContent = ( extraProps, blockType, attributes ) => {
 	extraProps.className = classnames(
 		extraProps.className,
 		{
-			[ `disable-inner-container-width` ]: attributes.align == 'full' ? attributes.disableInnerContainerWidth : false,
+			[ `fixed-layout-width` ]: attributes.align == 'full' ? attributes.fixedLayoutWidth : false,
 		}
 	);
 

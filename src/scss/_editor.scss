@@ -1,5 +1,6 @@
 :root {
 	--editor-bridge-block-edior-max-width: #{$block-edior-max-width};
+	--editor-bridge-default-stack: #{$default-stack};
 }
 
 @import 'editor/uiux-experience';

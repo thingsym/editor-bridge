@@ -1,9 +1,11 @@
 [class^="wp-block-"] {
 	&.alignfull {
-		&.disable-inner-container-width {
+		&.fixed-layout-width {
 			> .wp-block-cover__inner-container,
 			> .wp-block-group__inner-container {
-				max-width: unset;
+				max-width: var(--editor-bridge-default-layout-width, 1024px);
+				padding-left: var(--editor-bridge-default-stack, 1.28rem);
+				padding-right: var(--editor-bridge-default-stack, 1.28rem);
 			}
 		}
 	}

@@ -124,6 +124,11 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 
 ## Changelog
 
+### [1.2.1] - 2021.06.28
+
+* fix space
+* change disable inner container width to fix layout width
+
 ### [1.2.0] - 2021.06.21
 
 * exclude README.md with archive:package npm script

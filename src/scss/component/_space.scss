@@ -46,9 +46,11 @@
 
 /** for Specificity blocks **/
 .entry-content {
+	.wp-block-buttons,
 	.wp-block-button,
 	.wp-block-image,
 	.wp-block-table,
+	.wp-block-gallery,
 	.wp-block-media-text,
 	.wp-block-group,
 	.wp-block-columns,

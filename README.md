@@ -12,20 +12,23 @@ There are three expansion points.
 
 ### Expanded block
 
-* Background image
+* Background image settings
 	* core/heading
 	* core/paragraph
 	* core/column
 	* core/columns
 	* core/group
-* Border
+* Border settings
 	* core/heading
 	* core/paragraph
 	* core/group
 	* core/columns
-* Button size and width
+* Button size and width settings
 	* core/button
-* Space, Margin (upper margin as default) and Padding
+* Container settings
+	* core/group
+	* core/cover
+* Space settings, Margin (upper margin as default) and Padding
 	* core/heading
 	* core/paragraph
 	* core/image
@@ -120,6 +123,11 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 5. Create new Pull Request
 
 ## Changelog
+
+### [1.2.1] - 2021.06.28
+
+* fix space
+* change disable inner container width to fix layout width
 
 ### [1.2.0] - 2021.06.21
 

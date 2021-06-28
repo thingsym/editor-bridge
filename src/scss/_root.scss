@@ -1,5 +1,6 @@
 :root {
-	--editor-bridge-const-stack: #{$default-stack};
+	--editor-bridge-default-layout-width: #{$default-layout-width};
+	--editor-bridge-default-stack: #{$default-stack};
 
 	--editor-bridge-space-margin-top-none: #{$space-none};
 	--editor-bridge-space-margin-top-small: #{$space-small};

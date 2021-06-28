@@ -22,13 +22,15 @@
 	}
 
 	/** for Specificity blocks **/
-	.wp-block-image,
-	.wp-block-table,
 	.wp-block-button,
 	.wp-block-buttons,
+	.wp-block-image,
+	.wp-block-table,
+	.wp-block-gallery,
+	.wp-block-media-text,
 	.wp-block-group,
 	.wp-block-columns,
-	.wp-block-media-text {
+	.wp-block-column {
 		&[data-margin-slug=none] {
 			margin-top: var(--editor-bridge-space-margin-top-none, unset);
 			margin-bottom: var(--editor-bridge-space-margin-bottom-none, unset);

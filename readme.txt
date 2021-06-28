@@ -3,7 +3,7 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 Tested up to: 5.7.0
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -29,20 +29,23 @@ There are three expansion points.
 
 = Expanded block =
 
-* Background image
+* Background image settings
 	* core/heading
 	* core/paragraph
 	* core/column
 	* core/columns
 	* core/group
-* Border
+* Border settings
 	* core/heading
 	* core/paragraph
 	* core/group
 	* core/columns
-* Button size and width
+* Button size and width settings
 	* core/button
-* Space, Margin (upper margin as default) and Padding
+* Container settings
+	* core/group
+	* core/cover
+* Space settings, Margin (upper margin as default) and Padding
 	* core/heading
 	* core/paragraph
 	* core/image
@@ -98,6 +101,10 @@ If you would like to contribute, here are some notes and guidlines.
 4. Have fun!
 
 == Changelog ==
+
+= 1.2.1 - 2021.06.28 =
+* fix space
+* change disable inner container width to fix layout width
 
 = 1.2.0 - 2021.06.21 =
 * exclude README.md with archive:package npm script

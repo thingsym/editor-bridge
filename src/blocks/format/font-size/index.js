@@ -17,8 +17,7 @@ import { Icon } from '@wordpress/components';
  * Internal dependencies
  */
 import {
-	default as InlineFontSizeUI,
-	getActiveFontSize,
+	default as InlineFontSizeUI
 } from './font-size-popover.js';
 import { fontSolid } from './icons';
 

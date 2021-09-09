@@ -72,7 +72,7 @@ export function getActiveFontSize( formatName, formatValue ) {
 	const currentStyle = activeFormat.attributes.style;
 	if ( currentStyle ) {
 		const fontSize = currentStyle.replace( /^font-size:\s([0-9]*)px;$/, '$1' );
-		return parseInt(fontSize);
+		return fontSize;
 	}
 
 	return;
@@ -104,7 +104,7 @@ const InlineFontSizeUI = ( {
 					applyFormat( value, {
 						type: name,
 						attributes: {
-							style: `font-size: ${ fontSize }px;`,
+							style: `font-size: ${ fontSize };`,
 						}
 					} ),
 				);

@@ -489,7 +489,8 @@
 	&.is-style-hr-circle-mark {
 		position: relative;
 
-		.editor-styles-wrapper & {
+		.editor-styles-wrapper &,
+		.edit-widgets-block-editor & {
 			overflow: unset;
 		}
 

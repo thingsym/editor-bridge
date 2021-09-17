@@ -130,6 +130,21 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 
 ## Changelog
 
+### [1.3.0] - 2021.09.17
+
+* update japanese translation
+* update pot
+* fix panel display order
+* add border expansion with core/column
+* add list style
+* fix wp-block-table css
+* add Asterisk style with with core/separator
+* remove Shadow and Circle Mark style with with core/separator
+* add width settings expansion
+* fix disable-padding-horizontal
+* add edit-widgets-block-editor selector for block widgets area
+* remove unit with font size
+
 ### [1.2.1] - 2021.06.28
 
 * fix space

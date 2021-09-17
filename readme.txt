@@ -3,7 +3,7 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
-Stable tag: 1.2.1
+Stable tag: 1.3.0
 Tested up to: 5.8.0
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -107,6 +107,20 @@ If you would like to contribute, here are some notes and guidlines.
 4. Have fun!
 
 == Changelog ==
+
+= 1.3.0 - 2021.09.17 =
+* update japanese translation
+* update pot
+* fix panel display order
+* add border expansion with core/column
+* add list style
+* fix wp-block-table css
+* add Asterisk style with with core/separator
+* remove Shadow and Circle Mark style with with core/separator
+* add width settings expansion
+* fix disable-padding-horizontal
+* add edit-widgets-block-editor selector for block widgets area
+* remove unit with font size
 
 = 1.2.1 - 2021.06.28 =
 * fix space

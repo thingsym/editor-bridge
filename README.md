@@ -23,6 +23,7 @@ There are three expansion points.
 	* core/paragraph
 	* core/group
 	* core/columns
+	* core/column
 * Button size and width settings
 	* core/button
 * Container settings
@@ -42,6 +43,10 @@ There are three expansion points.
 	* core/column (only Padding)
 	* core/group
 	* core/cover
+* Width settings
+	* core/table
+	* core/columns
+	* core/group
 
 ### Format
 
@@ -55,6 +60,7 @@ There are three expansion points.
 * Button
 * Heading
 * Image
+* List
 * Separator
 * Table
 

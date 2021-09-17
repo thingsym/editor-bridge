@@ -23,6 +23,7 @@ There are three expansion points.
 	* core/paragraph
 	* core/group
 	* core/columns
+	* core/column
 * Button size and width settings
 	* core/button
 * Container settings
@@ -42,6 +43,10 @@ There are three expansion points.
 	* core/column (only Padding)
 	* core/group
 	* core/cover
+* Width settings
+	* core/table
+	* core/columns
+	* core/group
 
 ### Format
 
@@ -55,6 +60,7 @@ There are three expansion points.
 * Button
 * Heading
 * Image
+* List
 * Separator
 * Table
 
@@ -123,6 +129,21 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 5. Create new Pull Request
 
 ## Changelog
+
+### [1.3.0] - 2021.09.17
+
+* update japanese translation
+* update pot
+* fix panel display order
+* add border expansion with core/column
+* add list style
+* fix wp-block-table css
+* add Asterisk style with with core/separator
+* remove Shadow and Circle Mark style with with core/separator
+* add width settings expansion
+* fix disable-padding-horizontal
+* add edit-widgets-block-editor selector for block widgets area
+* remove unit with font size
 
 ### [1.2.1] - 2021.06.28
 

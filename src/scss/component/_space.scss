@@ -123,26 +123,44 @@
 .is-padding-small.has-background,
 .wp-block-group.is-padding-small.has-background {
 	padding: var(--editor-bridge-space-padding-small, unset);
+
+	&.disable-padding-horizontal {
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 .is-padding-medium,
 .is-padding-medium.has-background,
 .wp-block-group.is-padding-medium.has-background {
 	padding: var(--editor-bridge-space-padding-medium, unset);
+
+	&.disable-padding-horizontal {
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 .is-padding-large,
 .is-padding-large.has-background,
 .wp-block-group.is-padding-large.has-background {
 	padding: var(--editor-bridge-space-padding-large, unset);
+
+	&.disable-padding-horizontal {
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 .is-padding-huge,
 .is-padding-huge.has-background,
 .wp-block-group.is-padding-huge.has-background {
 	padding: var(--editor-bridge-space-padding-huge, unset);
+
+	&.disable-padding-horizontal {
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 
-.disable-padding-horizontal,
-.disable-padding-horizontal.has-background,
-.disable-padding-horizontal.is-padding-huge.has-background {
+.disable-padding-horizontal {
 	padding-left: 0;
 	padding-right: 0;
 }

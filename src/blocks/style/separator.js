@@ -16,11 +16,6 @@ wp.blocks.registerBlockStyle( 'core/separator', {
 } );
 
 wp.blocks.registerBlockStyle( 'core/separator', {
-	name: 'hr-shadow',
-	label: __( 'Shadow', 'editor-bridge' ),
-} );
-
-wp.blocks.registerBlockStyle( 'core/separator', {
-	name: 'hr-circle-mark',
-	label: __( 'Circle Mark', 'editor-bridge' ),
+	name: 'hr-asterisk',
+	label: __( 'Asterisk', 'editor-bridge' ),
 } );

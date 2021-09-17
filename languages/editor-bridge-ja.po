@@ -2,14 +2,14 @@
 # This file is distributed under the GPL2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Editor Bridge 1.2.1\n"
+"Project-Id-Version: Editor Bridge 1.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/editor-bridge\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-06-28T06:04:36+00:00\n"
+"POT-Creation-Date: 2021-09-17T07:43:58+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.5.0\n"
 "X-Domain: editor-bridge\n"
@@ -82,50 +82,50 @@ msgstr "固定背景"
 msgid "Repeat Background"
 msgstr "背景画像の繰り返し"
 
-#: src/blocks/expansion/border/index.js:135
+#: src/blocks/expansion/border/index.js:136
 msgid "Border settings"
 msgstr "枠線の設定"
 
-#: src/blocks/expansion/border/index.js:139
+#: src/blocks/expansion/border/index.js:140
 #: src/blocks/format/badge/badge-popover.js:262
 #: src/blocks/format/highlight/highlight-popover.js:257
 msgid "Style"
 msgstr "スタイル"
 
-#: src/blocks/expansion/border/index.js:142
-#: src/blocks/expansion/space/index.js:46
+#: src/blocks/expansion/border/index.js:143
+#: src/blocks/expansion/space/index.js:47
 msgid "None"
 msgstr "なし"
 
-#: src/blocks/expansion/border/index.js:143
+#: src/blocks/expansion/border/index.js:144
 msgid "Solid"
 msgstr "実線"
 
-#: src/blocks/expansion/border/index.js:144
+#: src/blocks/expansion/border/index.js:145
 #: src/blocks/style/table.js:20
 msgid "Dashed"
 msgstr "破線"
 
-#: src/blocks/expansion/border/index.js:145
+#: src/blocks/expansion/border/index.js:146
 #: src/blocks/style/separator.js:15
 msgid "Dotted"
 msgstr "点線"
 
-#: src/blocks/expansion/border/index.js:146
+#: src/blocks/expansion/border/index.js:147
 msgid "Double"
 msgstr "2重線"
 
-#: src/blocks/expansion/border/index.js:152
+#: src/blocks/expansion/border/index.js:153
 msgid "Border width"
 msgstr "線の太さ"
 
-#: src/blocks/expansion/border/index.js:160
+#: src/blocks/expansion/border/index.js:161
 #: src/blocks/format/badge/badge-popover.js:256
 #: src/blocks/format/highlight/highlight-popover.js:251
 msgid "Color"
 msgstr "色"
 
-#: src/blocks/expansion/border/index.js:166
+#: src/blocks/expansion/border/index.js:167
 msgid "Border radius"
 msgstr "角丸半径"
 
@@ -212,6 +212,14 @@ msgstr "パディング"
 msgid "Disable the horizontal setting"
 msgstr "水平のパディング設定を無効にする"
 
+#: src/blocks/expansion/width/index.js:110
+msgid "Width settings"
+msgstr "幅の設定"
+
+#: src/blocks/expansion/width/index.js:111
+msgid "Button width"
+msgstr "ボタンの幅"
+
 #: src/blocks/format/badge/badge-popover.js:198
 #: src/blocks/format/font-weight/font-weight-popover.js:112
 msgid "Default"
@@ -243,7 +251,7 @@ msgstr "正円"
 msgid "Badge"
 msgstr "バッジ"
 
-#: src/blocks/format/font-size/index.js:26
+#: src/blocks/format/font-size/index.js:25
 msgid "Font Size"
 msgstr "フォントサイズ"
 
@@ -345,7 +353,6 @@ msgstr "ぼかし"
 
 #: src/blocks/style/button.js:20
 #: src/blocks/style/image.js:20
-#: src/blocks/style/separator.js:20
 msgid "Shadow"
 msgstr "シャドウ"
 
@@ -417,14 +424,43 @@ msgstr "日本語の引用符"
 msgid "Frame"
 msgstr "フレーム"
 
+#: src/blocks/style/list.js:10
+#: src/blocks/style/table.js:10
+msgid "No Style"
+msgstr "スタイルなし"
+
+#: src/blocks/style/list.js:15
+msgid "Inline"
+msgstr "インライン"
+
+#: src/blocks/style/list.js:20
+msgid "Columns"
+msgstr "カラム"
+
+#: src/blocks/style/list.js:25
+msgid "Square"
+msgstr "四角"
+
+#: src/blocks/style/list.js:30
+msgid "Circle"
+msgstr "丸印"
+
+#: src/blocks/style/list.js:35
+msgid "Reference Mark"
+msgstr "米印"
+
+#: src/blocks/style/list.js:40
+msgid "Reference Mark (Inline)"
+msgstr "米印 (インライン)"
+
+#: src/blocks/style/list.js:45
+msgid "Centered"
+msgstr "中央揃え"
+
 #: src/blocks/style/separator.js:10
 msgid "Thick line"
 msgstr "太線"
 
-#: src/blocks/style/separator.js:25
-msgid "Circle Mark"
-msgstr "円マーク"
-
-#: src/blocks/style/table.js:10
-msgid "No Style"
-msgstr "スタイルなし"
+#: src/blocks/style/separator.js:20
+msgid "Asterisk"
+msgstr "アスタリスク"

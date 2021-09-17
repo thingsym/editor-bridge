@@ -1,5 +1,6 @@
 // WordPress 5.5 / Gutenberg v8.4
-.editor-styles-wrapper .is-root-container {
+.editor-styles-wrapper .is-root-container,
+.edit-widgets-block-editor .is-root-container {
 	[data-margin-slug=none] {
 		margin-top: var(--editor-bridge-space-margin-top-none, unset);
 		margin-bottom: var(--editor-bridge-space-margin-bottom-none, unset);
@@ -112,7 +113,6 @@
 		padding-left: 0;
 		padding-right: 0;
 	}
-
 
 	figure.wp-block-image[data-margin-slug=none]:not(.wp-block) {
 		margin-top: var(--editor-bridge-space-margin-top-none, unset);

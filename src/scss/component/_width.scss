@@ -1,0 +1,42 @@
+/** width **/
+[class*="wp-block-"] {
+	&.is-width-25,
+	&.is-width-50,
+	&.is-width-75,
+	&.is-width-100 {
+		table {
+			width: 100%;
+		}
+	}
+	&.is-width-auto {
+		table {
+			width: auto;
+		}
+	}
+	&.is-width-unset {
+		table {
+			width: unset;
+		}
+	}
+}
+
+[class*="wp-block-"] {
+	&.is-width-25 {
+		width: 25%;
+	}
+	&.is-width-50 {
+		width: 50%;
+	}
+	&.is-width-75 {
+		width: 75%;
+	}
+	&.is-width-100 {
+		width: 100%;
+	}
+	&.is-width-auto {
+		width: auto;
+	}
+	&.is-width-unset {
+		width: unset;
+	}
+}

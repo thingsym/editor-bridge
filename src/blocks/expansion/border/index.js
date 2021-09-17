@@ -29,6 +29,7 @@ const enableBlocks = [
 	'core/paragraph',
 	'core/group',
 	'core/columns',
+	'core/column',
 ];
 
 /**

@@ -112,7 +112,7 @@
 		display: block;
 		width: 240px;
 		height: 1px;
-		background: currentcolor;
+		background: currentColor;
 
 		.block-editor-block-list__layout & {
 			top: unset;
@@ -344,7 +344,6 @@
 			border-collapse: collapse;
 		}
 		tr:first-child {
-			th,
 			td {
 				border-top: 1px solid var(--editor-bridge-border-color, unset);
 			}
@@ -436,6 +435,11 @@
 		th {
 			background: unset;
 			border: none;
+		}
+		tr:first-child {
+			th {
+				border-bottom: 2px solid var(--editor-bridge-border-color, unset);
+			}
 		}
 		td {
 			background: unset;

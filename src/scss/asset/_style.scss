@@ -452,6 +452,31 @@
 			border-top: unset;
 		}
 	}
+
+	&.is-style-tb-frame {
+		table {
+			border: 2px solid var(--editor-bridge-border-color, unset);
+		}
+		th {
+			background: unset;
+			border: none;
+		}
+		tr:first-child {
+			th {
+				border-bottom: 2px solid var(--editor-bridge-border-color, unset);
+			}
+		}
+		td {
+			background: unset;
+			border: none;
+		}
+		thead {
+			border-bottom: unset;
+		}
+		tfoot {
+			border-top: unset;
+		}
+	}
 }
 
 hr.wp-block-separator {

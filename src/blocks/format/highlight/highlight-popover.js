@@ -212,7 +212,7 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 
 export function setStyle( styleSlug, color ) {
 	if ( ! color ) {
-		return;
+		color = '#cccccc';
 	}
 	if ( ! styleSlug ) {
 		styleSlug = 'highlight';

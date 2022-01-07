@@ -72,7 +72,7 @@ const BadgePopoverAtLink = ( { addingColor, ...props } ) => {
 	/>;
 };
 
-export function getActiveColorHex( formatName, formatValue, colors ) {
+export function getActiveColorHex( formatName = '', formatValue = {}, colors = [] ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
 		return undefined;
@@ -150,10 +150,10 @@ const ColorPicker = ( { label, name, value, onChange } ) => {
 	/>;
 };
 
-export function getActiveStyleSlug( formatName, formatValue ) {
+export function getActiveStyleSlug( formatName = '', formatValue = {} ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
-		return;
+		return undefined;
 	}
 
 	const currentClass = activeFormat.attributes.class;
@@ -162,7 +162,7 @@ export function getActiveStyleSlug( formatName, formatValue ) {
 		return styleSlug;
 	}
 
-	return;
+	return undefined;
 }
 
 const StylePicker = ( { label, name, value, onChange } ) => {
@@ -206,14 +206,7 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 	/>;
 };
 
-export function setStyle( styleSlug, color ) {
-	if ( ! color ) {
-		return;
-	}
-	if ( ! styleSlug ) {
-		styleSlug = 'default';
-	}
-
+export function setStyle( styleSlug = 'default', color = '#cccccc' ) {
 	if ( styleSlug === 'default' ) {
 		return `background-color: ${ color };padding: .2rem .8em;`;
 	}

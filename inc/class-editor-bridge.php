@@ -17,22 +17,22 @@ namespace Editor_Bridge;
 class Editor_Bridge {
 
 	/**
-	 * Public value.
+	 * Public variable.
 	 *
 	 * @access public
 	 *
 	 * @var array|null $plugin_data
 	 */
-	public $plugin_data;
+	public $plugin_data = array();
 
 	/**
-	 * Public value.
+	 * Public variable.
 	 *
 	 * @access public
 	 *
 	 * @var array|null $asset_file
 	 */
-	public $asset_file;
+	public $asset_file = array();
 
 	public function __construct() {
 		add_action( 'plugins_loaded', [ $this, 'load_plugin_data' ] );
@@ -114,30 +114,6 @@ class Editor_Bridge {
 	}
 
 	/**
-	 * Set links below a plugin on the Plugins page.
-	 *
-	 * Hooks to plugin_row_meta
-	 *
-	 * @see https://developer.wordpress.org/reference/hooks/plugin_row_meta/
-	 *
-	 * @access public
-	 *
-	 * @param array  $links  An array of the plugin's metadata.
-	 * @param string $file   Path to the plugin file relative to the plugins directory.
-	 *
-	 * @return array $links
-	 *
-	 * @since 1.1.1
-	 */
-	public function plugin_metadata_links( $links, $file ) {
-		if ( $file == plugin_basename( EDITOR_BRIDGE ) ) {
-			$links[] = '<a href="https://github.com/sponsors/thingsym">' . __( 'Become a sponsor', 'editor-bridge' ) . '</a>';
-		}
-
-		return $links;
-	}
-
-	/**
 	 * Set block editor translations
 	 *
 	 * @access public
@@ -201,4 +177,29 @@ class Editor_Bridge {
 			'all'
 		);
 	}
+
+	/**
+	 * Set links below a plugin on the Plugins page.
+	 *
+	 * Hooks to plugin_row_meta
+	 *
+	 * @see https://developer.wordpress.org/reference/hooks/plugin_row_meta/
+	 *
+	 * @access public
+	 *
+	 * @param array  $links  An array of the plugin's metadata.
+	 * @param string $file   Path to the plugin file relative to the plugins directory.
+	 *
+	 * @return array $links
+	 *
+	 * @since 1.1.1
+	 */
+	public function plugin_metadata_links( $links, $file ) {
+		if ( $file == plugin_basename( EDITOR_BRIDGE ) ) {
+			$links[] = '<a href="https://github.com/sponsors/thingsym">' . __( 'Become a sponsor', 'editor-bridge' ) . '</a>';
+		}
+
+		return $links;
+	}
+
 }

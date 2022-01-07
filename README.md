@@ -3,8 +3,8 @@
 WordPress plugin Editor Bridge expand the Block Editor (Gutenberg).
 This WordPress plugin expands the functionality of blocks and adds styles and formats.
 
-* [Demo sample (English)](https://cms.thingslabo.com/demo/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample/)
-* [デモサンプル (日本語)](https://cms.thingslabo.com/demo/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample-ja/)
+* [Demo sample (English)](https://https://demo.thingslabo.com/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample)
+* [デモサンプル (日本語)](https://demo.thingslabo.com/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample-ja)
 
 ## Expansion
 
@@ -129,6 +129,28 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 5. Create new Pull Request
 
 ## Changelog
+
+### [1.4.0] - 2022.01.07
+
+* add jest unit test only php 7.4
+* fix composer install via composer.json
+* bump up yoast/phpunit-polyfills version
+* change os to ubuntu-20.04
+* update japanese translation
+* update pot
+* add test case for jest
+* fix npm scripts
+* update npm dependencies for jest
+* fix plugin_data and asset_file
+* improve popover
+* fix test case
+* move jest.config.js to root path
+* add Dot style to highlight
+* improve list block scss
+* set initial color
+* add Frame style to table block
+* change font size and improve stack and line-height
+* add timeout-minutes to workflows
 
 ### [1.3.0] - 2021.09.17
 

@@ -31,6 +31,18 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 * @test
 	 * @group basic
 	 */
+	function public_variable() {
+		$this->assertIsArray( $this->editor_bridge->plugin_data );
+		$this->assertEmpty( $this->editor_bridge->plugin_data );
+
+		$this->assertIsArray( $this->editor_bridge->asset_file );
+		$this->assertEmpty( $this->editor_bridge->asset_file );
+	}
+
+	/**
+	 * @test
+	 * @group basic
+	 */
 	function constructor() {
 		$this->assertEquals( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'load_plugin_data' ] ) );
 		$this->assertEquals( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'load_asset_file' ] ) );
@@ -92,7 +104,8 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	public function plugin_metadata_links() {
-		$this->markTestIncomplete( 'This test has not been implemented yet.' );
+		$links = $this->editor_bridge->plugin_metadata_links( array(), plugin_basename( EDITOR_BRIDGE ) );
+		$this->assertContains( '<a href="https://github.com/sponsors/thingsym">Become a sponsor</a>', $links );
 	}
 
 	/**

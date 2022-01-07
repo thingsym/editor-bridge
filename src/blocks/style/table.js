@@ -6,6 +6,11 @@
 import { __ } from '@wordpress/i18n';
 
 wp.blocks.registerBlockStyle( 'core/table', {
+	name: 'tb-frame',
+	label: __( 'Frame', 'editor-bridge' ),
+} );
+
+wp.blocks.registerBlockStyle( 'core/table', {
 	name: 'tb-no-style',
 	label: __( 'No Style', 'editor-bridge' )
 } );

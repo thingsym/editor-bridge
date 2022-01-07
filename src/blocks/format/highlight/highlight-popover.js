@@ -97,6 +97,9 @@ export function getActiveColorHex( formatName, formatValue, colors ) {
 			else if ( currentClass === 'is-highlight-style-underline' ) {
 				regex = /border-bottom:\ssolid\s2px\s(.*?);/
 			}
+			else if ( currentClass === 'is-highlight-style-dot' ) {
+				regex = /text-emphasis-color:\s(.*?);/
+			}
 
 			const color = currentStyle.match( regex );
 
@@ -205,6 +208,7 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 			{ label: __( 'Highlight', 'editor-bridge' ), value: 'highlight' },
 			{ label: __( 'Marker', 'editor-bridge' ), value: 'marker' },
 			{ label: __( 'Underline', 'editor-bridge' ), value: 'underline' },
+			{ label: __( 'Dot', 'editor-bridge' ), value: 'dot' },
 		] }
 		onChange={ onStyleChange }
 	/>;
@@ -226,6 +230,9 @@ export function setStyle( styleSlug, color ) {
 	}
 	else if ( styleSlug === 'underline' ) {
 		return `border-bottom: solid 2px ${ color };`;
+	}
+	else if ( styleSlug === 'dot' ) {
+		return `text-emphasis-style: filled circle;-webkit-text-emphasis-style: filled circle;text-emphasis-color: ${ color };-webkit-text-emphasis-color: ${ color };`;
 	}
 
 	return;

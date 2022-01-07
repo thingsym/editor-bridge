@@ -64,7 +64,7 @@ const FontWeightPopoverAtLink = ( { addingFontWeight, ...props } ) => {
 	/>;
 };
 
-export function getActiveFontWeight( formatName, formatValue ) {
+export function getActiveFontWeight( formatName = '', formatValue = {} ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
 		return;

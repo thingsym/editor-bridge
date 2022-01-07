@@ -63,7 +63,7 @@ const FontSizePopoverAtLink = ( { addingFontSize, ...props } ) => {
 	/>;
 };
 
-export function getActiveFontSize( formatName, formatValue ) {
+export function getActiveFontSize( formatName = '', formatValue = {} ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
 		return;

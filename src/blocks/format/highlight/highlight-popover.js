@@ -74,7 +74,7 @@ const HighlightPopoverAtLink = ( { addingColor, ...props } ) => {
 	/>;
 };
 
-export function getActiveColorHex( formatName, formatValue, colors ) {
+export function getActiveColorHex( formatName = '', formatValue = {}, colors = [] ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
 		return undefined;
@@ -160,10 +160,10 @@ const ColorPicker = ( { label, name, value, onChange } ) => {
 	/>;
 };
 
-export function getActiveStyleSlug( formatName, formatValue ) {
+export function getActiveStyleSlug( formatName = '', formatValue = {} ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
-		return null;
+		return undefined;
 	}
 
 	const currentClass = activeFormat.attributes.class;
@@ -172,7 +172,7 @@ export function getActiveStyleSlug( formatName, formatValue ) {
 		return styleSlug;
 	}
 
-	return null;
+	return undefined;
 }
 
 const StylePicker = ( { label, name, value, onChange } ) => {
@@ -214,14 +214,7 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 	/>;
 };
 
-export function setStyle( styleSlug, color ) {
-	if ( ! color ) {
-		color = '#cccccc';
-	}
-	if ( ! styleSlug ) {
-		styleSlug = 'highlight';
-	}
-
+export function setStyle( styleSlug = 'highlight', color = '#cccccc' ) {
 	if ( styleSlug === 'highlight' ) {
 		return `background: linear-gradient(transparent 70%, ${ hexToRgba( color, 0.6 ) } 30%);`;
 	}

@@ -17,7 +17,7 @@ namespace Editor_Bridge;
 class Editor_Bridge {
 
 	/**
-	 * Public value.
+	 * Public variable.
 	 *
 	 * @access public
 	 *
@@ -26,7 +26,7 @@ class Editor_Bridge {
 	public $plugin_data = array();
 
 	/**
-	 * Public value.
+	 * Public variable.
 	 *
 	 * @access public
 	 *

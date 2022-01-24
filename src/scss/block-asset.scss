@@ -1,4 +1,3 @@
-@import 'function';
-@import 'variable';
-@import 'root';
-@import 'asset';
+@use 'variable';
+@use 'root';
+@use 'asset';

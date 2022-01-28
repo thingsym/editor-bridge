@@ -29,14 +29,20 @@ import {
 	default as InlineBadgeUI,
 	getActiveColorHex,
 } from './badge-popover.js';
-import { checkSquareSolid } from './icons';
+import { checkSolid } from './icons';
 
 const name  = 'editor-bridge/badge';
 const title = __( 'Badge', 'editor-bridge' );
 
 const EMPTY_ARRAY = [];
 
-function BadgeEdit( { value, onChange, isActive, activeAttributes } ) {
+function BadgeEdit( {
+	value,
+	onChange,
+	isActive,
+	activeAttributes,
+	contentRef,
+} ) {
 	const { colors, disableCustomColors } = useSelect( ( select ) => {
 		const blockEditorSelect = select( 'core/block-editor' );
 		let settings;
@@ -71,8 +77,7 @@ function BadgeEdit( { value, onChange, isActive, activeAttributes } ) {
 		};
 	}, [ value, colors ] );
 
-	const hasColorsToChoose =
-		! isEmpty( colors ) || disableCustomColors !== true;
+	const hasColorsToChoose = ! isEmpty( colors ) || disableCustomColors !== true;
 
 	if ( ! hasColorsToChoose && ! isActive ) {
 		return null;
@@ -81,22 +86,17 @@ function BadgeEdit( { value, onChange, isActive, activeAttributes } ) {
 	return (
 		<>
 			<RichTextToolbarButton
-				key={ isActive ? 'text-color' : 'text-color-not-active' }
 				className="format-library-text-color-button"
-				name={ isActive ? 'text-color' : undefined }
+				isActive={ isActive }
 				icon={
-					<>
-						<Icon
-							icon={ checkSquareSolid }
-							style={{ height: '18px' }}
-						/>
-						{ isActive && (
-							<span
-								className="format-library-text-color-button__indicator"
-								style={ colorIndicatorStyle }
-							/>
-						) }
-					</>
+					<Icon
+						icon={ checkSolid }
+						style={{
+							width: '22px',
+							height: '22px',
+							padding: '0.2rem',
+					}}
+					/>
 				}
 				title={ title }
 				// If has no colors to choose but a color is active remove the color onClick
@@ -115,6 +115,7 @@ function BadgeEdit( { value, onChange, isActive, activeAttributes } ) {
 					activeAttributes={ activeAttributes }
 					value={ value }
 					onChange={ onChange }
+					contentRef={ contentRef }
 				/>
 			) }
 		</>

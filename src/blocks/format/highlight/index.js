@@ -36,7 +36,13 @@ const title = __( 'Highlight', 'editor-bridge' );
 
 const EMPTY_ARRAY = [];
 
-function HighlightEdit( { value, onChange, isActive, activeAttributes } ) {
+function HighlightEdit( {
+	value,
+	onChange,
+	isActive,
+	activeAttributes,
+	contentRef,
+} ) {
 	const { colors, disableCustomColors } = useSelect( ( select ) => {
 		const blockEditorSelect = select( 'core/block-editor' );
 		let settings;
@@ -82,19 +88,17 @@ function HighlightEdit( { value, onChange, isActive, activeAttributes } ) {
 	return (
 		<>
 			<RichTextToolbarButton
-				key={ isActive ? 'text-color' : 'text-color-not-active' }
 				className="format-library-text-color-button"
-				name={ isActive ? 'text-color' : undefined }
+				isActive={ isActive }
 				icon={
-					<>
-						<Icon icon={ highlighterSolid } style={ { height: '18px' } } />
-						{ isActive && (
-							<span
-								className="format-library-text-color-button__indicator"
-								style={ colorIndicatorStyle }
-							/>
-						) }
-					</>
+					<Icon
+						icon={ highlighterSolid }
+						style={{
+							width: '22px',
+							height: '22px',
+							padding: '0.2rem',
+					}}
+					/>
 				}
 				title={ title }
 				// If has no colors to choose but a color is active remove the color onClick
@@ -108,11 +112,12 @@ function HighlightEdit( { value, onChange, isActive, activeAttributes } ) {
 				<InlineHighlightUI
 					name={ name }
 					addingColor={ isAddingColor }
-					onClose={ disableIsAddingColor }
 					isActive={ isActive }
 					activeAttributes={ activeAttributes }
 					value={ value }
+					onClose={ disableIsAddingColor }
 					onChange={ onChange }
+					contentRef={ contentRef }
 				/>
 			) }
 		</>

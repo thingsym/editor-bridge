@@ -10,7 +10,7 @@ import {
 } from '@wordpress/element';
 import {
 	RichTextToolbarButton,
- } from '@wordpress/block-editor';
+} from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 
 /**
@@ -25,7 +25,13 @@ import { fontWeightSolid } from './icons';
 const name  = 'editor-bridge/font-weight';
 const title = __( 'Font Weight', 'editor-bridge' );
 
-function FontWeightEdit( { value, onChange, isActive, activeAttributes } ) {
+function FontWeightEdit( {
+	value,
+	onChange,
+	isActive,
+	activeAttributes,
+	contentRef,
+} ) {
 	const [ isAddingFontWeight, setIsAddingFontWeight ] = useState( false );
 
 	const enableIsAddingFontWeight = useCallback( () => setIsAddingFontWeight( true ), [
@@ -39,20 +45,17 @@ function FontWeightEdit( { value, onChange, isActive, activeAttributes } ) {
 	return (
 		<>
 			<RichTextToolbarButton
-				key={ isActive ? 'text-color' : 'text-color-not-active' }
 				className="format-library-text-color-button"
-				name={ isActive ? 'text-color' : undefined }
-				isPressed={ isActive ? true : false }
+				isActive={ isActive }
 				icon={
-					<>
-						<Icon
-							icon={ fontWeightSolid }
-							style={{
-								width: '16px',
-								height: '16px',
-							}}
-						/>
-					</>
+					<Icon
+						icon={ fontWeightSolid }
+						style={{
+							width: '22px',
+							height: '22px',
+							padding: '0.2rem',
+						}}
+					/>
 				}
 				title={ title }
 				onClick={ enableIsAddingFontWeight }
@@ -62,10 +65,11 @@ function FontWeightEdit( { value, onChange, isActive, activeAttributes } ) {
 					name={ name }
 					addingFontWeight={ isAddingFontWeight }
 					isActive={ isActive }
-					onChange={ onChange }
-					onClose={ disableIsAddingFontWeight }
 					activeAttributes={ activeAttributes }
 					value={ value }
+					onChange={ onChange }
+					onClose={ disableIsAddingFontWeight }
+					contentRef={ contentRef }
 				/>
 			) }
 		</>

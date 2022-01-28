@@ -10,7 +10,7 @@ import {
 } from '@wordpress/element';
 import {
 	RichTextToolbarButton,
- } from '@wordpress/block-editor';
+} from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 
 /**
@@ -24,7 +24,13 @@ import { fontSolid } from './icons';
 const name  = 'editor-bridge/font-size';
 const title = __( 'Font Size', 'editor-bridge' );
 
-function FontSizeEdit( { value, onChange, isActive, activeAttributes } ) {
+function FontSizeEdit( {
+	value,
+	onChange,
+	isActive,
+	activeAttributes,
+	contentRef,
+} ) {
 	const [ isAddingFontSize, setIsAddingFontSize ] = useState( false );
 
 	const enableIsAddingFontSize = useCallback( () => setIsAddingFontSize( true ), [
@@ -38,20 +44,17 @@ function FontSizeEdit( { value, onChange, isActive, activeAttributes } ) {
 	return (
 		<>
 			<RichTextToolbarButton
-				key={ isActive ? 'text-color' : 'text-color-not-active' }
 				className="format-library-text-color-button"
-				name={ isActive ? 'text-color' : undefined }
-				isPressed={ isActive ? true : false }
+				isActive={ isActive }
 				icon={
-					<>
-						<Icon
-							icon={ fontSolid }
-							style={{
-								width: '16px',
-								height: '16px',
-							}}
-						/>
-					</>
+					<Icon
+						icon={ fontSolid }
+						style={{
+							width: '22px',
+							height: '22px',
+							padding: '0.2rem',
+						}}
+					/>
 				}
 				title={ title }
 				onClick={ enableIsAddingFontSize }
@@ -61,10 +64,11 @@ function FontSizeEdit( { value, onChange, isActive, activeAttributes } ) {
 					name={ name }
 					addingFontSize={ isAddingFontSize }
 					isActive={ isActive }
-					onChange={ onChange }
-					onClose={ disableIsAddingFontSize }
 					activeAttributes={ activeAttributes }
 					value={ value }
+					onChange={ onChange }
+					onClose={ disableIsAddingFontSize }
+					contentRef={ contentRef }
 				/>
 			) }
 		</>

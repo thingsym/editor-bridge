@@ -1,7 +1,7 @@
 /**
  * Internal dependencies
  */
- import { badge } from '../../index';
+import { badge } from '../../index';
 
 describe( 'badge', () => {
 	it( 'basic', () => {

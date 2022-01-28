@@ -71,12 +71,17 @@ export function getActiveFontWeight( formatName = '', formatValue = {} ) {
 	}
 
 	const currentStyle = activeFormat.attributes.style;
-	if ( currentStyle ) {
-		const fontWeight = currentStyle.replace( /^font-weight:\s(.*);$/, '$1' );
-		return fontWeight;
+	if ( ! currentStyle ) {
+		return;
 	}
 
-	return;
+	const regexp = /^font-weight:\s(.*);$/
+	const fontWeight = currentStyle.match( regexp );
+
+	if ( fontWeight === null ) {
+		return;
+	}
+	return fontWeight[1] ? fontWeight[1] : '';
 }
 
 const FontWeightPicker = ( { label, name, value, onChange } ) => {

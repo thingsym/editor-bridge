@@ -28,7 +28,6 @@ import {
 	ColorPaletteControl,
 	URLPopover,
 	getColorObjectByColorValue,
-	getColorObjectByAttributeValues,
 } from '@wordpress/block-editor';
 
 const BadgePopoverAtLink = ( { addingColor, ...props } ) => {
@@ -78,34 +77,29 @@ export function getActiveColorHex( formatName = '', formatValue = {}, colors = [
 		return undefined;
 	}
 
-	const currentClass = activeFormat.attributes.class;
 	const currentStyle = activeFormat.attributes.style;
-
-	if ( currentStyle ) {
-		let regex;
-		if ( currentClass === 'is-badge-style-status' ) {
-			regex = /border:\ssolid\s1px\s(.*?);/
-		}
-		else if ( currentClass === 'is-badge-style-outline' ) {
-			regex = /border:\ssolid\s1px\s(.*?);/
-		}
-		else {
-			regex = /background-color:\s(.*?);/
-		}
-
-		const color = currentStyle.match( regex );
-
-		if (color === null) {
-			return undefined;
-		}
-		return color[1] ? color[1] : undefined;
+	if ( ! currentStyle ) {
+		return undefined;
 	}
 
-	// Probably not use.
-	if ( currentClass ) {
-		const colorSlug = currentClass.replace( /.*has-(.*?)-color.*/, '$1' );
-		return getColorObjectByAttributeValues( colors, colorSlug ).color;
+	const currentClass = activeFormat.attributes.class;
+
+	let regexp;
+	if ( currentClass === 'is-badge-style-status' ) {
+		regexp = /border:\ssolid\s1px\s(.*?);/
 	}
+	else if ( currentClass === 'is-badge-style-outline' ) {
+		regexp = /border:\ssolid\s1px\s(.*?);/
+	}
+	else {
+		regexp = /background-color:\s(.*?);/
+	}
+
+	const color = currentStyle.match( regexp );
+	if ( color === null ) {
+		return undefined;
+	}
+	return color[1] ? color[1] : undefined;
 }
 
 const ColorPicker = ( { label, name, value, onChange } ) => {
@@ -157,12 +151,17 @@ export function getActiveStyleSlug( formatName = '', formatValue = {} ) {
 	}
 
 	const currentClass = activeFormat.attributes.class;
-	if ( currentClass ) {
-		const styleSlug = currentClass.replace( /^is\-badge\-style\-(.*)$/, '$1' );
-		return styleSlug;
+	if ( ! currentClass ) {
+		return undefined;
 	}
 
-	return undefined;
+	const regexp = /^is\-badge\-style\-(.*)$/
+	const styleSlug = currentClass.match( regexp );
+
+	if ( styleSlug === null ) {
+		return undefined;
+	}
+	return styleSlug[1] ? styleSlug[1] : '';
 }
 
 const StylePicker = ( { label, name, value, onChange } ) => {

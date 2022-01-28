@@ -70,12 +70,17 @@ export function getActiveFontSize( formatName = '', formatValue = {} ) {
 	}
 
 	const currentStyle = activeFormat.attributes.style;
-	if ( currentStyle ) {
-		const fontSize = currentStyle.replace( /^font-size:\s([0-9]*)px;$/, '$1' );
-		return fontSize;
+	if ( ! currentStyle ) {
+		return;
 	}
 
-	return;
+	const regexp = /^font-size:\s(\d+(?:\.\d+)?(px|em|rem));$/
+	const fontSize = currentStyle.match( regexp );
+
+	if ( fontSize === null ) {
+		return;
+	}
+	return fontSize[1] ? fontSize[1] : '';
 }
 
 const InlineFontSizeUI = ( {
@@ -115,6 +120,8 @@ const InlineFontSizeUI = ( {
 		[ value, onChange ]
 	);
 
+	const fallbackFontSize = 16;
+
 	return (
 		<FontSizePopoverAtLink
 			value={ value }
@@ -127,6 +134,7 @@ const InlineFontSizeUI = ( {
 			<FontSizePicker
 				fontSizes={ fontSizes }
 				value={ activeFontSize }
+				fallbackFontSize={ fallbackFontSize }
 				onChange={ onFontSizeChange }
 			/>
 		</FontSizePopoverAtLink>

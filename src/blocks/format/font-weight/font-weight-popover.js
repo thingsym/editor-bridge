@@ -167,27 +167,32 @@ const InlineFontWeightUI = ( {
 	isActive,
 	addingFontWeight,
 } ) => {
+
+	const baseClassName = 'components-fontweight-picker';
+
 	return (
 		<FontWeightPopoverAtLink
 			value={ value }
 			isActive={ isActive }
 			addingFontWeight={ addingFontWeight }
 			onClose={ onClose }
-			className="components-inline-fontweight-popover is-flex-dir-column"
+			className="components-inline-fontweight-popover"
 		>
 
-			<FontWeightPicker
-				label={ __( 'Font Weight', 'editor-bridge' ) }
-				name={ name }
-				value={ value }
-				onChange={ onChange }
-			/>
-			<ResetButton
-				label={ __( 'Reset', 'editor-bridge' ) }
-				name={ name }
-				value={ value }
-				onChange={ onChange }
-			/>
+			<fieldset className={ baseClassName }>
+				<FontWeightPicker
+					label={ __( 'Font Weight', 'editor-bridge' ) }
+					name={ name }
+					value={ value }
+					onChange={ onChange }
+				/>
+				<ResetButton
+					label={ __( 'Reset', 'editor-bridge' ) }
+					name={ name }
+					value={ value }
+					onChange={ onChange }
+				/>
+			</fieldset>
 		</FontWeightPopoverAtLink>
 	);
 };

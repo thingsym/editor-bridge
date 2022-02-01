@@ -130,6 +130,22 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 
 ## Changelog
 
+### [1.5.0] - 2022.02.01
+
+* tested up to 5.9.0
+* update japanese translation
+* update pot
+* remove unused functions
+* fix scss for popover
+* fix wp-block-separator style for dotted
+* change popover to TabPanel
+* update npm dependencies
+* improve getActive** functions, change from replace() to match()
+* change svg icon for RichTextToolbarButton
+* support font units for FontSizePicker
+* fix RichTextToolbarButton behavior when active for WordPress 5.9
+* change scss library from LibSass to dart sass
+
 ### [1.4.0] - 2022.01.07
 
 * add jest unit test only php 7.4

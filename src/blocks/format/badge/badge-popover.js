@@ -17,6 +17,8 @@ import { useSelect } from '@wordpress/data';
 import {
 	withSpokenMessages,
 	SelectControl,
+	Popover,
+	TabPanel,
 } from '@wordpress/components';
 import { getRectangleFromRange } from '@wordpress/dom';
 import {
@@ -28,7 +30,6 @@ import {
 	ColorPaletteControl,
 	URLPopover,
 	getColorObjectByColorValue,
-	getColorObjectByAttributeValues,
 } from '@wordpress/block-editor';
 
 const BadgePopoverAtLink = ( { addingColor, ...props } ) => {
@@ -78,34 +79,29 @@ export function getActiveColorHex( formatName = '', formatValue = {}, colors = [
 		return undefined;
 	}
 
-	const currentClass = activeFormat.attributes.class;
 	const currentStyle = activeFormat.attributes.style;
-
-	if ( currentStyle ) {
-		let regex;
-		if ( currentClass === 'is-badge-style-status' ) {
-			regex = /border:\ssolid\s1px\s(.*?);/
-		}
-		else if ( currentClass === 'is-badge-style-outline' ) {
-			regex = /border:\ssolid\s1px\s(.*?);/
-		}
-		else {
-			regex = /background-color:\s(.*?);/
-		}
-
-		const color = currentStyle.match( regex );
-
-		if (color === null) {
-			return undefined;
-		}
-		return color[1] ? color[1] : undefined;
+	if ( ! currentStyle ) {
+		return undefined;
 	}
 
-	// Probably not use.
-	if ( currentClass ) {
-		const colorSlug = currentClass.replace( /.*has-(.*?)-color.*/, '$1' );
-		return getColorObjectByAttributeValues( colors, colorSlug ).color;
+	const currentClass = activeFormat.attributes.class;
+
+	let regexp;
+	if ( currentClass === 'is-badge-style-status' ) {
+		regexp = /border:\ssolid\s1px\s(.*?);/
 	}
+	else if ( currentClass === 'is-badge-style-outline' ) {
+		regexp = /border:\ssolid\s1px\s(.*?);/
+	}
+	else {
+		regexp = /background-color:\s(.*?);/
+	}
+
+	const color = currentStyle.match( regexp );
+	if ( color === null ) {
+		return undefined;
+	}
+	return color[1] ? color[1] : undefined;
 }
 
 const ColorPicker = ( { label, name, value, onChange } ) => {
@@ -157,12 +153,17 @@ export function getActiveStyleSlug( formatName = '', formatValue = {} ) {
 	}
 
 	const currentClass = activeFormat.attributes.class;
-	if ( currentClass ) {
-		const styleSlug = currentClass.replace( /^is\-badge\-style\-(.*)$/, '$1' );
-		return styleSlug;
+	if ( ! currentClass ) {
+		return undefined;
 	}
 
-	return undefined;
+	const regexp = /^is\-badge\-style\-(.*)$/
+	const styleSlug = currentClass.match( regexp );
+
+	if ( styleSlug === null ) {
+		return undefined;
+	}
+	return styleSlug[1] ? styleSlug[1] : '';
 }
 
 const StylePicker = ( { label, name, value, onChange } ) => {
@@ -229,6 +230,28 @@ export function setStyle( styleSlug = 'default', color = '#cccccc' ) {
 	return;
 }
 
+const TabPanelBody = ( { tab, name, value, onChange } ) => {
+	if ( tab.name === 'color' ) {
+		return <ColorPicker
+			property={ tab.name }
+			name={ name }
+			value={ value }
+			onChange={ onChange }
+		/>
+	}
+	else if ( tab.name === 'style' ) {
+		return (
+			<StylePicker
+				property={ tab.name }
+				name={ name }
+				value={ value }
+				onChange={ onChange }
+			/>
+		)
+	}
+	return
+}
+
 const InlineBadgeUI = ( {
 	name,
 	value,
@@ -243,20 +266,29 @@ const InlineBadgeUI = ( {
 			isActive={ isActive }
 			addingColor={ addingColor }
 			onClose={ onClose }
-			className="components-inline-badge-popover is-flex-dir-column"
+			className="components-inline-badge-popover"
 		>
-			<ColorPicker
-				label={ __( 'Color', 'editor-bridge' ) }
-				name={ name }
-				value={ value }
-				onChange={ onChange }
-			/>
-			<StylePicker
-				label={ __( 'Style', 'editor-bridge' ) }
-				name={ name }
-				value={ value }
-				onChange={ onChange }
-			/>
+			<TabPanel
+				tabs={ [
+					{
+						name: 'color',
+						title: __( 'Color', 'editor-bridge' ),
+					},
+					{
+						name: 'style',
+						title: __( 'Style', 'editor-bridge' ),
+					},
+				] }
+			>
+				{ ( tab ) => (
+					<TabPanelBody
+						tab={ tab }
+						name={ name }
+						value={ value }
+						onChange={ onChange }
+					/>
+				) }
+			</TabPanel>
 		</BadgePopoverAtLink>
 	);
 };

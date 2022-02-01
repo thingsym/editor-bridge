@@ -71,12 +71,17 @@ export function getActiveFontWeight( formatName = '', formatValue = {} ) {
 	}
 
 	const currentStyle = activeFormat.attributes.style;
-	if ( currentStyle ) {
-		const fontWeight = currentStyle.replace( /^font-weight:\s(.*);$/, '$1' );
-		return fontWeight;
+	if ( ! currentStyle ) {
+		return;
 	}
 
-	return;
+	const regexp = /^font-weight:\s(.*);$/
+	const fontWeight = currentStyle.match( regexp );
+
+	if ( fontWeight === null ) {
+		return;
+	}
+	return fontWeight[1] ? fontWeight[1] : '';
 }
 
 const FontWeightPicker = ( { label, name, value, onChange } ) => {
@@ -162,27 +167,32 @@ const InlineFontWeightUI = ( {
 	isActive,
 	addingFontWeight,
 } ) => {
+
+	const baseClassName = 'components-fontweight-picker';
+
 	return (
 		<FontWeightPopoverAtLink
 			value={ value }
 			isActive={ isActive }
 			addingFontWeight={ addingFontWeight }
 			onClose={ onClose }
-			className="components-inline-fontweight-popover is-flex-dir-column"
+			className="components-inline-fontweight-popover"
 		>
 
-			<FontWeightPicker
-				label={ __( 'Font Weight', 'editor-bridge' ) }
-				name={ name }
-				value={ value }
-				onChange={ onChange }
-			/>
-			<ResetButton
-				label={ __( 'Reset', 'editor-bridge' ) }
-				name={ name }
-				value={ value }
-				onChange={ onChange }
-			/>
+			<fieldset className={ baseClassName }>
+				<FontWeightPicker
+					label={ __( 'Font Weight', 'editor-bridge' ) }
+					name={ name }
+					value={ value }
+					onChange={ onChange }
+				/>
+				<ResetButton
+					label={ __( 'Reset', 'editor-bridge' ) }
+					name={ name }
+					value={ value }
+					onChange={ onChange }
+				/>
+			</fieldset>
 		</FontWeightPopoverAtLink>
 	);
 };

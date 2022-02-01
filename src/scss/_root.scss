@@ -1,18 +1,21 @@
+// Included Modules
+@use 'variable';
+
 :root {
-	--editor-bridge-default-layout-width: #{$default-layout-width};
-	--editor-bridge-default-stack: #{$default-stack};
+	--editor-bridge-default-layout-width: #{variable.$default-layout-width};
+	--editor-bridge-default-stack: #{variable.$default-stack};
 
-	--editor-bridge-space-margin-top-none: #{$space-none};
-	--editor-bridge-space-margin-top-small: #{$space-small};
-	--editor-bridge-space-margin-top-medium: #{$space-medium};
-	--editor-bridge-space-margin-top-large: #{$space-large};
-	--editor-bridge-space-margin-top-huge: #{$space-huge};
+	--editor-bridge-space-margin-top-none: #{variable.$space-none};
+	--editor-bridge-space-margin-top-small: #{variable.$space-small};
+	--editor-bridge-space-margin-top-medium: #{variable.$space-medium};
+	--editor-bridge-space-margin-top-large: #{variable.$space-large};
+	--editor-bridge-space-margin-top-huge: #{variable.$space-huge};
 
-	--editor-bridge-space-padding-none: #{$space-none};
-	--editor-bridge-space-padding-small: #{$space-small};
-	--editor-bridge-space-padding-medium: #{$space-medium};
-	--editor-bridge-space-padding-large: #{$space-large};
-	--editor-bridge-space-padding-huge: #{$space-huge};
+	--editor-bridge-space-padding-none: #{variable.$space-none};
+	--editor-bridge-space-padding-small: #{variable.$space-small};
+	--editor-bridge-space-padding-medium: #{variable.$space-medium};
+	--editor-bridge-space-padding-large: #{variable.$space-large};
+	--editor-bridge-space-padding-huge: #{variable.$space-huge};
 
-	--editor-bridge-border-color: #{$default-border-color};
+	--editor-bridge-border-color: #{variable.$default-border-color};
 }

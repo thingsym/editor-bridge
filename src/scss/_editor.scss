@@ -1,11 +1,7 @@
-:root {
-	--editor-bridge-block-edior-max-width: #{$block-edior-max-width};
-	--editor-bridge-default-stack: #{$default-stack};
-}
-
-@import 'editor/uiux-experience';
-@import 'editor/space';
-@import 'editor/container';
-@import 'editor/buttons';
-@import 'editor/background-image';
-@import 'editor/width';
+@use 'editor/root';
+@use 'editor/uiux-experience';
+@use 'editor/space';
+@use 'editor/container';
+@use 'editor/buttons';
+@use 'editor/background-image';
+@use 'editor/width';

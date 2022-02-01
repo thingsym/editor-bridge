@@ -19,6 +19,8 @@ import { useSelect } from '@wordpress/data';
 import {
 	withSpokenMessages,
 	SelectControl,
+	Popover,
+	TabPanel,
 } from '@wordpress/components';
 import { getRectangleFromRange } from '@wordpress/dom';
 import {
@@ -30,7 +32,6 @@ import {
 	ColorPaletteControl,
 	URLPopover,
 	getColorObjectByColorValue,
-	getColorObjectByAttributeValues,
 } from '@wordpress/block-editor';
 
 const HighlightPopoverAtLink = ( { addingColor, ...props } ) => {
@@ -81,39 +82,39 @@ export function getActiveColorHex( formatName = '', formatValue = {}, colors = [
 	}
 
 	const currentStyle = activeFormat.attributes.style;
-	const currentClass = activeFormat.attributes.class;
-
-	if ( currentStyle ) {
-		if ( currentClass === 'is-highlight-style-highlight' ) {
-			const colorRbg = currentStyle.replace( new RegExp( `^background: linear-gradient\\(transparent 70%, (.*?) 30%\\);` ), '$1' );
-			const colorHex = rgb2hex( colorRbg ).hex;
-			return colorHex;
-		}
-		else {
-			let regex;
-			if ( currentClass === 'is-highlight-style-marker' ) {
-				regex = /^background-color:\s(.*?);/
-			}
-			else if ( currentClass === 'is-highlight-style-underline' ) {
-				regex = /border-bottom:\ssolid\s2px\s(.*?);/
-			}
-			else if ( currentClass === 'is-highlight-style-dot' ) {
-				regex = /text-emphasis-color:\s(.*?);/
-			}
-
-			const color = currentStyle.match( regex );
-
-			if (color === null) {
-				return undefined;
-			}
-			return color[1] ? color[1] : undefined;
-		}
+	if ( ! currentStyle ) {
+		return undefined;
 	}
 
-	// Probably not use.
-	if ( currentClass ) {
-		const colorSlug = currentClass.replace( /.*has-(.*?)-color.*/, '$1' );
-		return getColorObjectByAttributeValues( colors, colorSlug ).color;
+	const currentClass = activeFormat.attributes.class;
+
+	if ( currentClass === 'is-highlight-style-highlight' ) {
+		const regexp = /^background: linear-gradient\(transparent 70%, (.*?) 30%\);/;
+		const colorRbg = currentStyle.match( regexp );
+		if ( colorRbg === null ) {
+			return undefined;
+		}
+
+		const colorHex = rgb2hex( colorRbg[1] ).hex;
+		return colorHex;
+	}
+	else {
+		let regexp;
+		if ( currentClass === 'is-highlight-style-marker' ) {
+			regexp = /^background-color:\s(.*?);/
+		}
+		else if ( currentClass === 'is-highlight-style-underline' ) {
+			regexp = /border-bottom:\ssolid\s2px\s(.*?);/
+		}
+		else if ( currentClass === 'is-highlight-style-dot' ) {
+			regexp = /text-emphasis-color:\s(.*?);/
+		}
+
+		const color = currentStyle.match( regexp );
+		if ( color === null ) {
+			return undefined;
+		}
+		return color[1] ? color[1] : undefined;
 	}
 }
 
@@ -167,12 +168,17 @@ export function getActiveStyleSlug( formatName = '', formatValue = {} ) {
 	}
 
 	const currentClass = activeFormat.attributes.class;
-	if ( currentClass ) {
-		const styleSlug = currentClass.replace( /^is\-highlight\-style\-(.*)$/, '$1' );
-		return styleSlug;
+	if ( ! currentClass ) {
+		return undefined;
 	}
 
-	return undefined;
+	const regexp = /^is\-highlight\-style\-(.*)$/
+	const styleSlug = currentClass.match( regexp );
+
+	if ( styleSlug === null ) {
+		return undefined;
+	}
+	return styleSlug[1] ? styleSlug[1] : '';
 }
 
 const StylePicker = ( { label, name, value, onChange } ) => {
@@ -231,6 +237,28 @@ export function setStyle( styleSlug = 'highlight', color = '#cccccc' ) {
 	return;
 }
 
+const TabPanelBody = ( { tab, name, value, onChange } ) => {
+	if ( tab.name === 'color' ) {
+		return <ColorPicker
+			property={ tab.name }
+			name={ name }
+			value={ value }
+			onChange={ onChange }
+		/>
+	}
+	else if ( tab.name === 'style' ) {
+		return (
+			<StylePicker
+				property={ tab.name }
+				name={ name }
+				value={ value }
+				onChange={ onChange }
+			/>
+		)
+	}
+	return
+}
+
 const InlineHighlightUI = ( {
 	name,
 	value,
@@ -245,20 +273,29 @@ const InlineHighlightUI = ( {
 			isActive={ isActive }
 			addingColor={ addingColor }
 			onClose={ onClose }
-			className="components-inline-highligh-popover is-flex-dir-column"
+			className="components-inline-highligh-popover"
 		>
-			<ColorPicker
-				label={ __( 'Color', 'editor-bridge' ) }
-				name={ name }
-				value={ value }
-				onChange={ onChange }
-			/>
-			<StylePicker
-				label={ __( 'Style', 'editor-bridge' ) }
-				name={ name }
-				value={ value }
-				onChange={ onChange }
-			/>
+			<TabPanel
+				tabs={ [
+					{
+						name: 'color',
+						title: __( 'Color', 'editor-bridge' ),
+					},
+					{
+						name: 'style',
+						title: __( 'Style', 'editor-bridge' ),
+					},
+				] }
+			>
+				{ ( tab ) => (
+					<TabPanelBody
+						tab={ tab }
+						name={ name }
+						value={ value }
+						onChange={ onChange }
+					/>
+				) }
+			</TabPanel>
 		</HighlightPopoverAtLink>
 	);
 };

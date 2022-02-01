@@ -19,6 +19,8 @@ import { useSelect } from '@wordpress/data';
 import {
 	withSpokenMessages,
 	SelectControl,
+	Popover,
+	TabPanel,
 } from '@wordpress/components';
 import { getRectangleFromRange } from '@wordpress/dom';
 import {
@@ -235,6 +237,28 @@ export function setStyle( styleSlug = 'highlight', color = '#cccccc' ) {
 	return;
 }
 
+const TabPanelBody = ( { tab, name, value, onChange } ) => {
+	if ( tab.name === 'color' ) {
+		return <ColorPicker
+			property={ tab.name }
+			name={ name }
+			value={ value }
+			onChange={ onChange }
+		/>
+	}
+	else if ( tab.name === 'style' ) {
+		return (
+			<StylePicker
+				property={ tab.name }
+				name={ name }
+				value={ value }
+				onChange={ onChange }
+			/>
+		)
+	}
+	return
+}
+
 const InlineHighlightUI = ( {
 	name,
 	value,
@@ -249,20 +273,29 @@ const InlineHighlightUI = ( {
 			isActive={ isActive }
 			addingColor={ addingColor }
 			onClose={ onClose }
-			className="components-inline-highligh-popover is-flex-dir-column"
+			className="components-inline-highligh-popover"
 		>
-			<ColorPicker
-				label={ __( 'Color', 'editor-bridge' ) }
-				name={ name }
-				value={ value }
-				onChange={ onChange }
-			/>
-			<StylePicker
-				label={ __( 'Style', 'editor-bridge' ) }
-				name={ name }
-				value={ value }
-				onChange={ onChange }
-			/>
+			<TabPanel
+				tabs={ [
+					{
+						name: 'color',
+						title: __( 'Color', 'editor-bridge' ),
+					},
+					{
+						name: 'style',
+						title: __( 'Style', 'editor-bridge' ),
+					},
+				] }
+			>
+				{ ( tab ) => (
+					<TabPanelBody
+						tab={ tab }
+						name={ name }
+						value={ value }
+						onChange={ onChange }
+					/>
+				) }
+			</TabPanel>
 		</HighlightPopoverAtLink>
 	);
 };

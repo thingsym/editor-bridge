@@ -3,8 +3,8 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
-Stable tag: 1.4.0
-Tested up to: 5.8.0
+Stable tag: 1.5.0
+Tested up to: 5.9.0
 Requires at least: 5.5
 Requires PHP: 7.1
 License: GPL2 or later
@@ -107,6 +107,21 @@ If you would like to contribute, here are some notes and guidlines.
 4. Have fun!
 
 == Changelog ==
+
+= 1.5.0 - 2022.02.01 =
+* tested up to 5.9.0
+* update japanese translation
+* update pot
+* remove unused functions
+* fix scss for popover
+* fix wp-block-separator style for dotted
+* change popover to TabPanel
+* update npm dependencies
+* improve getActive** functions, change from replace() to match()
+* change svg icon for RichTextToolbarButton
+* support font units for FontSizePicker
+* fix RichTextToolbarButton behavior when active for WordPress 5.9
+* change scss library from LibSass to dart sass
 
 = 1.4.0 - 2022.01.07 =
 * add jest unit test only php 7.4

@@ -67,17 +67,6 @@ function HighlightEdit( {
 		setIsAddingColor,
 	] );
 
-	const colorIndicatorStyle = useMemo( () => {
-		const activeColor = getActiveColorHex( name, value, colors );
-		if ( ! activeColor ) {
-			return undefined;
-		}
-
-		return {
-			backgroundColor: activeColor,
-		};
-	}, [ value, colors ] );
-
 	const hasColorsToChoose =
 		! isEmpty( colors ) || disableCustomColors !== true;
 

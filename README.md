@@ -130,6 +130,12 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 
 ## Changelog
 
+### [1.5.1] - 2022.02.09
+
+* fix scss
+* update japanese translation
+* update pot
+
 ### [1.5.0] - 2022.02.01
 
 * tested up to 5.9.0

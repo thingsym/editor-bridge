@@ -3,7 +3,7 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 Tested up to: 5.9.0
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -107,6 +107,11 @@ If you would like to contribute, here are some notes and guidlines.
 4. Have fun!
 
 == Changelog ==
+
+= 1.5.1 - 2022.02.09 =
+* fix scss
+* update japanese translation
+* update pot
 
 = 1.5.0 - 2022.02.01 =
 * tested up to 5.9.0

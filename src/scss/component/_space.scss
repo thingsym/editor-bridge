@@ -166,7 +166,7 @@
 }
 
 /** for alignwide and alignfull **/
-[class^="wp-block-"] {
+[class*="wp-block-"] {
 	&.alignwide,
 	&.alignfull {
 		&.is-padding-none {

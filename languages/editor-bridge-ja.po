@@ -2,16 +2,16 @@
 # This file is distributed under the GPL2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Editor Bridge 1.5.0\n"
+"Project-Id-Version: Editor Bridge 1.5.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/editor-bridge\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-01-28T12:06:50+00:00\n"
+"POT-Creation-Date: 2022-02-09T07:21:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.5.0\n"
+"X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: editor-bridge\n"
 
 #. Plugin Name of the plugin
@@ -87,8 +87,8 @@ msgid "Border settings"
 msgstr "枠線の設定"
 
 #: src/blocks/expansion/border/index.js:140
-#: src/blocks/format/badge/badge-popover.js:254
-#: src/blocks/format/highlight/highlight-popover.js:261
+#: src/blocks/format/badge/badge-popover.js:279
+#: src/blocks/format/highlight/highlight-popover.js:286
 msgid "Style"
 msgstr "スタイル"
 
@@ -120,8 +120,8 @@ msgid "Border width"
 msgstr "線の太さ"
 
 #: src/blocks/expansion/border/index.js:161
-#: src/blocks/format/badge/badge-popover.js:248
-#: src/blocks/format/highlight/highlight-popover.js:255
+#: src/blocks/format/badge/badge-popover.js:275
+#: src/blocks/format/highlight/highlight-popover.js:282
 msgid "Color"
 msgstr "色"
 
@@ -220,30 +220,30 @@ msgstr "幅の設定"
 msgid "Button width"
 msgstr "ボタンの幅"
 
-#: src/blocks/format/badge/badge-popover.js:197
+#: src/blocks/format/badge/badge-popover.js:199
 #: src/blocks/format/font-weight/font-weight-popover.js:117
 msgid "Default"
 msgstr "デフォルト"
 
-#: src/blocks/format/badge/badge-popover.js:198
+#: src/blocks/format/badge/badge-popover.js:200
 #: src/blocks/style/image.js:10
 #: src/blocks/style/table.js:30
 msgid "Round Corner"
 msgstr "角丸"
 
-#: src/blocks/format/badge/badge-popover.js:199
+#: src/blocks/format/badge/badge-popover.js:201
 msgid "Round"
 msgstr "円形"
 
-#: src/blocks/format/badge/badge-popover.js:200
+#: src/blocks/format/badge/badge-popover.js:202
 msgid "Outline"
 msgstr "アウトライン"
 
-#: src/blocks/format/badge/badge-popover.js:201
+#: src/blocks/format/badge/badge-popover.js:203
 msgid "Status"
 msgstr "ステイタス"
 
-#: src/blocks/format/badge/badge-popover.js:202
+#: src/blocks/format/badge/badge-popover.js:204
 msgid "Perfect Circle"
 msgstr "正円"
 
@@ -319,31 +319,31 @@ msgstr "Revert"
 msgid "Unset"
 msgstr "Unset"
 
-#: src/blocks/format/font-weight/font-weight-popover.js:180
+#: src/blocks/format/font-weight/font-weight-popover.js:184
 #: src/blocks/format/font-weight/index.js:26
 msgid "Font Weight"
 msgstr "フォントの太さ"
 
-#: src/blocks/format/font-weight/font-weight-popover.js:186
+#: src/blocks/format/font-weight/font-weight-popover.js:190
 msgid "Reset"
 msgstr "リセット"
 
-#: src/blocks/format/highlight/highlight-popover.js:212
+#: src/blocks/format/highlight/highlight-popover.js:214
 #: src/blocks/format/highlight/index.js:35
 msgid "Highlight"
 msgstr "強調"
 
-#: src/blocks/format/highlight/highlight-popover.js:213
+#: src/blocks/format/highlight/highlight-popover.js:215
 msgid "Marker"
 msgstr "マーカー"
 
-#: src/blocks/format/highlight/highlight-popover.js:214
+#: src/blocks/format/highlight/highlight-popover.js:216
 #: src/blocks/style/heading.js:10
 #: src/blocks/style/table.js:20
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: src/blocks/format/highlight/highlight-popover.js:215
+#: src/blocks/format/highlight/highlight-popover.js:217
 msgid "Dot"
 msgstr "ドット"
 

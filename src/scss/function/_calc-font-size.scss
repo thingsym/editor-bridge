@@ -22,7 +22,7 @@
 // ========================================================n===========
 
 @function percent2px($percent, $base: 16) {
-  @return strip-unit.strip-unit($base) * math.div(strip-unit.strip-unit($percent), 100) * 1px;
+	@return strip-unit.strip-unit($base) * math.div(strip-unit.strip-unit($percent), 100) * 1px;
 }
 
 // ===================================================================
@@ -30,11 +30,11 @@
 // ===================================================================
 
 @function percent2em($percent, $base: 16) {
-  @return (strip-unit.strip-unit($base) * (strip-unit.strip-unit($percent) / 100)) / strip-unit.strip-unit($base) * 1em;
+	@return (strip-unit.strip-unit($base) * (strip-unit.strip-unit($percent) / 100)) / strip-unit.strip-unit($base) * 1em;
 }
 
 @function percent2rem($percent, $base: 16) {
-  @return (strip-unit.strip-unit($base) * (strip-unit.strip-unit($percent) / 100)) / strip-unit.strip-unit($base) * 1rem;
+	@return (strip-unit.strip-unit($base) * (strip-unit.strip-unit($percent) / 100)) / strip-unit.strip-unit($base) * 1rem;
 }
 
 // ===================================================================
@@ -42,9 +42,9 @@
 // ===================================================================
 
 @function em2px($em, $base: 16) {
-  @return strip-unit.strip-unit($em) * strip-unit.strip-unit($base) * 1px;
+	@return strip-unit.strip-unit($em) * strip-unit.strip-unit($base) * 1px;
 }
 
 @function rem2px($rem, $base: 16) {
-  @return strip-unit.strip-unit($rem) * strip-unit.strip-unit($base) * 1px;
+	@return strip-unit.strip-unit($rem) * strip-unit.strip-unit($base) * 1px;
 }

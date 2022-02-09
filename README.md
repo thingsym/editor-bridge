@@ -74,7 +74,7 @@ There are three expansion points.
 ## Compatibility
 
 * WordPress version 5.5 or later
-* Gutenberg version 8.5 or later
+* Gutenberg version 8.5 or later ([Versions in WordPress](https://developer.wordpress.org/block-editor/contributors/versions-in-wordpress/))
 
 ## WordPress Plugin Directory
 

@@ -112,15 +112,15 @@ const ColorPicker = ( { label, name, value, onChange } ) => {
 	const onColorChange = useCallback(
 		( color ) => {
 			if ( color ) {
-				const styleSlug = getActiveStyleSlug( name, value );
+				const classNameSlug = getActiveClassNameSlug( name, value );
 				const colorObject = getColorObjectByColorValue( colors, color );
-				const style = setStyle( styleSlug, colorObject ? colorObject.color : color );
+				const style = setStyle( classNameSlug, colorObject ? colorObject.color : color );
 
 				onChange(
 					applyFormat( value, {
 						type: name,
 						attributes: {
-							class: styleSlug ? 'is-badge-style-' + styleSlug : 'is-badge-style-default',
+							class: classNameSlug ? 'is-badge-style-' + classNameSlug : 'is-badge-style-default',
 							style: style ? style : '',
 						}
 					} )
@@ -145,7 +145,7 @@ const ColorPicker = ( { label, name, value, onChange } ) => {
 	/>;
 };
 
-export function getActiveStyleSlug( formatName = '', formatValue = {} ) {
+export function getActiveClassNameSlug( formatName = '', formatValue = {} ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
 		return undefined;
@@ -157,26 +157,26 @@ export function getActiveStyleSlug( formatName = '', formatValue = {} ) {
 	}
 
 	const regexp = /^is\-badge\-style\-(.*)$/
-	const styleSlug = currentClass.match( regexp );
+	const classNameSlug = currentClass.match( regexp );
 
-	if ( styleSlug === null ) {
+	if ( classNameSlug === null ) {
 		return undefined;
 	}
-	return styleSlug[1] ? styleSlug[1] : '';
+	return classNameSlug[1] ? classNameSlug[1] : '';
 }
 
-const StylePicker = ( { label, name, value, onChange } ) => {
-	const onStyleChange = useCallback(
-		( styleSlug ) => {
+const ClassNameSlugPicker = ( { label, name, value, onChange } ) => {
+	const onClassNameSlugChange = useCallback(
+		( classNameSlug ) => {
 			const color = getActiveColorHex( name, value );
-			const style = setStyle( styleSlug, color );
+			const style = setStyle( classNameSlug, color );
 
-			if ( styleSlug ) {
+			if ( classNameSlug ) {
 				onChange(
 					applyFormat( value, {
 						type: name,
 						attributes: {
-							class: styleSlug ? 'is-badge-style-' + styleSlug : 'is-badge-style-default',
+							class: classNameSlug ? 'is-badge-style-' + classNameSlug : 'is-badge-style-default',
 							style: style ? style : '',
 						}
 					} )
@@ -186,14 +186,14 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 		[ onChange ]
 	);
 
-	const activeStyle = useMemo( () => getActiveStyleSlug( name, value ), [
+	const activeClassNameSlug = useMemo( () => getActiveClassNameSlug( name, value ), [
 		name,
 		value,
 	] );
 
 	return <SelectControl
 		label={ label }
-		value={ activeStyle ? activeStyle : 'default' }
+		value={ activeClassNameSlug ? activeClassNameSlug : 'default' }
 		options={ [
 			{ label: __( 'Default', 'editor-bridge' ), value: 'default' },
 			{ label: __( 'Round Corner', 'editor-bridge' ), value: 'round-corner' },
@@ -202,28 +202,28 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 			{ label: __( 'Status', 'editor-bridge' ), value: 'status' },
 			{ label: __( 'Perfect Circle', 'editor-bridge' ), value: 'perfect-circle' },
 		] }
-		onChange={ onStyleChange }
+		onChange={ onClassNameSlugChange }
 	/>;
 };
 
-export function setStyle( styleSlug = 'default', color = '#cccccc' ) {
-	if ( styleSlug === 'default' ) {
-		return `background-color: ${ color };padding: .2rem .8em;`;
+export function setStyle( classNameSlug = 'default', color = '#cccccc' ) {
+	if ( classNameSlug === 'default' ) {
+		return `background-color: ${ backgroundColor };padding: .2rem .8em;`;
 	}
-	else if ( styleSlug === 'round-corner' ) {
-		return `background-color: ${ color };padding: .2rem .8em;border-radius: .5rem;`;
+	else if ( classNameSlug === 'round-corner' ) {
+		return `background-color: ${ backgroundColor };padding: .2rem .8em;border-radius: .5rem;`;
 	}
-	else if ( styleSlug === 'round' ) {
-		return `background-color: ${ color };padding: .2rem .8em;border-radius: 2rem;`;
+	else if ( classNameSlug === 'round' ) {
+		return `background-color: ${ backgroundColor };padding: .2rem .8em;border-radius: 2rem;`;
 	}
-	else if ( styleSlug === 'outline' ) {
-		return `background-color: #fff;border: solid 1px ${ color };padding: .2rem .8em;`;
+	else if ( classNameSlug === 'outline' ) {
+		return `background-color: #fff;border: solid 1px ${ backgroundColor };padding: .2rem .8em;`;
 	}
-	else if ( styleSlug === 'status' ) {
-		return `background-color: #fff;border: solid 1px ${ color };padding: .2rem .8em;border-radius: 2rem;`;
+	else if ( classNameSlug === 'status' ) {
+		return `background-color: #fff;border: solid 1px ${ backgroundColor };padding: .2rem .8em;border-radius: 2rem;`;
 	}
-	else if ( styleSlug === 'perfect-circle' ) {
-		return `background-color: ${ color };border-radius: 50%;display: inline-block;text-align: center;`;
+	else if ( classNameSlug === 'perfect-circle' ) {
+		return `background-color: ${ backgroundColor };border-radius: 50%;display: inline-block;text-align: center;`;
 	}
 
 	return;
@@ -240,7 +240,7 @@ const TabPanelBody = ( { tab, name, value, onChange } ) => {
 	}
 	else if ( tab.name === 'style' ) {
 		return (
-			<StylePicker
+			<ClassNameSlugPicker
 				property={ tab.name }
 				name={ name }
 				value={ value }
@@ -248,6 +248,7 @@ const TabPanelBody = ( { tab, name, value, onChange } ) => {
 			/>
 		)
 	}
+
 	return
 }
 

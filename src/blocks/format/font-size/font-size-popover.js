@@ -10,7 +10,6 @@ import {
 import { useSelect } from '@wordpress/data';
 import {
 	FontSizePicker,
-	withSpokenMessages,
 } from '@wordpress/components';
 import { getRectangleFromRange } from '@wordpress/dom';
 import {
@@ -83,14 +82,14 @@ export function getActiveFontSize( formatName = '', formatValue = {} ) {
 	return fontSize[1] ? fontSize[1] : '';
 }
 
-const InlineFontSizeUI = ( {
+export default function InlineFontSizeUI( {
 	name,
 	value,
 	onChange,
 	onClose,
 	isActive,
 	addingFontSize,
-} ) => {
+} ) {
 
 	const fontSizes = useSelect(
 		( select ) => select( 'core/block-editor' ).getSettings().fontSizes
@@ -140,5 +139,3 @@ const InlineFontSizeUI = ( {
 		</FontSizePopoverAtLink>
 	);
 };
-
-export default withSpokenMessages( InlineFontSizeUI );

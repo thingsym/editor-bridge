@@ -15,7 +15,6 @@ import {
 } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import {
-	withSpokenMessages,
 	SelectControl,
 	Popover,
 	TabPanel,
@@ -252,14 +251,14 @@ const TabPanelBody = ( { tab, name, value, onChange } ) => {
 	return
 }
 
-const InlineBadgeUI = ( {
+export default function InlineBadgeUI( {
 	name,
 	value,
 	onChange,
 	onClose,
 	isActive,
 	addingColor,
-} ) => {
+} ) {
 	return (
 		<BadgePopoverAtLink
 			value={ value }
@@ -292,5 +291,3 @@ const InlineBadgeUI = ( {
 		</BadgePopoverAtLink>
 	);
 };
-
-export default withSpokenMessages( InlineBadgeUI );

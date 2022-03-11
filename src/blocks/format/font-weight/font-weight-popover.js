@@ -9,7 +9,6 @@ import {
 	useMemo,
 } from '@wordpress/element';
 import {
-	withSpokenMessages,
 	SelectControl,
 	Button,
 } from '@wordpress/components';
@@ -159,14 +158,14 @@ export function setStyle( fontWeight ) {
 	return `font-weight: ${ fontWeight };`;
 }
 
-const InlineFontWeightUI = ( {
+export default function InlineFontWeightUI( {
 	name,
 	value,
 	onChange,
 	onClose,
 	isActive,
 	addingFontWeight,
-} ) => {
+} ) {
 
 	const baseClassName = 'components-fontweight-picker';
 
@@ -196,5 +195,3 @@ const InlineFontWeightUI = ( {
 		</FontWeightPopoverAtLink>
 	);
 };
-
-export default withSpokenMessages( InlineFontWeightUI );

@@ -17,7 +17,6 @@ import {
 } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import {
-	withSpokenMessages,
 	SelectControl,
 	Popover,
 	TabPanel,
@@ -259,14 +258,14 @@ const TabPanelBody = ( { tab, name, value, onChange } ) => {
 	return
 }
 
-const InlineHighlightUI = ( {
+export default function InlineHighlightUI( {
 	name,
 	value,
 	onChange,
 	onClose,
 	isActive,
 	addingColor,
-} ) => {
+} ) {
 	return (
 		<HighlightPopoverAtLink
 			value={ value }
@@ -299,5 +298,3 @@ const InlineHighlightUI = ( {
 		</HighlightPopoverAtLink>
 	);
 };
-
-export default withSpokenMessages( InlineHighlightUI );

@@ -29,7 +29,7 @@ import {
 	default as InlineBadgeUI,
 	getActiveColorHex,
 } from './badge-popover.js';
-import { checkSolid } from './icons';
+import { squareCheck } from './icons';
 
 const name  = 'editor-bridge/badge';
 const title = __( 'Badge', 'editor-bridge' );
@@ -80,7 +80,7 @@ function BadgeEdit( {
 				isActive={ isActive }
 				icon={
 					<Icon
-						icon={ checkSolid }
+						icon={ squareCheck }
 						style={{
 							width: '22px',
 							height: '22px',

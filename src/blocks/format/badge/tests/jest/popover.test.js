@@ -9,7 +9,7 @@ import { shallow } from 'enzyme';
 import {
 	default as InlineBadgeUI,
 	getActiveColorHex,
-	getActiveStyleSlug,
+	getActiveClassNameSlug,
 	setStyle,
 } from '../../badge-popover.js';
 
@@ -28,14 +28,14 @@ describe( 'getActiveColorHex', () => {
 
 } );
 
-describe( 'getActiveStyleSlug', () => {
+describe( 'getActiveClassNameSlug', () => {
 	it( 'no parameter', () => {
-		expect( getActiveStyleSlug() ).toBe( undefined );
-		expect( getActiveStyleSlug( '', {} ) ).toBe( undefined );
+		expect( getActiveClassNameSlug() ).toBe( undefined );
+		expect( getActiveClassNameSlug( '', {} ) ).toBe( undefined );
 	} );
 
 	it( 'has parameter', () => {
-		expect( getActiveStyleSlug( 'a', 'a' ) ).toBe( undefined );
+		expect( getActiveClassNameSlug( 'a', 'a' ) ).toBe( undefined );
 	} );
 } );
 
@@ -58,7 +58,7 @@ describe( 'setStyle', () => {
 		expect( setStyle( 'perfect-circle', '#dddddd' ) ).toBe( 'background-color: #dddddd;border-radius: 50%;display: inline-block;text-align: center;' );
 	} );
 
-	it( 'out of range styleSlug parameter', () => {
+	it( 'out of range classNameSlug parameter', () => {
 		expect( setStyle( 'aaa' ) ).toBe( undefined );
 	} );
 

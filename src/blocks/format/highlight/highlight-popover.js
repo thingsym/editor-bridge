@@ -126,15 +126,15 @@ const ColorPicker = ( { label, name, value, onChange } ) => {
 	const onColorChange = useCallback(
 		( color ) => {
 			if ( color ) {
-				const styleSlug = getActiveStyleSlug( name, value );
+				const classNameSlug = getActiveClassNameSlug( name, value );
 				const colorObject = getColorObjectByColorValue( colors, color );
-				const style = setStyle( styleSlug, colorObject ? colorObject.color : color );
+				const style = setStyle( classNameSlug, colorObject ? colorObject.color : color );
 
 				onChange(
 					applyFormat( value, {
 						type: name,
 						attributes: {
-							class: styleSlug ? 'is-highlight-style-' + styleSlug : 'is-highlight-style-highlight',
+							class: classNameSlug ? 'is-highlight-style-' + classNameSlug : 'is-highlight-style-highlight',
 							style: style ? style : '',
 						}
 					} )
@@ -160,7 +160,7 @@ const ColorPicker = ( { label, name, value, onChange } ) => {
 	/>;
 };
 
-export function getActiveStyleSlug( formatName = '', formatValue = {} ) {
+export function getActiveClassNameSlug( formatName = '', formatValue = {} ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
 		return undefined;
@@ -172,26 +172,26 @@ export function getActiveStyleSlug( formatName = '', formatValue = {} ) {
 	}
 
 	const regexp = /^is\-highlight\-style\-(.*)$/
-	const styleSlug = currentClass.match( regexp );
+	const classNameSlug = currentClass.match( regexp );
 
-	if ( styleSlug === null ) {
+	if ( classNameSlug === null ) {
 		return undefined;
 	}
-	return styleSlug[1] ? styleSlug[1] : '';
+	return classNameSlug[1] ? classNameSlug[1] : '';
 }
 
 const StylePicker = ( { label, name, value, onChange } ) => {
 	const onStyleChange = useCallback(
-		( styleSlug ) => {
+		( classNameSlug ) => {
 			const color = getActiveColorHex( name, value );
-			const style = setStyle( styleSlug, color );
+			const style = setStyle( classNameSlug, color );
 
-			if ( styleSlug ) {
+			if ( classNameSlug ) {
 				onChange(
 					applyFormat( value, {
 						type: name,
 						attributes: {
-							class: styleSlug ? 'is-highlight-style-' + styleSlug : 'is-highlight-style-highlight',
+							class: classNameSlug ? 'is-highlight-style-' + classNameSlug : 'is-highlight-style-highlight',
 							style: style ? style : '',
 						}
 					} )
@@ -201,7 +201,7 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 		[ onChange ]
 	);
 
-	const activeStyle = useMemo( () => getActiveStyleSlug( name, value ), [
+	const activeStyle = useMemo( () => getActiveClassNameSlug( name, value ), [
 		name,
 		value,
 	] );
@@ -219,17 +219,17 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 	/>;
 };
 
-export function setStyle( styleSlug = 'highlight', color = '#cccccc' ) {
-	if ( styleSlug === 'highlight' ) {
+export function setStyle( classNameSlug = 'highlight', color = '#cccccc' ) {
+	if ( classNameSlug === 'highlight' ) {
 		return `background: linear-gradient(transparent 70%, ${ hexToRgba( color, 0.6 ) } 30%);`;
 	}
-	else if ( styleSlug === 'marker' ) {
+	else if ( classNameSlug === 'marker' ) {
 		return `background-color: ${ color };`;
 	}
-	else if ( styleSlug === 'underline' ) {
+	else if ( classNameSlug === 'underline' ) {
 		return `border-bottom: solid 2px ${ color };`;
 	}
-	else if ( styleSlug === 'dot' ) {
+	else if ( classNameSlug === 'dot' ) {
 		return `text-emphasis-style: filled circle;-webkit-text-emphasis-style: filled circle;text-emphasis-color: ${ color };-webkit-text-emphasis-color: ${ color };`;
 	}
 

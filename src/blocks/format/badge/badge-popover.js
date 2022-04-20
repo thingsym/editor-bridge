@@ -208,22 +208,22 @@ const ClassNameSlugPicker = ( { label, name, value, onChange } ) => {
 
 export function setStyle( classNameSlug = 'default', color = '#cccccc' ) {
 	if ( classNameSlug === 'default' ) {
-		return `background-color: ${ backgroundColor };padding: .2rem .8em;`;
+		return `background-color: ${ color };padding: .2rem .8em;`;
 	}
 	else if ( classNameSlug === 'round-corner' ) {
-		return `background-color: ${ backgroundColor };padding: .2rem .8em;border-radius: .5rem;`;
+		return `background-color: ${ color };padding: .2rem .8em;border-radius: .5rem;`;
 	}
 	else if ( classNameSlug === 'round' ) {
-		return `background-color: ${ backgroundColor };padding: .2rem .8em;border-radius: 2rem;`;
+		return `background-color: ${ color };padding: .2rem .8em;border-radius: 2rem;`;
 	}
 	else if ( classNameSlug === 'outline' ) {
-		return `background-color: #fff;border: solid 1px ${ backgroundColor };padding: .2rem .8em;`;
+		return `background-color: #fff;border: solid 1px ${ color };padding: .2rem .8em;`;
 	}
 	else if ( classNameSlug === 'status' ) {
-		return `background-color: #fff;border: solid 1px ${ backgroundColor };padding: .2rem .8em;border-radius: 2rem;`;
+		return `background-color: #fff;border: solid 1px ${ color };padding: .2rem .8em;border-radius: 2rem;`;
 	}
 	else if ( classNameSlug === 'perfect-circle' ) {
-		return `background-color: ${ backgroundColor };border-radius: 50%;display: inline-block;text-align: center;`;
+		return `background-color: ${ color };border-radius: 50%;display: inline-block;text-align: center;`;
 	}
 
 	return;

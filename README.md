@@ -116,6 +116,18 @@ composer run --list
 composer run phpunit
 ```
 
+### Javascript unit testing with Jest
+
+```console
+cd /path/to/editor-bridge
+
+# Install npm package
+npm intall
+
+# Run test
+npm run test:jest
+```
+
 ## Contribution
 
 ### Patches and Bug Fixes

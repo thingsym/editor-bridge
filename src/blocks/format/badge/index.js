@@ -15,7 +15,6 @@ import { __ } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
 import {
 	useCallback,
-	useMemo,
 	useState,
 } from '@wordpress/element';
 import { RichTextToolbarButton } from '@wordpress/block-editor';
@@ -27,9 +26,10 @@ import { removeFormat } from '@wordpress/rich-text';
  */
 import {
 	default as InlineBadgeUI,
-	getActiveColorHex,
 } from './badge-popover.js';
 import { squareCheck } from './icons';
+
+export const transparentValue = 'rgba(0, 0, 0, 0)';
 
 const name  = 'editor-bridge/badge';
 const title = __( 'Badge', 'editor-bridge' );

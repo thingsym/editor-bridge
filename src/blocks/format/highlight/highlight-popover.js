@@ -31,6 +31,7 @@ import {
 	ColorPaletteControl,
 	URLPopover,
 	getColorObjectByColorValue,
+	store as blockEditorStore,
 } from '@wordpress/block-editor';
 
 const HighlightPopoverAtLink = ( { addingColor, ...props } ) => {
@@ -74,8 +75,8 @@ const HighlightPopoverAtLink = ( { addingColor, ...props } ) => {
 	/>;
 };
 
-export function getActiveColorHex( formatName = '', formatValue = {}, colors = [] ) {
-	const activeFormat = getActiveFormat( formatValue, formatName );
+export function getActiveColorHex( name = '', value = {}, colorSettings = [] ) {
+	const activeFormat = getActiveFormat( value, name );
 	if ( ! activeFormat ) {
 		return undefined;
 	}
@@ -117,9 +118,9 @@ export function getActiveColorHex( formatName = '', formatValue = {}, colors = [
 	}
 }
 
-const ColorPicker = ( { label, name, value, onChange } ) => {
+const ColorPicker = ( { label, name, property, value, onChange } ) => {
 	const colors = useSelect( ( select ) => {
-		const { getSettings } = select( 'core/block-editor' );
+		const { getSettings } = select( blockEditorStore );
 		return get( getSettings(), [ 'colors' ], [] );
 	} );
 
@@ -143,15 +144,13 @@ const ColorPicker = ( { label, name, value, onChange } ) => {
 				onChange( removeFormat( value, name ) );
 			}
 		},
-		[ colors, onChange ]
+		[ colors, onChange, property ]
 	);
 
-
-	const activeColor = useMemo( () => getActiveColorHex( name, value, colors ), [
-		name,
-		value,
-		colors,
-	] );
+	const activeColor = useMemo(
+		() => getActiveColorHex( name, value, colors ),
+		[ name, value, colors, ]
+	);
 
 	return <ColorPaletteControl
 		label={ label }

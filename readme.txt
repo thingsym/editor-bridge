@@ -3,7 +3,7 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
-Stable tag: 1.5.1
+Stable tag: 1.6.0
 Tested up to: 5.9.0
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -107,6 +107,19 @@ If you would like to contribute, here are some notes and guidlines.
 4. Have fun!
 
 == Changelog ==
+
+= 1.6.0 - 2022.05.03 =
+* change mysql from version 8.0 to version 5.7 using docker image
+* fix test case
+* update japanese translation
+* update pot
+* update package.json
+* cleanup code
+* add text color to badge format
+* change icon with badge format
+* rename from styleSlug to classNameSlug
+* remove withSpokenMessages
+* change assert from assertEquals to assertSame
 
 = 1.5.1 - 2022.02.09 =
 * fix scss

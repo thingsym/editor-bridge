@@ -142,6 +142,20 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 
 ## Changelog
 
+### [1.6.0] - 2022.05.03
+
+* change mysql from version 8.0 to version 5.7 using docker image
+* fix test case
+* update japanese translation
+* update pot
+* update package.json
+* cleanup code
+* add text color to badge format
+* change icon with badge format
+* rename from styleSlug to classNameSlug
+* remove withSpokenMessages
+* change assert from assertEquals to assertSame
+
 ### [1.5.1] - 2022.02.09
 
 * fix scss

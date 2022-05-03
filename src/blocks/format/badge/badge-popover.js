@@ -15,22 +15,32 @@ import {
 } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
 import {
-	withSpokenMessages,
 	SelectControl,
 	Popover,
 	TabPanel,
+	Button,
 } from '@wordpress/components';
 import { getRectangleFromRange } from '@wordpress/dom';
 import {
 	applyFormat,
 	removeFormat,
 	getActiveFormat,
+	useAnchorRef,
 } from '@wordpress/rich-text';
 import {
 	ColorPaletteControl,
 	URLPopover,
+	getColorClassName,
 	getColorObjectByColorValue,
+	getColorObjectByAttributeValues,
+	store as blockEditorStore,
+	useCachedTruthy,
 } from '@wordpress/block-editor';
+
+/**
+ * Internal dependencies
+ */
+ import { badge as settings, transparentValue } from './index';
 
 const BadgePopoverAtLink = ( { addingColor, ...props } ) => {
 	// There is no way to open a text formatter popover when another one is mounted.
@@ -73,7 +83,27 @@ const BadgePopoverAtLink = ( { addingColor, ...props } ) => {
 	/>;
 };
 
-export function getActiveColorHex( formatName = '', formatValue = {}, colors = [] ) {
+export function getActiveColorHex( formatName = '', formatValue = {} ) {
+	const activeFormat = getActiveFormat( formatValue, formatName );
+	if ( ! activeFormat ) {
+		return undefined;
+	}
+
+	const currentStyle = activeFormat.attributes.style;
+	if ( ! currentStyle ) {
+		return undefined;
+	}
+
+	const regexp = /color:(.*?);/
+
+	const color = currentStyle.match( regexp );
+	if ( color === null ) {
+		return undefined;
+	}
+	return color[1] ? color[1] : undefined;
+}
+
+export function getActiveBackgroundColorHex( formatName = '', formatValue = {} ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
 		return undefined;
@@ -88,65 +118,78 @@ export function getActiveColorHex( formatName = '', formatValue = {}, colors = [
 
 	let regexp;
 	if ( currentClass === 'is-badge-style-status' ) {
-		regexp = /border:\ssolid\s1px\s(.*?);/
+		regexp = /border:solid\s1px\s(.*?);/
 	}
 	else if ( currentClass === 'is-badge-style-outline' ) {
-		regexp = /border:\ssolid\s1px\s(.*?);/
+		regexp = /border:solid\s1px\s(.*?);/
 	}
 	else {
-		regexp = /background-color:\s(.*?);/
+		regexp = /background-color:(.*?);/
 	}
 
-	const color = currentStyle.match( regexp );
-	if ( color === null ) {
+	const backgroundColor = currentStyle.match( regexp );
+	if ( backgroundColor === null ) {
 		return undefined;
 	}
-	return color[1] ? color[1] : undefined;
+	return backgroundColor[1] ? backgroundColor[1] : undefined;
 }
 
-const ColorPicker = ( { label, name, value, onChange } ) => {
+const ColorPicker = ( { label, property, name, value, onChange } ) => {
 	const colors = useSelect( ( select ) => {
-		const { getSettings } = select( 'core/block-editor' );
+		const { getSettings } = select( blockEditorStore );
 		return get( getSettings(), [ 'colors' ], [] );
 	} );
 
 	const onColorChange = useCallback(
 		( color ) => {
-			if ( color ) {
-				const styleSlug = getActiveStyleSlug( name, value );
-				const colorObject = getColorObjectByColorValue( colors, color );
-				const style = setStyle( styleSlug, colorObject ? colorObject.color : color );
+			const classNameSlug = getActiveClassNameSlug( name, value );
+			const colorObject = getColorObjectByColorValue( colors, color );
 
-				onChange(
-					applyFormat( value, {
-						type: name,
-						attributes: {
-							class: styleSlug ? 'is-badge-style-' + styleSlug : 'is-badge-style-default',
-							style: style ? style : '',
-						}
-					} )
-				);
-			} else {
-				onChange( removeFormat( value, name ) );
+			let style;
+			if ( property === 'color' ) {
+				const activeBackgroundColor = getActiveBackgroundColorHex( name, value );
+				style = setStyle( classNameSlug, color, activeBackgroundColor );
 			}
+			else if ( property === 'backgroundColor' ) {
+				const activeColor = getActiveColorHex( name, value );
+				style = setStyle( classNameSlug, activeColor, colorObject ? colorObject.color : color );
+			}
+
+			onChange(
+				applyFormat( value, {
+					type: name,
+					attributes: {
+						class: classNameSlug ? 'is-badge-style-' + classNameSlug : 'is-badge-style-default',
+						style: style ? style : '',
+					}
+				} )
+			);
 		},
-		[ colors, onChange ]
+		[ colors, onChange, property ]
 	);
 
-	const activeColor = useMemo( () => getActiveColorHex( name, value, colors ), [
-		name,
-		value,
-		colors,
-	] );
+	const activeColor = useMemo(
+		() => getActiveColorHex( name, value ),
+		[ name, value, property, colors, ]
+	);
+
+	const activeBackgroundColor = useMemo(
+		() => getActiveBackgroundColorHex( name, value ),
+		[ name, value, property, colors, ]
+	);
 
 	return <ColorPaletteControl
 		label={ label }
-		value={ activeColor }
+		value={
+			  property === 'color' ? activeColor
+			: property === 'backgroundColor' ? activeBackgroundColor
+			: ''
+		}
 		onChange={ onColorChange }
 	/>;
 };
 
-export function getActiveStyleSlug( formatName = '', formatValue = {} ) {
+export function getActiveClassNameSlug( formatName = '', formatValue = {} ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
 		return undefined;
@@ -158,26 +201,28 @@ export function getActiveStyleSlug( formatName = '', formatValue = {} ) {
 	}
 
 	const regexp = /^is\-badge\-style\-(.*)$/
-	const styleSlug = currentClass.match( regexp );
+	const classNameSlug = currentClass.match( regexp );
 
-	if ( styleSlug === null ) {
+	if ( classNameSlug === null ) {
 		return undefined;
 	}
-	return styleSlug[1] ? styleSlug[1] : '';
+	return classNameSlug[1] ? classNameSlug[1] : '';
 }
 
-const StylePicker = ( { label, name, value, onChange } ) => {
-	const onStyleChange = useCallback(
-		( styleSlug ) => {
-			const color = getActiveColorHex( name, value );
-			const style = setStyle( styleSlug, color );
+const ClassNameSlugPicker = ( { label, property, name, value, onChange } ) => {
 
-			if ( styleSlug ) {
+	const onClassNameSlugChange = useCallback(
+		( classNameSlug ) => {
+			const backgroundColor = getActiveBackgroundColorHex( name, value );
+			const color = getActiveColorHex( name, value );
+			const style = setStyle( classNameSlug, color, backgroundColor );
+
+			if ( classNameSlug ) {
 				onChange(
 					applyFormat( value, {
 						type: name,
 						attributes: {
-							class: styleSlug ? 'is-badge-style-' + styleSlug : 'is-badge-style-default',
+							class: classNameSlug ? 'is-badge-style-' + classNameSlug : 'is-badge-style-default',
 							style: style ? style : '',
 						}
 					} )
@@ -187,51 +232,93 @@ const StylePicker = ( { label, name, value, onChange } ) => {
 		[ onChange ]
 	);
 
-	const activeStyle = useMemo( () => getActiveStyleSlug( name, value ), [
-		name,
-		value,
-	] );
+	const activeClassNameSlug = useMemo(
+		() => getActiveClassNameSlug( name, value ),
+		[ name, value, ]
+	);
 
-	return <SelectControl
-		label={ label }
-		value={ activeStyle ? activeStyle : 'default' }
-		options={ [
-			{ label: __( 'Default', 'editor-bridge' ), value: 'default' },
-			{ label: __( 'Round Corner', 'editor-bridge' ), value: 'round-corner' },
-			{ label: __( 'Round', 'editor-bridge' ), value: 'round' },
-			{ label: __( 'Outline', 'editor-bridge' ), value: 'outline' },
-			{ label: __( 'Status', 'editor-bridge' ), value: 'status' },
-			{ label: __( 'Perfect Circle', 'editor-bridge' ), value: 'perfect-circle' },
-		] }
-		onChange={ onStyleChange }
-	/>;
+	return <div>
+		<SelectControl
+			label={ label }
+			value={ activeClassNameSlug ? activeClassNameSlug : 'default' }
+			options={ [
+				{ label: __( 'Default', 'editor-bridge' ), value: 'default' },
+				{ label: __( 'Round Corner', 'editor-bridge' ), value: 'round-corner' },
+				{ label: __( 'Round', 'editor-bridge' ), value: 'round' },
+				{ label: __( 'Outline', 'editor-bridge' ), value: 'outline' },
+				{ label: __( 'Status', 'editor-bridge' ), value: 'status' },
+				{ label: __( 'Perfect Circle', 'editor-bridge' ), value: 'perfect-circle' },
+			] }
+			onChange={ onClassNameSlugChange }
+		/>
+
+		<ResetButton
+			label={ __( 'Reset', 'editor-bridge' ) }
+			name={ name }
+			value={ value }
+			onChange={ onChange }
+		/>
+	</div>;
 };
 
-export function setStyle( styleSlug = 'default', color = '#cccccc' ) {
-	if ( styleSlug === 'default' ) {
-		return `background-color: ${ color };padding: .2rem .8em;`;
-	}
-	else if ( styleSlug === 'round-corner' ) {
-		return `background-color: ${ color };padding: .2rem .8em;border-radius: .5rem;`;
-	}
-	else if ( styleSlug === 'round' ) {
-		return `background-color: ${ color };padding: .2rem .8em;border-radius: 2rem;`;
-	}
-	else if ( styleSlug === 'outline' ) {
-		return `background-color: #fff;border: solid 1px ${ color };padding: .2rem .8em;`;
-	}
-	else if ( styleSlug === 'status' ) {
-		return `background-color: #fff;border: solid 1px ${ color };padding: .2rem .8em;border-radius: 2rem;`;
-	}
-	else if ( styleSlug === 'perfect-circle' ) {
-		return `background-color: ${ color };border-radius: 50%;display: inline-block;text-align: center;`;
+const ResetButton = ( { label, name, value, onChange } ) => {
+	return <Button
+			className="components-inline-badge-popover__clear"
+			isSecondary
+			isSmall
+			onClick={ () => {
+				onChange( removeFormat( value, name ) );
+			} }
+		>
+			{ label }
+	</Button>;
+};
+
+export function setStyle( classNameSlug = 'default', color = '', backgroundColor = '' ) {
+	const styles = [];
+
+	if ( color ) styles.push( [ 'color', color ].join( ':' ) );
+
+	if ( backgroundColor ) {
+		if ( classNameSlug === 'default' ) {
+			styles.push( [ 'background-color', backgroundColor ].join( ':' ) );
+			styles.push( [ 'padding', '.2rem .8em' ].join( ':' ) );
+		}
+		else if ( classNameSlug === 'round-corner' ) {
+			styles.push( [ 'background-color', backgroundColor ].join( ':' ) );
+			styles.push( [ 'padding', '.2rem .8em' ].join( ':' ) );
+			styles.push( [ 'border-radius', '.5rem' ].join( ':' ) );
+		}
+		else if ( classNameSlug === 'round' ) {
+			styles.push( [ 'background-color', backgroundColor ].join( ':' ) );
+			styles.push( [ 'padding', '.2rem .8em' ].join( ':' ) );
+			styles.push( [ 'border-radius', '2rem' ].join( ':' ) );
+		}
+		else if ( classNameSlug === 'outline' ) {
+			styles.push( [ 'background-color', '#fff' ].join( ':' ) );
+			styles.push( [ 'border', `solid 1px ${ backgroundColor }` ].join( ':' ) );
+			styles.push( [ 'padding', '.2rem .8em' ].join( ':' ) );
+		}
+		else if ( classNameSlug === 'status' ) {
+			styles.push( [ 'background-color', '#fff' ].join( ':' ) );
+			styles.push( [ 'border', `solid 1px ${ backgroundColor }` ].join( ':' ) );
+			styles.push( [ 'padding', '.2rem .8em' ].join( ':' ) );
+			styles.push( [ 'border-radius', '2rem' ].join( ':' ) );
+		}
+		else if ( classNameSlug === 'perfect-circle' ) {
+			styles.push( [ 'background-color', backgroundColor ].join( ':' ) );
+			styles.push( [ 'border-radius', '50%' ].join( ':' ) );
+			styles.push( [ 'display', 'inline-block' ].join( ':' ) );
+			styles.push( [ 'text-align', 'center' ].join( ':' ) );
+		}
 	}
 
-	return;
+	if ( styles.length ) return styles.join( ';' ) + ';';
+	return '';
 }
 
 const TabPanelBody = ( { tab, name, value, onChange } ) => {
-	if ( tab.name === 'color' ) {
+	if ( tab.name === 'color' || tab.name === 'backgroundColor' ) {
 		return <ColorPicker
 			property={ tab.name }
 			name={ name }
@@ -241,7 +328,7 @@ const TabPanelBody = ( { tab, name, value, onChange } ) => {
 	}
 	else if ( tab.name === 'style' ) {
 		return (
-			<StylePicker
+			<ClassNameSlugPicker
 				property={ tab.name }
 				name={ name }
 				value={ value }
@@ -249,17 +336,31 @@ const TabPanelBody = ( { tab, name, value, onChange } ) => {
 			/>
 		)
 	}
-	return
+
+	return null;
 }
 
-const InlineBadgeUI = ( {
+export default function InlineBadgeUI( {
 	name,
 	value,
 	onChange,
 	onClose,
+	contentRef,
 	isActive,
 	addingColor,
-} ) => {
+} ) {
+	/*
+	As you change the text color by typing a HEX value into a field,
+	the return value of document.getSelection jumps to the field you're editing,
+	not the highlighted text. Given that useAnchorRef uses document.getSelection,
+	it will return null, since it can't find the <mark> element within the HEX input.
+	This caches the last truthy value of the selection anchor reference.
+	*/
+
+	const anchorRef = useCachedTruthy(
+		useAnchorRef( { ref: contentRef, value, settings } )
+	);
+
 	return (
 		<BadgePopoverAtLink
 			value={ value }
@@ -267,12 +368,17 @@ const InlineBadgeUI = ( {
 			addingColor={ addingColor }
 			onClose={ onClose }
 			className="components-inline-badge-popover"
+			anchorRef={ anchorRef }
 		>
 			<TabPanel
 				tabs={ [
 					{
+						name: 'backgroundColor',
+						title: __( 'Background', 'editor-bridge' ),
+					},
+					{
 						name: 'color',
-						title: __( 'Color', 'editor-bridge' ),
+						title: __( 'Text', 'editor-bridge' ),
 					},
 					{
 						name: 'style',
@@ -292,5 +398,3 @@ const InlineBadgeUI = ( {
 		</BadgePopoverAtLink>
 	);
 };
-
-export default withSpokenMessages( InlineBadgeUI );

@@ -2,14 +2,14 @@
 # This file is distributed under the GPL2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Editor Bridge 1.5.1\n"
+"Project-Id-Version: Editor Bridge 1.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/editor-bridge\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-02-09T07:21:17+00:00\n"
+"POT-Creation-Date: 2022-05-02T10:00:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: editor-bridge\n"
@@ -38,47 +38,47 @@ msgstr ""
 msgid "Become a sponsor"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:56
+#: src/blocks/expansion/background-image/index.js:54
 msgid "Orignal"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:60
+#: src/blocks/expansion/background-image/index.js:58
 msgid "Fit to Screen"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:64
+#: src/blocks/expansion/background-image/index.js:62
 msgid "Fill Screen"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:246
+#: src/blocks/expansion/background-image/index.js:244
 msgid "Edit Background Image"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:263
+#: src/blocks/expansion/background-image/index.js:261
 msgid "Open Media Library"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:282
+#: src/blocks/expansion/background-image/index.js:280
 msgid "Upload Background Image"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:302
+#: src/blocks/expansion/background-image/index.js:300
 msgid "Remove Background Image"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:314
+#: src/blocks/expansion/background-image/index.js:312
 msgid "Background Image Settings"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:318
+#: src/blocks/expansion/background-image/index.js:316
 msgid "Image Size"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:328
+#: src/blocks/expansion/background-image/index.js:326
 msgid "Fixed Background"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:337
+#: src/blocks/expansion/background-image/index.js:335
 msgid "Repeat Background"
 msgstr ""
 
@@ -87,8 +87,10 @@ msgid "Border settings"
 msgstr ""
 
 #: src/blocks/expansion/border/index.js:140
-#: src/blocks/format/badge/badge-popover.js:279
-#: src/blocks/format/highlight/highlight-popover.js:286
+#: src/blocks/format/badge/badge-popover.js:385
+#: src/blocks/format/badge/badge-popover copy.js:559
+#: src/blocks/format/badge/badge-popover copy 2.js:563
+#: src/blocks/format/highlight/highlight-popover.js:284
 msgid "Style"
 msgstr ""
 
@@ -120,8 +122,7 @@ msgid "Border width"
 msgstr ""
 
 #: src/blocks/expansion/border/index.js:161
-#: src/blocks/format/badge/badge-popover.js:275
-#: src/blocks/format/highlight/highlight-popover.js:282
+#: src/blocks/format/highlight/highlight-popover.js:280
 msgid "Color"
 msgstr ""
 
@@ -220,31 +221,60 @@ msgstr ""
 msgid "Button width"
 msgstr ""
 
-#: src/blocks/format/badge/badge-popover.js:199
-#: src/blocks/format/font-weight/font-weight-popover.js:117
+#: src/blocks/format/badge/badge-popover.js:245
+#: src/blocks/format/badge/badge-popover copy.js:361
+#: src/blocks/format/badge/badge-popover copy 2.js:365
+#: src/blocks/format/font-weight/font-weight-popover.js:116
 msgid "Default"
 msgstr ""
 
-#: src/blocks/format/badge/badge-popover.js:200
+#: src/blocks/format/badge/badge-popover.js:246
+#: src/blocks/format/badge/badge-popover copy.js:362
+#: src/blocks/format/badge/badge-popover copy 2.js:366
 #: src/blocks/style/image.js:10
 #: src/blocks/style/table.js:30
 msgid "Round Corner"
 msgstr ""
 
-#: src/blocks/format/badge/badge-popover.js:201
+#: src/blocks/format/badge/badge-popover.js:247
+#: src/blocks/format/badge/badge-popover copy.js:363
+#: src/blocks/format/badge/badge-popover copy 2.js:367
 msgid "Round"
 msgstr ""
 
-#: src/blocks/format/badge/badge-popover.js:202
+#: src/blocks/format/badge/badge-popover.js:248
+#: src/blocks/format/badge/badge-popover copy.js:364
+#: src/blocks/format/badge/badge-popover copy 2.js:368
 msgid "Outline"
 msgstr ""
 
-#: src/blocks/format/badge/badge-popover.js:203
+#: src/blocks/format/badge/badge-popover.js:249
+#: src/blocks/format/badge/badge-popover copy.js:365
+#: src/blocks/format/badge/badge-popover copy 2.js:369
 msgid "Status"
 msgstr ""
 
-#: src/blocks/format/badge/badge-popover.js:204
+#: src/blocks/format/badge/badge-popover.js:250
+#: src/blocks/format/badge/badge-popover copy.js:366
+#: src/blocks/format/badge/badge-popover copy 2.js:370
 msgid "Perfect Circle"
+msgstr ""
+
+#: src/blocks/format/badge/badge-popover.js:256
+#: src/blocks/format/font-weight/font-weight-popover.js:189
+msgid "Reset"
+msgstr ""
+
+#: src/blocks/format/badge/badge-popover.js:377
+#: src/blocks/format/badge/badge-popover copy.js:551
+#: src/blocks/format/badge/badge-popover copy 2.js:555
+msgid "Background"
+msgstr ""
+
+#: src/blocks/format/badge/badge-popover.js:381
+#: src/blocks/format/badge/badge-popover copy.js:555
+#: src/blocks/format/badge/badge-popover copy 2.js:559
+msgid "Text"
 msgstr ""
 
 #: src/blocks/format/badge/index.js:35
@@ -255,95 +285,91 @@ msgstr ""
 msgid "Font Size"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:118
+#: src/blocks/format/font-weight/font-weight-popover.js:117
 msgid "Bold"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:119
+#: src/blocks/format/font-weight/font-weight-popover.js:118
 msgid "Normal"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:120
+#: src/blocks/format/font-weight/font-weight-popover.js:119
 msgid "Initial"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:121
+#: src/blocks/format/font-weight/font-weight-popover.js:120
 msgid "Bolder"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:122
+#: src/blocks/format/font-weight/font-weight-popover.js:121
 msgid "Lighter"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:123
+#: src/blocks/format/font-weight/font-weight-popover.js:122
 msgid "100"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:124
+#: src/blocks/format/font-weight/font-weight-popover.js:123
 msgid "200"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:125
+#: src/blocks/format/font-weight/font-weight-popover.js:124
 msgid "300"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:126
+#: src/blocks/format/font-weight/font-weight-popover.js:125
 msgid "400"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:127
+#: src/blocks/format/font-weight/font-weight-popover.js:126
 msgid "500"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:128
+#: src/blocks/format/font-weight/font-weight-popover.js:127
 msgid "600"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:129
+#: src/blocks/format/font-weight/font-weight-popover.js:128
 msgid "700"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:130
+#: src/blocks/format/font-weight/font-weight-popover.js:129
 msgid "800"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:131
+#: src/blocks/format/font-weight/font-weight-popover.js:130
 msgid "900"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:132
+#: src/blocks/format/font-weight/font-weight-popover.js:131
 msgid "Revert"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:133
+#: src/blocks/format/font-weight/font-weight-popover.js:132
 msgid "Unset"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:184
+#: src/blocks/format/font-weight/font-weight-popover.js:183
 #: src/blocks/format/font-weight/index.js:26
 msgid "Font Weight"
 msgstr ""
 
-#: src/blocks/format/font-weight/font-weight-popover.js:190
-msgid "Reset"
-msgstr ""
-
-#: src/blocks/format/highlight/highlight-popover.js:214
+#: src/blocks/format/highlight/highlight-popover.js:212
 #: src/blocks/format/highlight/index.js:35
 msgid "Highlight"
 msgstr ""
 
-#: src/blocks/format/highlight/highlight-popover.js:215
+#: src/blocks/format/highlight/highlight-popover.js:213
 msgid "Marker"
 msgstr ""
 
-#: src/blocks/format/highlight/highlight-popover.js:216
+#: src/blocks/format/highlight/highlight-popover.js:214
 #: src/blocks/style/heading.js:10
 #: src/blocks/style/table.js:20
 msgid "Underline"
 msgstr ""
 
-#: src/blocks/format/highlight/highlight-popover.js:217
+#: src/blocks/format/highlight/highlight-popover.js:215
 msgid "Dot"
 msgstr ""
 

@@ -44,10 +44,10 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	function constructor() {
-		$this->assertEquals( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'load_plugin_data' ] ) );
-		$this->assertEquals( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'load_asset_file' ] ) );
+		$this->assertSame( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'load_plugin_data' ] ) );
+		$this->assertSame( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'load_asset_file' ] ) );
 
-		$this->assertEquals( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'init' ] ) );
+		$this->assertSame( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'init' ] ) );
 	}
 
 	/**
@@ -57,15 +57,15 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	function init() {
 		$this->editor_bridge->init();
 
-		$this->assertEquals( 10, has_action( 'init', [ $this->editor_bridge, 'load_textdomain' ] ) );
-		$this->assertEquals( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'set_block_editor_translations' ] ) );
+		$this->assertSame( 10, has_action( 'init', [ $this->editor_bridge, 'load_textdomain' ] ) );
+		$this->assertSame( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'set_block_editor_translations' ] ) );
 
-		$this->assertEquals( 10, has_filter( 'wp_enqueue_scripts', [ $this->editor_bridge, 'enqueue_styles' ] ) );
-		$this->assertEquals( 10, has_filter( 'enqueue_block_assets', [ $this->editor_bridge, 'enqueue_block_asset_styles' ] ) );
-		$this->assertEquals( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'enqueue_blocks_scripts' ] ) );
-		$this->assertEquals( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'enqueue_block_editor_styles' ] ) );
+		$this->assertSame( 10, has_filter( 'wp_enqueue_scripts', [ $this->editor_bridge, 'enqueue_styles' ] ) );
+		$this->assertSame( 10, has_filter( 'enqueue_block_assets', [ $this->editor_bridge, 'enqueue_block_asset_styles' ] ) );
+		$this->assertSame( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'enqueue_blocks_scripts' ] ) );
+		$this->assertSame( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'enqueue_block_editor_styles' ] ) );
 
-		$this->assertEquals( 10, has_filter( 'plugin_row_meta', array( $this->editor_bridge, 'plugin_metadata_links' ) ) );
+		$this->assertSame( 10, has_filter( 'plugin_row_meta', array( $this->editor_bridge, 'plugin_metadata_links' ) ) );
 	}
 
 	/**

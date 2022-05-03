@@ -1,6 +1,6 @@
 {
   "name": "editor-bridge",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "A template for WordPress plugin that extends Gutenberg.",
   "author": "Thingsym",
   "license": "GPL-2.0-or-later",
@@ -43,6 +43,7 @@
     "eslint-plugin-jest": "^25.7.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.27.1",
+    "eslint-plugin-react-hooks": "^4.4.0",
     "jest": "^27.4.7",
     "jest-environment-jsdom": "^27.4.6",
     "jest-puppeteer": "^6.0.2",
@@ -97,6 +98,9 @@
       "browser": true,
       "es6": true
     },
+    "plugins": [
+      "react-hooks"
+    ],
     "extends": "eslint:recommended",
     "globals": {
       "Atomics": "readonly",
@@ -113,11 +117,12 @@
       "no-unused-vars": "off",
       "no-prototype-builtins": "off",
       "no-sparse-arrays": "off",
-      "no-undef": "off"
+      "no-undef": "off",
+      "react-hooks/rules-of-hooks": "error",
+      "react-hooks/exhaustive-deps": "warn"
     }
   },
   "scripts": {
-    "makepot:php": "php /usr/local/share/wp-i18n/makepot.php wp-plugin ../${npm_package_name} ../${npm_package_name}/languages/${npm_package_name}.pot",
     "makepot:wpcli": "wp i18n make-pot ./ ./languages/${npm_package_name}.pot --exclude=dist,bin,tests,node_modules,vendor",
     "msgfmt:ja": "msgfmt languages/${npm_package_name}-ja.po -o languages/${npm_package_name}-ja.mo",
     "msgfmt": "run-p msgfmt:*",

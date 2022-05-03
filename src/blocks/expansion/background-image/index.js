@@ -26,13 +26,11 @@ import {
 	FormFileUpload,
 	NavigableMenu,
 	Dropdown,
-	Toolbar,
 	ToolbarGroup,
 	ToolbarButton,
 	MenuItem,
-	IconButton,
-  PanelBody,
-  SelectControl,
+	PanelBody,
+	SelectControl,
 	ToggleControl,
 } from '@wordpress/components';
 

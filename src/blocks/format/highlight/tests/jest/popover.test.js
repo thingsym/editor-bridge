@@ -9,7 +9,7 @@ import { shallow } from 'enzyme';
 import {
 	default as InlineHighlightUI,
 	getActiveColorHex,
-	getActiveStyleSlug,
+	getActiveClassNameSlug,
 	setStyle,
 } from '../../highlight-popover.js';
 
@@ -28,14 +28,14 @@ describe( 'getActiveColorHex', () => {
 
 } );
 
-describe( 'getActiveStyleSlug', () => {
+describe( 'getActiveClassNameSlug', () => {
 	it( 'no parameter', () => {
-		expect( getActiveStyleSlug() ).toBe( undefined );
-		expect( getActiveStyleSlug( '', {} ) ).toBe( undefined );
+		expect( getActiveClassNameSlug() ).toBe( undefined );
+		expect( getActiveClassNameSlug( '', {} ) ).toBe( undefined );
 	} );
 
 	it( 'has parameter', () => {
-		expect( getActiveStyleSlug( 'a', 'a' ) ).toBe( undefined );
+		expect( getActiveClassNameSlug( 'a', 'a' ) ).toBe( undefined );
 	} );
 } );
 
@@ -56,7 +56,7 @@ describe( 'setStyle', () => {
 		expect( setStyle( 'dot', '#dddddd' ) ).toBe( 'text-emphasis-style: filled circle;-webkit-text-emphasis-style: filled circle;text-emphasis-color: #dddddd;-webkit-text-emphasis-color: #dddddd;' );
 	} );
 
-	it( 'out of range styleSlug parameter', () => {
+	it( 'out of range classNameSlug parameter', () => {
 		expect( setStyle( 'aaa' ) ).toBe( undefined );
 	} );
 

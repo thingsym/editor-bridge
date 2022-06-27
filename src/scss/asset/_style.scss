@@ -486,7 +486,6 @@ hr.wp-block-separator {
 	&.is-style-hr-thick-line,
 	&.is-style-hr-asterisk {
 		&:not(.is-style-wide):not(.is-style-dots) {
-			max-width: unset;
 			height: 0;
 			padding: .5rem;
 			background-color: unset !important;
@@ -501,14 +500,20 @@ hr.wp-block-separator {
 
 	&.is-style-hr-dotted {
 		&:not(.is-style-wide):not(.is-style-dots) {
+			width: unset;
 			border-top: 4px dotted;
 			border-bottom: unset;
+		}
+
+		.editor-styles-wrapper &,
+		.edit-widgets-block-editor & {
 			width: 100%;
 		}
 	}
 
 	&.is-style-hr-thick-line {
 		&:not(.is-style-wide):not(.is-style-dots) {
+			max-width: unset;
 			border-top: 4px solid;
 			border-bottom: unset;
 		}
@@ -523,6 +528,7 @@ hr.wp-block-separator {
 		}
 
 		&:not(.is-style-wide):not(.is-style-dots) {
+			max-width: unset;
 			border-bottom: unset;
 		}
 		&:before {

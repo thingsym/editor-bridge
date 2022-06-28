@@ -23,37 +23,43 @@
 
 .wp-block-table {
 	&[data-width-slug='25'] {
-		table {
+		table,
+		figcaption {
 			width: 26%;
 			margin: auto;
 		}
 	}
 	&[data-width-slug='50'] {
-		table {
+		table,
+		figcaption {
 			width: 50%;
 			margin: auto;
 		}
 	}
 	&[data-width-slug='75'] {
-		table {
+		table,
+		figcaption {
 			width: 75%;
 			margin: auto;
 		}
 	}
 	&[data-width-slug='100'] {
-		table {
+		table,
+		figcaption {
 			width: 100%;
 			margin: auto;
 		}
 	}
 	&[data-width-slug='auto'] {
-		table {
+		table,
+		figcaption {
 			width: auto;
 			margin: auto;
 		}
 	}
 	&[data-width-slug='unset'] {
-		table {
+		table,
+		figcaption {
 			width: unset;
 			margin: auto;
 		}

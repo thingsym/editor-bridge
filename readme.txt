@@ -3,7 +3,7 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 Tested up to: 6.0.0
 Requires at least: 5.5
 Requires PHP: 7.1

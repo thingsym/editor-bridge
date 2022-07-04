@@ -142,6 +142,14 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 
 ## Changelog
 
+### [1.6.1] - 2022.07.04
+
+* fix table layout
+* fix responsive
+* fix hr
+* fix square and circle list styles
+* disable width setting if wide align or full align
+
 ### [1.6.0] - 2022.05.03
 
 * change mysql from version 8.0 to version 5.7 using docker image

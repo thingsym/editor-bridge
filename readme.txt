@@ -108,6 +108,13 @@ If you would like to contribute, here are some notes and guidlines.
 
 == Changelog ==
 
+= 1.6.1 - 2022.07.04 =
+* fix table layout
+* fix responsive
+* fix hr
+* fix square and circle list styles
+* disable width setting if wide align or full align
+
 = 1.6.0 - 2022.05.03 =
 * change mysql from version 8.0 to version 5.7 using docker image
 * fix test case

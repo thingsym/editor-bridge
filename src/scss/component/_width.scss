@@ -23,20 +23,35 @@
 [class*="wp-block-"] {
 	&.is-width-25 {
 		width: 26%;
+		margin: auto;
 	}
 	&.is-width-50 {
 		width: 50%;
+		margin: auto;
 	}
 	&.is-width-75 {
 		width: 75%;
+		margin: auto;
 	}
 	&.is-width-100 {
 		width: 100%;
+		margin: auto;
 	}
 	&.is-width-auto {
 		width: auto;
 	}
 	&.is-width-unset {
 		width: unset;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	[class*="wp-block-"] {
+		&.is-width-25,
+		&.is-width-50,
+		&.is-width-75,
+		&.is-width-100 {
+			width: 100%;
+		}
 	}
 }

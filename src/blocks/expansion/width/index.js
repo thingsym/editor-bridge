@@ -95,12 +95,21 @@ const withWidthControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const {
 			widthSlug,
+			align,
 			className,
 		} = props.attributes;
 
 		function handleChange( newWidthSlug ) {
 			const setWidth = widthSlug === newWidthSlug ? undefined : newWidthSlug;
 			setAttributes( { widthSlug: setWidth } );
+		}
+
+		if ( align === 'wide' || align === 'full' ) {
+			setAttributes( { widthSlug: undefined } );
+
+			return (
+				<BlockEdit { ...props } />
+			);
 		}
 
 		return (
@@ -157,12 +166,13 @@ const withWidthBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 
 		const {
 			widthSlug,
+			align,
 		} = props.attributes;
 
 		const className = classnames();
 
 		let customData = {};
-		if ( widthSlug ) {
+		if ( widthSlug && !( align === 'wide' || align === 'full' ) ) {
 			customData[ 'data-width-slug' ] = widthSlug;
 		}
 
@@ -194,6 +204,12 @@ addFilter(
  */
 const getSaveWidthContent = ( extraProps, blockType, attributes ) => {
 	if ( ! hasBlockSupport( blockType.name, 'editorBridgeWidth' ) ) {
+		return extraProps;
+	}
+
+	const regexp = /alignfull|alignwide/
+	const align = extraProps.className.match( regexp );
+	if ( align ) {
 		return extraProps;
 	}
 

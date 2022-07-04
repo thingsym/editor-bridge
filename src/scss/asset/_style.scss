@@ -486,7 +486,6 @@ hr.wp-block-separator {
 	&.is-style-hr-thick-line,
 	&.is-style-hr-asterisk {
 		&:not(.is-style-wide):not(.is-style-dots) {
-			max-width: unset;
 			height: 0;
 			padding: .5rem;
 			background-color: unset !important;
@@ -501,14 +500,20 @@ hr.wp-block-separator {
 
 	&.is-style-hr-dotted {
 		&:not(.is-style-wide):not(.is-style-dots) {
+			width: unset;
 			border-top: 4px dotted;
 			border-bottom: unset;
+		}
+
+		.editor-styles-wrapper &,
+		.edit-widgets-block-editor & {
 			width: 100%;
 		}
 	}
 
 	&.is-style-hr-thick-line {
 		&:not(.is-style-wide):not(.is-style-dots) {
+			max-width: unset;
 			border-top: 4px solid;
 			border-bottom: unset;
 		}
@@ -523,6 +528,7 @@ hr.wp-block-separator {
 		}
 
 		&:not(.is-style-wide):not(.is-style-dots) {
+			max-width: unset;
 			border-bottom: unset;
 		}
 		&:before {
@@ -730,6 +736,7 @@ ul.is-style-list-columns {
 			display: block;
 			position: absolute;
 			left: 0;
+			z-index: 1;
 			text-align: center;
 			line-height: 1.4;
 			background-color: #000;
@@ -741,6 +748,13 @@ ul.is-style-list-columns {
 ul.is-style-list-square,
 ul.is-style-list-circle {
 	li {
+		&:before {
+			background-color: currentColor;
+			color: inherit;
+		}
+	}
+
+	li {
 		padding-left: 1.2rem;
 
 		&:before {
@@ -752,25 +766,86 @@ ul.is-style-list-circle {
 	}
 	ol {
 		counter-reset: number;
+
 		> li {
 			padding-left: 2rem;
 
 			&:before {
+				content: "";
+				display: block;
+				position: absolute;
+				left: 0;
+				z-index: 1;
+				text-align: center;
+				line-height: 1.4;
+				background-color: #000;
+				color: #fff;
+			}
+			&:after {
+				content: "";
+				display: block;
+				position: absolute;
+				left: 0;
+				text-align: center;
+				line-height: 1.4;
+			}
+
+			&:before {
 				counter-increment: number;
 				content: counter(number);
-				top: 4px;
+				top: 3px;
 				width: 24px;
 				height: 24px;
+			}
+			&:after {
+				content: "";
+				top: 3px;
+				width: 24px;
+				height: 24px;
+			}
+
+			&:before {
+				font-size: 90%;
+				line-height: 1.5;
+				background-color: transparent;
+			}
+			&:after {
+				background-color: currentColor;
+				color: inherit;
 			}
 		}
 	}
 }
+
 ol.is-style-list-square,
 ol.is-style-list-circle {
+	li {
+		&:after {
+			content: "";
+			display: block;
+			position: absolute;
+			left: 0;
+			text-align: center;
+			line-height: 1.4;
+		}
+
+		&:before {
+			font-size: 90%;
+			line-height: 1.5;
+			background-color: transparent;
+		}
+
+		&:after {
+			background-color: currentColor;
+			color: inherit;
+		}
+	}
+
 	counter-reset: number;
 	ol {
 		counter-reset: number;
 	}
+
 	li {
 		padding-left: 2rem;
 
@@ -781,7 +856,14 @@ ol.is-style-list-circle {
 			width: 24px;
 			height: 24px;
 		}
+		&:after {
+			content: "";
+			top: 3px;
+			width: 24px;
+			height: 24px;
+		}
 	}
+
 	ul > li {
 		padding-left: 1.2rem;
 
@@ -792,19 +874,22 @@ ol.is-style-list-circle {
 			width: 12px;
 			height: 12px;
 		}
-	}
-}
 
-ul.is-style-list-circle {
-	li {
 		&:before {
-			border-radius: 50%;
+			background-color: currentColor;
+			color: inherit;
+		}
+		&:after {
+			content: unset;
 		}
 	}
 }
+
+ul.is-style-list-circle,
 ol.is-style-list-circle {
 	li {
-		&:before {
+		&:before,
+		&:after {
 			border-radius: 50%;
 		}
 	}

@@ -11,14 +11,14 @@ import { registerFormatType } from '@wordpress/rich-text';
 
 import { highlight } from './highlight';
 import { badge } from './badge';
-import { font_size } from './font-size';
-import { font_weight } from './font-weight';
+import { fontSize } from './font-size';
+import { fontWeight } from './font-weight';
 
 [
 	highlight,
 	badge,
-	font_size,
-	font_weight,
+	fontSize,
+	fontWeight,
 ].forEach( ( { name, ...settings } ) =>
 	registerFormatType( name, settings )
 );

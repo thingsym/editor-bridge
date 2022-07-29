@@ -75,7 +75,7 @@ function FontSizeEdit( {
 	);
 }
 
-export const font_size = {
+export const fontSize = {
 	name,
 	title,
 	tagName: 'span',

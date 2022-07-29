@@ -76,7 +76,7 @@ function FontWeightEdit( {
 	);
 }
 
-export const font_weight = {
+export const fontWeight = {
 	name,
 	title,
 	tagName: 'span',

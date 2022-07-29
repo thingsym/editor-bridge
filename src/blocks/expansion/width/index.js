@@ -34,7 +34,7 @@ const enableBlocks = [
  *
  * @returns {object} Modified block settings.
  */
-const addAttributes = ( settings, name ) => {
+const addSettingsAttributes = ( settings, name ) => {
 	if ( enableBlocks.includes( name ) ) {
 		if ( ! settings.supports ) {
 			settings.supports = {};
@@ -64,30 +64,29 @@ const addAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'editor-bridge/expansion/width/add-attributes',
-	addAttributes
+	'editor-bridge/expansion/width/add-settings-attributes',
+	addSettingsAttributes
 );
 
 /**
  * Create HOC to add control to inspector controls.
  */
-const withWidthControl = createHigherOrderComponent( ( BlockEdit ) => {
+const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const {
 			name,
-			clientId,
 			attributes,
 			setAttributes,
 			isSelected
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'editorBridgeWidth' ) ) {
+		if ( ! isSelected ) {
 			return (
 				<BlockEdit { ...props } />
 			);
 		}
 
-		if ( ! isSelected ) {
+		if ( ! hasBlockSupport( name, 'editorBridgeWidth' ) ) {
 			return (
 				<BlockEdit { ...props } />
 			);
@@ -96,8 +95,7 @@ const withWidthControl = createHigherOrderComponent( ( BlockEdit ) => {
 		const {
 			widthSlug,
 			align,
-			className,
-		} = props.attributes;
+		} = attributes;
 
 		function handleChange( newWidthSlug ) {
 			const setWidth = widthSlug === newWidthSlug ? undefined : newWidthSlug;
@@ -140,19 +138,18 @@ const withWidthControl = createHigherOrderComponent( ( BlockEdit ) => {
 			</>
 		);
 	};
-}, 'withWidthControl' );
+}, 'addBlockEditorControl' );
 
 addFilter(
 	'editor.BlockEdit',
-	'editor-bridge/expansion/width/with-control',
-	withWidthControl
+	'editor-bridge/expansion/width/add-blockeditor-control',
+	addBlockEditorControl
 );
 
-const withWidthBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
+const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const {
 			name,
-			clientId,
 			attributes,
 			setAttributes,
 			isSelected
@@ -167,16 +164,16 @@ const withWidthBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 		const {
 			widthSlug,
 			align,
-		} = props.attributes;
+		} = attributes;
 
 		const className = classnames();
 
+		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 		let customData = {};
+
 		if ( widthSlug && !( align === 'wide' || align === 'full' ) ) {
 			customData[ 'data-width-slug' ] = widthSlug;
 		}
-
-		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 
 		wrapperProps = {
 			...wrapperProps,
@@ -185,46 +182,50 @@ const withWidthBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	};
-}, 'withWidthBlockAttributes' );
+}, 'addBlockListBlockAttributes' );
 
 addFilter(
 	'editor.BlockListBlock',
-	'editor-bridge/expansion/width/with-block-attributes',
-	withWidthBlockAttributes
+	'editor-bridge/expansion/width/add-blocklistblock-attributes',
+	addBlockListBlockAttributes
 );
 
 /**
  * Add attribute to save content.
  *
- * @param {object} extraProps Props of save element.
+ * @param {object} props Props of save element.
  * @param {Object} blockType Block type information.
  * @param {Object} attributes Attributes of block.
  *
  * @returns {object} Modified props of save element.
  */
-const getSaveWidthContent = ( extraProps, blockType, attributes ) => {
+const addPropsSaveContent = ( props, blockType, attributes ) => {
 	if ( ! hasBlockSupport( blockType.name, 'editorBridgeWidth' ) ) {
-		return extraProps;
+		return props;
 	}
+
+	const {
+		className,
+	} = props;
 
 	const regexp = /alignfull|alignwide/
-	const align = extraProps.className.match( regexp );
+	const align = props.className.match( regexp );
 	if ( align ) {
-		return extraProps;
+		return props;
 	}
 
-	extraProps.className = classnames(
-		extraProps.className,
+	props.className = classnames(
+		className,
 		{
 			[ `is-width-${ attributes.widthSlug }` ]: attributes.widthSlug,
 		}
 	);
 
-	return extraProps;
+	return props;
 };
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'editor-bridge/expansion/width/get-save-content',
-	getSaveWidthContent
+	'editor-bridge/expansion/width/add-props-save-content',
+	addPropsSaveContent
 );

@@ -73,7 +73,7 @@ const spaceSettingsOptions = [
  *
  * @returns {object} Modified block settings.
  */
-const addAttributes = ( settings, name ) => {
+const addSettingsAttributes = ( settings, name ) => {
 	if ( enableBlocks.includes( name ) ) {
 		if ( ! settings.supports ) {
 			settings.supports = {};
@@ -138,22 +138,27 @@ const addAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'editor-bridge/expansion/space/add-attributes',
-	addAttributes
+	'editor-bridge/expansion/space/add-settings-attributes',
+	addSettingsAttributes
 );
 
 /**
  * Create HOC to add control to inspector controls.
  */
-const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
+const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const {
 			name,
-			clientId,
 			attributes,
 			setAttributes,
 			isSelected
 		} = props;
+
+		if ( ! isSelected ) {
+			return (
+				<BlockEdit { ...props } />
+			);
+		}
 
 		if ( ! hasBlockSupport( name, 'editorBridgeSpace' ) ) {
 			return (
@@ -165,14 +170,7 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 			marginSlug,
 			paddingSlug,
 			disablePaddingHorizontal,
-			className,
-		} = props.attributes;
-
-		if ( ! isSelected ) {
-			return (
-				<BlockEdit { ...props } />
-			);
-		}
+		} = attributes;
 
 		return (
 			<>
@@ -222,19 +220,18 @@ const withSpaceControl = createHigherOrderComponent( ( BlockEdit ) => {
 			</>
 		);
 	};
-}, 'withSpaceControl' );
+}, 'addBlockEditorControl' );
 
 addFilter(
 	'editor.BlockEdit',
-	'editor-bridge/expansion/space/with-control',
-	withSpaceControl
+	'editor-bridge/expansion/space/add-blockeditor-control',
+	addBlockEditorControl
 );
 
-const withSpaceBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
+const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const {
 			name,
-			clientId,
 			attributes,
 			setAttributes,
 			isSelected
@@ -250,10 +247,11 @@ const withSpaceBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 			marginSlug,
 			paddingSlug,
 			disablePaddingHorizontal,
-		} = props.attributes;
+		} = attributes;
 
 		const className = classnames();
 
+		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 		let customData = {};
 
 		if ( marginSlug ) {
@@ -266,8 +264,6 @@ const withSpaceBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 			customData[ 'data-disable-padding-horizontal' ] = disablePaddingHorizontal;
 		}
 
-		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
-
 		wrapperProps = {
 			...wrapperProps,
 			...customData,
@@ -275,30 +271,34 @@ const withSpaceBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) 
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	};
-}, 'withSpaceBlockAttributes' );
+}, 'addBlockListBlockAttributes' );
 
 addFilter(
 	'editor.BlockListBlock',
-	'editor-bridge/expansion/space/with-block-attributes',
-	withSpaceBlockAttributes
+	'editor-bridge/expansion/space/add-blocklistblock-attributes',
+	addBlockListBlockAttributes
 );
 
 /**
  * Add attribute to save content.
  *
- * @param {object} extraProps Props of save element.
+ * @param {object} props Props of save element.
  * @param {Object} blockType Block type information.
  * @param {Object} attributes Attributes of block.
  *
  * @returns {object} Modified props of save element.
  */
-const getSaveSpaceContent = ( extraProps, blockType, attributes ) => {
+const addPropsSaveContent = ( props, blockType, attributes ) => {
 	if ( ! hasBlockSupport( blockType.name, 'editorBridgeSpace' ) ) {
-		return extraProps;
+		return props;
 	}
 
-	extraProps.className = classnames(
-		extraProps.className,
+	const {
+		className,
+	} = props;
+
+	props.className = classnames(
+		className,
 		{
 			[ `is-margin-${ attributes.marginSlug }` ]: hasBlockSupport( blockType.name, 'editorBridgeSpaceMargin' ) && attributes.marginSlug,
 			[ `is-padding-${ attributes.paddingSlug }` ]: hasBlockSupport( blockType.name, 'editorBridgeSpacePadding' ) && attributes.paddingSlug,
@@ -306,11 +306,11 @@ const getSaveSpaceContent = ( extraProps, blockType, attributes ) => {
 		}
 	);
 
-	return extraProps;
+	return props;
 };
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'editor-bridge/expansion/space/get-save-content',
-	getSaveSpaceContent
+	'editor-bridge/expansion/space/add-props-save-content',
+	addPropsSaveContent
 );

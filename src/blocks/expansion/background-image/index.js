@@ -74,7 +74,7 @@ const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
  *
  * @returns {object} Modified block settings.
  */
-const addAttributes = ( settings, name ) => {
+const addSettingsAttributes = ( settings, name ) => {
 	if ( enableBlocks.includes( name ) ) {
 		if ( ! settings.supports ) {
 			settings.supports = {};
@@ -123,22 +123,27 @@ const addAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'editor-bridge/expansion/background-image/add-attributes',
-	addAttributes
+	'editor-bridge/expansion/background-image/add-settings-attributes',
+	addSettingsAttributes
 );
 
 /**
  * Create HOC to add control to inspector controls.
  */
-const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => {
+const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const {
 			name,
-			clientId,
 			attributes,
 			setAttributes,
 			isSelected
 		} = props;
+
+		if ( ! isSelected ) {
+			return (
+				<BlockEdit { ...props } />
+			);
+		}
 
 		if ( ! hasBlockSupport( name, 'editorBridgeBackgroundImage' ) ) {
 			return (
@@ -153,8 +158,7 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 			backgroundSize,
 			hasParallax,
 			hasRepete,
-			className,
-		} = props.attributes;
+		} = attributes;
 
 		const onSelectMedia = ( media ) => {
 			if ( ! media || ! media.url ) {
@@ -346,22 +350,20 @@ const withBackgroundImageControl = createHigherOrderComponent( ( BlockEdit ) => 
 			</>
 		);
 	};
-}, 'withBackgroundImageControl' );
+}, 'addBlockEditorControl' );
 
 addFilter(
 	'editor.BlockEdit',
-	'editor-bridge/expansion/background-image/with-control',
-	withBackgroundImageControl
+	'editor-bridge/expansion/background-image/add-blockeditor-control',
+	addBlockEditorControl
 );
 
-const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
+const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const {
 			name,
-			clientId,
+			className,
 			attributes,
-			setAttributes,
-			isSelected
 		} = props;
 
 		if ( ! hasBlockSupport( name, 'editorBridgeBackgroundImage' ) ) {
@@ -377,9 +379,10 @@ const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockLi
 			backgroundSize,
 			hasParallax,
 			hasRepete,
-		} = props.attributes;
+		} = attributes;
 
-		const className = classnames(
+		const extraClass = classnames(
+			className,
 			{
 				'has-parallax': hasParallax,
 				'has-repete': hasRepete,
@@ -388,12 +391,13 @@ const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockLi
 			}
 		);
 
+		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
+		let customData = {};
+
 		const style = {
 			backgroundImage: url ? "url(" + url + ")" : undefined,
 			backgroundSize: backgroundSize ? backgroundSize : undefined,
 		}
-
-		let customData = {};
 
 		if ( url ) {
 			customData[ 'data-background-image' ] = url;
@@ -401,8 +405,6 @@ const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockLi
 		if ( backgroundSize ) {
 			customData[ 'data-background-size' ] = backgroundSize;
 		}
-
-		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 
 		wrapperProps = {
 			...wrapperProps,
@@ -413,29 +415,33 @@ const withBackgroundImageBlockAttributes = createHigherOrderComponent( ( BlockLi
 			},
 		};
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } className={ className } />;
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } className={ extraClass } />;
 	};
-}, 'withBackgroundImageBlockAttributes' );
+}, 'addBlockListBlockAttributes' );
 
 addFilter(
 	'editor.BlockListBlock',
-	'editor-bridge/expansion/background-image/with-block-attributes',
-	withBackgroundImageBlockAttributes
+	'editor-bridge/expansion/background-image/add-blocklistblock-attributes',
+	addBlockListBlockAttributes
 );
 
 /**
  * Add attribute to save content.
  *
- * @param {object} extraProps Props of save element.
+ * @param {object} props Props of save element.
  * @param {Object} blockType Block type information.
  * @param {Object} attributes Attributes of block.
  *
  * @returns {object} Modified props of save element.
  */
-const getSaveBackgroundImageContent = ( extraProps, blockType, attributes ) => {
+const addPropsSaveContent = ( props, blockType, attributes ) => {
 	if ( ! hasBlockSupport( blockType.name, 'editorBridgeBackgroundImage' ) ) {
-		return extraProps;
+		return props;
 	}
+
+	const {
+		className,
+	} = props;
 
 	const {
 		backgroundType,
@@ -454,10 +460,10 @@ const getSaveBackgroundImageContent = ( extraProps, blockType, attributes ) => {
 			style.backgroundSize = backgroundSize;
 		}
 
-		extraProps.style = Object.assign( style, extraProps.style );
+		props.style = Object.assign( style, props.style );
 
-		extraProps.className = classnames(
-			extraProps.className,
+		props.className = classnames(
+			className,
 			{
 				'has-backgrond-image': url ? true : false,
 				'has-parallax': hasParallax,
@@ -467,11 +473,11 @@ const getSaveBackgroundImageContent = ( extraProps, blockType, attributes ) => {
 		);
 	}
 
-	return extraProps;
+	return props;
 };
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'editor-bridge/expansion/background-image/get-save-content',
-	getSaveBackgroundImageContent
+	'editor-bridge/expansion/background-image/add-props-save-content',
+	addPropsSaveContent
 );

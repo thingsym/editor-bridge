@@ -32,7 +32,7 @@ const enableBlocks = [
  *
  * @returns {object} Modified block settings.
  */
-const addAttributes = ( settings, name ) => {
+const addSettingsAttributes = ( settings, name ) => {
 	if ( enableBlocks.includes( name ) ) {
 		if ( ! settings.supports ) {
 			settings.supports = {};
@@ -63,22 +63,27 @@ const addAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'editor-bridge/expansion/container/add-attributes',
-	addAttributes
+	'editor-bridge/expansion/container/add-settings-attributes',
+	addSettingsAttributes
 );
 
 /**
  * Create HOC to add control to inspector controls.
  */
-const withContainerControl = createHigherOrderComponent( ( BlockEdit ) => {
+const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const {
 			name,
-			clientId,
 			attributes,
 			setAttributes,
 			isSelected
 		} = props;
+
+		if ( ! isSelected ) {
+			return (
+				<BlockEdit { ...props } />
+			);
+		}
 
 		if ( ! hasBlockSupport( name, 'editorBridgeContainer' ) ) {
 			return (
@@ -89,14 +94,7 @@ const withContainerControl = createHigherOrderComponent( ( BlockEdit ) => {
 		const {
 			fixedLayoutWidth,
 			align,
-			className,
-		} = props.attributes;
-
-		if ( ! isSelected ) {
-			return (
-				<BlockEdit { ...props } />
-			);
-		}
+		} = attributes;
 
 		return (
 			<>
@@ -121,19 +119,18 @@ const withContainerControl = createHigherOrderComponent( ( BlockEdit ) => {
 			</>
 		);
 	};
-}, 'withContainerControl' );
+}, 'addBlockEditorControl' );
 
 addFilter(
 	'editor.BlockEdit',
-	'editor-bridge/expansion/container/with-control',
-	withContainerControl
+	'editor-bridge/expansion/container/add-blockeditor-control',
+	addBlockEditorControl
 );
 
-const withContainerBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
+const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const {
 			name,
-			clientId,
 			attributes,
 			setAttributes,
 			isSelected
@@ -147,16 +144,16 @@ const withContainerBlockAttributes = createHigherOrderComponent( ( BlockListBloc
 
 		const {
 			fixedLayoutWidth,
-		} = props.attributes;
+		} = attributes;
 
 		const className = classnames();
 
+		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 		let customData = {};
+
 		if ( fixedLayoutWidth ) {
 			customData[ 'data-fixed-layout-width' ] = fixedLayoutWidth;
 		}
-
-		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 
 		wrapperProps = {
 			...wrapperProps,
@@ -165,40 +162,44 @@ const withContainerBlockAttributes = createHigherOrderComponent( ( BlockListBloc
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	};
-}, 'withContainerBlockAttributes' );
+}, 'addBlockListBlockAttributes' );
 
 addFilter(
 	'editor.BlockListBlock',
-	'editor-bridge/expansion/container/with-block-attributes',
-	withContainerBlockAttributes
+	'editor-bridge/expansion/container/add-blocklistblock-attributes',
+	addBlockListBlockAttributes
 );
 
 /**
  * Add attribute to save content.
  *
- * @param {object} extraProps Props of save element.
+ * @param {object} props Props of save element.
  * @param {Object} blockType Block type information.
  * @param {Object} attributes Attributes of block.
  *
  * @returns {object} Modified props of save element.
  */
-const getSaveContainerContent = ( extraProps, blockType, attributes ) => {
+const addPropsSaveContent = ( props, blockType, attributes ) => {
 	if ( ! hasBlockSupport( blockType.name, 'editorBridgeContainer' ) ) {
-		return extraProps;
+		return props;
 	}
 
-	extraProps.className = classnames(
-		extraProps.className,
+	const {
+		className,
+	} = props;
+
+	props.className = classnames(
+		className,
 		{
 			[ `fixed-layout-width` ]: attributes.align == 'full' ? attributes.fixedLayoutWidth : false,
 		}
 	);
 
-	return extraProps;
+	return props;
 };
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'editor-bridge/expansion/container/get-save-content',
-	getSaveContainerContent
+	'editor-bridge/expansion/container/add-props-save-content',
+	addPropsSaveContent
 );

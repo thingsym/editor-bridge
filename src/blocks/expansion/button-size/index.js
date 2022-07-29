@@ -73,7 +73,7 @@ const buttonWidthSettingsOptions = [
  *
  * @returns {object} Modified block settings.
  */
-const addAttributes = ( settings, name ) => {
+const addSettingsAttributes = ( settings, name ) => {
 	if ( enableBlocks.includes( name ) ) {
 		if ( ! settings.supports ) {
 			settings.supports = {};
@@ -113,22 +113,27 @@ const addAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'editor-bridge/button-size/add-attributes',
-	addAttributes
+	'editor-bridge/button-size/add-settings-attributes',
+	addSettingsAttributes
 );
 
 /**
 * Create HOC to add control to inspector controls.
 */
-const withButtonSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
+const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 		const {
 			name,
-			clientId,
 			attributes,
 			setAttributes,
 			isSelected
 		} = props;
+
+		if ( ! isSelected ) {
+			return (
+				<BlockEdit { ...props } />
+			);
+		}
 
 		if ( ! hasBlockSupport( name, 'editorBridgeButtonSize' ) ) {
 			return (
@@ -139,14 +144,7 @@ const withButtonSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
 		const {
 			buttonSizeSlug,
 			buttonWidthSlug,
-			className,
-		} = props.attributes;
-
-		if ( ! isSelected ) {
-			return (
-				<BlockEdit { ...props } />
-			);
-		}
+		} = attributes;
 
 		return (
 			<>
@@ -182,19 +180,18 @@ const withButtonSizeControl = createHigherOrderComponent( ( BlockEdit ) => {
 			</>
 		);
 	};
-}, 'withButtonSizeControl' );
+}, 'addBlockEditorControl' );
 
 addFilter(
 	'editor.BlockEdit',
-	'editor-bridge/button-size/with-control',
-	withButtonSizeControl
+	'editor-bridge/button-size/add-blockeditor-control',
+	addBlockEditorControl
 );
 
-const withButtonSizeBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
+const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const {
 			name,
-			clientId,
 			attributes,
 			setAttributes,
 			isSelected
@@ -209,20 +206,19 @@ const withButtonSizeBlockAttributes = createHigherOrderComponent( ( BlockListBlo
 		const {
 			buttonSizeSlug,
 			buttonWidthSlug,
-		} = props.attributes;
+		} = attributes;
 
 		const className = classnames();
 
+		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 		let customData = {};
 
-		if (buttonSizeSlug) {
+		if ( buttonSizeSlug ) {
 			customData['data-button-size'] = buttonSizeSlug;
 		}
-		if (buttonWidthSlug) {
+		if ( buttonWidthSlug ) {
 			customData['data-button-width'] = buttonWidthSlug;
 		}
-
-		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 
 		wrapperProps = {
 			...wrapperProps,
@@ -231,41 +227,45 @@ const withButtonSizeBlockAttributes = createHigherOrderComponent( ( BlockListBlo
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	};
-}, 'withSpaceBlockAttributes' );
+}, 'addBlockListBlockAttributes' );
 
 addFilter(
 	'editor.BlockListBlock',
-	'editor-bridge/expansion/button-size/with-block-attributes',
-	withButtonSizeBlockAttributes
+	'editor-bridge/expansion/button-size/add-blocklistblock-attributes',
+	addBlockListBlockAttributes
 );
 
 /**
 * Add attribute to save content.
 *
-* @param {object} extraProps Props of save element.
+* @param {object} props Props of save element.
 * @param {Object} blockType Block type information.
 * @param {Object} attributes Attributes of block.
 *
 * @returns {object} Modified props of save element.
 */
-const getSaveButtonSizeContent = ( extraProps, blockType, attributes ) => {
+const addPropsSaveContent = ( props, blockType, attributes ) => {
 	if ( ! hasBlockSupport( blockType.name, 'editorBridgeButtonSize' ) ) {
-		return extraProps;
+		return props;
 	}
 
-	extraProps.className = classnames(
-		extraProps.className,
+	const {
+		className,
+	} = props;
+
+	props.className = classnames(
+		className,
 		{
 			[`is-button-size-${ attributes.buttonSizeSlug }`]: attributes.buttonSizeSlug,
 			[`is-button-width-${ attributes.buttonWidthSlug }`]: attributes.buttonWidthSlug,
 		}
 	);
 
-	return extraProps;
+	return props;
 };
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'editor-bridge/button-size/get-save-content',
-	getSaveButtonSizeContent
+	'editor-bridge/button-size/add-props-save-content',
+	addPropsSaveContent
 );

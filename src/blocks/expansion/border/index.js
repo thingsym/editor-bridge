@@ -60,12 +60,12 @@ const addSettingsAttributes = ( settings, name ) => {
 
 	if ( ! settings.attributes.editorBridgeBorder ) {
 		settings.attributes = assign( settings.attributes, {
-			borderWidth: {
-				type: 'number',
-				default: undefined,
-			},
 			borderStyle: {
 				type: 'string',
+				default: undefined,
+			},
+			borderWidth: {
+				type: 'number',
 				default: undefined,
 			},
 			borderColor: {
@@ -90,9 +90,9 @@ addFilter(
 
 const MIN_BORDER_WIDTH_VALUE = 0;
 const MAX_BORDER_WIDTH_VALUE = 10;
-const INITIAL_BORDER_WIDTH_POSITION = 0;
+const INITIAL_BORDER_WIDTH_POSITION = 1;
 const MIN_BORDER_RADIUS_VALUE = 0;
-const MAX_BORDER_RADIUS_VALUE = 50;
+const MAX_BORDER_RADIUS_VALUE = 100;
 const INITIAL_BORDER_RADIUS_POSITION = 0;
 
 function BorderPanel( {
@@ -101,18 +101,23 @@ function BorderPanel( {
 	borderColor = '',
 	borderRadius = '',
 	setAttributes,
- } ) {
-
-	const setBorderWidth = useCallback(
-		( newBorderWidth ) => {
-			setAttributes( { borderWidth: newBorderWidth ? newBorderWidth : 0 } );
-		},
-		[ setAttributes ]
-	);
+} ) {
 
 	const setBorderStyle = useCallback(
 		( newBorderStyle ) => {
 			setAttributes( { borderStyle: newBorderStyle } );
+
+			if ( ! newBorderStyle ) {
+				setAttributes( { borderColor: undefined } );
+				setAttributes( { borderWidth: undefined } );
+			}
+		},
+		[ setAttributes ]
+	);
+
+	const setBorderWidth = useCallback(
+		( newBorderWidth ) => {
+			setAttributes( { borderWidth: newBorderWidth ? newBorderWidth : 0 } );
 		},
 		[ setAttributes ]
 	);
@@ -148,20 +153,24 @@ function BorderPanel( {
 				] }
 				onChange={ setBorderStyle }
 			/>
-			<RangeControl
-				value={ borderWidth }
-				label={ __( 'Border width', 'editor-bridge' ) }
-				min={ MIN_BORDER_WIDTH_VALUE }
-				max={ MAX_BORDER_WIDTH_VALUE }
-				initialPosition={ INITIAL_BORDER_WIDTH_POSITION }
-				allowReset
-				onChange={ setBorderWidth }
-			/>
-			<ColorPaletteControl
-				label={ __( 'Color', 'editor-bridge' ) }
-				value={ borderColor }
-				onChange={ setBorderColor }
-			/>
+			{ !! borderStyle && (
+				<RangeControl
+					value={ borderWidth }
+					label={ __( 'Border width', 'editor-bridge' ) }
+					min={ MIN_BORDER_WIDTH_VALUE }
+					max={ MAX_BORDER_WIDTH_VALUE }
+					initialPosition={ INITIAL_BORDER_WIDTH_POSITION }
+					allowReset
+					onChange={ setBorderWidth }
+				/>
+			) }
+			{ !! borderStyle && (
+				<ColorPaletteControl
+					label={ __( 'Color', 'editor-bridge' ) }
+					value={ borderColor }
+					onChange={ setBorderColor }
+				/>
+			) }
 			<RangeControl
 				value={ borderRadius }
 				label={ __( 'Border radius', 'editor-bridge' ) }
@@ -201,8 +210,8 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		const {
-			borderWidth,
 			borderStyle,
+			borderWidth,
 			borderColor,
 			borderRadius,
 		} = attributes;
@@ -213,9 +222,9 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 				<InspectorControls>
 					<BorderPanel
+						borderStyle={ borderStyle }
 						borderWidth={ borderWidth }
 						borderColor={ borderColor }
-						borderStyle={ borderStyle }
 						borderRadius={ borderRadius }
 						setAttributes={ setAttributes }
 					/>
@@ -235,9 +244,8 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 	return ( props ) => {
 		const {
 			name,
+			className,
 			attributes,
-			setAttributes,
-			isSelected
 		} = props;
 
 		if ( ! hasBlockSupport( name, 'editorBridgeBorder' ) ) {
@@ -247,34 +255,37 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 		}
 
 		const {
+			borderStyle,
 			borderWidth,
 			borderColor,
-			borderStyle,
 			borderRadius,
 		} = attributes;
 
 		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 		let customData = {};
 
-		wrapperProps.style = {
-			borderWidth: borderWidth != null && borderStyle
-				? borderWidth + 'px'
-				: undefined,
+		const style = {
 			borderStyle: borderStyle
 				? borderStyle
 				: undefined,
-			borderColor: borderColor != null
+			borderWidth: borderWidth && borderStyle
+				? `${ borderWidth }px`
+				: undefined,
+			borderColor: borderColor && borderStyle
 				? borderColor
 				: undefined,
-			borderRadius: borderRadius != null
-				? borderRadius + 'px'
+			borderRadius: borderRadius
+				? `${ borderRadius }px`
 				: undefined,
-			...wrapperProps.style,
 		}
 
 		wrapperProps = {
 			...wrapperProps,
 			...customData,
+			style: {
+				...( wrapperProps && { ...wrapperProps.style } ),
+				...style,
+			},
 		};
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
@@ -302,26 +313,30 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 	}
 
 	const {
-		borderWidth,
 		borderStyle,
+		borderWidth,
 		borderColor,
 		borderRadius,
 	} = attributes;
 
-	props.style = {
-		borderWidth: borderWidth != null && borderStyle
-			? borderWidth + 'px'
-			: undefined,
+	const style = {
 		borderStyle: borderStyle
 			? borderStyle
 			: undefined,
-		borderColor: borderColor != null
+		borderWidth: borderWidth != null && borderStyle
+			? `${ borderWidth }px`
+			: undefined,
+		borderColor: borderColor != null && borderStyle
 			? borderColor
 			: undefined,
 		borderRadius: borderRadius != null
-			? borderRadius + 'px'
+			? `${ borderRadius }px`
 			: undefined,
+	}
+
+	props.style = {
 		...props.style,
+		...style
 	}
 
 	return props;

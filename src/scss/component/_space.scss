@@ -78,11 +78,12 @@
 	}
 }
 
-/** for stash **/
 .entry-content {
 	* {
+		/** for stash **/
 		+ h1, + h2, + h3, + h4, + h5, + h6,
 		+ p, + ul, + ol,
+		/** for Specificity blocks **/
 		+ .wp-block-image,
 		+ .wp-block-table,
 		+ .wp-block-button,

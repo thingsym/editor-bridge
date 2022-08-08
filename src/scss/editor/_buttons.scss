@@ -46,7 +46,7 @@
 }
 
 .wp-block-buttons {
-	.wp-block.block-editor-block-list__block[data-type="core/button"] {
+	.wp-block-button {
 		margin-left: 8px;
 		margin-right: unset;
 
@@ -71,30 +71,30 @@
 		}
 
 		/** button width **/
-		&[data-button-width=quarter] {
+		&.is-button-width-quarter {
 			width: calc(25% - 8px);
 		}
-		&[data-button-width=one-third] {
+		&.is-button-width-one-third {
 			width: calc(33.33% - 8px);
 		}
-		&[data-button-width=half] {
+		&.is-button-width-half {
 			width: calc(50% - 8px);
 		}
-		&[data-button-width=three-quarters] {
+		&.is-button-width-three-quarters {
 			width: calc(75% - 8px);
 		}
-		&[data-button-width=full] {
+		&.is-button-width-full {
 			width: 100%;
 		}
 
 		/** button size **/
-		&[data-button-size=small] {
+		&.is-button-size-small {
 			.wp-block-button__link {
 				font-size: 90%;
 				padding: .3rem 2rem;
 			}
 		}
-		&[data-button-size=large] {
+		&.is-button-size-large {
 			.wp-block-button__link {
 				font-size: 140%;
 				padding: .8rem 2rem;
@@ -102,7 +102,7 @@
 		}
 
 		/** for style **/
-		&[data-button-size=small] {
+		&.is-button-size-small {
 			.is-style-bt-triangle-icon {
 				.wp-block-button__link:after {
 					border-width: 0 0 10px 10px;
@@ -112,7 +112,7 @@
 	}
 
 	&.is-vertical {
-		.wp-block.block-editor-block-list__block[data-type="core/button"] {
+		.wp-block-button {
 			margin-left: unset;
 		}
 		> .wp-block {

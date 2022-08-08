@@ -102,7 +102,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 			setAttributes( { widthSlug: setWidth } );
 		}
 
-		if ( align === 'wide' || align === 'full' ) {
+		if ( align ) {
 			setAttributes( { widthSlug: undefined } );
 
 			return (
@@ -150,9 +150,8 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 	return ( props ) => {
 		const {
 			name,
+			className,
 			attributes,
-			setAttributes,
-			isSelected
 		} = props;
 
 		if ( ! hasBlockSupport( name, 'editorBridgeWidth' ) ) {
@@ -166,21 +165,29 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 			align,
 		} = attributes;
 
-		const className = classnames();
+		const regexp = /full|wide/
+		if ( align && align.match( regexp ) ) {
+			return (
+				<BlockListBlock { ...props } />
+			);
+		}
+
+		const extraClass = classnames(
+			className,
+			{
+				[ `is-width-${ widthSlug }` ]: widthSlug,
+			}
+		);
 
 		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 		let customData = {};
-
-		if ( widthSlug && !( align === 'wide' || align === 'full' ) ) {
-			customData[ 'data-width-slug' ] = widthSlug;
-		}
 
 		wrapperProps = {
 			...wrapperProps,
 			...customData,
 		};
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } className={ extraClass } />;
 	};
 }, 'addBlockListBlockAttributes' );
 
@@ -208,16 +215,20 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 		className,
 	} = props;
 
-	const regexp = /alignfull|alignwide/
-	const align = props.className.match( regexp );
-	if ( align ) {
+	const {
+		widthSlug,
+		align,
+	} = attributes;
+
+	const regexp = /full|wide/
+	if ( align && align.match( regexp ) ) {
 		return props;
 	}
 
 	props.className = classnames(
 		className,
 		{
-			[ `is-width-${ attributes.widthSlug }` ]: attributes.widthSlug,
+			[ `is-width-${ widthSlug }` ]: widthSlug,
 		}
 	);
 

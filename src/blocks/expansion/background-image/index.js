@@ -34,12 +34,6 @@ import {
 	ToggleControl,
 } from '@wordpress/components';
 
-import {
-	IMAGE_BACKGROUND_TYPE,
-	VIDEO_BACKGROUND_TYPE,
-	backgroundImageStyles,
-} from './shared';
-
 const enableBlocks = [
 	'core/heading',
 	'core/paragraph',
@@ -64,6 +58,8 @@ const backgroundSizeOptions = [
 	},
 ];
 
+const IMAGE_BACKGROUND_TYPE = 'image';
+const VIDEO_BACKGROUND_TYPE = 'video';
 const ALLOWED_MEDIA_TYPES = [ 'image', 'video' ];
 
 /**
@@ -91,12 +87,12 @@ const addSettingsAttributes = ( settings, name ) => {
 		return settings;
 	}
 
-	if ( ! settings.attributes.url ) {
+	if ( ! settings.attributes.backgroundUrl ) {
 		settings.attributes = assign( settings.attributes, {
-			url: {
+			backgroundUrl: {
 				type: 'string',
 			},
-			id: {
+			backgroundId: {
 				type: 'number',
 			},
 			backgroundType: {
@@ -152,8 +148,8 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		const {
-			url,
-			id,
+			backgroundUrl,
+			backgroundId,
 			backgroundType,
 			backgroundSize,
 			hasParallax,
@@ -162,7 +158,10 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 		const onSelectMedia = ( media ) => {
 			if ( ! media || ! media.url ) {
-				setAttributes( { url: undefined, id: undefined } );
+				setAttributes( {
+					backgroundUrl: undefined,
+					backgroundId: undefined
+				} );
 				return;
 			}
 			let mediaType;
@@ -186,8 +185,8 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 			}
 
 			setAttributes( {
-				url: media.url,
-				id: media.id,
+				backgroundUrl: media.url,
+				backgroundId: media.id,
 				backgroundType: mediaType,
 			} );
 		};
@@ -244,7 +243,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 									onClick={ onToggle }
 									onKeyDown={ openOnArrowDown }
 									icon='format-image'
-									isPressed={ url ? true : false }
+									isPressed={ backgroundUrl ? true : false }
 									label={ __( 'Edit Background Image', 'editor-bridge' ) }
 								>
 								</ToolbarButton>
@@ -256,7 +255,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 									<MediaUpload
 										onSelect={ onSelectMedia }
 										allowedTypes={ ALLOWED_MEDIA_TYPES }
-										value={ id }
+										value={ backgroundId }
 										render={ ( { open } ) => (
 											<MenuItem
 												icon='admin-media'
@@ -288,13 +287,13 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 										/>
 									</MediaUploadCheck>
 
-									{ !! url && (
+									{ !! backgroundUrl && (
 										<MenuItem
 											icon='no'
 											onClick={ () => {
 												setAttributes( {
-													url: undefined,
-													id: undefined,
+													backgroundUrl: undefined,
+													backgroundId: undefined,
 													backgroundSize: undefined,
 													hasParallax: undefined,
 													hasRepete: undefined,
@@ -311,7 +310,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 				</BlockControls>
 
 				<InspectorControls>
-					{ !! url && (
+					{ !! backgroundUrl && (
 						<PanelBody
 							title={ __( 'Background Image Settings', 'editor-bridge' ) }
 							initialOpen={ false }
@@ -373,8 +372,8 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 		}
 
 		const {
-			url,
-			id,
+			backgroundUrl,
+			backgroundId,
 			backgroundType,
 			backgroundSize,
 			hasParallax,
@@ -387,7 +386,7 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 				'has-parallax': hasParallax,
 				'has-repete': hasRepete,
 				'has-no-repete': ! hasRepete,
-				'has-background-image': url,
+				'has-background-image': backgroundUrl,
 			}
 		);
 
@@ -395,15 +394,8 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 		let customData = {};
 
 		const style = {
-			backgroundImage: url ? "url(" + url + ")" : undefined,
+			backgroundImage: backgroundUrl ? `url(${ backgroundUrl })` : undefined,
 			backgroundSize: backgroundSize ? backgroundSize : undefined,
-		}
-
-		if ( url ) {
-			customData[ 'data-background-image' ] = url;
-		}
-		if ( backgroundSize ) {
-			customData[ 'data-background-size' ] = backgroundSize;
 		}
 
 		wrapperProps = {
@@ -445,33 +437,35 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 
 	const {
 		backgroundType,
-		url,
+		backgroundUrl,
 		backgroundSize,
 		hasParallax,
 		hasRepete,
 	} = attributes;
 
-	if ( hasBlockSupport( blockType.name, 'editorBridgeBackgroundImage' ) && url ) {
-		const style = backgroundType === IMAGE_BACKGROUND_TYPE ?
-			backgroundImageStyles( url ) :
-			{};
-
-		if ( backgroundSize ) {
-			style.backgroundSize = backgroundSize;
-		}
-
-		props.style = Object.assign( style, props.style );
-
-		props.className = classnames(
-			className,
-			{
-				'has-backgrond-image': url ? true : false,
-				'has-parallax': hasParallax,
-				'has-repete': hasRepete,
-				'has-no-repete': ! hasRepete,
-			}
-		);
+	if ( ! backgroundUrl ) {
+		return props;
 	}
+
+	const style = {
+		backgroundImage: backgroundUrl ? `url(${ backgroundUrl })` : undefined,
+		backgroundSize: backgroundSize ? backgroundSize : undefined,
+	}
+
+	props.style = {
+		...props.style,
+		...style
+	}
+
+	props.className = classnames(
+		className,
+		{
+			'has-backgrond-image': backgroundUrl,
+			'has-parallax': hasParallax,
+			'has-repete': hasRepete,
+			'has-no-repete': ! hasRepete,
+		}
+	);
 
 	return props;
 };

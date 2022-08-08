@@ -205,7 +205,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 								} }
 							/>
 						) }
-						{ hasBlockSupport( name, 'editorBridgeSpacePadding' ) && !( paddingSlug == '' || paddingSlug == 'none' ) && (
+						{ hasBlockSupport( name, 'editorBridgeSpacePadding' ) && ! ( paddingSlug == '' || paddingSlug == 'none' ) && (
 							<CheckboxControl
 								label={ __( 'Disable the horizontal setting', 'editor-bridge' ) }
 								value={ disablePaddingHorizontal }
@@ -232,9 +232,8 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 	return ( props ) => {
 		const {
 			name,
+			className,
 			attributes,
-			setAttributes,
-			isSelected
 		} = props;
 
 		if ( ! hasBlockSupport( name, 'editorBridgeSpace' ) ) {
@@ -249,27 +248,24 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 			disablePaddingHorizontal,
 		} = attributes;
 
-		const className = classnames();
+		const extraClass = classnames(
+			className,
+			{
+				[ `is-margin-${ marginSlug }` ]: hasBlockSupport( name, 'editorBridgeSpaceMargin' ) && marginSlug,
+				[ `is-padding-${ paddingSlug }` ]: hasBlockSupport( name, 'editorBridgeSpacePadding' ) && paddingSlug,
+				[ `disable-padding-horizontal` ]: hasBlockSupport( name, 'editorBridgeSpacePadding' ) && paddingSlug && ! ( paddingSlug == '' || paddingSlug == 'none' ) && disablePaddingHorizontal,
+			}
+		);
 
 		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 		let customData = {};
-
-		if ( marginSlug ) {
-			customData[ 'data-margin-slug' ] = marginSlug;
-		}
-		if ( paddingSlug ) {
-			customData[ 'data-padding-slug' ] = paddingSlug;
-		}
-		if ( disablePaddingHorizontal && !( paddingSlug == '' || paddingSlug == 'none' ) ) {
-			customData[ 'data-disable-padding-horizontal' ] = disablePaddingHorizontal;
-		}
 
 		wrapperProps = {
 			...wrapperProps,
 			...customData,
 		};
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } className={ extraClass } />;
 	};
 }, 'addBlockListBlockAttributes' );
 
@@ -297,12 +293,18 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 		className,
 	} = props;
 
+	const {
+		marginSlug,
+		paddingSlug,
+		disablePaddingHorizontal,
+	} = attributes;
+
 	props.className = classnames(
 		className,
 		{
-			[ `is-margin-${ attributes.marginSlug }` ]: hasBlockSupport( blockType.name, 'editorBridgeSpaceMargin' ) && attributes.marginSlug,
-			[ `is-padding-${ attributes.paddingSlug }` ]: hasBlockSupport( blockType.name, 'editorBridgeSpacePadding' ) && attributes.paddingSlug,
-			[ `disable-padding-horizontal` ]: hasBlockSupport( blockType.name, 'editorBridgeSpacePadding' ) && attributes.paddingSlug && !( attributes.paddingSlug == '' || attributes.paddingSlug == 'none' ) && attributes.disablePaddingHorizontal,
+			[ `is-margin-${ marginSlug }` ]: hasBlockSupport( blockType.name, 'editorBridgeSpaceMargin' ) && marginSlug,
+			[ `is-padding-${ paddingSlug }` ]: hasBlockSupport( blockType.name, 'editorBridgeSpacePadding' ) && paddingSlug,
+			[ `disable-padding-horizontal` ]: hasBlockSupport( blockType.name, 'editorBridgeSpacePadding' ) && paddingSlug && ! ( paddingSlug == '' || paddingSlug == 'none' ) && disablePaddingHorizontal,
 		}
 	);
 

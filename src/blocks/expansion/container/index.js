@@ -109,7 +109,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 								label={ __( 'Fix layout width', 'editor-bridge' ) }
 								value={ fixedLayoutWidth }
 								checked={ fixedLayoutWidth }
-								onChange={(value) =>
+								onChange={ (value) =>
 									setAttributes({ fixedLayoutWidth: value })
 								}
 							/>
@@ -131,9 +131,8 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 	return ( props ) => {
 		const {
 			name,
+			className,
 			attributes,
-			setAttributes,
-			isSelected
 		} = props;
 
 		if ( ! hasBlockSupport( name, 'editorBridgeContainer' ) ) {
@@ -144,23 +143,31 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 
 		const {
 			fixedLayoutWidth,
+			align,
 		} = attributes;
 
-		const className = classnames();
+		if ( align != 'full' ) {
+			return (
+				<BlockListBlock { ...props } />
+			);
+		}
+
+		const extraClass = classnames(
+			className,
+			{
+				[ `fixed-layout-width` ]: fixedLayoutWidth,
+			}
+		);
 
 		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 		let customData = {};
-
-		if ( fixedLayoutWidth ) {
-			customData[ 'data-fixed-layout-width' ] = fixedLayoutWidth;
-		}
 
 		wrapperProps = {
 			...wrapperProps,
 			...customData,
 		};
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } className={ extraClass } />;
 	};
 }, 'addBlockListBlockAttributes' );
 
@@ -188,10 +195,19 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 		className,
 	} = props;
 
+	const {
+		fixedLayoutWidth,
+		align,
+	} = attributes;
+
+	if ( align != 'full' ) {
+		return props;
+	}
+
 	props.className = classnames(
 		className,
 		{
-			[ `fixed-layout-width` ]: attributes.align == 'full' ? attributes.fixedLayoutWidth : false,
+			[ `fixed-layout-width` ]: fixedLayoutWidth,
 		}
 	);
 

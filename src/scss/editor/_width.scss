@@ -1,63 +1,63 @@
 /** width **/
 .wp-block-group,
 .wp-block-columns {
-	&[data-width-slug='25'] {
+	&.is-width-25 {
 		width: 26%;
 	}
-	&[data-width-slug='50'] {
+	&.is-width-50 {
 		width: 50%;
 	}
-	&[data-width-slug='75'] {
+	&.is-width-75 {
 		width: 75%;
 	}
-	&[data-width-slug='100'] {
+	&.is-width-100 {
 		width: 100%;
 	}
-	&[data-width-slug='auto'] {
+	&.is-width-auto {
 		width: auto;
 	}
-	&[data-width-slug='unset'] {
+	&.is-width-unset {
 		width: unset;
 	}
 }
 
 .wp-block-table {
-	&[data-width-slug='25'] {
+	&.is-width-25 {
 		table,
 		figcaption {
 			width: 26%;
 			margin: auto;
 		}
 	}
-	&[data-width-slug='50'] {
+	&.is-width-50 {
 		table,
 		figcaption {
 			width: 50%;
 			margin: auto;
 		}
 	}
-	&[data-width-slug='75'] {
+	&.is-width-75 {
 		table,
 		figcaption {
 			width: 75%;
 			margin: auto;
 		}
 	}
-	&[data-width-slug='100'] {
+	&.is-width-100 {
 		table,
 		figcaption {
 			width: 100%;
 			margin: auto;
 		}
 	}
-	&[data-width-slug='auto'] {
+	&.is-width-auto {
 		table,
 		figcaption {
 			width: auto;
 			margin: auto;
 		}
 	}
-	&[data-width-slug='unset'] {
+	&.is-width-unset {
 		table,
 		figcaption {
 			width: unset;

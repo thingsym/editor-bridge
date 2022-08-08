@@ -192,9 +192,8 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 	return ( props ) => {
 		const {
 			name,
+			className,
 			attributes,
-			setAttributes,
-			isSelected
 		} = props;
 
 		if ( ! hasBlockSupport( name, 'editorBridgeButtonSize' ) ) {
@@ -208,24 +207,23 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 			buttonWidthSlug,
 		} = attributes;
 
-		const className = classnames();
+		const extraClass = classnames(
+			className,
+			{
+				[`is-button-size-${ buttonSizeSlug }`]: buttonSizeSlug,
+				[`is-button-width-${ buttonWidthSlug }`]: buttonWidthSlug,
+			}
+		);
 
 		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 		let customData = {};
-
-		if ( buttonSizeSlug ) {
-			customData['data-button-size'] = buttonSizeSlug;
-		}
-		if ( buttonWidthSlug ) {
-			customData['data-button-width'] = buttonWidthSlug;
-		}
 
 		wrapperProps = {
 			...wrapperProps,
 			...customData,
 		};
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } className={ extraClass } />;
 	};
 }, 'addBlockListBlockAttributes' );
 
@@ -253,11 +251,16 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 		className,
 	} = props;
 
+	const {
+		buttonSizeSlug,
+		buttonWidthSlug,
+	} = attributes;
+
 	props.className = classnames(
 		className,
 		{
-			[`is-button-size-${ attributes.buttonSizeSlug }`]: attributes.buttonSizeSlug,
-			[`is-button-width-${ attributes.buttonWidthSlug }`]: attributes.buttonWidthSlug,
+			[`is-button-size-${ buttonSizeSlug }`]: buttonSizeSlug,
+			[`is-button-width-${ buttonWidthSlug }`]: buttonWidthSlug,
 		}
 	);
 

@@ -1011,3 +1011,26 @@ ol.is-style-list-circle {
 	}
 
 }
+
+ul.is-style-icon {
+	list-style: none;
+	padding-left: 20px;
+
+	ul {
+		list-style: none;
+	}
+
+	li::before{
+		content: var(--editor-bridge-icon-unicode);
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+		margin-right: .4rem;
+	}
+}
+
+.editor-styles-wrapper ul.is-style-icon {
+	list-style: none;
+	ul {
+		list-style: none;
+	}
+}

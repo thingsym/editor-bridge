@@ -44,3 +44,8 @@ wp.blocks.registerBlockStyle( 'core/list', {
 	name: 'list-centered',
 	label: __( 'Centered', 'editor-bridge' ),
 } );
+
+wp.blocks.registerBlockStyle( 'core/list', {
+	name: 'icon',
+	label: __( 'Icon', 'editor-bridge' ),
+} );

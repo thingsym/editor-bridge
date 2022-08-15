@@ -76,7 +76,6 @@ function BadgeEdit( {
 	return (
 		<>
 			<RichTextToolbarButton
-				className="format-library-text-color-button"
 				isActive={ isActive }
 				icon={
 					<Icon

@@ -94,7 +94,6 @@ const addSettingsAttributes = ( settings, name ) => {
 		if ( name == 'core/button'
 			|| name == 'core/list'
 			|| name == 'core/table'
-			|| name == 'core/media-text'
 			|| name == 'core/gallery'
 		) {
 			settings.supports = assign( settings.supports, {

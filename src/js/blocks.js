@@ -8,6 +8,7 @@ import '../blocks/expansion/width/index.js';
 import '../blocks/expansion/space/index.js';
 import '../blocks/expansion/container/index.js';
 import '../blocks/expansion/block-centered-alignment/index.js';
+import '../blocks/expansion/icon/index.js';
 
 // style
 import '../blocks/style/heading.js';

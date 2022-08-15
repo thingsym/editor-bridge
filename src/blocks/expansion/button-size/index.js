@@ -160,7 +160,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 							value={ buttonSizeSlug }
 							options={ buttonSizeSettingsOptions }
 							onChange={ ( newButtonSizeSlug ) => {
-								props.setAttributes( {
+								setAttributes( {
 									buttonSizeSlug: newButtonSizeSlug,
 								} );
 							} }
@@ -170,10 +170,10 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 							value={ buttonWidthSlug }
 							options={ buttonWidthSettingsOptions }
 							onChange={ ( newButtonWidthSlug ) => {
-								props.setAttributes( {
+								setAttributes( {
 									buttonWidthSlug: newButtonWidthSlug,
 								} );
-							} }
+		w					} }
 						/>
 					</PanelBody>
 				</InspectorControls>

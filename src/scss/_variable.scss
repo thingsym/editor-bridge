@@ -14,8 +14,12 @@ $default-stack: calc-stack.stack($default-line-space, $default-font-size, 18px) 
 
 $default-border-color: #ddd !default;
 
-$space-none: 0px !default;
+$space-none: 0 !default;
 $space-small: math.div($default-stack, 2) !default;
 $space-medium: $default-stack !default;
 $space-large: $default-stack * 2 !default;
 $space-huge: $default-stack * 4 !default;
+
+// See https://github.com/WordPress/gutenberg/blob/trunk/packages/base-styles/_breakpoints.scss
+$default-editor-breakpoint-small: 600px !default;
+$default-editor-breakpoint-medium: 782px !default;

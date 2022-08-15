@@ -16,6 +16,7 @@ import '../blocks/style/table.js';
 import '../blocks/style/image.js';
 import '../blocks/style/separator.js';
 import '../blocks/style/list.js';
+import '../blocks/style/media-text.js';
 
 // format
 import '../blocks/format/index.js';

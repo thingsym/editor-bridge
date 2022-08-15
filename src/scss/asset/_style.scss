@@ -1,3 +1,6 @@
+// Included Modules
+@use '../variable';
+
 .is-style-bt-triangle-icon {
 	.wp-block-button__link {
 		position: relative;
@@ -933,4 +936,78 @@ ol.is-style-list-circle {
 			}
 		}
 	}
+}
+
+.wp-block-media-text {
+	&.is-style-media-round {
+		.wp-block-media-text__media {
+			img {
+				border-radius: 50%;
+			}
+		}
+	}
+
+	&.is-style-media-round-corner {
+		.wp-block-media-text__media {
+			img {
+				border-radius: 12px;
+			}
+		}
+	}
+
+	&.is-style-media-voice {
+		.wp-block-media-text__media {
+			img {
+				border-radius: 50%;
+			}
+		}
+		.wp-block-media-text__content {
+			position: relative;
+			background-color: #e1e1e1;
+			border-radius: 12px;
+			margin-left: 2rem;
+			margin-right: 0;
+			padding: 1rem;
+
+			&:after {
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-top: 12px solid transparent;
+				border-bottom: 12px solid transparent;
+				border-left: 0;
+				border-right: 24px solid #e1e1e1;
+
+				content: "";
+				position: absolute;
+				left: -18px;
+				right: unset;
+				top: calc(50% - 12px);
+			}
+		}
+		&.is-vertically-aligned-top .wp-block-media-text__content:after {
+			top: min( (20% - 12px), max((#{variable.$default-editor-breakpoint-small} - 100vw) * -1000, (10% - 12px)) )
+		}
+		&.is-vertically-aligned-center .wp-block-media-text__content:after {
+			top: calc(50% - 12px);
+		}
+		&.is-vertically-aligned-bottom .wp-block-media-text__content:after {
+			top: clamp( (80% - 12px), (#{variable.$default-editor-breakpoint-small} + 1px - 100vw) * 1000, (90% - 12px) );
+		}
+		&.has-media-on-the-right {
+			.wp-block-media-text__content {
+				margin-left: 0;
+				margin-right: 2rem;
+				padding: 1rem;
+
+				&:after {
+					border-left: 24px solid #e1e1e1;
+					border-right: 0;
+					left: unset;
+					right: -18px;
+				}
+			}
+		}
+	}
+
 }

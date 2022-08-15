@@ -17,5 +17,11 @@
 	--editor-bridge-space-padding-large: #{variable.$space-large};
 	--editor-bridge-space-padding-huge: #{variable.$space-huge};
 
+	--editor-bridge-space-gap-none: #{variable.$space-none};
+	--editor-bridge-space-gap-small: #{variable.$space-small};
+	--editor-bridge-space-gap-medium: #{variable.$space-medium};
+	--editor-bridge-space-gap-large: #{variable.$space-large};
+	--editor-bridge-space-gap-huge: #{variable.$space-huge};
+
 	--editor-bridge-border-color: #{variable.$default-border-color};
 }

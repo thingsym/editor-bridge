@@ -155,4 +155,22 @@
 		margin-top: var(--editor-bridge-space-margin-top-huge, unset);
 		margin-bottom: var(--editor-bridge-space-margin-bottom-huge, unset);
 	}
+
+	.wp-block-columns {
+		&.is-gap-none {
+			gap: var(--editor-bridge-space-gap-none, unset);
+		}
+		&.is-gap-small {
+			gap: var(--editor-bridge-space-gap-small, unset);
+		}
+		&.is-gap-medium {
+			gap: var(--editor-bridge-space-gap-medium, unset);
+		}
+		&.is-gap-large {
+			gap: var(--editor-bridge-space-gap-large, unset);
+		}
+		&.is-gap-huge {
+			gap: var(--editor-bridge-space-gap-huge, unset);
+		}
+	}
 }

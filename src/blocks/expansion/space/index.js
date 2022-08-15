@@ -82,6 +82,7 @@ const addSettingsAttributes = ( settings, name ) => {
 			editorBridgeSpace: true,
 			editorBridgeSpaceMargin: true,
 			editorBridgeSpacePadding: true,
+			editorBridgeSpaceGap: false,
 		} );
 
 		if ( name == 'core/column' ) {
@@ -100,6 +101,13 @@ const addSettingsAttributes = ( settings, name ) => {
 				editorBridgeSpacePadding: false,
 			} );
 		}
+	}
+
+	// if ( name == 'core/buttons' ) {
+	if ( name == 'core/columns' ) {
+		settings.supports = assign( settings.supports, {
+			editorBridgeSpaceGap: true,
+		} );
 	}
 
 	if ( ! hasBlockSupport( settings, 'editorBridgeSpace' ) ) {
@@ -125,10 +133,20 @@ const addSettingsAttributes = ( settings, name ) => {
 				default: spaceSettingsOptions[ 0 ].value,
 			},
 		} );
+
 		settings.attributes = assign( settings.attributes, {
 			disablePaddingHorizontal: {
 				type: 'boolean',
 				default: false,
+			},
+		} );
+	}
+
+	if ( ! settings.attributes.gapSlug ) {
+		settings.attributes = assign( settings.attributes, {
+			gapSlug: {
+				type: 'string',
+				default: spaceSettingsOptions[ 0 ].value,
 			},
 		} );
 	}
@@ -170,6 +188,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 			marginSlug,
 			paddingSlug,
 			disablePaddingHorizontal,
+			gapSlug,
 		} = attributes;
 
 		return (
@@ -187,7 +206,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 								value={ marginSlug }
 								options={ spaceSettingsOptions }
 								onChange={ ( newMarginSlug ) => {
-									props.setAttributes( {
+									setAttributes( {
 										marginSlug: newMarginSlug,
 									} );
 								} }
@@ -199,7 +218,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 								value={ paddingSlug }
 								options={ spaceSettingsOptions }
 								onChange={ ( newPaddingSlug ) => {
-									props.setAttributes( {
+									setAttributes( {
 										paddingSlug: newPaddingSlug,
 									} );
 								} }
@@ -210,9 +229,21 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 								label={ __( 'Disable the horizontal setting', 'editor-bridge' ) }
 								value={ disablePaddingHorizontal }
 								checked={ disablePaddingHorizontal }
-								onChange={(value) =>
-									setAttributes({ disablePaddingHorizontal: value })
+								onChange={ ( value ) =>
+									setAttributes({ disablePaddingHorizontal: value } )
 								}
+							/>
+						) }
+						{ hasBlockSupport( name, 'editorBridgeSpaceGap' ) && (
+							<SelectControl
+								label={ __( 'Gap', 'editor-bridge' ) }
+								value={ gapSlug }
+								options={ spaceSettingsOptions }
+								onChange={ ( newGapSlug ) => {
+									setAttributes( {
+										gapSlug: newGapSlug,
+									} );
+								} }
 							/>
 						) }
 					</PanelBody>
@@ -246,6 +277,7 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 			marginSlug,
 			paddingSlug,
 			disablePaddingHorizontal,
+			gapSlug,
 		} = attributes;
 
 		const extraClass = classnames(
@@ -254,6 +286,7 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 				[ `is-margin-${ marginSlug }` ]: hasBlockSupport( name, 'editorBridgeSpaceMargin' ) && marginSlug,
 				[ `is-padding-${ paddingSlug }` ]: hasBlockSupport( name, 'editorBridgeSpacePadding' ) && paddingSlug,
 				[ `disable-padding-horizontal` ]: hasBlockSupport( name, 'editorBridgeSpacePadding' ) && paddingSlug && ! ( paddingSlug == '' || paddingSlug == 'none' ) && disablePaddingHorizontal,
+				[ `is-gap-${ gapSlug }` ]: hasBlockSupport( name, 'editorBridgeSpaceGap' ) && gapSlug,
 			}
 		);
 
@@ -297,6 +330,7 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 		marginSlug,
 		paddingSlug,
 		disablePaddingHorizontal,
+		gapSlug,
 	} = attributes;
 
 	props.className = classnames(
@@ -305,6 +339,7 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 			[ `is-margin-${ marginSlug }` ]: hasBlockSupport( blockType.name, 'editorBridgeSpaceMargin' ) && marginSlug,
 			[ `is-padding-${ paddingSlug }` ]: hasBlockSupport( blockType.name, 'editorBridgeSpacePadding' ) && paddingSlug,
 			[ `disable-padding-horizontal` ]: hasBlockSupport( blockType.name, 'editorBridgeSpacePadding' ) && paddingSlug && ! ( paddingSlug == '' || paddingSlug == 'none' ) && disablePaddingHorizontal,
+			[ `is-gap-${ gapSlug }` ]: hasBlockSupport( blockType.name, 'editorBridgeSpaceGap' ) && gapSlug,
 		}
 	);
 

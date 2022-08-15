@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-05-02T10:00:15+00:00\n"
+"POT-Creation-Date: 2022-08-15T09:02:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: editor-bridge\n"
@@ -38,95 +38,97 @@ msgstr "https://www.thingslabo.com/"
 msgid "Become a sponsor"
 msgstr "スポンサーになる"
 
-#: src/blocks/expansion/background-image/index.js:54
+#: src/blocks/expansion/background-image/index.js:48
 msgid "Orignal"
 msgstr "元のサイズ"
 
-#: src/blocks/expansion/background-image/index.js:58
+#: src/blocks/expansion/background-image/index.js:52
 msgid "Fit to Screen"
 msgstr "画面に合わせる"
 
-#: src/blocks/expansion/background-image/index.js:62
+#: src/blocks/expansion/background-image/index.js:56
 msgid "Fill Screen"
 msgstr "フルスクリーン"
 
-#: src/blocks/expansion/background-image/index.js:244
+#: src/blocks/expansion/background-image/index.js:247
 msgid "Edit Background Image"
 msgstr "背景画像を編集"
 
-#: src/blocks/expansion/background-image/index.js:261
+#: src/blocks/expansion/background-image/index.js:264
 msgid "Open Media Library"
 msgstr "メディアライブラリを開く"
 
-#: src/blocks/expansion/background-image/index.js:280
+#: src/blocks/expansion/background-image/index.js:283
 msgid "Upload Background Image"
 msgstr "背景画像をアップロード"
 
-#: src/blocks/expansion/background-image/index.js:300
+#: src/blocks/expansion/background-image/index.js:303
 msgid "Remove Background Image"
 msgstr "背景画像を削除"
 
-#: src/blocks/expansion/background-image/index.js:312
+#: src/blocks/expansion/background-image/index.js:315
 msgid "Background Image Settings"
 msgstr "背景画像の設定"
 
-#: src/blocks/expansion/background-image/index.js:316
+#: src/blocks/expansion/background-image/index.js:319
 msgid "Image Size"
 msgstr "画像サイズ"
 
-#: src/blocks/expansion/background-image/index.js:326
+#: src/blocks/expansion/background-image/index.js:329
 msgid "Fixed Background"
 msgstr "固定背景"
 
-#: src/blocks/expansion/background-image/index.js:335
+#: src/blocks/expansion/background-image/index.js:338
 msgid "Repeat Background"
 msgstr "背景画像の繰り返し"
 
-#: src/blocks/expansion/border/index.js:136
+#: src/blocks/expansion/block-centered-alignment/index.js:104
+msgid "Change centered alignment"
+msgstr "真ん中揃え"
+
+#: src/blocks/expansion/border/index.js:141
 msgid "Border settings"
 msgstr "枠線の設定"
 
-#: src/blocks/expansion/border/index.js:140
+#: src/blocks/expansion/border/index.js:145
 #: src/blocks/format/badge/badge-popover.js:385
-#: src/blocks/format/badge/badge-popover copy.js:559
-#: src/blocks/format/badge/badge-popover copy 2.js:563
 #: src/blocks/format/highlight/highlight-popover.js:284
 msgid "Style"
 msgstr "スタイル"
 
-#: src/blocks/expansion/border/index.js:143
+#: src/blocks/expansion/border/index.js:148
 #: src/blocks/expansion/space/index.js:47
 msgid "None"
 msgstr "なし"
 
-#: src/blocks/expansion/border/index.js:144
+#: src/blocks/expansion/border/index.js:149
 msgid "Solid"
 msgstr "実線"
 
-#: src/blocks/expansion/border/index.js:145
+#: src/blocks/expansion/border/index.js:150
 #: src/blocks/style/table.js:25
 msgid "Dashed"
 msgstr "破線"
 
-#: src/blocks/expansion/border/index.js:146
+#: src/blocks/expansion/border/index.js:151
 #: src/blocks/style/separator.js:15
 msgid "Dotted"
 msgstr "点線"
 
-#: src/blocks/expansion/border/index.js:147
+#: src/blocks/expansion/border/index.js:152
 msgid "Double"
 msgstr "2重線"
 
-#: src/blocks/expansion/border/index.js:153
+#: src/blocks/expansion/border/index.js:159
 msgid "Border width"
 msgstr "線の太さ"
 
-#: src/blocks/expansion/border/index.js:161
+#: src/blocks/expansion/border/index.js:169
 #: src/blocks/format/highlight/highlight-popover.js:280
 msgid "Color"
 msgstr "色"
 
-#: src/blocks/expansion/border/index.js:167
+#: src/blocks/expansion/border/index.js:176
 msgid "Border radius"
 msgstr "角丸半径"
 
@@ -169,25 +171,33 @@ msgstr "4分の3"
 msgid "Full"
 msgstr "全幅"
 
-#: src/blocks/expansion/button-size/index.js:157
+#: src/blocks/expansion/button-size/index.js:155
 msgid "Size Settings"
 msgstr "サイズの設定"
 
-#: src/blocks/expansion/button-size/index.js:161
+#: src/blocks/expansion/button-size/index.js:159
 msgid "Size"
 msgstr "サイズ"
 
-#: src/blocks/expansion/button-size/index.js:171
+#: src/blocks/expansion/button-size/index.js:169
 msgid "Width"
 msgstr "横幅"
 
-#: src/blocks/expansion/container/index.js:107
+#: src/blocks/expansion/container/index.js:105
 msgid "Container Settings"
 msgstr "コンテナの設定"
 
-#: src/blocks/expansion/container/index.js:111
+#: src/blocks/expansion/container/index.js:109
 msgid "Fix layout width"
 msgstr "レイアウト幅を固定する"
+
+#: src/blocks/expansion/icon/index.js:116
+msgid "Icon Settings"
+msgstr "アイコン設定"
+
+#: src/blocks/expansion/icon/index.js:120
+msgid "Icons"
+msgstr "アイコン一覧"
 
 #: src/blocks/expansion/space/index.js:55
 msgid "Medium"
@@ -197,66 +207,60 @@ msgstr "中"
 msgid "Huge"
 msgstr "特大"
 
-#: src/blocks/expansion/space/index.js:183
+#: src/blocks/expansion/space/index.js:199
 msgid "Space Settings"
 msgstr "スペースの設定"
 
-#: src/blocks/expansion/space/index.js:188
+#: src/blocks/expansion/space/index.js:204
 msgid "Margin"
 msgstr "マージン"
 
-#: src/blocks/expansion/space/index.js:200
+#: src/blocks/expansion/space/index.js:216
 msgid "Padding"
 msgstr "パディング"
 
-#: src/blocks/expansion/space/index.js:212
+#: src/blocks/expansion/space/index.js:228
 msgid "Disable the horizontal setting"
 msgstr "水平のパディング設定を無効にする"
 
-#: src/blocks/expansion/width/index.js:110
+#: src/blocks/expansion/space/index.js:238
+msgid "Gap"
+msgstr "ギャップ"
+
+#: src/blocks/expansion/width/index.js:117
 msgid "Width settings"
 msgstr "幅の設定"
 
-#: src/blocks/expansion/width/index.js:111
+#: src/blocks/expansion/width/index.js:118
 msgid "Button width"
 msgstr "ボタンの幅"
 
 #: src/blocks/format/badge/badge-popover.js:245
-#: src/blocks/format/badge/badge-popover copy.js:361
-#: src/blocks/format/badge/badge-popover copy 2.js:365
 #: src/blocks/format/font-weight/font-weight-popover.js:116
 msgid "Default"
 msgstr "デフォルト"
 
 #: src/blocks/format/badge/badge-popover.js:246
-#: src/blocks/format/badge/badge-popover copy.js:362
-#: src/blocks/format/badge/badge-popover copy 2.js:366
 #: src/blocks/style/image.js:10
+#: src/blocks/style/media-text.js:15
 #: src/blocks/style/table.js:30
 msgid "Round Corner"
 msgstr "角丸"
 
 #: src/blocks/format/badge/badge-popover.js:247
-#: src/blocks/format/badge/badge-popover copy.js:363
-#: src/blocks/format/badge/badge-popover copy 2.js:367
+#: src/blocks/style/media-text.js:10
 msgid "Round"
 msgstr "円形"
 
 #: src/blocks/format/badge/badge-popover.js:248
-#: src/blocks/format/badge/badge-popover copy.js:364
-#: src/blocks/format/badge/badge-popover copy 2.js:368
 msgid "Outline"
 msgstr "アウトライン"
 
 #: src/blocks/format/badge/badge-popover.js:249
-#: src/blocks/format/badge/badge-popover copy.js:365
-#: src/blocks/format/badge/badge-popover copy 2.js:369
 msgid "Status"
 msgstr "ステイタス"
 
 #: src/blocks/format/badge/badge-popover.js:250
-#: src/blocks/format/badge/badge-popover copy.js:366
-#: src/blocks/format/badge/badge-popover copy 2.js:370
 msgid "Perfect Circle"
 msgstr "正円"
 
@@ -266,14 +270,10 @@ msgid "Reset"
 msgstr "リセット"
 
 #: src/blocks/format/badge/badge-popover.js:377
-#: src/blocks/format/badge/badge-popover copy.js:551
-#: src/blocks/format/badge/badge-popover copy 2.js:555
 msgid "Background"
 msgstr "背景"
 
 #: src/blocks/format/badge/badge-popover.js:381
-#: src/blocks/format/badge/badge-popover copy.js:555
-#: src/blocks/format/badge/badge-popover copy 2.js:559
 msgid "Text"
 msgstr "テキスト"
 
@@ -487,6 +487,14 @@ msgstr "米印 (インライン)"
 #: src/blocks/style/list.js:45
 msgid "Centered"
 msgstr "中央揃え"
+
+#: src/blocks/style/list.js:50
+msgid "Icon"
+msgstr "アイコン"
+
+#: src/blocks/style/media-text.js:20
+msgid "Voice"
+msgstr "吹き出し"
 
 #: src/blocks/style/separator.js:10
 msgid "Thick line"

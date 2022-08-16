@@ -16,14 +16,16 @@ import { InspectorControls } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import {
 	PanelBody,
-	Button,
-	ButtonGroup,
 } from '@wordpress/components';
 
+/**
+ * Internal dependencies
+ */
+import IconSelectControl from '../../../helper/icon-select-control/index.js';
+import { IconSettings } from './icon-settings.js';
+
 const enableBlocks = [
-	'core/table',
-	'core/columns',
-	'core/group',
+	'core/list',
 ];
 
 /**
@@ -40,20 +42,20 @@ const addSettingsAttributes = ( settings, name ) => {
 			settings.supports = {};
 		}
 		settings.supports = assign( settings.supports, {
-			editorBridgeWidth: true,
+			editorBridgeIcon: true,
 		} );
 	}
 
-	if ( ! hasBlockSupport( settings, 'editorBridgeWidth' ) ) {
+	if ( ! hasBlockSupport( settings, 'editorBridgeIcon' ) ) {
 		return settings;
 	}
 	if ( typeof settings.attributes === 'undefined' ) {
 		return settings;
 	}
 
-	if ( ! settings.attributes.widthSlug ) {
+	if ( ! settings.attributes.iconUnicode ) {
 		settings.attributes = assign( settings.attributes, {
-			widthSlug: {
+			iconUnicode: {
 				type: 'string',
 			},
 		} );
@@ -64,7 +66,7 @@ const addSettingsAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'editor-bridge/expansion/width/add-settings-attributes',
+	'editor-bridge/expansion/icon/add-settings-attributes',
 	addSettingsAttributes
 );
 
@@ -86,24 +88,28 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 			);
 		}
 
-		if ( ! hasBlockSupport( name, 'editorBridgeWidth' ) ) {
+		if ( ! hasBlockSupport( name, 'editorBridgeIcon' ) ) {
 			return (
 				<BlockEdit { ...props } />
 			);
 		}
 
 		const {
-			widthSlug,
-			align,
+			className,
+			iconUnicode,
 		} = attributes;
 
-		function handleChange( newWidthSlug ) {
-			const setWidth = widthSlug === newWidthSlug ? undefined : newWidthSlug;
-			setAttributes( { widthSlug: setWidth } );
+		if ( ! className ) {
+			setAttributes( { iconUnicode: undefined } );
+
+			return (
+				<BlockEdit { ...props } />
+			);
 		}
 
-		if ( align ) {
-			setAttributes( { widthSlug: undefined } );
+		const regexp = /is-style-icon/
+		if ( ! className.match( regexp ) ) {
+			setAttributes( { iconUnicode: undefined } );
 
 			return (
 				<BlockEdit { ...props } />
@@ -114,26 +120,21 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 			<>
 				<BlockEdit { ...props } />
 					<InspectorControls>
-					<PanelBody title={ __( 'Width settings', 'editor-bridge' ) }>
-						<ButtonGroup aria-label={ __( 'Button width', 'editor-bridge' ) }>
-							{ [ '25', '50', '75', '100', 'auto', 'unset' ].map( ( widthValue ) => {
-								return (
-									<Button
-										key={ widthValue }
-										isSmall
-										variant={
-											widthValue === widthSlug
-												? 'primary'
-												: undefined
-										}
-										onClick={ () => handleChange( widthValue ) }
-									>
-										{ widthValue }{ ( widthValue != 'auto' && widthValue != 'unset') && ( '%' ) }
-									</Button>
-								);
-							} ) }
-						</ButtonGroup>
-					</PanelBody>
+						<PanelBody
+							title={ __( 'Icon Settings', 'editor-bridge' ) }
+							initialOpen={ false }
+						>
+							<IconSelectControl
+								label={ __( 'Icons', 'editor-bridge' ) }
+								value={ iconUnicode ? iconUnicode : '0' }
+								options={ IconSettings }
+								onChange={ ( value ) => {
+									setAttributes( {
+										iconUnicode: value,
+									} );
+								} }
+							/>
+						</PanelBody>
 				</InspectorControls>
 			</>
 		);
@@ -142,7 +143,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 addFilter(
 	'editor.BlockEdit',
-	'editor-bridge/expansion/width/add-blockeditor-control',
+	'editor-bridge/expansion/icon/add-blockeditor-control',
 	addBlockEditorControl
 );
 
@@ -150,50 +151,62 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 	return ( props ) => {
 		const {
 			name,
-			className,
 			attributes,
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'editorBridgeWidth' ) ) {
+		if ( ! hasBlockSupport( name, 'editorBridgeIcon' ) ) {
 			return (
 				<BlockListBlock { ...props } />
 			);
 		}
 
 		const {
-			widthSlug,
-			align,
+			className,
+			iconUnicode,
 		} = attributes;
 
-		const regexp = /full|wide/
-		if ( align && align.match( regexp ) ) {
+		if ( ! className ) {
 			return (
 				<BlockListBlock { ...props } />
 			);
 		}
 
-		const extraClass = classnames(
-			className,
-			{
-				[ `is-width-${ widthSlug }` ]: widthSlug,
-			}
-		);
+		const regexp = /is-style-icon/
+		if ( ! className.match( regexp ) ) {
+			return (
+				<BlockListBlock { ...props } />
+			);
+		}
+
+		if ( ! iconUnicode ) {
+			return (
+				<BlockListBlock { ...props } />
+			);
+		}
 
 		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
 		let customData = {};
 
+		const style = {
+			'--editor-bridge-icon-unicode': '"\\' + iconUnicode + '"',
+		}
+
 		wrapperProps = {
 			...wrapperProps,
 			...customData,
+			style: {
+				...( wrapperProps && { ...wrapperProps.style } ),
+				...style,
+			},
 		};
 
-		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } className={ extraClass } />;
+		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	};
 }, 'addBlockListBlockAttributes' );
 
 addFilter(
 	'editor.BlockListBlock',
-	'editor-bridge/expansion/width/add-blocklistblock-attributes',
+	'editor-bridge/expansion/icon/add-blocklistblock-attributes',
 	addBlockListBlockAttributes
 );
 
@@ -207,7 +220,7 @@ addFilter(
  * @returns {object} Modified props of save element.
  */
 const addPropsSaveContent = ( props, blockType, attributes ) => {
-	if ( ! hasBlockSupport( blockType.name, 'editorBridgeWidth' ) ) {
+	if ( ! hasBlockSupport( blockType.name, 'editorBridgeIcon' ) ) {
 		return props;
 	}
 
@@ -215,28 +228,37 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 		className,
 	} = props;
 
-	const {
-		widthSlug,
-		align,
-	} = attributes;
-
-	const regexp = /full|wide/
-	if ( align && align.match( regexp ) ) {
+	if ( ! className ) {
 		return props;
 	}
 
-	props.className = classnames(
-		className,
-		{
-			[ `is-width-${ widthSlug }` ]: widthSlug,
-		}
-	);
+	const regexp = /is-style-icon/
+	if ( ! className.match( regexp ) ) {
+		return props;
+	}
+
+	const {
+		iconUnicode,
+	} = attributes;
+
+	if ( ! iconUnicode ) {
+		return props;
+	}
+
+	const style = {
+		'--editor-bridge-icon-unicode': '"\\' + iconUnicode + '"',
+	}
+
+	props.style = {
+		...props.style,
+		...style
+	}
 
 	return props;
 };
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'editor-bridge/expansion/width/add-props-save-content',
+	'editor-bridge/expansion/icon/add-props-save-content',
 	addPropsSaveContent
 );

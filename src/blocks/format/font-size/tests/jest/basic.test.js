@@ -1,15 +1,15 @@
 /**
  * Internal dependencies
  */
- import { font_size } from '../../index';
+ import { fontSize } from '../../index';
 
-describe( 'font-size', () => {
+describe( 'fontSize', () => {
 	it( 'basic', () => {
-		expect( font_size.name ).toBe( 'editor-bridge/font-size' );
-		expect( font_size.title ).toBe( 'Font Size' );
-		expect( font_size.tagName ).toBe( 'span' );
-		expect( font_size.className ).toBe( 'editor-bridge-has-font-size' );
-		expect( font_size.attributes.style ).toBe( 'style' );
-		expect( font_size.attributes.class ).toBe( 'class' );
+		expect( fontSize.name ).toBe( 'editor-bridge/font-size' );
+		expect( fontSize.title ).toBe( 'Font Size' );
+		expect( fontSize.tagName ).toBe( 'span' );
+		expect( fontSize.className ).toBe( 'editor-bridge-has-font-size' );
+		expect( fontSize.attributes.style ).toBe( 'style' );
+		expect( fontSize.attributes.class ).toBe( 'class' );
 	} );
 } );

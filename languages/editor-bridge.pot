@@ -2,14 +2,14 @@
 # This file is distributed under the GPL2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Editor Bridge 1.6.1\n"
+"Project-Id-Version: Editor Bridge 1.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/editor-bridge\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-05-02T10:00:15+00:00\n"
+"POT-Creation-Date: 2022-08-15T09:02:05+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: editor-bridge\n"
@@ -38,95 +38,97 @@ msgstr ""
 msgid "Become a sponsor"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:54
+#: src/blocks/expansion/background-image/index.js:48
 msgid "Orignal"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:58
+#: src/blocks/expansion/background-image/index.js:52
 msgid "Fit to Screen"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:62
+#: src/blocks/expansion/background-image/index.js:56
 msgid "Fill Screen"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:244
+#: src/blocks/expansion/background-image/index.js:247
 msgid "Edit Background Image"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:261
+#: src/blocks/expansion/background-image/index.js:264
 msgid "Open Media Library"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:280
+#: src/blocks/expansion/background-image/index.js:283
 msgid "Upload Background Image"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:300
+#: src/blocks/expansion/background-image/index.js:303
 msgid "Remove Background Image"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:312
+#: src/blocks/expansion/background-image/index.js:315
 msgid "Background Image Settings"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:316
+#: src/blocks/expansion/background-image/index.js:319
 msgid "Image Size"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:326
+#: src/blocks/expansion/background-image/index.js:329
 msgid "Fixed Background"
 msgstr ""
 
-#: src/blocks/expansion/background-image/index.js:335
+#: src/blocks/expansion/background-image/index.js:338
 msgid "Repeat Background"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:136
+#: src/blocks/expansion/block-centered-alignment/index.js:104
+msgid "Change centered alignment"
+msgstr ""
+
+#: src/blocks/expansion/border/index.js:141
 msgid "Border settings"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:140
+#: src/blocks/expansion/border/index.js:145
 #: src/blocks/format/badge/badge-popover.js:385
-#: src/blocks/format/badge/badge-popover copy.js:559
-#: src/blocks/format/badge/badge-popover copy 2.js:563
 #: src/blocks/format/highlight/highlight-popover.js:284
 msgid "Style"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:143
+#: src/blocks/expansion/border/index.js:148
 #: src/blocks/expansion/space/index.js:47
 msgid "None"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:144
+#: src/blocks/expansion/border/index.js:149
 msgid "Solid"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:145
+#: src/blocks/expansion/border/index.js:150
 #: src/blocks/style/table.js:25
 msgid "Dashed"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:146
+#: src/blocks/expansion/border/index.js:151
 #: src/blocks/style/separator.js:15
 msgid "Dotted"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:147
+#: src/blocks/expansion/border/index.js:152
 msgid "Double"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:153
+#: src/blocks/expansion/border/index.js:159
 msgid "Border width"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:161
+#: src/blocks/expansion/border/index.js:169
 #: src/blocks/format/highlight/highlight-popover.js:280
 msgid "Color"
 msgstr ""
 
-#: src/blocks/expansion/border/index.js:167
+#: src/blocks/expansion/border/index.js:176
 msgid "Border radius"
 msgstr ""
 
@@ -169,24 +171,32 @@ msgstr ""
 msgid "Full"
 msgstr ""
 
-#: src/blocks/expansion/button-size/index.js:157
+#: src/blocks/expansion/button-size/index.js:155
 msgid "Size Settings"
 msgstr ""
 
-#: src/blocks/expansion/button-size/index.js:161
+#: src/blocks/expansion/button-size/index.js:159
 msgid "Size"
 msgstr ""
 
-#: src/blocks/expansion/button-size/index.js:171
+#: src/blocks/expansion/button-size/index.js:169
 msgid "Width"
 msgstr ""
 
-#: src/blocks/expansion/container/index.js:107
+#: src/blocks/expansion/container/index.js:105
 msgid "Container Settings"
 msgstr ""
 
-#: src/blocks/expansion/container/index.js:111
+#: src/blocks/expansion/container/index.js:109
 msgid "Fix layout width"
+msgstr ""
+
+#: src/blocks/expansion/icon/index.js:116
+msgid "Icon Settings"
+msgstr ""
+
+#: src/blocks/expansion/icon/index.js:120
+msgid "Icons"
 msgstr ""
 
 #: src/blocks/expansion/space/index.js:55
@@ -197,66 +207,60 @@ msgstr ""
 msgid "Huge"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:183
+#: src/blocks/expansion/space/index.js:199
 msgid "Space Settings"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:188
+#: src/blocks/expansion/space/index.js:204
 msgid "Margin"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:200
+#: src/blocks/expansion/space/index.js:216
 msgid "Padding"
 msgstr ""
 
-#: src/blocks/expansion/space/index.js:212
+#: src/blocks/expansion/space/index.js:228
 msgid "Disable the horizontal setting"
 msgstr ""
 
-#: src/blocks/expansion/width/index.js:110
+#: src/blocks/expansion/space/index.js:238
+msgid "Gap"
+msgstr ""
+
+#: src/blocks/expansion/width/index.js:117
 msgid "Width settings"
 msgstr ""
 
-#: src/blocks/expansion/width/index.js:111
+#: src/blocks/expansion/width/index.js:118
 msgid "Button width"
 msgstr ""
 
 #: src/blocks/format/badge/badge-popover.js:245
-#: src/blocks/format/badge/badge-popover copy.js:361
-#: src/blocks/format/badge/badge-popover copy 2.js:365
 #: src/blocks/format/font-weight/font-weight-popover.js:116
 msgid "Default"
 msgstr ""
 
 #: src/blocks/format/badge/badge-popover.js:246
-#: src/blocks/format/badge/badge-popover copy.js:362
-#: src/blocks/format/badge/badge-popover copy 2.js:366
 #: src/blocks/style/image.js:10
+#: src/blocks/style/media-text.js:15
 #: src/blocks/style/table.js:30
 msgid "Round Corner"
 msgstr ""
 
 #: src/blocks/format/badge/badge-popover.js:247
-#: src/blocks/format/badge/badge-popover copy.js:363
-#: src/blocks/format/badge/badge-popover copy 2.js:367
+#: src/blocks/style/media-text.js:10
 msgid "Round"
 msgstr ""
 
 #: src/blocks/format/badge/badge-popover.js:248
-#: src/blocks/format/badge/badge-popover copy.js:364
-#: src/blocks/format/badge/badge-popover copy 2.js:368
 msgid "Outline"
 msgstr ""
 
 #: src/blocks/format/badge/badge-popover.js:249
-#: src/blocks/format/badge/badge-popover copy.js:365
-#: src/blocks/format/badge/badge-popover copy 2.js:369
 msgid "Status"
 msgstr ""
 
 #: src/blocks/format/badge/badge-popover.js:250
-#: src/blocks/format/badge/badge-popover copy.js:366
-#: src/blocks/format/badge/badge-popover copy 2.js:370
 msgid "Perfect Circle"
 msgstr ""
 
@@ -266,14 +270,10 @@ msgid "Reset"
 msgstr ""
 
 #: src/blocks/format/badge/badge-popover.js:377
-#: src/blocks/format/badge/badge-popover copy.js:551
-#: src/blocks/format/badge/badge-popover copy 2.js:555
 msgid "Background"
 msgstr ""
 
 #: src/blocks/format/badge/badge-popover.js:381
-#: src/blocks/format/badge/badge-popover copy.js:555
-#: src/blocks/format/badge/badge-popover copy 2.js:559
 msgid "Text"
 msgstr ""
 
@@ -486,6 +486,14 @@ msgstr ""
 
 #: src/blocks/style/list.js:45
 msgid "Centered"
+msgstr ""
+
+#: src/blocks/style/list.js:50
+msgid "Icon"
+msgstr ""
+
+#: src/blocks/style/media-text.js:20
+msgid "Voice"
 msgstr ""
 
 #: src/blocks/style/separator.js:10

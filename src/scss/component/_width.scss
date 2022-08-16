@@ -1,3 +1,6 @@
+// Included Modules
+@use '../variable';
+
 /** width **/
 [class*="wp-block-"] {
 	&.is-width-25,
@@ -22,15 +25,15 @@
 
 [class*="wp-block-"] {
 	&.is-width-25 {
-		width: 26%;
+		width: clamp( 26%, (#{variable.$default-editor-breakpoint-small} + 1px - 100vw) * 1000, 100% );
 		margin: auto;
 	}
 	&.is-width-50 {
-		width: 50%;
+		width: clamp( 50%, (#{variable.$default-editor-breakpoint-small} + 1px - 100vw) * 1000, 100% );
 		margin: auto;
 	}
 	&.is-width-75 {
-		width: 75%;
+		width: clamp( 75%, (#{variable.$default-editor-breakpoint-small} + 1px - 100vw) * 1000, 100% );
 		margin: auto;
 	}
 	&.is-width-100 {
@@ -42,16 +45,5 @@
 	}
 	&.is-width-unset {
 		width: unset;
-	}
-}
-
-@media screen and (max-width: 767px) {
-	[class*="wp-block-"] {
-		&.is-width-25,
-		&.is-width-50,
-		&.is-width-75,
-		&.is-width-100 {
-			width: 100%;
-		}
 	}
 }

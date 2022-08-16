@@ -45,7 +45,6 @@ function FontWeightEdit( {
 	return (
 		<>
 			<RichTextToolbarButton
-				className="format-library-text-color-button"
 				isActive={ isActive }
 				icon={
 					<Icon
@@ -76,7 +75,7 @@ function FontWeightEdit( {
 	);
 }
 
-export const font_weight = {
+export const fontWeight = {
 	name,
 	title,
 	tagName: 'span',

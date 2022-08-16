@@ -1,0 +1,21 @@
+.icon-select-panel {
+	height: 240px;
+	overflow: scroll;
+
+	button {
+		margin: .1rem;
+		width: 28px;
+		height: 28px;
+		background: #f1f1f1;
+		border: solid 1px #a39f9f;
+		border-radius: 2px;
+
+		&.actived {
+			background: #ffc107;
+		}
+	}
+
+	i {
+		font-size: 14px;
+	}
+}

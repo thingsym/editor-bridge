@@ -1,15 +1,15 @@
 /**
  * Internal dependencies
  */
- import { font_weight } from '../../index';
+ import { fontWeight } from '../../index';
 
-describe( 'font-weight', () => {
+describe( 'fontWeight', () => {
 	it( 'basic', () => {
-		expect( font_weight.name ).toBe( 'editor-bridge/font-weight' );
-		expect( font_weight.title ).toBe( 'Font Weight' );
-		expect( font_weight.tagName ).toBe( 'span' );
-		expect( font_weight.className ).toBe( 'editor-bridge-has-font-weight' );
-		expect( font_weight.attributes.style ).toBe( 'style' );
-		expect( font_weight.attributes.class ).toBe( 'class' );
+		expect( fontWeight.name ).toBe( 'editor-bridge/font-weight' );
+		expect( fontWeight.title ).toBe( 'Font Weight' );
+		expect( fontWeight.tagName ).toBe( 'span' );
+		expect( fontWeight.className ).toBe( 'editor-bridge-has-font-weight' );
+		expect( fontWeight.attributes.style ).toBe( 'style' );
+		expect( fontWeight.attributes.class ).toBe( 'class' );
 	} );
 } );

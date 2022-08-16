@@ -1,10 +1,12 @@
-.wp-block[data-align=full] > [data-fixed-layout-width=true] {
-	.wp-block-cover__inner-container,
-	.wp-block-group__inner-container {
-		> .block-editor-block-list__block {
-			max-width: var(--editor-bridge-block-edior-max-width, 1024px);
-			padding-left: var(--editor-bridge-default-stack, 1.28rem);
-			padding-right: var(--editor-bridge-default-stack, 1.28rem);
-	}
+.wp-block {
+	&[data-align=full] {
+		> .fixed-layout-width {
+			> .wp-block-cover__inner-container,
+			> .wp-block-group__inner-container {
+				max-width: var(--editor-bridge-block-edior-max-width, 1024px);
+				padding-left: var(--editor-bridge-default-stack, 1.28rem);
+				padding-right: var(--editor-bridge-default-stack, 1.28rem);
+			}
+		}
 	}
 }

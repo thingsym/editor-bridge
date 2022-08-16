@@ -12,18 +12,15 @@ import assign from 'lodash.assign';
 import { __ } from '@wordpress/i18n';
 import { hasBlockSupport } from '@wordpress/blocks';
 import { addFilter } from '@wordpress/hooks';
-import { InspectorControls } from '@wordpress/block-editor';
+import { BlockControls } from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import {
-	PanelBody,
-	Button,
-	ButtonGroup,
+	ToolbarGroup,
+	ToolbarButton,
 } from '@wordpress/components';
 
 const enableBlocks = [
-	'core/table',
-	'core/columns',
-	'core/group',
+	'core/column',
 ];
 
 /**
@@ -40,22 +37,23 @@ const addSettingsAttributes = ( settings, name ) => {
 			settings.supports = {};
 		}
 		settings.supports = assign( settings.supports, {
-			editorBridgeWidth: true,
+			editorBridgeBlockCenteredAlignment: true,
 		} );
 	}
 
-	if ( ! hasBlockSupport( settings, 'editorBridgeWidth' ) ) {
+	if ( ! hasBlockSupport( settings, 'editorBridgeBlockCenteredAlignment' ) ) {
 		return settings;
 	}
 	if ( typeof settings.attributes === 'undefined' ) {
 		return settings;
 	}
 
-	if ( ! settings.attributes.widthSlug ) {
+	if ( ! settings.attributes.editorBridgeBlockCenteredAlignment ) {
 		settings.attributes = assign( settings.attributes, {
-			widthSlug: {
-				type: 'string',
-			},
+			blockCenteredAlignment: {
+				type: 'boolean',
+				default: false
+			}
 		} );
 	}
 
@@ -64,7 +62,7 @@ const addSettingsAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'editor-bridge/expansion/width/add-settings-attributes',
+	'editor-bridge/expansion/block-centered-alignment/add-settings-attributes',
 	addSettingsAttributes
 );
 
@@ -86,55 +84,35 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 			);
 		}
 
-		if ( ! hasBlockSupport( name, 'editorBridgeWidth' ) ) {
+		if ( ! hasBlockSupport( name, 'editorBridgeBlockCenteredAlignment' ) ) {
 			return (
 				<BlockEdit { ...props } />
 			);
 		}
 
 		const {
-			widthSlug,
-			align,
+			blockCenteredAlignment,
 		} = attributes;
-
-		function handleChange( newWidthSlug ) {
-			const setWidth = widthSlug === newWidthSlug ? undefined : newWidthSlug;
-			setAttributes( { widthSlug: setWidth } );
-		}
-
-		if ( align ) {
-			setAttributes( { widthSlug: undefined } );
-
-			return (
-				<BlockEdit { ...props } />
-			);
-		}
 
 		return (
 			<>
 				<BlockEdit { ...props } />
-					<InspectorControls>
-					<PanelBody title={ __( 'Width settings', 'editor-bridge' ) }>
-						<ButtonGroup aria-label={ __( 'Button width', 'editor-bridge' ) }>
-							{ [ '25', '50', '75', '100', 'auto', 'unset' ].map( ( widthValue ) => {
-								return (
-									<Button
-										key={ widthValue }
-										isSmall
-										variant={
-											widthValue === widthSlug
-												? 'primary'
-												: undefined
-										}
-										onClick={ () => handleChange( widthValue ) }
-									>
-										{ widthValue }{ ( widthValue != 'auto' && widthValue != 'unset') && ( '%' ) }
-									</Button>
-								);
-							} ) }
-						</ButtonGroup>
-					</PanelBody>
-				</InspectorControls>
+
+				<BlockControls>
+					<ToolbarGroup>
+						<ToolbarButton
+							label={ __( 'Change centered alignment', 'editor-bridge' ) }
+							icon='plus-alt2'
+							isActive={ blockCenteredAlignment }
+							onClick={ () => {
+								setAttributes( {
+									blockCenteredAlignment: ! blockCenteredAlignment,
+								} );
+							} }
+						>
+						</ToolbarButton>
+					</ToolbarGroup>
+				</BlockControls>
 			</>
 		);
 	};
@@ -142,7 +120,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 addFilter(
 	'editor.BlockEdit',
-	'editor-bridge/expansion/width/add-blockeditor-control',
+	'editor-bridge/expansion/block-centered-alignment/add-blockeditor-control',
 	addBlockEditorControl
 );
 
@@ -154,28 +132,20 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 			attributes,
 		} = props;
 
-		if ( ! hasBlockSupport( name, 'editorBridgeWidth' ) ) {
+		if ( ! hasBlockSupport( name, 'editorBridgeBlockCenteredAlignment' ) ) {
 			return (
 				<BlockListBlock { ...props } />
 			);
 		}
 
 		const {
-			widthSlug,
-			align,
+			blockCenteredAlignment,
 		} = attributes;
-
-		const regexp = /full|wide/
-		if ( align && align.match( regexp ) ) {
-			return (
-				<BlockListBlock { ...props } />
-			);
-		}
 
 		const extraClass = classnames(
 			className,
 			{
-				[ `is-width-${ widthSlug }` ]: widthSlug,
+				'is-block-centered-alignment': blockCenteredAlignment,
 			}
 		);
 
@@ -193,7 +163,7 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 
 addFilter(
 	'editor.BlockListBlock',
-	'editor-bridge/expansion/width/add-blocklistblock-attributes',
+	'editor-bridge/expansion/block-centered-alignment/add-blocklistblock-attributes',
 	addBlockListBlockAttributes
 );
 
@@ -207,7 +177,7 @@ addFilter(
  * @returns {object} Modified props of save element.
  */
 const addPropsSaveContent = ( props, blockType, attributes ) => {
-	if ( ! hasBlockSupport( blockType.name, 'editorBridgeWidth' ) ) {
+	if ( ! hasBlockSupport( blockType.name, 'editorBridgeBlockCenteredAlignment' ) ) {
 		return props;
 	}
 
@@ -216,19 +186,13 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 	} = props;
 
 	const {
-		widthSlug,
-		align,
+		blockCenteredAlignment,
 	} = attributes;
-
-	const regexp = /full|wide/
-	if ( align && align.match( regexp ) ) {
-		return props;
-	}
 
 	props.className = classnames(
 		className,
 		{
-			[ `is-width-${ widthSlug }` ]: widthSlug,
+			'is-block-centered-alignment': blockCenteredAlignment,
 		}
 	);
 
@@ -237,6 +201,6 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'editor-bridge/expansion/width/add-props-save-content',
+	'editor-bridge/expansion/block-centered-alignment/add-props-save-content',
 	addPropsSaveContent
 );

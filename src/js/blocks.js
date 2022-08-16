@@ -7,6 +7,8 @@ import '../blocks/expansion/border/index.js';
 import '../blocks/expansion/width/index.js';
 import '../blocks/expansion/space/index.js';
 import '../blocks/expansion/container/index.js';
+import '../blocks/expansion/block-centered-alignment/index.js';
+import '../blocks/expansion/icon/index.js';
 
 // style
 import '../blocks/style/heading.js';
@@ -15,6 +17,7 @@ import '../blocks/style/table.js';
 import '../blocks/style/image.js';
 import '../blocks/style/separator.js';
 import '../blocks/style/list.js';
+import '../blocks/style/media-text.js';
 
 // format
 import '../blocks/format/index.js';

@@ -78,11 +78,12 @@
 	}
 }
 
-/** for stash **/
 .entry-content {
 	* {
+		/** for stash **/
 		+ h1, + h2, + h3, + h4, + h5, + h6,
 		+ p, + ul, + ol,
+		/** for Specificity blocks **/
 		+ .wp-block-image,
 		+ .wp-block-table,
 		+ .wp-block-button,
@@ -189,5 +190,23 @@
 			padding-left: 0;
 			padding-right: 0;
 		}
+	}
+}
+
+.wp-block-columns {
+	&.is-gap-none {
+		gap: var(--editor-bridge-space-gap-none, unset);
+	}
+	&.is-gap-small {
+		gap: var(--editor-bridge-space-gap-small, unset);
+	}
+	&.is-gap-medium {
+		gap: var(--editor-bridge-space-gap-medium, unset);
+	}
+	&.is-gap-large {
+		gap: var(--editor-bridge-space-gap-large, unset);
+	}
+	&.is-gap-huge {
+		gap: var(--editor-bridge-space-gap-huge, unset);
 	}
 }

@@ -44,7 +44,6 @@ function FontSizeEdit( {
 	return (
 		<>
 			<RichTextToolbarButton
-				className="format-library-text-color-button"
 				isActive={ isActive }
 				icon={
 					<Icon
@@ -75,7 +74,7 @@ function FontSizeEdit( {
 	);
 }
 
-export const font_size = {
+export const fontSize = {
 	name,
 	title,
 	tagName: 'span',

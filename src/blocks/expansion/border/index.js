@@ -40,7 +40,7 @@ const enableBlocks = [
  *
  * @returns {object} Modified block settings.
  */
-const addAttributes = ( settings, name ) => {
+const addSettingsAttributes = ( settings, name ) => {
 	if ( enableBlocks.includes( name ) ) {
 		if ( ! settings.supports ) {
 			settings.supports = {};
@@ -60,12 +60,12 @@ const addAttributes = ( settings, name ) => {
 
 	if ( ! settings.attributes.editorBridgeBorder ) {
 		settings.attributes = assign( settings.attributes, {
-			borderWidth: {
-				type: 'number',
-				default: undefined,
-			},
 			borderStyle: {
 				type: 'string',
+				default: undefined,
+			},
+			borderWidth: {
+				type: 'number',
 				default: undefined,
 			},
 			borderColor: {
@@ -84,15 +84,15 @@ const addAttributes = ( settings, name ) => {
 
 addFilter(
 	'blocks.registerBlockType',
-	'editor-bridge/expansion/border/add-attributes',
-	addAttributes
+	'editor-bridge/expansion/border/add-settings-attributes',
+	addSettingsAttributes
 );
 
 const MIN_BORDER_WIDTH_VALUE = 0;
 const MAX_BORDER_WIDTH_VALUE = 10;
-const INITIAL_BORDER_WIDTH_POSITION = 0;
+const INITIAL_BORDER_WIDTH_POSITION = 1;
 const MIN_BORDER_RADIUS_VALUE = 0;
-const MAX_BORDER_RADIUS_VALUE = 50;
+const MAX_BORDER_RADIUS_VALUE = 100;
 const INITIAL_BORDER_RADIUS_POSITION = 0;
 
 function BorderPanel( {
@@ -101,18 +101,23 @@ function BorderPanel( {
 	borderColor = '',
 	borderRadius = '',
 	setAttributes,
- } ) {
-
-	const setBorderWidth = useCallback(
-		( newBorderWidth ) => {
-			setAttributes( { borderWidth: newBorderWidth ? newBorderWidth : 0 } );
-		},
-		[ setAttributes ]
-	);
+} ) {
 
 	const setBorderStyle = useCallback(
 		( newBorderStyle ) => {
 			setAttributes( { borderStyle: newBorderStyle } );
+
+			if ( ! newBorderStyle ) {
+				setAttributes( { borderColor: undefined } );
+				setAttributes( { borderWidth: undefined } );
+			}
+		},
+		[ setAttributes ]
+	);
+
+	const setBorderWidth = useCallback(
+		( newBorderWidth ) => {
+			setAttributes( { borderWidth: newBorderWidth ? newBorderWidth : 0 } );
 		},
 		[ setAttributes ]
 	);
@@ -148,20 +153,24 @@ function BorderPanel( {
 				] }
 				onChange={ setBorderStyle }
 			/>
-			<RangeControl
-				value={ borderWidth }
-				label={ __( 'Border width', 'editor-bridge' ) }
-				min={ MIN_BORDER_WIDTH_VALUE }
-				max={ MAX_BORDER_WIDTH_VALUE }
-				initialPosition={ INITIAL_BORDER_WIDTH_POSITION }
-				allowReset
-				onChange={ setBorderWidth }
-			/>
-			<ColorPaletteControl
-				label={ __( 'Color', 'editor-bridge' ) }
-				value={ borderColor }
-				onChange={ setBorderColor }
-			/>
+			{ !! borderStyle && (
+				<RangeControl
+					value={ borderWidth }
+					label={ __( 'Border width', 'editor-bridge' ) }
+					min={ MIN_BORDER_WIDTH_VALUE }
+					max={ MAX_BORDER_WIDTH_VALUE }
+					initialPosition={ INITIAL_BORDER_WIDTH_POSITION }
+					allowReset
+					onChange={ setBorderWidth }
+				/>
+			) }
+			{ !! borderStyle && (
+				<ColorPaletteControl
+					label={ __( 'Color', 'editor-bridge' ) }
+					value={ borderColor }
+					onChange={ setBorderColor }
+				/>
+			) }
 			<RangeControl
 				value={ borderRadius }
 				label={ __( 'Border radius', 'editor-bridge' ) }
@@ -178,16 +187,21 @@ function BorderPanel( {
 /**
  * Create HOC to add control to inspector controls.
  */
-const withBorderControl = createHigherOrderComponent( ( BlockEdit ) => {
+const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 	return ( props ) => {
 
 		const {
 			name,
-			clientId,
 			attributes,
 			setAttributes,
 			isSelected
 		} = props;
+
+		if ( ! isSelected ) {
+			return (
+				<BlockEdit { ...props } />
+			);
+		}
 
 		if ( ! hasBlockSupport( name, 'editorBridgeBorder' ) ) {
 			return (
@@ -196,17 +210,11 @@ const withBorderControl = createHigherOrderComponent( ( BlockEdit ) => {
 		}
 
 		const {
-			borderWidth,
 			borderStyle,
+			borderWidth,
 			borderColor,
 			borderRadius,
-		} = props.attributes;
-
-		if ( ! isSelected ) {
-			return (
-				<BlockEdit { ...props } />
-			);
-		}
+		} = attributes;
 
 		return (
 			<>
@@ -214,9 +222,9 @@ const withBorderControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 				<InspectorControls>
 					<BorderPanel
+						borderStyle={ borderStyle }
 						borderWidth={ borderWidth }
 						borderColor={ borderColor }
-						borderStyle={ borderStyle }
 						borderRadius={ borderRadius }
 						setAttributes={ setAttributes }
 					/>
@@ -224,22 +232,20 @@ const withBorderControl = createHigherOrderComponent( ( BlockEdit ) => {
 			</>
 		);
 	};
-}, 'withBorderControl' );
+}, 'addBlockEditorControl' );
 
 addFilter(
 	'editor.BlockEdit',
-	'editor-bridge/expansion/border/with-control',
-	withBorderControl
+	'editor-bridge/expansion/border/add-blockeditor-control',
+	addBlockEditorControl
 );
 
-const withBorderBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
+const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
 	return ( props ) => {
 		const {
 			name,
-			clientId,
+			className,
 			attributes,
-			setAttributes,
-			isSelected
 		} = props;
 
 		if ( ! hasBlockSupport( name, 'editorBridgeBorder' ) ) {
@@ -249,89 +255,95 @@ const withBorderBlockAttributes = createHigherOrderComponent( ( BlockListBlock )
 		}
 
 		const {
+			borderStyle,
 			borderWidth,
 			borderColor,
-			borderStyle,
 			borderRadius,
-		} = props.attributes;
-
-		let customData = {};
+		} = attributes;
 
 		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
+		let customData = {};
 
-		wrapperProps.style = {
-			borderWidth: borderWidth != null && borderStyle
-				? borderWidth + 'px'
-				: undefined,
+		const style = {
 			borderStyle: borderStyle
 				? borderStyle
 				: undefined,
-			borderColor: borderColor != null
+			borderWidth: borderWidth && borderStyle
+				? `${ borderWidth }px`
+				: undefined,
+			borderColor: borderColor && borderStyle
 				? borderColor
 				: undefined,
-			borderRadius: borderRadius != null
-				? borderRadius + 'px'
+			borderRadius: borderRadius
+				? `${ borderRadius }px`
 				: undefined,
-			...wrapperProps.style,
 		}
 
 		wrapperProps = {
 			...wrapperProps,
 			...customData,
+			style: {
+				...( wrapperProps && { ...wrapperProps.style } ),
+				...style,
+			},
 		};
 
 		return <BlockListBlock { ...props } wrapperProps={ wrapperProps } />;
 	};
-}, 'withBorderBlockAttributes' );
+}, 'addBlockListBlockAttributes' );
 
 addFilter(
 	'editor.BlockListBlock',
-	'editor-bridge/expansion/border/with-block-attributes',
-	withBorderBlockAttributes
+	'editor-bridge/expansion/border/add-blocklistblock-attributes',
+	addBlockListBlockAttributes
 );
 
 /**
  * Add attribute to save content.
  *
- * @param {object} extraProps Props of save element.
+ * @param {object} props Props of save element.
  * @param {Object} blockType Block type information.
  * @param {Object} attributes Attributes of block.
  *
  * @returns {object} Modified props of save element.
  */
-const getSaveBorderContent = ( extraProps, blockType, attributes ) => {
+const addPropsSaveContent = ( props, blockType, attributes ) => {
 	if ( ! hasBlockSupport( blockType.name, 'editorBridgeBorder' ) ) {
-		return extraProps;
+		return props;
 	}
 
 	const {
-		borderWidth,
 		borderStyle,
+		borderWidth,
 		borderColor,
 		borderRadius,
 	} = attributes;
 
-	extraProps.style = {
-		borderWidth: borderWidth != null && borderStyle
-			? borderWidth + 'px'
-			: undefined,
+	const style = {
 		borderStyle: borderStyle
 			? borderStyle
 			: undefined,
-		borderColor: borderColor != null
+		borderWidth: borderWidth != null && borderStyle
+			? `${ borderWidth }px`
+			: undefined,
+		borderColor: borderColor != null && borderStyle
 			? borderColor
 			: undefined,
 		borderRadius: borderRadius != null
-			? borderRadius + 'px'
+			? `${ borderRadius }px`
 			: undefined,
-		...extraProps.style,
 	}
 
-	return extraProps;
+	props.style = {
+		...props.style,
+		...style
+	}
+
+	return props;
 };
 
 addFilter(
 	'blocks.getSaveContent.extraProps',
-	'editor-bridge/expansion/border/get-save-content',
-	getSaveBorderContent
+	'editor-bridge/expansion/border/add-props-save-content',
+	addPropsSaveContent
 );

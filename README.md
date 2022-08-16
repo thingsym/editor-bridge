@@ -29,13 +29,13 @@ There are three expansion points.
 * Container settings
 	* core/group
 	* core/cover
-* Space settings, Margin (upper margin as default) and Padding
+* Space settings, Margin (upper margin as default), Padding and Gap
 	* core/heading
 	* core/paragraph
 	* core/image
 	* core/button (only Margin)
 	* core/buttons
-	* core/media-text (only Margin)
+	* core/media-text
 	* core/gallery (only Margin)
 	* core/list (only Margin)
 	* core/table (only Margin)
@@ -61,6 +61,7 @@ There are three expansion points.
 * Heading
 * Image
 * List
+* Media Text
 * Separator
 * Table
 
@@ -75,6 +76,12 @@ There are three expansion points.
 
 * WordPress version 5.5 or later
 * Gutenberg version 8.5 or later ([Versions in WordPress](https://developer.wordpress.org/block-editor/contributors/versions-in-wordpress/))
+
+## Required plugins
+
+Editor Bridge will need other recommended plugins to use icons library as Web Font.
+
+[Font Awesome](https://ja.wordpress.org/plugins/font-awesome/)
 
 ## WordPress Plugin Directory
 
@@ -141,6 +148,21 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 5. Create new Pull Request
 
 ## Changelog
+
+### [1.7.0] - 2022.08.16
+
+* update japanese translation
+* update pot
+* enable padding space for media-text
+* fix scss
+* add icon block style to list
+* add icon selector
+* add block style to media-text
+* remove css media query
+* add gap space
+* improve code and change block attributes from custom data to extra class
+* refactoring, refine code
+* add block centered alignment
 
 ### [1.6.1] - 2022.07.04
 

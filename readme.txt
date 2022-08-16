@@ -23,6 +23,12 @@ This WordPress plugin expands the functionality of blocks and adds styles and fo
 - WordPress version 5.5 or later
 - Gutenberg version 8.5 or later
 
+= Required plugins =
+
+Editor Bridge will need other recommended plugins to use icons library as Web Font.
+
+[Font Awesome](https://ja.wordpress.org/plugins/font-awesome/)
+
 = Expansion =
 
 There are three expansion points.
@@ -46,13 +52,13 @@ There are three expansion points.
 * Container settings
 	* core/group
 	* core/cover
-* Space settings, Margin (upper margin as default) and Padding
+* Space settings, Margin (upper margin as default), Padding and Gap
 	* core/heading
 	* core/paragraph
 	* core/image
 	* core/button (only Margin)
 	* core/buttons
-	* core/media-text (only Margin)
+	* core/media-text
 	* core/gallery (only Margin)
 	* core/list (only Margin)
 	* core/table (only Margin)
@@ -78,6 +84,7 @@ There are three expansion points.
 * Heading
 * Image
 * List
+* Media Text
 * Separator
 * Table
 

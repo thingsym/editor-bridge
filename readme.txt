@@ -3,7 +3,7 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
-Stable tag: 1.6.1
+Stable tag: 1.7.0
 Tested up to: 6.0.0
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -114,6 +114,20 @@ If you would like to contribute, here are some notes and guidlines.
 4. Have fun!
 
 == Changelog ==
+
+= 1.7.0 - 2022.08.16 =
+* update japanese translation
+* update pot
+* enable padding space for media-text
+* fix scss
+* add icon block style to list
+* add icon selector
+* add block style to media-text
+* remove css media query
+* add gap space
+* improve code and change block attributes from custom data to extra class
+* refactoring, refine code
+* add block centered alignment
 
 = 1.6.1 - 2022.07.04 =
 * fix table layout

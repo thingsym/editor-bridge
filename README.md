@@ -149,6 +149,21 @@ Small patches and bug reports can be submitted a issue tracker in GitHub. Forkin
 
 ## Changelog
 
+### [1.7.0] - 2022.08.16
+
+* update japanese translation
+* update pot
+* enable padding space for media-text
+* fix scss
+* add icon block style to list
+* add icon selector
+* add block style to media-text
+* remove css media query
+* add gap space
+* improve code and change block attributes from custom data to extra class
+* refactoring, refine code
+* add block centered alignment
+
 ### [1.6.1] - 2022.07.04
 
 * fix table layout

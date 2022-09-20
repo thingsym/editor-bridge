@@ -29,6 +29,11 @@ Editor Bridge will need other recommended plugins to use icons library as Web Fo
 
 [Font Awesome](https://ja.wordpress.org/plugins/font-awesome/)
 
+= Demo =
+
+* [Demo sample (English)](https://demo.thingslabo.com/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample)
+* [デモサンプル (日本語)](https://demo.thingslabo.com/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample-ja)
+
 = Expansion =
 
 There are three expansion points.

@@ -3,7 +3,7 @@
 WordPress plugin Editor Bridge expand the Block Editor (Gutenberg).
 This WordPress plugin expands the functionality of blocks and adds styles and formats.
 
-* [Demo sample (English)](https://https://demo.thingslabo.com/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample)
+* [Demo sample (English)](https://demo.thingslabo.com/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample)
 * [デモサンプル (日本語)](https://demo.thingslabo.com/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample-ja)
 
 ## Expansion

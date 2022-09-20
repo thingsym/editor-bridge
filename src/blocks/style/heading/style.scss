@@ -1,0 +1,244 @@
+.is-style-hd-underline {
+	border-bottom: 2px solid;
+}
+
+.is-style-hd-thin-underline {
+	border-bottom: 1px solid;
+}
+
+.is-style-hd-thick-underline {
+	border-bottom: 4px solid;
+}
+
+.is-style-hd-two-color-underline {
+	border-bottom: 1px solid var(--editor-bridge-border-color, unset);
+	&:after {
+		position: absolute;
+		content: '';
+		display: block;
+		width: 240px;
+		height: 1px;
+		background: currentColor;
+
+		.block-editor-block-list__layout & {
+			top: unset;
+			bottom: unset;
+		}
+	}
+}
+
+.is-style-hd-updown-line {
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+}
+
+.is-style-hd-accent-line {
+	position: relative;
+
+	&:after {
+		position: absolute;
+		content: '';
+		display: block;
+		border-bottom: solid 2px;
+		width: 120px;
+	}
+	&.has-text-align-left:after {
+		left: 0;
+	}
+	&.has-text-align-center:after {
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+	&.has-text-align-right:after {
+		right: 0;
+
+		.block-editor-block-list__layout & {
+			left: unset;
+		}
+	}
+}
+
+.is-style-hd-kebab-line {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+
+	&:before,
+	&:after {
+		display: block;
+		border-bottom: 2px solid;
+		flex: 1 0 0%;
+		min-width: 20px;
+	}
+
+	&:before {
+		content: unset;
+		margin-right: 1rem;
+	}
+	&:after {
+		content: '';
+		margin-left: 1rem;
+
+		.block-editor-block-list__layout & {
+			position: static
+		}
+	}
+	&.has-text-align-left:before {
+		content: unset;
+	}
+	&.has-text-align-left:after {
+		content: '';
+	}
+	&.has-text-align-center:before {
+		content: '';
+	}
+	&.has-text-align-center:after {
+		content: '';
+	}
+	&.has-text-align-right:before {
+		content: '';
+	}
+	&.has-text-align-right:after {
+		content: unset;
+	}
+}
+
+.is-style-hd-single-box {
+	border: 1px solid;
+	padding: .4rem;
+}
+
+.is-style-hd-double-box {
+	border: 3px double;
+	padding: .4rem;
+}
+
+.is-style-hd-left-accent-line {
+	padding-left: .6rem;
+	border-left: solid 6px;
+}
+
+.is-style-hd-gradation-line {
+	&:after {
+		content: '';
+		display: block;
+		height: 4px;
+		background: linear-gradient(to right, currentColor, transparent);
+
+		.block-editor-block-list__layout & {
+			top: unset;
+			bottom: unset;
+		}
+	}
+}
+.is-style-hd-stripe-line {
+	position: relative;
+	padding-bottom: .2rem;
+
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		height: 4px;
+		background: repeating-linear-gradient(-45deg, currentColor, currentColor 10px, transparent 10px, transparent 15px);
+
+		.block-editor-block-list__layout & {
+			top: unset;
+		}
+	}
+}
+// TODO: fix v5.5
+.is-style-hd-cross-box {
+	position: relative;
+  padding: 0.25em 1em;
+  border-top: solid 2px currentColor;
+	border-bottom: solid 2px currentColor;
+
+	&:before,
+	&:after {
+		content: '';
+		position: absolute;
+		top: -9px;
+		width: 2px;
+		height: calc(100% + 18px);
+		background-color: currentColor;
+	}
+	&:before {
+		left: 9px;
+	}
+	&:after {
+		right: 9px;
+
+		.block-editor-block-list__layout & {
+			top: -9px;
+			left: calc(100% - 9px);
+		}
+	}
+}
+
+.is-style-hd-brackets {
+	position: relative;
+  padding: 0.25em 1em;
+
+	&:before,
+	&:after {
+		position: absolute;
+		top: 0;
+		content: '';
+		width: 8px;
+		height: 100%;
+	}
+	&:before {
+		border-left: solid 1px currentColor;
+		border-top: solid 1px currentColor;
+		border-bottom: solid 1px currentColor;
+		left: 0;
+	}
+	&:after {
+		content: '';
+		border-top: solid 1px currentColor;
+		border-right: solid 1px currentColor;
+		border-bottom: solid 1px currentColor;
+		right: 0;
+
+		.block-editor-block-list__layout & {
+			left: unset;
+		}
+	}
+}
+
+.is-style-hd-japanese-quotation {
+	position: relative;
+  padding: 0.25em 1em;
+
+	&:before,
+	&:after {
+		position: absolute;
+		content: '';
+		width: 20px;
+		height: 30px;
+	}
+
+	&:before {
+		border-left: solid 1px currentColor;
+		border-top: solid 1px currentColor;
+		top: 0;
+		left: 0;
+	}
+
+	&:after {
+		border-right: solid 1px currentColor;
+		border-bottom: solid 1px currentColor;
+		bottom: 0;
+		right: 0;
+
+		.block-editor-block-list__layout & {
+			top: unset;
+			left: unset;
+		}
+	}
+}

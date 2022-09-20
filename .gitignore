@@ -4,3 +4,4 @@ vendor/
 dist/
 tests/report/
 *.zip
+icons-converted-data.js

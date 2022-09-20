@@ -59,7 +59,7 @@ class Editor_Bridge {
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 		add_action( 'enqueue_block_assets', [ $this, 'enqueue_block_asset_styles' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_blocks_scripts' ] );
+		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_blocks_editor_scripts' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_block_editor_styles' ] );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'set_block_editor_translations' ] );
 
@@ -125,16 +125,16 @@ class Editor_Bridge {
 	public function set_block_editor_translations() {
 		if ( function_exists( 'wp_set_script_translations' ) ) {
 			wp_set_script_translations(
-				'editor-bridge-script',
+				'editor-bridge-editor-script',
 				'editor-bridge',
 				plugin_dir_path( EDITOR_BRIDGE ) . 'languages'
 			);
 		}
 	}
 
-	public function enqueue_blocks_scripts() {
+	public function enqueue_blocks_editor_scripts() {
 		wp_enqueue_script(
-			'editor-bridge-script',
+			'editor-bridge-editor-script',
 			plugins_url( 'dist/js/blocks.js', EDITOR_BRIDGE ),
 			$this->asset_file['dependencies'],
 			$this->asset_file['version'],

@@ -12,7 +12,10 @@ import assign from 'lodash.assign';
 import { __ } from '@wordpress/i18n';
 import { hasBlockSupport } from '@wordpress/blocks';
 import { addFilter } from '@wordpress/hooks';
-import { InspectorControls } from '@wordpress/block-editor';
+import {
+	InspectorControls,
+	ColorPaletteControl,
+} from '@wordpress/block-editor';
 import { createHigherOrderComponent } from '@wordpress/compose';
 import {
 	PanelBody,
@@ -53,10 +56,14 @@ const addSettingsAttributes = ( settings, name ) => {
 		return settings;
 	}
 
-	if ( ! settings.attributes.iconUnicode ) {
+	if ( ! settings.attributes.editorBridgeIcon ) {
 		settings.attributes = assign( settings.attributes, {
 			iconUnicode: {
 				type: 'string',
+			},
+			iconColor: {
+				type: 'string',
+				default: undefined,
 			},
 		} );
 	}
@@ -97,10 +104,12 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 		const {
 			className,
 			iconUnicode,
+			iconColor,
 		} = attributes;
 
 		if ( ! className ) {
 			setAttributes( { iconUnicode: undefined } );
+			setAttributes( { iconColor: undefined } );
 
 			return (
 				<BlockEdit { ...props } />
@@ -110,6 +119,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 		const regexp = /is-style-icon/
 		if ( ! className.match( regexp ) ) {
 			setAttributes( { iconUnicode: undefined } );
+			setAttributes( { iconColor: undefined } );
 
 			return (
 				<BlockEdit { ...props } />
@@ -126,11 +136,21 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 						>
 							<IconSelectControl
 								label={ __( 'Icons', 'editor-bridge' ) }
+								valueType="unicode"
 								value={ iconUnicode ? iconUnicode : '0' }
 								options={ IconSettings }
 								onChange={ ( value ) => {
 									setAttributes( {
 										iconUnicode: value,
+									} );
+								} }
+							/>
+							<ColorPaletteControl
+								label={ __( 'Icon Color', 'editor-bridge' ) }
+								value={ iconColor }
+								onChange={ ( value ) => {
+									setAttributes( {
+										iconColor: value,
 									} );
 								} }
 							/>
@@ -163,6 +183,7 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 		const {
 			className,
 			iconUnicode,
+			iconColor,
 		} = attributes;
 
 		if ( ! className ) {
@@ -189,6 +210,7 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 
 		const style = {
 			'--editor-bridge-icon-unicode': '"\\' + iconUnicode + '"',
+			'--editor-bridge-icon-color': iconColor,
 		}
 
 		wrapperProps = {
@@ -239,6 +261,7 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 
 	const {
 		iconUnicode,
+		iconColor,
 	} = attributes;
 
 	if ( ! iconUnicode ) {
@@ -247,6 +270,7 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 
 	const style = {
 		'--editor-bridge-icon-unicode': '"\\' + iconUnicode + '"',
+		'--editor-bridge-icon-color': iconColor,
 	}
 
 	props.style = {

@@ -1,5 +1,5 @@
 // Included Modules
-@use '../variable';
+@use '../../../scss/variable';
 
 /** width **/
 [class*="wp-block-"] {
@@ -25,15 +25,15 @@
 
 [class*="wp-block-"] {
 	&.is-width-25 {
-		width: clamp( 26%, (#{variable.$default-editor-breakpoint-small} + 1px - 100vw) * 1000, 100% );
+		width: clamp( 26%, (#{variable.$default-editor-breakpoint-small + 1px} - 100vw) * 1000, 100% );
 		margin: auto;
 	}
 	&.is-width-50 {
-		width: clamp( 50%, (#{variable.$default-editor-breakpoint-small} + 1px - 100vw) * 1000, 100% );
+		width: clamp( 50%, (#{variable.$default-editor-breakpoint-small + 1px} - 100vw) * 1000, 100% );
 		margin: auto;
 	}
 	&.is-width-75 {
-		width: clamp( 75%, (#{variable.$default-editor-breakpoint-small} + 1px - 100vw) * 1000, 100% );
+		width: clamp( 75%, (#{variable.$default-editor-breakpoint-small + 1px} - 100vw) * 1000, 100% );
 		margin: auto;
 	}
 	&.is-width-100 {

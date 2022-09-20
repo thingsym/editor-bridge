@@ -1,2 +1,12 @@
-@use 'variable';
-@use 'editor';
+@use 'editor/root';
+@use 'editor/uiux-experience';
+
+@use "../helper/icon-select-control/editor" as icon-select-control;
+
+@use "../blocks/expansion/space/editor" as space;
+@use "../blocks/expansion/container/editor" as container;
+@use "../blocks/expansion/button-size/editor" as button-size;
+@use "../blocks/expansion/background-image/editor" as background-image;
+@use "../blocks/expansion/width/editor" as width;
+@use "../blocks/expansion/block-centered-alignment/editor" as block-centered-alignment;
+

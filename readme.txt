@@ -11,7 +11,7 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: block, block editor, gutenberg
 
-This WordPress plugin expands the functionality of blocks and adds styles and formats.
+Editor Bridge plugin expands the functionality of blocks and adds styles and formats.
 
 == Description ==
 
@@ -93,16 +93,31 @@ There are three expansion points.
 * Separator
 * Table
 
-= Test Matrix =
+= Support =
 
-For operation compatibility between PHP version and WordPress version, see below [GitHub Actions](https://github.com/thingsym/editor-bridge/actions).
+If you have any trouble, you can use the forums or report bugs.
+
+* Forum: [https://wordpress.org/support/plugin/editor-bridge/](https://wordpress.org/support/plugin/editor-bridge/)
+* Issues: [https://github.com/thingsym/editor-bridge/issues](https://github.com/thingsym/editor-bridge/issues)
 
 = Contribution =
 
-Small patches and bug reports can be submitted a issue tracker in GitHub. Forking on GitHub is another good way. You can send a pull request.
+Small patches and bug reports can be submitted a issue tracker in Github. Forking on Github is another good way. You can send a pull request.
 
-* [editor-bridge - GitHub](https://github.com/thingsym/editor-bridge)
-* [Editor Bridge - WordPress Plugin](https://wordpress.org/plugins/editor-bridge/)
+Translating a plugin takes a lot of time, effort, and patience. I really appreciate the hard work from these contributors.
+
+If you have created or updated your own language pack, you can send gettext PO and MO files to author. I can bundle it into plugin.
+
+* [VCS - GitHub](https://github.com/thingsym/editor-bridge)
+* [Homepage - WordPress Plugin](https://wordpress.org/plugins/editor-bridge/)
+* [Translate Editor Bridge into your language.](https://translate.wordpress.org/projects/wp-plugins/editor-bridge)
+
+You can also contribute by answering issues on the forums.
+
+* Forum: [https://wordpress.org/support/plugin/editor-bridge/](https://wordpress.org/support/plugin/editor-bridge/)
+* Issues: [https://github.com/thingsym/editor-bridge/issues](https://github.com/thingsym/editor-bridge/issues)
+
+= Contribute guidlines =
 
 If you would like to contribute, here are some notes and guidlines.
 
@@ -110,6 +125,10 @@ If you would like to contribute, here are some notes and guidlines.
 * The **master** branch only contains tagged releases
 * If you are going to be submitting a pull request, please submit your pull request to the **develop** branch
 * See about [forking](https://help.github.com/articles/fork-a-repo/) and [pull requests](https://help.github.com/articles/using-pull-requests/)
+
+= Test Matrix =
+
+For operation compatibility between PHP version and WordPress version, see below [GitHub Actions](https://github.com/thingsym/editor-bridge/actions).
 
 == Installation ==
 

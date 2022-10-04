@@ -124,6 +124,7 @@
   },
   "scripts": {
     "makepot:wpcli": "wp i18n make-pot ./ ./languages/${npm_package_name}.pot --exclude=dist,bin,tests,node_modules,vendor",
+    "msgmerge:ja": "msgmerge --update --backup off ./languages/${npm_package_name}-ja.po ./languages/${npm_package_name}.pot",
     "msgfmt:ja": "msgfmt languages/${npm_package_name}-ja.po -o languages/${npm_package_name}-ja.mo",
     "msgfmt": "run-p msgfmt:*",
     "po2json:ja": "po2json languages/${npm_package_name}-ja.po languages/${npm_package_name}-ja-${npm_package_name}-editor-script.json -f jed",

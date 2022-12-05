@@ -4,13 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Editor Bridge 1.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/editor-bridge\n"
+"POT-Creation-Date: 2022-12-05T08:55:43+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2022-08-15T09:02:05+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.6.0\n"
 "X-Domain: editor-bridge\n"
 
@@ -23,7 +24,9 @@ msgid "https://github.com/thingsym/editor-bridge"
 msgstr "https://github.com/thingsym/editor-bridge"
 
 #. Description of the plugin
-msgid "This WordPress plugin expands the functionality of blocks and adds styles and formats."
+msgid ""
+"This WordPress plugin expands the functionality of blocks and adds styles "
+"and formats."
 msgstr "標準ブロックの機能を拡張します。スタイルやフォーマットを追加します。"
 
 #. Author of the plugin
@@ -34,7 +37,7 @@ msgstr "thingsym"
 msgid "https://www.thingslabo.com/"
 msgstr "https://www.thingslabo.com/"
 
-#: inc/class-editor-bridge.php:199
+#: inc/class-editor-bridge.php:201
 msgid "Become a sponsor"
 msgstr "スポンサーになる"
 
@@ -91,8 +94,8 @@ msgid "Border settings"
 msgstr "枠線の設定"
 
 #: src/blocks/expansion/border/index.js:145
-#: src/blocks/format/badge/badge-popover.js:385
-#: src/blocks/format/highlight/highlight-popover.js:284
+#: src/blocks/format/badge/badge-popover.js:372
+#: src/blocks/format/highlight/highlight-popover.js:288
 msgid "Style"
 msgstr "スタイル"
 
@@ -105,13 +108,12 @@ msgstr "なし"
 msgid "Solid"
 msgstr "実線"
 
-#: src/blocks/expansion/border/index.js:150
-#: src/blocks/style/table.js:25
+#: src/blocks/expansion/border/index.js:150 src/blocks/style/table/index.js:25
 msgid "Dashed"
 msgstr "破線"
 
 #: src/blocks/expansion/border/index.js:151
-#: src/blocks/style/separator.js:15
+#: src/blocks/style/separator/index.js:15
 msgid "Dotted"
 msgstr "点線"
 
@@ -124,7 +126,7 @@ msgid "Border width"
 msgstr "線の太さ"
 
 #: src/blocks/expansion/border/index.js:169
-#: src/blocks/format/highlight/highlight-popover.js:280
+#: src/blocks/format/highlight/highlight-popover.js:284
 msgid "Color"
 msgstr "色"
 
@@ -191,13 +193,18 @@ msgstr "コンテナの設定"
 msgid "Fix layout width"
 msgstr "レイアウト幅を固定する"
 
-#: src/blocks/expansion/icon/index.js:116
+#: src/blocks/expansion/icon/index.js:134
 msgid "Icon Settings"
 msgstr "アイコン設定"
 
-#: src/blocks/expansion/icon/index.js:120
+#: src/blocks/expansion/icon/index.js:138
 msgid "Icons"
 msgstr "アイコン一覧"
+
+#: src/blocks/expansion/icon/index.js:149
+#, fuzzy
+msgid "Icon Color"
+msgstr "色"
 
 #: src/blocks/expansion/space/index.js:55
 msgid "Medium"
@@ -241,14 +248,13 @@ msgid "Default"
 msgstr "デフォルト"
 
 #: src/blocks/format/badge/badge-popover.js:246
-#: src/blocks/style/image.js:10
-#: src/blocks/style/media-text.js:15
-#: src/blocks/style/table.js:30
+#: src/blocks/style/image/index.js:10 src/blocks/style/media-text/index.js:15
+#: src/blocks/style/table/index.js:30
 msgid "Round Corner"
 msgstr "角丸"
 
 #: src/blocks/format/badge/badge-popover.js:247
-#: src/blocks/style/media-text.js:10
+#: src/blocks/style/media-text/index.js:10
 msgid "Round"
 msgstr "円形"
 
@@ -269,11 +275,11 @@ msgstr "正円"
 msgid "Reset"
 msgstr "リセット"
 
-#: src/blocks/format/badge/badge-popover.js:377
+#: src/blocks/format/badge/badge-popover.js:364
 msgid "Background"
 msgstr "背景"
 
-#: src/blocks/format/badge/badge-popover.js:381
+#: src/blocks/format/badge/badge-popover.js:368
 msgid "Text"
 msgstr "テキスト"
 
@@ -354,152 +360,152 @@ msgstr "Unset"
 msgid "Font Weight"
 msgstr "フォントの太さ"
 
-#: src/blocks/format/highlight/highlight-popover.js:212
+#: src/blocks/format/highlight/highlight-popover.js:216
 #: src/blocks/format/highlight/index.js:35
 msgid "Highlight"
 msgstr "強調"
 
-#: src/blocks/format/highlight/highlight-popover.js:213
+#: src/blocks/format/highlight/highlight-popover.js:217
 msgid "Marker"
 msgstr "マーカー"
 
-#: src/blocks/format/highlight/highlight-popover.js:214
-#: src/blocks/style/heading.js:10
-#: src/blocks/style/table.js:20
+#: src/blocks/format/highlight/highlight-popover.js:218
+#: src/blocks/style/heading/index.js:10 src/blocks/style/table/index.js:20
 msgid "Underline"
 msgstr "アンダーライン"
 
-#: src/blocks/format/highlight/highlight-popover.js:215
+#: src/blocks/format/highlight/highlight-popover.js:219
 msgid "Dot"
 msgstr "ドット"
 
-#: src/blocks/style/button.js:10
+#: src/blocks/style/button/index.js:10
 msgid "Triangle Icon"
 msgstr "三角アイコン"
 
-#: src/blocks/style/button.js:15
+#: src/blocks/style/button/index.js:15
 msgid "Blur"
 msgstr "ぼかし"
 
-#: src/blocks/style/button.js:20
-#: src/blocks/style/image.js:20
+#: src/blocks/style/button/index.js:20 src/blocks/style/image/index.js:20
 msgid "Shadow"
 msgstr "シャドウ"
 
-#: src/blocks/style/button.js:25
+#: src/blocks/style/button/index.js:25
 msgid "Expansion"
 msgstr "膨張"
 
-#: src/blocks/style/button.js:30
+#: src/blocks/style/button/index.js:30
 msgid "Emboss"
 msgstr "エンボス"
 
-#: src/blocks/style/heading.js:15
+#: src/blocks/style/heading/index.js:15
 msgid "Thin Underline"
 msgstr "細めのアンダーライン"
 
-#: src/blocks/style/heading.js:20
+#: src/blocks/style/heading/index.js:20
 msgid "Thick Underline"
 msgstr "太めのアンダーライン"
 
-#: src/blocks/style/heading.js:25
+#: src/blocks/style/heading/index.js:25
 msgid "Two Color Underline"
 msgstr "2色アンダーライン"
 
-#: src/blocks/style/heading.js:30
+#: src/blocks/style/heading/index.js:30
 msgid "Up Down Line"
 msgstr "上下線"
 
-#: src/blocks/style/heading.js:35
+#: src/blocks/style/heading/index.js:35
 msgid "Accent Line"
 msgstr "強調線"
 
-#: src/blocks/style/heading.js:40
+#: src/blocks/style/heading/index.js:40
 msgid "Kebab Line"
 msgstr "横串線"
 
-#: src/blocks/style/heading.js:45
+#: src/blocks/style/heading/index.js:45
 msgid "Single Box"
 msgstr "囲み線"
 
-#: src/blocks/style/heading.js:50
+#: src/blocks/style/heading/index.js:50
 msgid "Double Box"
 msgstr "2重囲み線"
 
-#: src/blocks/style/heading.js:55
+#: src/blocks/style/heading/index.js:55
 msgid "Left Accent Line"
 msgstr "左アクセントライン"
 
-#: src/blocks/style/heading.js:60
+#: src/blocks/style/heading/index.js:60
 msgid "Gradation Line"
 msgstr "グラデーション"
 
-#: src/blocks/style/heading.js:65
+#: src/blocks/style/heading/index.js:65
 msgid "Stripe Line"
 msgstr "ストライプ"
 
-#: src/blocks/style/heading.js:70
+#: src/blocks/style/heading/index.js:70
 msgid "Cross Box"
 msgstr "交わり囲み線"
 
-#: src/blocks/style/heading.js:75
+#: src/blocks/style/heading/index.js:75
 msgid "Brackets"
 msgstr "括弧"
 
-#: src/blocks/style/heading.js:80
+#: src/blocks/style/heading/index.js:80
 msgid "Japanese quotation marks"
 msgstr "日本語の引用符"
 
-#: src/blocks/style/image.js:15
-#: src/blocks/style/table.js:10
+#: src/blocks/style/image/index.js:15 src/blocks/style/table/index.js:10
 msgid "Frame"
 msgstr "フレーム"
 
-#: src/blocks/style/list.js:10
-#: src/blocks/style/table.js:15
+#: src/blocks/style/list/index.js:10 src/blocks/style/table/index.js:15
 msgid "No Style"
 msgstr "スタイルなし"
 
-#: src/blocks/style/list.js:15
+#: src/blocks/style/list/index.js:15
 msgid "Inline"
 msgstr "インライン"
 
-#: src/blocks/style/list.js:20
+#: src/blocks/style/list/index.js:20
 msgid "Columns"
 msgstr "カラム"
 
-#: src/blocks/style/list.js:25
+#: src/blocks/style/list/index.js:25
 msgid "Square"
 msgstr "四角"
 
-#: src/blocks/style/list.js:30
+#: src/blocks/style/list/index.js:30
 msgid "Circle"
 msgstr "丸印"
 
-#: src/blocks/style/list.js:35
+#: src/blocks/style/list/index.js:35
 msgid "Reference Mark"
 msgstr "米印"
 
-#: src/blocks/style/list.js:40
+#: src/blocks/style/list/index.js:40
 msgid "Reference Mark (Inline)"
 msgstr "米印 (インライン)"
 
-#: src/blocks/style/list.js:45
+#: src/blocks/style/list/index.js:45
 msgid "Centered"
 msgstr "中央揃え"
 
-#: src/blocks/style/list.js:50
+#: src/blocks/style/list/index.js:50
 msgid "Icon"
 msgstr "アイコン"
 
-#: src/blocks/style/media-text.js:20
+#: src/blocks/style/media-text/index.js:20
 msgid "Voice"
 msgstr "吹き出し"
 
-#: src/blocks/style/separator.js:10
+#: src/blocks/style/media-text/index.js:25
+msgid "Thinking"
+msgstr "心の声"
+
+#: src/blocks/style/separator/index.js:10
 msgid "Thick line"
 msgstr "太線"
 
-#: src/blocks/style/separator.js:20
+#: src/blocks/style/separator/index.js:20
 msgid "Asterisk"
 msgstr "アスタリスク"

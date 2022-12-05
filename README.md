@@ -130,6 +130,7 @@ npm intall
 # Run test
 npm run test:jest
 ```
+
 ## Support
 
 If you have any trouble, you can use the forums or report bugs.

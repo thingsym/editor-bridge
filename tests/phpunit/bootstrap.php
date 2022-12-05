@@ -2,7 +2,7 @@
 /**
  * PHPUnit bootstrap file
  *
- * @package Custom_Post_Type_Widget_Blocks
+ * @package Editor_Bridge
  */
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );

@@ -179,6 +179,32 @@ For operation compatibility between PHP version and WordPress version, see below
 
 ## Changelog
 
+### [1.8.0] - 2022.12.05
+
+* tested up to 6.1.0
+* update japanese translation
+* update pot
+* add jest test case
+* remove anchorRef
+* fix jest config
+* fix scss
+* fix list style
+* fix return value for testability
+* add msgmerge to npm scripts
+* add support section and enhance contribution section
+* fix license
+* fix rgba error
+* add icon color to control
+* add valueType to icon-select-control
+* fix npm scripts
+* fix scss included modules path
+* change handle name and method name
+* fix .gitignore
+* separate scss files by block style
+* move scss files to each block folder
+* change blocks style path
+* add thinking style to core/media-text
+
 ### [1.7.0] - 2022.08.16
 
 * update japanese translation

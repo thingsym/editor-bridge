@@ -15,11 +15,10 @@ import {
 } from '../../badge-popover.js';
 
 describe( 'InlineBadgeUI', () => {
-	// TODO: useAnchorRef: TypeError: Cannot read property 'start' of undefined
-	// it( 'InlineBadgeUI renders', () => {
-	// 	const wrapper = shallow( <InlineBadgeUI /> );
-	// 	expect( wrapper ).toBeTruthy();
-	// } );
+	it( 'InlineBadgeUI renders', () => {
+		const wrapper = shallow( <InlineBadgeUI /> );
+		expect( wrapper ).toBeTruthy();
+	} );
 } );
 
 describe( 'getActiveColorHex', () => {

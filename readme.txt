@@ -3,7 +3,7 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
-Stable tag: 1.7.0
+Stable tag: 1.8.0
 Tested up to: 6.1.0
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -138,6 +138,31 @@ For operation compatibility between PHP version and WordPress version, see below
 4. Have fun!
 
 == Changelog ==
+
+= 1.8.0 - 2022.12.05 =
+* tested up to 6.1.0
+* update japanese translation
+* update pot
+* add jest test case
+* remove anchorRef
+* fix jest config
+* fix scss
+* fix list style
+* fix return value for testability
+* add msgmerge to npm scripts
+* add support section and enhance contribution section
+* fix license
+* fix rgba error
+* add icon color to control
+* add valueType to icon-select-control
+* fix npm scripts
+* fix scss included modules path
+* change handle name and method name
+* fix .gitignore
+* separate scss files by block style
+* move scss files to each block folder
+* change blocks style path
+* add thinking style to core/media-text
 
 = 1.7.0 - 2022.08.16 =
 * update japanese translation

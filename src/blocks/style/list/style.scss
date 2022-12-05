@@ -1,4 +1,12 @@
-.is-style-list-no-style,
+.is-style-list-no-style {
+	list-style: none;
+	padding-left: 20px;
+	ul,
+	ol {
+		list-style: none;
+	}
+}
+
 .is-style-list-centered {
 	list-style: none;
 	padding-left: 0;
@@ -15,11 +23,11 @@
 	ul,
 	ol {
 		display: inline;
-		padding-left: 2rem;
+		padding-left: 2.4rem;
 	}
 	li {
 		display: inline;
-		padding-right: 2rem;
+		padding-right: 2.4rem;
 		&:last-child {
 			padding-right: 0;
 		}
@@ -39,7 +47,7 @@ ol.is-style-list-inline {
 		&:before {
 			counter-increment: number;
 			content: counter(number) ".";
-			padding-right: .3em;
+			padding-right: .3rem;
 		}
 	}
 }
@@ -64,7 +72,7 @@ ol.is-style-list-inline {
 }
 ul.is-style-list-reference {
 	li {
-		padding-left: 1.1em;
+		padding-left: 1rem;
 
 		&:before {
 			content: "※";
@@ -73,7 +81,7 @@ ul.is-style-list-reference {
 	ol {
 		counter-reset: number;
 		> li {
-			padding-left: 2.2em;
+			padding-left: 1.6rem;
 
 			&:before {
 				counter-increment: number;
@@ -88,7 +96,7 @@ ol.is-style-list-reference {
 		counter-reset: number;
 	}
 	li {
-		padding-left: 2.2em;
+		padding-left: 1.6rem;
 
 		&:before {
 			counter-increment: number;
@@ -96,7 +104,7 @@ ol.is-style-list-reference {
 		}
 	}
 	ul > li {
-		padding-left: 1.1em;
+		padding-left: 1rem;
 
 		&:before {
 			content: "※";
@@ -116,7 +124,7 @@ ol.is-style-list-reference {
 	}
 	li {
 		display: inline;
-		padding-right: 1.2em;
+		padding-right: 2.4rem;
 		&:last-child {
 			padding-right: 0;
 		}
@@ -126,7 +134,7 @@ ul.is-style-list-inline-reference {
 	li {
 		&:before {
 			content: "※";
-			padding-right: .1em;
+			padding-right: .3rem;
 		}
 	}
 }
@@ -139,7 +147,7 @@ ol.is-style-list-inline-reference {
 		&:before {
 			counter-increment: number;
 			content: "※" counter(number);
-			padding-right: .2em;
+			padding-right: .3rem;
 		}
 	}
 }
@@ -161,6 +169,7 @@ ol.is-style-list-centered {
 .is-style-list-columns {
 	display: flex;
 	flex-wrap: wrap;
+	padding-left: 1.2rem;
 	li {
 		width: 40%;
 	}
@@ -349,6 +358,23 @@ ol.is-style-list-circle {
 	}
 }
 
+ul.is-style-icon {
+	list-style: none;
+	padding-left: 20px;
+
+	ul {
+		list-style: none;
+	}
+
+	li::before{
+		content: var(--editor-bridge-icon-unicode);
+		font-family: "Font Awesome 6 Free";
+		font-weight: 900;
+		color: var(--editor-bridge-icon-color);
+		margin-right: .4rem;
+	}
+}
+
 .editor-styles-wrapper {
 	.is-style-list-no-style,
 	.is-style-list-centered,
@@ -363,12 +389,21 @@ ol.is-style-list-circle {
 		}
 	}
 
-	.is-style-list-no-style,
 	.is-style-list-centered,
 	.is-style-list-reference {
 		list-style: none;
 		&:not(.has-background) {
 			padding-left: 0;
+		}
+	}
+
+	.is-style-list-columns {
+		.wp-block {
+			margin-left: 0;
+			margin-right: 0;
+		}
+		li:nth-child(even) {
+			margin-left: 3rem;
 		}
 	}
 
@@ -387,28 +422,27 @@ ol.is-style-list-circle {
 			}
 		}
 	}
-}
 
-ul.is-style-icon {
-	list-style: none;
-	padding-left: 20px;
-
-	ul {
-		list-style: none;
+	.is-style-list-inline,
+	.is-style-list-inline-reference {
+		.block-editor-rich-text__editable {
+			display: inline;
+		}
+		.block-list-appender {
+			margin-right: -1.8rem;
+		}
 	}
 
-	li::before{
-		content: var(--editor-bridge-icon-unicode);
-		font-family: "Font Awesome 6 Free";
-		font-weight: 900;
-		color: var(--editor-bridge-icon-color);
-		margin-right: .4rem;
-	}
-}
-
-.editor-styles-wrapper ul.is-style-icon {
-	list-style: none;
-	ul {
+	ul.is-style-icon {
 		list-style: none;
+		ul {
+			list-style: none;
+		}
+		.block-editor-rich-text__editable {
+			display: inline-block;
+		}
+		.block-list-appender {
+			margin-right: -1.8rem;
+		}
 	}
 }

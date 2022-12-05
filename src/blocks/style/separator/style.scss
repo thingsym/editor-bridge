@@ -1,0 +1,64 @@
+hr.wp-block-separator {
+	box-shadow: unset;
+
+	&.is-style-hr-dotted,
+	&.is-style-hr-thick-line,
+	&.is-style-hr-asterisk {
+		&:not(.is-style-wide):not(.is-style-dots) {
+			height: 0;
+			padding: .5rem;
+			background-color: unset !important;
+			opacity: unset;
+
+			.editor-styles-wrapper &,
+			.edit-widgets-block-editor & {
+				background-color: unset !important;
+			}
+		}
+	}
+
+	&.is-style-hr-dotted {
+		&:not(.is-style-wide):not(.is-style-dots) {
+			width: unset;
+			border-top: 4px dotted;
+			border-bottom: unset;
+		}
+
+		.editor-styles-wrapper &,
+		.edit-widgets-block-editor & {
+			width: 100%;
+		}
+	}
+
+	&.is-style-hr-thick-line {
+		&:not(.is-style-wide):not(.is-style-dots) {
+			max-width: unset;
+			border-top: 4px solid;
+			border-bottom: unset;
+		}
+	}
+
+	&.is-style-hr-asterisk {
+		position: relative;
+
+		.editor-styles-wrapper &,
+		.edit-widgets-block-editor & {
+			overflow: unset;
+		}
+
+		&:not(.is-style-wide):not(.is-style-dots) {
+			max-width: unset;
+			border-bottom: unset;
+		}
+		&:before {
+			display: block;
+			position: absolute;
+			top: -12px;
+			left: 50%;
+			transform: translate(-50%, -20%);
+			content: '* * *';
+			color: currentColor;
+			font-size: 150%;
+		}
+	}
+}

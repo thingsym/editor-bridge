@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InlineBadgeUI snapshot InlineBadgeUI snapshot 1`] = `
+<BadgePopoverAtLink
+  className="components-inline-badge-popover"
+>
+  <TabPanel
+    tabs={
+      Array [
+        Object {
+          "name": "backgroundColor",
+          "title": "Background",
+        },
+        Object {
+          "name": "color",
+          "title": "Text",
+        },
+        Object {
+          "name": "style",
+          "title": "Style",
+        },
+      ]
+    }
+  >
+    <Component />
+  </TabPanel>
+</BadgePopoverAtLink>
+`;

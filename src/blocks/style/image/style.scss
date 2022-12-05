@@ -1,0 +1,23 @@
+.wp-block-image {
+	&.is-style-img-round-corner {
+		img {
+			border-radius: 12px;
+		}
+	}
+
+	&.is-style-img-frame {
+		img {
+			border: 1px solid #e1e1e1;
+			background: #fff;
+			padding: .4rem;
+		}
+	}
+
+	&.is-style-img-shadow {
+		img {
+			box-shadow: 0 3px 8px rgba(0, 0, 0, .07);
+			border: 1px solid #e0e0e0;
+			border-radius: 4px;
+		}
+	}
+}

@@ -11,13 +11,13 @@ import '../blocks/expansion/block-centered-alignment/index.js';
 import '../blocks/expansion/icon/index.js';
 
 // style
-import '../blocks/style/heading.js';
-import '../blocks/style/button.js';
-import '../blocks/style/table.js';
-import '../blocks/style/image.js';
-import '../blocks/style/separator.js';
-import '../blocks/style/list.js';
-import '../blocks/style/media-text.js';
+import '../blocks/style/heading/index.js';
+import '../blocks/style/button/index.js';
+import '../blocks/style/table/index.js';
+import '../blocks/style/image/index.js';
+import '../blocks/style/separator/index.js';
+import '../blocks/style/list/index.js';
+import '../blocks/style/media-text/index.js';
 
 // format
 import '../blocks/format/index.js';

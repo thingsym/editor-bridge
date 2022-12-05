@@ -19,3 +19,8 @@ wp.blocks.registerBlockStyle( 'core/media-text', {
 	name: 'media-voice',
 	label: __( 'Voice', 'editor-bridge' ),
 } );
+
+wp.blocks.registerBlockStyle( 'core/media-text', {
+	name: 'media-thinking',
+	label: __( 'Thinking', 'editor-bridge' ),
+} );

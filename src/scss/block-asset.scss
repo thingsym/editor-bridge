@@ -1,3 +1,9 @@
-@use 'variable';
-@use 'root';
-@use 'asset';
+@use 'style/root';
+
+@use "../blocks/style/button/style" as button;
+@use "../blocks/style/heading/style" as heading;
+@use "../blocks/style/image/style" as image;
+@use "../blocks/style/list/style" as list;
+@use "../blocks/style/media-text/style" as media-text;
+@use "../blocks/style/separator/style" as separator;
+@use "../blocks/style/table/style" as table;

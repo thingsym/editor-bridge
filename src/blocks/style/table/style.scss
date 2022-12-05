@@ -1,0 +1,141 @@
+.wp-block-table {
+	&.is-style-tb-underline {
+		table {
+			border: none;
+			border-collapse: collapse;
+		}
+		tr:first-child {
+			td {
+				border-top: 1px solid var(--editor-bridge-border-color, unset);
+			}
+		}
+		th,
+		td {
+			border: none;
+			border-bottom: 1px solid var(--editor-bridge-border-color, unset);
+		}
+		th {
+			background: unset;
+		}
+		thead,
+		tfoot {
+			border-color: var(--editor-bridge-border-color, unset);
+		}
+	}
+
+	&.is-style-tb-dashed {
+		table {
+			border: none;
+			border-collapse: collapse;
+		}
+		tr:first-child {
+			th,
+			td {
+				border-top: 1px dashed var(--editor-bridge-border-color, unset);
+			}
+		}
+		th,
+		td {
+			border: none;
+			border-bottom: 1px dashed var(--editor-bridge-border-color, unset);
+		}
+		th {
+			background: unset;
+		}
+		thead {
+			border-bottom: unset;
+		}
+		tfoot {
+			border-top: unset;
+		}
+	}
+
+	&.is-style-tb-round-corner {
+		table {
+			border: 1px solid var(--editor-bridge-border-color, unset);
+			border-collapse: separate;
+			border-spacing: 0;
+			border-radius: 10px;
+		}
+
+		th,
+		td {
+			background: unset;
+			border-top: unset;
+			border-bottom: 1px solid var(--editor-bridge-border-color, unset);
+			border-right: 1px solid var(--editor-bridge-border-color, unset);
+		}
+		tr:last-child {
+			th,
+			td {
+				border-bottom: unset;
+			}
+		}
+		th:last-child,
+		td:last-child {
+			border-right: unset;
+		}
+		thead tr:last-child {
+			th,
+			td {
+				border-bottom: 1px solid var(--editor-bridge-border-color, unset);
+			}
+		}
+		tfoot tr:first-child {
+			th,
+			td {
+				border-top: 1px solid var(--editor-bridge-border-color, unset);
+			}
+		}
+	}
+
+	&.is-style-tb-no-style {
+		table {
+			border: none;
+		}
+		th {
+			background: unset;
+			border: none;
+		}
+		tr:first-child {
+			th {
+				border-bottom: 2px solid var(--editor-bridge-border-color, unset);
+			}
+		}
+		td {
+			background: unset;
+			border: none;
+		}
+		thead {
+			border-bottom: unset;
+		}
+		tfoot {
+			border-top: unset;
+		}
+	}
+
+	&.is-style-tb-frame {
+		table {
+			border: 2px solid var(--editor-bridge-border-color, unset);
+		}
+		th {
+			background: unset;
+			border: none;
+		}
+		tr:first-child {
+			th {
+				border-bottom: 2px solid var(--editor-bridge-border-color, unset);
+			}
+		}
+		td {
+			background: unset;
+			border: none;
+		}
+		thead {
+			border-bottom: unset;
+		}
+		tfoot {
+			border-top: unset;
+		}
+	}
+}

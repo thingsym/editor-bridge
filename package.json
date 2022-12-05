@@ -1,6 +1,6 @@
 {
   "name": "editor-bridge",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "A template for WordPress plugin that extends Gutenberg.",
   "author": "Thingsym",
   "license": "GPL-2.0-or-later",
@@ -124,9 +124,10 @@
   },
   "scripts": {
     "makepot:wpcli": "wp i18n make-pot ./ ./languages/${npm_package_name}.pot --exclude=dist,bin,tests,node_modules,vendor",
+    "msgmerge:ja": "msgmerge --update --backup off ./languages/${npm_package_name}-ja.po ./languages/${npm_package_name}.pot",
     "msgfmt:ja": "msgfmt languages/${npm_package_name}-ja.po -o languages/${npm_package_name}-ja.mo",
     "msgfmt": "run-p msgfmt:*",
-    "po2json:ja": "po2json languages/${npm_package_name}-ja.po languages/${npm_package_name}-ja-${npm_package_name}-script.json -f jed",
+    "po2json:ja": "po2json languages/${npm_package_name}-ja.po languages/${npm_package_name}-ja-${npm_package_name}-editor-script.json -f jed",
     "po2json:wpcli:ja": "wp i18n make-json languages/${npm_package_name}-ja.po --no-purge",
     "po2json": "run-p po2json:*",
     "sass:blocks:style": "sass src/scss/blocks.scss dist/css/blocks.css --style expanded --no-source-map && postcss --use autoprefixer --no-map -r dist/css/blocks.css",
@@ -135,8 +136,6 @@
     "sass:block-asset:style:minify": "sass src/scss/block-asset.scss dist/css/block-asset.min.css --style expanded --no-source-map && postcss --use autoprefixer --use cssnano --no-map -r dist/css/block-asset.min.css",
     "sass:block-editor:style": "sass src/scss/block-editor-style.scss dist/css/block-editor-style.css --style expanded --no-source-map && postcss --use autoprefixer --no-map -r dist/css/block-editor-style.css",
     "sass:block-editor:style:minify": "sass src/scss/block-editor-style.scss dist/css/block-editor-style.min.css --style expanded --no-source-map && postcss --use autoprefixer --use cssnano --no-map -r dist/css/block-editor-style.min.css",
-    "webpack": "cross-env BABEL_ENV=default NODE_ENV=production webpack",
-    "deprecated:build:js": "npm-run-all -p webpack",
     "build:js": "wp-scripts build src/js/blocks --output-path=dist/js",
     "build:css": "run-s sass:**",
     "build:i18n": "run-s msgfmt:* po2json:*",
@@ -153,7 +152,6 @@
     "test:e2e:help": "wp-scripts test-e2e --help",
     "test": "run-p lint test:jest",
     "format:js": "wp-scripts format-js ./src/blocks",
-    "watch": "wp-scripts start src/js/blocks --output-path=dist/js",
     "archive:package": "mkdir -p ./editor-bridge && cpy '**/*' '!./.DS_Store' '!./bin' '!./vendor' '!./composer.json' '!./composer.lock' '!./node_modules' '!./README.md' '!./package.json' '!./package-lock.json' '!./phpcs.ruleset.xml' '!./phpmd.ruleset.xml' '!./phpstan.neon' '!./phpunit.xml' '!./webpack.config.js' '!./jest.config.js' '!./jest-puppeteer.config.js' '!./src' '!./tests' '!./editor-bridge' '!./editor-bridge-v*.zip' './editor-bridge' --parents",
     "archive:zip": "zip -9 -qmr editor-bridge-v${npm_package_version}.zip ./editor-bridge",
     "archive": "run-s build archive:package archive:zip"

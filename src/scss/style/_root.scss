@@ -1,5 +1,5 @@
 // Included Modules
-@use 'variable';
+@use '../variable';
 
 :root {
 	--editor-bridge-default-layout-width: #{variable.$default-layout-width};

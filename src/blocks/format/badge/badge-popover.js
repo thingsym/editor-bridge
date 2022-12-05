@@ -349,18 +349,6 @@ export default function InlineBadgeUI( {
 	isActive,
 	addingColor,
 } ) {
-	/*
-	As you change the text color by typing a HEX value into a field,
-	the return value of document.getSelection jumps to the field you're editing,
-	not the highlighted text. Given that useAnchorRef uses document.getSelection,
-	it will return null, since it can't find the <mark> element within the HEX input.
-	This caches the last truthy value of the selection anchor reference.
-	*/
-
-	const anchorRef = useCachedTruthy(
-		useAnchorRef( { ref: contentRef, value, settings } )
-	);
-
 	return (
 		<BadgePopoverAtLink
 			value={ value }
@@ -368,7 +356,6 @@ export default function InlineBadgeUI( {
 			addingColor={ addingColor }
 			onClose={ onClose }
 			className="components-inline-badge-popover"
-			anchorRef={ anchorRef }
 		>
 			<TabPanel
 				tabs={ [

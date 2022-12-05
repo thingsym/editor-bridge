@@ -95,6 +95,10 @@ export function getActiveColorHex( name = '', value = {}, colorSettings = [] ) {
 			return undefined;
 		}
 
+		if ( colorRbg[1] === 'rgba(NaN, NaN, NaN, 0.6)' ) {
+			return undefined;
+		}
+
 		const colorHex = rgb2hex( colorRbg[1] ).hex;
 		return colorHex;
 	}

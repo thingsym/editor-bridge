@@ -10,10 +10,13 @@ import { isEmpty } from 'lodash';
  */
 import { useInstanceId } from '@wordpress/compose';
 import { BaseControl } from '@wordpress/components';
+import { Notice } from '@wordpress/components';
+import { __ } from '@wordpress/i18n';
 
 export default function IconSelectControl( {
 	help,
 	label,
+	valueType,
 	value,
 	multiple = false,
 	onChange,
@@ -38,6 +41,14 @@ export default function IconSelectControl( {
 		onChange( event.currentTarget.value );
 	};
 
+	if ( ! valueType ) {
+		return (
+			<Notice status="warning" isDismissible={ false }>
+				{ __( 'Not found valueType.' ) }
+			</Notice>
+		);
+	}
+
 	return (
 		! isEmpty( options ) && (
 			<BaseControl
@@ -52,11 +63,17 @@ export default function IconSelectControl( {
 					{ options.map( ( option, index ) => (
 						<button
 							key={ `${ option.label }-${ index }` }
-							value={ option.unicode }
+							value={
+								valueType === 'class' ? option.class
+								: valueType === 'unicode' ? option.unicode
+								: option.class
+							}
 							disabled={ option.disabled }
 							onClick={ handleChange }
 							className={
-								option.unicode === value ? 'actived' : undefined
+								valueType === 'class' && option.class === value ? 'actived'
+								: valueType === 'unicode' && option.unicode === value ? 'actived'
+								: undefined
 							}
 						>
 							<i

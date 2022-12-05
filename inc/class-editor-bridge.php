@@ -101,15 +101,15 @@ class Editor_Bridge {
 	 *
 	 * @access public
 	 *
-	 * @return void
+	 * @return boolean
 	 *
 	 * @since 1.0.0
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain(
+		return load_plugin_textdomain(
 			'editor-bridge',
 			false,
-			dirname( plugin_basename( EDITOR_BRIDGE ) ) . '/languages'
+			plugin_dir_path( EDITOR_BRIDGE ) . '/languages'
 		);
 	}
 
@@ -118,18 +118,20 @@ class Editor_Bridge {
 	 *
 	 * @access public
 	 *
-	 * @return void
+	 * @return boolean
 	 *
 	 * @since 1.0.0
 	 */
 	public function set_block_editor_translations() {
 		if ( function_exists( 'wp_set_script_translations' ) ) {
-			wp_set_script_translations(
+			return wp_set_script_translations(
 				'editor-bridge-editor-script',
 				'editor-bridge',
 				plugin_dir_path( EDITOR_BRIDGE ) . 'languages'
 			);
 		}
+
+		return false;
 	}
 
 	public function enqueue_blocks_editor_scripts() {

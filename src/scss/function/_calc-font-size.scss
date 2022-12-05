@@ -11,11 +11,11 @@
 // ===================================================================
 
 @function px2em($px, $base: 16) {
-	@return strip-unit.strip-unit($px) / strip-unit.strip-unit($base) * 1em;
+	@return math.div(strip-unit.strip-unit($px), strip-unit.strip-unit($base)) * 1em;
 }
 
 @function px2rem($px, $base: 16) {
-	@return strip-unit.strip-unit($px) / strip-unit.strip-unit($base) * 1rem;
+	@return math.div(strip-unit.strip-unit($px), strip-unit.strip-unit($base)) * 1rem;
 }
 // ===================================================================
 // percent to px
@@ -30,11 +30,13 @@
 // ===================================================================
 
 @function percent2em($percent, $base: 16) {
-	@return (strip-unit.strip-unit($base) * (strip-unit.strip-unit($percent) / 100)) / strip-unit.strip-unit($base) * 1em;
+	$ratio: math.div((strip-unit.strip-unit($percent), 100));
+	@return math.div(strip-unit.strip-unit($base) * $ratio, strip-unit.strip-unit($base)) * 1em;
 }
 
 @function percent2rem($percent, $base: 16) {
-	@return (strip-unit.strip-unit($base) * (strip-unit.strip-unit($percent) / 100)) / strip-unit.strip-unit($base) * 1rem;
+	$ratio: math.div((strip-unit.strip-unit($percent), 100));
+	@return math.div((strip-unit.strip-unit($base) * $ratio), strip-unit.strip-unit($base)) * 1rem;
 }
 
 // ===================================================================

@@ -1,6 +1,7 @@
 /** ui/ux experience **/
 .wp-block {
 	max-width: var(--editor-bridge-block-edior-max-width, 580px);
+	box-sizing: border-box;
 }
 
 .wp-block-group {

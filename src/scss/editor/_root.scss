@@ -2,6 +2,6 @@
 @use '../variable';
 
 :root {
-	--editor-bridge-block-edior-max-width: #{variable.$block-edior-max-width};
+	--editor-bridge-block-edior-max-width: #{variable.$default-editor-max-width};
 	--editor-bridge-default-stack: #{variable.$default-stack};
 }

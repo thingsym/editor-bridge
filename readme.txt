@@ -3,7 +3,7 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
-Stable tag: 1.8.0
+Stable tag: 1.8.1
 Tested up to: 6.2.0
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -138,6 +138,15 @@ For operation compatibility between PHP version and WordPress version, see below
 4. Have fun!
 
 == Changelog ==
+
+= 1.8.1 - 2023.04.21 =
+* tested up to 6.2.0
+* fix jest snapshots
+* fix jest config
+* update npm dependencies
+* add npm scripts
+* fix composer scripts
+* update github actions, Node.js 12 actions are deprecated
 
 = 1.8.0 - 2022.12.05 =
 * tested up to 6.1.0

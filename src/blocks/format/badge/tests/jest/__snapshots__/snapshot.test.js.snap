@@ -6,16 +6,16 @@ exports[`InlineBadgeUI snapshot InlineBadgeUI snapshot 1`] = `
 >
   <TabPanel
     tabs={
-      Array [
-        Object {
+      [
+        {
           "name": "backgroundColor",
           "title": "Background",
         },
-        Object {
+        {
           "name": "color",
           "title": "Text",
         },
-        Object {
+        {
           "name": "style",
           "title": "Style",
         },

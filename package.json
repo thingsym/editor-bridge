@@ -152,6 +152,7 @@
     "test:e2e:help": "wp-scripts test-e2e --help",
     "test": "run-p lint test:jest",
     "format:js": "wp-scripts format-js ./src/blocks",
+    "ncu": "ncu",
     "archive:package": "mkdir -p ./editor-bridge && cpy '**/*' '!./.DS_Store' '!./bin' '!./vendor' '!./composer.json' '!./composer.lock' '!./node_modules' '!./README.md' '!./package.json' '!./package-lock.json' '!./phpcs.ruleset.xml' '!./phpmd.ruleset.xml' '!./phpstan.neon' '!./phpunit.xml' '!./webpack.config.js' '!./jest.config.js' '!./jest-puppeteer.config.js' '!./src' '!./tests' '!./editor-bridge' '!./editor-bridge-v*.zip' './editor-bridge' --parents",
     "archive:zip": "zip -9 -qmr editor-bridge-v${npm_package_version}.zip ./editor-bridge",
     "archive": "run-s build archive:package archive:zip"

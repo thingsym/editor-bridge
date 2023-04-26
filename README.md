@@ -1,7 +1,7 @@
 # Editor Bridge
 
 Editor Bridge plugin expand the Block Editor (Gutenberg).
-Editor Bridge expands the functionality of blocks and adds styles and formats.
+Editor Bridge expands the functionality of core blocks and adds styles and formats.
 
 * [Demo sample (English)](https://demo.thingslabo.com/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample)
 * [デモサンプル (日本語)](https://demo.thingslabo.com/foresight/sample-page/wordpress-plugin-editor-bridge-demo-sample-ja)

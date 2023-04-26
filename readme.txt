@@ -11,12 +11,12 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: block, block editor, gutenberg
 
-Editor Bridge plugin expands the functionality of blocks and adds styles and formats.
+Editor Bridge plugin expands the functionality of core blocks and adds styles and formats.
 
 == Description ==
 
 WordPress plugin Editor Bridge expand the Block Editor (Gutenberg).
-This WordPress plugin expands the functionality of blocks and adds styles and formats.
+This WordPress plugin expands the functionality of core blocks and adds styles and formats.
 
 = Compatibility =
 

@@ -167,7 +167,8 @@ export default function InlineFontWeightUI( {
 	addingFontWeight,
 } ) {
 
-	const baseClassName = 'components-fontweight-picker';
+	const popoverClassName = 'components-inline-fontweight-popover';
+	const pickerClassName = 'components-fontweight-picker';
 
 	return (
 		<FontWeightPopoverAtLink
@@ -175,10 +176,10 @@ export default function InlineFontWeightUI( {
 			isActive={ isActive }
 			addingFontWeight={ addingFontWeight }
 			onClose={ onClose }
-			className="components-inline-fontweight-popover"
+			className={ popoverClassName }
 		>
 
-			<fieldset className={ baseClassName }>
+			<fieldset className={ pickerClassName }>
 				<FontWeightPicker
 					label={ __( 'Font Weight', 'editor-bridge' ) }
 					name={ name }

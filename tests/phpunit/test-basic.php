@@ -10,7 +10,7 @@
  */
 class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 
-	public function setUp() {
+	public function setUp(): void {
 		parent::setUp();
 		$this->editor_bridge = new \Editor_Bridge\Editor_Bridge();
 	}

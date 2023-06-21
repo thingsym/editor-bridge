@@ -9,6 +9,7 @@
  * Basic test case.
  */
 class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
+	public $editor_bridge;
 
 	public function setUp(): void {
 		parent::setUp();

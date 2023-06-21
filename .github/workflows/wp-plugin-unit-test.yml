@@ -24,6 +24,15 @@ jobs:
         php: [ '7.1', '7.2', '7.3', '7.4', '8.0', '8.1', '8.2' ]
         wordpress: [ latest, nightly, '5.5' ]
 
+        exclude:
+          # PHP 8.0+ is not compatible with PHPUnit 7.x. on WordPress versions prior to 5.8 and should not be tested.
+          - php: '8.0'
+            wordpress: '5.5'
+          - php: '8.1'
+            wordpress: '5.5'
+          - php: '8.2'
+            wordpress: '5.5'
+
     env:
       PHP_VERSION: ${{ matrix.php }}
       WP_VERSION: ${{ matrix.wordpress }}

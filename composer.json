@@ -22,7 +22,7 @@
     "phpmd": "phpmd ./ text ./phpmd.ruleset.xml --suffixes php --exclude /languages,/tests,/vendor,/node_modules",
     "phpstan": "phpstan analyse",
     "phpunit": "phpunit",
-    "coverage": "phpunit --coverage-html ./tests/report",
+    "coverage": "phpunit --coverage-html ./tests/phpunit-report",
     "ci": [
       "@phpunit",
       "@phpcs",

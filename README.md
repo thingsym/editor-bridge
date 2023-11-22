@@ -179,6 +179,24 @@ For operation compatibility between PHP version and WordPress version, see below
 
 ## Changelog
 
+### [1.8.2] - 2023.11.22
+
+* tested up to 6.4.1
+* fix npm scrips
+* update npm dependencies
+* imporve code with phpcs
+* fix Parameter excludes_analyse has been deprecated for phpstan
+* fix phpunit.xml config
+* phpunit-polyfills bump up
+* remove shallow and snapshot jest test
+* update npm dependencies
+* fix composer script
+* fix .editorconfig
+* fix Deprecated: Creation of dynamic property for ci
+* support php 8.0 or later
+* fix uiux css
+* fix classname
+
 ### [1.8.1] - 2023.04.21
 
 * tested up to 6.2.0

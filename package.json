@@ -39,6 +39,7 @@
     "@wordpress/jest-preset-default": "^11.17.0",
     "@wordpress/scripts": "^26.17.0",
     "autoprefixer": "^10.4.16",
+    "cpy-cli": "^3.1.1",
     "cssnano": "^6.0.1",
     "eslint": "^8.54.0",
     "eslint-plugin-jest": "^27.6.0",

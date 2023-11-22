@@ -77,7 +77,7 @@ class Editor_Bridge {
 	 */
 	public function load_plugin_data() {
 		if ( ! function_exists( 'get_plugin_data' ) ) {
-			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
 
 		$this->plugin_data = get_plugin_data( EDITOR_BRIDGE );
@@ -152,12 +152,6 @@ class Editor_Bridge {
 			$this->plugin_data['Version'],
 			'all'
 		);
-
-		// $styles = wp_get_custom_css();
-		// if ( isset( $styles ) ) {
-		// 	$styles = '/* Insert custom css */' . $styles;
-		// 	wp_add_inline_style( 'editor-bridge-block-asset', $styles );
-		// }
 	}
 
 	public function enqueue_styles() {
@@ -197,7 +191,7 @@ class Editor_Bridge {
 	 * @since 1.1.1
 	 */
 	public function plugin_metadata_links( $links, $file ) {
-		if ( $file == plugin_basename( EDITOR_BRIDGE ) ) {
+		if ( $file === plugin_basename( EDITOR_BRIDGE ) ) {
 			$links[] = '<a href="https://github.com/sponsors/thingsym">' . __( 'Become a sponsor', 'editor-bridge' ) . '</a>';
 		}
 

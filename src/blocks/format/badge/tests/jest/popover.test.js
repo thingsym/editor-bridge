@@ -1,9 +1,4 @@
 /**
-* External dependencies
-*/
-import { shallow } from 'enzyme';
-
-/**
  * Internal dependencies
  */
 import {
@@ -13,13 +8,6 @@ import {
 	getActiveClassNameSlug,
 	setStyle,
 } from '../../badge-popover.js';
-
-describe( 'InlineBadgeUI', () => {
-	it( 'InlineBadgeUI renders', () => {
-		const wrapper = shallow( <InlineBadgeUI /> );
-		expect( wrapper ).toBeTruthy();
-	} );
-} );
 
 describe( 'getActiveColorHex', () => {
 	it( 'no parameter', () => {

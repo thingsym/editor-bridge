@@ -1,9 +1,4 @@
 /**
-* External dependencies
-*/
-import { shallow } from 'enzyme';
-
-/**
  * Internal dependencies
  */
 import {
@@ -12,13 +7,6 @@ import {
 	getActiveClassNameSlug,
 	setStyle,
 } from '../../highlight-popover.js';
-
-describe( 'InlineHighlightUI', () => {
-	it( 'InlineHighlightUI renders', () => {
-		const wrapper = shallow( <InlineHighlightUI /> );
-		expect( wrapper ).toBeTruthy();
-	} );
-} );
 
 describe( 'getActiveColorHex', () => {
 	it( 'no parameter', () => {

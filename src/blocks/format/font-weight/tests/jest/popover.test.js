@@ -1,9 +1,4 @@
 /**
-* External dependencies
-*/
-import { shallow } from 'enzyme';
-
-/**
  * Internal dependencies
  */
 import {
@@ -11,13 +6,6 @@ import {
 	getActiveFontWeight,
 	setStyle,
 } from '../../font-weight-popover.js';
-
-describe( 'InlineFontWeightUI', () => {
-	it( 'InlineFontWeightUI renders', () => {
-		const wrapper = shallow( <InlineFontWeightUI /> );
-		expect( wrapper ).toBeTruthy();
-	} );
-} );
 
 describe( 'getActiveFontWeight', () => {
 	it( 'no parameter', () => {

@@ -18,44 +18,32 @@
 		> div {
 			min-width: 200px;
 		}
-
-		.components-tab-panel__tab-content {
-			padding: 16px;
-		}
+	}
+	.components-tab-panel__tab-content {
+		padding: 16px;
+	}
+	.components-tab-panel__tabs {
+		white-space: nowrap;
 	}
 }
 
-.components-font-size-picker,
+.components-fontsize-picker,
 .components-fontweight-picker {
 	padding: 16px;
+}
 
+.components-fontsize-picker {
 	.components-font-size-picker__controls {
+		width: 200px;
 		margin-bottom: 0;
 	}
 }
 
-// Hack to hide when the media modal is open
-// Otherwise in Firefox the popover remains visible on top of the modal
-// Changing the z-index of Popovers have wider implications.
-.modal-open .block-editor-editor-bridge-backgound-image__options {
-	display: none;
-}
-
-// Forcing some space above the list of options in
-// the dropdown to visually balance them.
-.block-editor-editor-bridge-backgound-image__options .components-popover__content > div {
-	padding-top: 20px;
-}
-
-.editor-bridge-backgound-image {
-	.components-button.has-icon .dashicon {
-		margin-left: auto;
-		margin-right: auto;
+.components-inline-badge-popover,
+.components-inline-highligh-popover {
+	.block-editor-color-gradient-control__color-indicator {
+		display: none;
 	}
-}
-
-.components-font-size-picker__controls {
-	width: 200px;
 }
 
 .components-button-group .components-button[variant=primary] {

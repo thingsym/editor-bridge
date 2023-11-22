@@ -119,6 +119,8 @@ export default function InlineFontSizeUI( {
 		[ value, onChange ]
 	);
 
+	const popoverClassName = 'components-inline-fontsize-popover';
+	const pickerClassName = 'components-fontsize-picker';
 	const fallbackFontSize = 16;
 
 	return (
@@ -127,15 +129,17 @@ export default function InlineFontSizeUI( {
 			isActive={ isActive }
 			addingFontSize={ addingFontSize }
 			onClose={ onClose }
-			className="components-inline-fontsize-popover"
+			className={ popoverClassName }
 		>
 
-			<FontSizePicker
-				fontSizes={ fontSizes }
-				value={ activeFontSize }
-				fallbackFontSize={ fallbackFontSize }
-				onChange={ onFontSizeChange }
-			/>
+			<fieldset className={ pickerClassName }>
+				<FontSizePicker
+					fontSizes={ fontSizes }
+					value={ activeFontSize }
+					fallbackFontSize={ fallbackFontSize }
+					onChange={ onFontSizeChange }
+				/>
+			</fieldset>
 		</FontSizePopoverAtLink>
 	);
 };

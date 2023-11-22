@@ -4,19 +4,19 @@ Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
 Stable tag: 1.8.1
-Tested up to: 6.2.0
+Tested up to: 6.4.1
 Requires at least: 5.5
 Requires PHP: 7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: block, block editor, gutenberg
 
-Editor Bridge plugin expands the functionality of blocks and adds styles and formats.
+Editor Bridge plugin expands the functionality of core blocks and adds styles and formats.
 
 == Description ==
 
 WordPress plugin Editor Bridge expand the Block Editor (Gutenberg).
-This WordPress plugin expands the functionality of blocks and adds styles and formats.
+This WordPress plugin expands the functionality of core blocks and adds styles and formats.
 
 = Compatibility =
 

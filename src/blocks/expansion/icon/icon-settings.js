@@ -542,6 +542,11 @@ export const IconSettings = [
 		"unicode": "f462"
 	},
 	{
+		"label": "bangladeshi-taka-sign",
+		"class": "fas fa-bangladeshi-taka-sign",
+		"unicode": "e2e6"
+	},
+	{
 		"label": "barcode",
 		"class": "fas fa-barcode",
 		"unicode": "f02a"
@@ -760,6 +765,11 @@ export const IconSettings = [
 		"label": "book-skull",
 		"class": "fas fa-book-skull",
 		"unicode": "f6b7"
+	},
+	{
+		"label": "book-tanakh",
+		"class": "fas fa-book-tanakh",
+		"unicode": "f827"
 	},
 	{
 		"label": "bookmark",
@@ -1040,6 +1050,11 @@ export const IconSettings = [
 		"label": "c",
 		"class": "fas fa-c",
 		"unicode": "43"
+	},
+	{
+		"label": "cable-car",
+		"class": "fas fa-cable-car",
+		"unicode": "f7da"
 	},
 	{
 		"label": "cake-candles",
@@ -1387,6 +1402,11 @@ export const IconSettings = [
 		"unicode": "f1ae"
 	},
 	{
+		"label": "child-combatant",
+		"class": "fas fa-child-combatant",
+		"unicode": "e4e0"
+	},
+	{
 		"label": "child-dress",
 		"class": "fas fa-child-dress",
 		"unicode": "e59c"
@@ -1395,11 +1415,6 @@ export const IconSettings = [
 		"label": "child-reaching",
 		"class": "fas fa-child-reaching",
 		"unicode": "e59d"
-	},
-	{
-		"label": "child-rifle",
-		"class": "fas fa-child-rifle",
-		"unicode": "e4e0"
 	},
 	{
 		"label": "children",
@@ -2509,7 +2524,7 @@ export const IconSettings = [
 	{
 		"label": "file-circle-check",
 		"class": "fas fa-file-circle-check",
-		"unicode": "e493"
+		"unicode": "e5a0"
 	},
 	{
 		"label": "file-circle-exclamation",
@@ -2524,7 +2539,7 @@ export const IconSettings = [
 	{
 		"label": "file-circle-plus",
 		"class": "fas fa-file-circle-plus",
-		"unicode": "e4ee"
+		"unicode": "e494"
 	},
 	{
 		"label": "file-circle-question",
@@ -2534,7 +2549,7 @@ export const IconSettings = [
 	{
 		"label": "file-circle-xmark",
 		"class": "fas fa-file-circle-xmark",
-		"unicode": "e494"
+		"unicode": "e5a1"
 	},
 	{
 		"label": "file-code",
@@ -3382,14 +3397,14 @@ export const IconSettings = [
 		"unicode": "f254"
 	},
 	{
-		"label": "hourglass-empty",
-		"class": "fas fa-hourglass-empty",
-		"unicode": "f252"
-	},
-	{
 		"label": "hourglass-end",
 		"class": "fas fa-hourglass-end",
 		"unicode": "f253"
+	},
+	{
+		"label": "hourglass-half",
+		"class": "fas fa-hourglass-half",
+		"unicode": "f252"
 	},
 	{
 		"label": "hourglass-start",
@@ -4312,6 +4327,11 @@ export const IconSettings = [
 		"unicode": "f53e"
 	},
 	{
+		"label": "notdef",
+		"class": "fas fa-notdef",
+		"unicode": "e1fe"
+	},
+	{
 		"label": "note-sticky",
 		"class": "fas fa-note-sticky",
 		"unicode": "f249"
@@ -4477,8 +4497,8 @@ export const IconSettings = [
 		"unicode": "f303"
 	},
 	{
-		"label": "people-arrows-left-right",
-		"class": "fas fa-people-arrows-left-right",
+		"label": "people-arrows",
+		"class": "fas fa-people-arrows",
 		"unicode": "e068"
 	},
 	{
@@ -4719,7 +4739,7 @@ export const IconSettings = [
 	{
 		"label": "person-through-window",
 		"class": "fas fa-person-through-window",
-		"unicode": "e433"
+		"unicode": "e5a9"
 	},
 	{
 		"label": "person-walking",
@@ -4854,7 +4874,7 @@ export const IconSettings = [
 	{
 		"label": "plant-wilt",
 		"class": "fas fa-plant-wilt",
-		"unicode": "e43b"
+		"unicode": "e5aa"
 	},
 	{
 		"label": "plate-wheat",
@@ -5752,8 +5772,8 @@ export const IconSettings = [
 		"unicode": "f2d3"
 	},
 	{
-		"label": "staff-aesculapius",
-		"class": "fas fa-staff-aesculapius",
+		"label": "staff-snake",
+		"class": "fas fa-staff-snake",
 		"unicode": "e579"
 	},
 	{
@@ -5765,6 +5785,11 @@ export const IconSettings = [
 		"label": "stamp",
 		"class": "fas fa-stamp",
 		"unicode": "f5bf"
+	},
+	{
+		"label": "stapler",
+		"class": "fas fa-stapler",
+		"unicode": "e5af"
 	},
 	{
 		"label": "star",
@@ -6234,7 +6259,7 @@ export const IconSettings = [
 	{
 		"label": "train-tram",
 		"class": "fas fa-train-tram",
-		"unicode": "f7da"
+		"unicode": "e5b4"
 	},
 	{
 		"label": "transgender",

@@ -147,8 +147,6 @@
     "lint:md": "wp-scripts lint-md-docs ./README.md && wp-scripts lint-md-js ./README.md",
     "lint": "run-p lint:*",
     "test:jest": "wp-scripts test-unit-js --config jest.config.js",
-    "test:e2e": "wp-scripts test-e2e --config jest-puppeteer.config.js",
-    "test:e2e:help": "wp-scripts test-e2e --help",
     "test:playwright": "npx playwright test",
     "test:playwright:codegen": "npx playwright codegen http://localhost:8080",
     "test:playwright:report": "npx playwright show-report",

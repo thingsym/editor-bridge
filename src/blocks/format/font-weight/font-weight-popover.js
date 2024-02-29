@@ -4,74 +4,36 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import {
-	useCallback,
-	useMemo,
-} from '@wordpress/element';
-import {
-	SelectControl,
-	Button,
-} from '@wordpress/components';
-import { getRectangleFromRange } from '@wordpress/dom';
+import { useCallback, useMemo } from '@wordpress/element';
 import {
 	applyFormat,
 	removeFormat,
 	getActiveFormat,
+	useAnchor,
 } from '@wordpress/rich-text';
 import {
-	URLPopover,
+	useCachedTruthy,
 } from '@wordpress/block-editor';
+import {
+	SelectControl,
+	Button,
+	Popover,
+} from '@wordpress/components';
 
-const FontWeightPopoverAtLink = ( { addingFontWeight, ...props } ) => {
-	// There is no way to open a text formatter popover when another one is mounted.
-	// The first popover will always be dismounted when a click outside happens, so we can store the
-	// anchor Rect during the lifetime of the component.
-	const anchorRect = useMemo( () => {
-		const selection = window.getSelection();
-		const range =
-			selection.rangeCount > 0 ? selection.getRangeAt( 0 ) : null;
-		if ( ! range ) {
-			return;
-		}
-
-		if ( addingFontWeight ) {
-			return getRectangleFromRange( range );
-		}
-
-		let element = range.startContainer;
-
-		// If the caret is right before the element, select the next element.
-		element = element.nextElementSibling || element;
-
-		while ( element.nodeType !== window.Node.ELEMENT_NODE ) {
-			element = element.parentNode;
-		}
-
-		const closest = element.closest( 'span' );
-		if ( closest ) {
-			return closest.getBoundingClientRect();
-		}
-	}, [] );
-
-	if ( ! anchorRect ) {
-		return null;
-	}
-
-	return <URLPopover
-		anchorRect={ anchorRect }
-		{ ...props }
-	/>;
-};
+/**
+ * Internal dependencies
+ */
+import { fontWeight as settings } from './index';
 
 export function getActiveFontWeight( formatName = '', formatValue = {} ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
-		return;
+		return undefined;
 	}
 
 	const currentStyle = activeFormat.attributes.style;
 	if ( ! currentStyle ) {
-		return;
+		return undefined;
 	}
 
 	const regexp = /^font-weight:\s(.*);$/
@@ -80,7 +42,7 @@ export function getActiveFontWeight( formatName = '', formatValue = {} ) {
 	if ( fontWeight === null ) {
 		return;
 	}
-	return fontWeight[1] ? fontWeight[1] : '';
+	return fontWeight[1] ? fontWeight[1] : undefined;
 }
 
 const FontWeightPicker = ( { label, name, value, onChange } ) => {
@@ -146,7 +108,7 @@ const ResetButton = ( { label, name, value, onChange } ) => {
 			} }
 		>
 			{ label }
-	</Button>
+		</Button>
 	</div>;
 };
 
@@ -163,28 +125,38 @@ export default function InlineFontWeightUI( {
 	value,
 	onChange,
 	onClose,
-	isActive,
-	addingFontWeight,
+	contentRef,
 } ) {
+	const popoverAnchor = useAnchor( {
+		editableContentElement: contentRef.current,
+		settings,
+	} );
 
-	const popoverClassName = 'components-inline-fontweight-popover';
+	/*
+	 As you change the text color by typing a HEX value into a field,
+	 the return value of document.getSelection jumps to the field you're editing,
+	 not the highlighted text. Given that useAnchor uses document.getSelection,
+	 it will return null, since it can't find the <mark> element within the HEX input.
+	 This caches the last truthy value of the selection anchor reference.
+	 */
+	const cachedRect = useCachedTruthy( popoverAnchor.getBoundingClientRect() );
+	popoverAnchor.getBoundingClientRect = () => cachedRect;
+
 	const pickerClassName = 'components-fontweight-picker';
 
 	return (
-		<FontWeightPopoverAtLink
-			value={ value }
-			isActive={ isActive }
-			addingFontWeight={ addingFontWeight }
+		<Popover
+			className="components-inline-fontweight-popover"
+			anchor={ popoverAnchor }
 			onClose={ onClose }
-			className={ popoverClassName }
 		>
-
 			<fieldset className={ pickerClassName }>
 				<FontWeightPicker
 					label={ __( 'Font Weight', 'editor-bridge' ) }
 					name={ name }
 					value={ value }
 					onChange={ onChange }
+					className="components-fontweight-picker__controls"
 				/>
 				<ResetButton
 					label={ __( 'Reset', 'editor-bridge' ) }
@@ -193,6 +165,6 @@ export default function InlineFontWeightUI( {
 					onChange={ onChange }
 				/>
 			</fieldset>
-		</FontWeightPopoverAtLink>
+		</Popover>
 	);
 };

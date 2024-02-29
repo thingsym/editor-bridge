@@ -9,79 +9,31 @@ import { get } from 'lodash';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import {
-	useCallback,
-	useMemo,
-} from '@wordpress/element';
+import { useCallback, useMemo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
+import {
+	applyFormat,
+	removeFormat,
+	getActiveFormat,
+	useAnchor,
+} from '@wordpress/rich-text';
+import {
+	ColorPaletteControl,
+	getColorObjectByColorValue,
+	store as blockEditorStore,
+	useCachedTruthy,
+} from '@wordpress/block-editor';
 import {
 	SelectControl,
 	Popover,
 	TabPanel,
 	Button,
 } from '@wordpress/components';
-import { getRectangleFromRange } from '@wordpress/dom';
-import {
-	applyFormat,
-	removeFormat,
-	getActiveFormat,
-	useAnchorRef,
-} from '@wordpress/rich-text';
-import {
-	ColorPaletteControl,
-	URLPopover,
-	getColorClassName,
-	getColorObjectByColorValue,
-	getColorObjectByAttributeValues,
-	store as blockEditorStore,
-	useCachedTruthy,
-} from '@wordpress/block-editor';
 
 /**
  * Internal dependencies
  */
- import { badge as settings, transparentValue } from './index';
-
-const BadgePopoverAtLink = ( { addingColor, ...props } ) => {
-	// There is no way to open a text formatter popover when another one is mounted.
-	// The first popover will always be dismounted when a click outside happens, so we can store the
-	// anchor Rect during the lifetime of the component.
-	const anchorRect = useMemo( () => {
-		const selection = window.getSelection();
-		const range =
-			selection.rangeCount > 0 ? selection.getRangeAt( 0 ) : null;
-		if ( ! range ) {
-			return;
-		}
-
-		if ( addingColor ) {
-			return getRectangleFromRange( range );
-		}
-
-		let element = range.startContainer;
-
-		// If the caret is right before the element, select the next element.
-		element = element.nextElementSibling || element;
-
-		while ( element.nodeType !== window.Node.ELEMENT_NODE ) {
-			element = element.parentNode;
-		}
-
-		const closest = element.closest( 'span' );
-		if ( closest ) {
-			return closest.getBoundingClientRect();
-		}
-	}, [] );
-
-	if ( ! anchorRect ) {
-		return null;
-	}
-
-	return <URLPopover
-		anchorRect={ anchorRect }
-		{ ...props }
-	/>;
-};
+import { badge as settings } from './index';
 
 export function getActiveColorHex( formatName = '', formatValue = {} ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
@@ -206,7 +158,7 @@ export function getActiveClassNameSlug( formatName = '', formatValue = {} ) {
 	if ( classNameSlug === null ) {
 		return undefined;
 	}
-	return classNameSlug[1] ? classNameSlug[1] : '';
+	return classNameSlug[1] ? classNameSlug[1] : undefined;
 }
 
 const ClassNameSlugPicker = ( { label, property, name, value, onChange } ) => {
@@ -346,16 +298,27 @@ export default function InlineBadgeUI( {
 	onChange,
 	onClose,
 	contentRef,
-	isActive,
-	addingColor,
 } ) {
+	const popoverAnchor = useAnchor( {
+		editableContentElement: contentRef.current,
+		settings,
+	} );
+
+	/*
+	 As you change the text color by typing a HEX value into a field,
+	 the return value of document.getSelection jumps to the field you're editing,
+	 not the highlighted text. Given that useAnchor uses document.getSelection,
+	 it will return null, since it can't find the <mark> element within the HEX input.
+	 This caches the last truthy value of the selection anchor reference.
+	 */
+	 const cachedRect = useCachedTruthy( popoverAnchor.getBoundingClientRect() );
+	 popoverAnchor.getBoundingClientRect = () => cachedRect;
+
 	return (
-		<BadgePopoverAtLink
-			value={ value }
-			isActive={ isActive }
-			addingColor={ addingColor }
-			onClose={ onClose }
+		<Popover
 			className="components-inline-badge-popover"
+			anchor={ popoverAnchor }
+			onClose={ onClose }
 		>
 			<TabPanel
 				tabs={ [
@@ -382,6 +345,6 @@ export default function InlineBadgeUI( {
 					/>
 				) }
 			</TabPanel>
-		</BadgePopoverAtLink>
+		</Popover>
 	);
 };

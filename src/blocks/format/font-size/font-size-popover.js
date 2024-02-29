@@ -3,83 +3,42 @@
 /**
  * WordPress dependencies
  */
-import {
-	useCallback,
-	useMemo,
-} from '@wordpress/element';
+import { useCallback, useMemo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
-import {
-	FontSizePicker,
-} from '@wordpress/components';
-import { getRectangleFromRange } from '@wordpress/dom';
 import {
 	applyFormat,
 	removeFormat,
 	getActiveFormat,
+	useAnchor,
 } from '@wordpress/rich-text';
 import {
-	URLPopover,
+	useCachedTruthy,
 } from '@wordpress/block-editor';
+import { Popover, FontSizePicker } from '@wordpress/components';
 
-const FontSizePopoverAtLink = ( { addingFontSize, ...props } ) => {
-	// There is no way to open a text formatter popover when another one is mounted.
-	// The first popover will always be dismounted when a click outside happens, so we can store the
-	// anchor Rect during the lifetime of the component.
-	const anchorRect = useMemo( () => {
-		const selection = window.getSelection();
-		const range =
-			selection.rangeCount > 0 ? selection.getRangeAt( 0 ) : null;
-		if ( ! range ) {
-			return;
-		}
-
-		if ( addingFontSize ) {
-			return getRectangleFromRange( range );
-		}
-
-		let element = range.startContainer;
-
-		// If the caret is right before the element, select the next element.
-		element = element.nextElementSibling || element;
-
-		while ( element.nodeType !== window.Node.ELEMENT_NODE ) {
-			element = element.parentNode;
-		}
-
-		const closest = element.closest( 'span' );
-		if ( closest ) {
-			return closest.getBoundingClientRect();
-		}
-	}, [] );
-
-	if ( ! anchorRect ) {
-		return null;
-	}
-
-	return <URLPopover
-		anchorRect={ anchorRect }
-		{ ...props }
-	/>;
-};
+/**
+ * Internal dependencies
+ */
+import { fontSize as settings } from './index';
 
 export function getActiveFontSize( formatName = '', formatValue = {} ) {
 	const activeFormat = getActiveFormat( formatValue, formatName );
 	if ( ! activeFormat ) {
-		return;
+		return undefined;
 	}
 
 	const currentStyle = activeFormat.attributes.style;
 	if ( ! currentStyle ) {
-		return;
+		return undefined;
 	}
 
 	const regexp = /^font-size:\s(\d+(?:\.\d+)?(px|em|rem));$/
 	const fontSize = currentStyle.match( regexp );
 
 	if ( fontSize === null ) {
-		return;
+		return undefined;
 	}
-	return fontSize[1] ? fontSize[1] : '';
+	return fontSize[1] ? fontSize[1] : undefined;
 }
 
 export default function InlineFontSizeUI( {
@@ -87,9 +46,22 @@ export default function InlineFontSizeUI( {
 	value,
 	onChange,
 	onClose,
-	isActive,
-	addingFontSize,
+	contentRef,
 } ) {
+	const popoverAnchor = useAnchor( {
+		editableContentElement: contentRef.current,
+		settings,
+	} );
+
+	/*
+	 As you change the text color by typing a HEX value into a field,
+	 the return value of document.getSelection jumps to the field you're editing,
+	 not the highlighted text. Given that useAnchor uses document.getSelection,
+	 it will return null, since it can't find the <mark> element within the HEX input.
+	 This caches the last truthy value of the selection anchor reference.
+	 */
+	const cachedRect = useCachedTruthy( popoverAnchor.getBoundingClientRect() );
+	popoverAnchor.getBoundingClientRect = () => cachedRect;
 
 	const fontSizes = useSelect(
 		( select ) => select( 'core/block-editor' ).getSettings().fontSizes
@@ -110,26 +82,23 @@ export default function InlineFontSizeUI( {
 						attributes: {
 							style: `font-size: ${ fontSize };`,
 						}
-					} ),
+					} )
 				);
 			} else {
 				onChange( removeFormat( value, name ) );
 			}
 		},
-		[ value, onChange ]
+		[ fontSizes, onChange ]
 	);
 
-	const popoverClassName = 'components-inline-fontsize-popover';
 	const pickerClassName = 'components-fontsize-picker';
 	const fallbackFontSize = 16;
 
 	return (
-		<FontSizePopoverAtLink
-			value={ value }
-			isActive={ isActive }
-			addingFontSize={ addingFontSize }
+		<Popover
+			className="components-inline-fontsize-popover"
+			anchor={ popoverAnchor }
 			onClose={ onClose }
-			className={ popoverClassName }
 		>
 
 			<fieldset className={ pickerClassName }>
@@ -138,8 +107,9 @@ export default function InlineFontSizeUI( {
 					value={ activeFontSize }
 					fallbackFontSize={ fallbackFontSize }
 					onChange={ onFontSizeChange }
+					__nextHasNoMarginBottom={ true }
 				/>
 			</fieldset>
-		</FontSizePopoverAtLink>
+		</Popover>
 	);
 };

@@ -11,69 +11,30 @@ import rgb2hex from 'rgb2hex';
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import {
-	useCallback,
-	useMemo,
-} from '@wordpress/element';
+import { useCallback, useMemo } from '@wordpress/element';
 import { useSelect } from '@wordpress/data';
+import {
+	applyFormat,
+	removeFormat,
+	getActiveFormat,
+	useAnchor,
+} from '@wordpress/rich-text';
+import {
+	ColorPaletteControl,
+	getColorObjectByColorValue,
+	store as blockEditorStore,
+	useCachedTruthy,
+} from '@wordpress/block-editor';
 import {
 	SelectControl,
 	Popover,
 	TabPanel,
 } from '@wordpress/components';
-import { getRectangleFromRange } from '@wordpress/dom';
-import {
-	applyFormat,
-	removeFormat,
-	getActiveFormat,
-} from '@wordpress/rich-text';
-import {
-	ColorPaletteControl,
-	URLPopover,
-	getColorObjectByColorValue,
-	store as blockEditorStore,
-} from '@wordpress/block-editor';
 
-const HighlightPopoverAtLink = ( { addingColor, ...props } ) => {
-	// There is no way to open a text formatter popover when another one is mounted.
-	// The first popover will always be dismounted when a click outside happens, so we can store the
-	// anchor Rect during the lifetime of the component.
-	const anchorRect = useMemo( () => {
-		const selection = window.getSelection();
-		const range =
-			selection.rangeCount > 0 ? selection.getRangeAt( 0 ) : null;
-		if ( ! range ) {
-			return;
-		}
-
-		if ( addingColor ) {
-			return getRectangleFromRange( range );
-		}
-
-		let element = range.startContainer;
-
-		// If the caret is right before the element, select the next element.
-		element = element.nextElementSibling || element;
-
-		while ( element.nodeType !== window.Node.ELEMENT_NODE ) {
-			element = element.parentNode;
-		}
-
-		const closest = element.closest( 'span' );
-		if ( closest ) {
-			return closest.getBoundingClientRect();
-		}
-	}, [] );
-
-	if ( ! anchorRect ) {
-		return null;
-	}
-
-	return <URLPopover
-		anchorRect={ anchorRect }
-		{ ...props }
-	/>;
-};
+/**
+ * Internal dependencies
+ */
+import { highlight as settings } from './index';
 
 export function getActiveColorHex( name = '', value = {}, colorSettings = [] ) {
 	const activeFormat = getActiveFormat( value, name );
@@ -266,16 +227,30 @@ export default function InlineHighlightUI( {
 	value,
 	onChange,
 	onClose,
+	contentRef,
 	isActive,
-	addingColor,
 } ) {
+	const popoverAnchor = useAnchor( {
+		editableContentElement: contentRef.current,
+		settings,
+	} );
+
+	/*
+	 As you change the text color by typing a HEX value into a field,
+	 the return value of document.getSelection jumps to the field you're editing,
+	 not the highlighted text. Given that useAnchor uses document.getSelection,
+	 it will return null, since it can't find the <mark> element within the HEX input.
+	 This caches the last truthy value of the selection anchor reference.
+	 */
+	const cachedRect = useCachedTruthy( popoverAnchor.getBoundingClientRect() );
+	popoverAnchor.getBoundingClientRect = () => cachedRect;
+
 	return (
-		<HighlightPopoverAtLink
-			value={ value }
-			isActive={ isActive }
-			addingColor={ addingColor }
-			onClose={ onClose }
+		<Popover
 			className="components-inline-highligh-popover"
+			anchor={ popoverAnchor }
+			onClose={ onClose }
+			isActive={ isActive }
 		>
 			<TabPanel
 				tabs={ [
@@ -298,6 +273,6 @@ export default function InlineHighlightUI( {
 					/>
 				) }
 			</TabPanel>
-		</HighlightPopoverAtLink>
+		</Popover>
 	);
 };

@@ -4,22 +4,14 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import {
-	useCallback,
-	useState,
-} from '@wordpress/element';
-import {
-	RichTextToolbarButton,
-} from '@wordpress/block-editor';
+import { useCallback, useState } from '@wordpress/element';
+import { RichTextToolbarButton } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
-import {
-	default as InlineFontWeightUI,
-	getActiveFontWeight,
-} from './font-weight-popover.js';
+import { default as InlineFontWeightUI } from './font-weight-popover.js';
 import { fontWeightSolid } from './icons';
 
 const name  = 'editor-bridge/font-weight';
@@ -33,19 +25,20 @@ function FontWeightEdit( {
 	contentRef,
 } ) {
 	const [ isAddingFontWeight, setIsAddingFontWeight ] = useState( false );
-
-	const enableIsAddingFontWeight = useCallback( () => setIsAddingFontWeight( true ), [
-		setIsAddingFontWeight,
-	] );
-
-	const disableIsAddingFontWeight = useCallback( () => setIsAddingFontWeight( false ), [
-		setIsAddingFontWeight,
-	] );
+	const enableIsAddingFontWeight = useCallback(
+		() => setIsAddingFontWeight( true ),
+		[ setIsAddingFontWeight ]
+	);
+	const disableIsAddingFontWeight = useCallback(
+		() => setIsAddingFontWeight( false ),
+		[ setIsAddingFontWeight ]
+	);
 
 	return (
 		<>
 			<RichTextToolbarButton
 				isActive={ isActive }
+				className="editor-bridge-font-weight-button"
 				icon={
 					<Icon
 						icon={ fontWeightSolid }
@@ -56,8 +49,10 @@ function FontWeightEdit( {
 						}}
 					/>
 				}
+				label={ title }
 				title={ title }
 				onClick={ enableIsAddingFontWeight }
+				role="menuitemcheckbox"
 			/>
 			{ isAddingFontWeight && (
 				<InlineFontWeightUI

@@ -9,8 +9,7 @@ import { isEmpty } from 'lodash';
  * WordPress dependencies
  */
 import { useInstanceId } from '@wordpress/compose';
-import { BaseControl } from '@wordpress/components';
-import { Notice } from '@wordpress/components';
+import { BaseControl, Notice } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 
 export default function IconSelectControl( {

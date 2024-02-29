@@ -3,32 +3,22 @@
 /**
  * External dependencies
  */
-import {
-	get,
-	isEmpty,
-} from 'lodash';
+import { get, isEmpty } from 'lodash';
 
 /**
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import { useSelect } from '@wordpress/data';
-import {
-	useCallback,
-	useMemo,
-	useState,
-} from '@wordpress/element';
+import { useCallback, useState } from '@wordpress/element';
 import { RichTextToolbarButton } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
+import { useSelect } from '@wordpress/data';
 import { removeFormat } from '@wordpress/rich-text';
 
 /**
  * Internal dependencies
  */
-import {
-	default as InlineHighlightUI,
-	getActiveColorHex,
-} from './highlight-popover.js';
+import { default as InlineHighlightUI } from './highlight-popover.js';
 import { highlighterSolid } from './icons';
 
 const name  = 'editor-bridge/highlight';
@@ -58,14 +48,14 @@ function HighlightEdit( {
 	} );
 
 	const [ isAddingColor, setIsAddingColor ] = useState( false );
-
-	const enableIsAddingColor = useCallback( () => setIsAddingColor( true ), [
-		setIsAddingColor,
-	] );
-
-	const disableIsAddingColor = useCallback( () => setIsAddingColor( false ), [
-		setIsAddingColor,
-	] );
+	const enableIsAddingColor = useCallback(
+		() => setIsAddingColor( true ),
+		[ setIsAddingColor ]
+	);
+	const disableIsAddingColor = useCallback(
+		() => setIsAddingColor( false ),
+		[ setIsAddingColor ]
+	);
 
 	const hasColorsToChoose =
 		! isEmpty( colors ) || disableCustomColors !== true;
@@ -78,6 +68,7 @@ function HighlightEdit( {
 		<>
 			<RichTextToolbarButton
 				isActive={ isActive }
+				className="editor-bridge-highlight-button"
 				icon={
 					<Icon
 						icon={ highlighterSolid }
@@ -88,6 +79,7 @@ function HighlightEdit( {
 					}}
 					/>
 				}
+				label={ title }
 				title={ title }
 				// If has no colors to choose but a color is active remove the color onClick
 				onClick={
@@ -95,6 +87,7 @@ function HighlightEdit( {
 						? enableIsAddingColor
 						: () => onChange( removeFormat( value, name ) )
 				}
+				role="menuitemcheckbox"
 			/>
 			{ isAddingColor && (
 				<InlineHighlightUI
@@ -103,8 +96,8 @@ function HighlightEdit( {
 					isActive={ isActive }
 					activeAttributes={ activeAttributes }
 					value={ value }
-					onClose={ disableIsAddingColor }
 					onChange={ onChange }
+					onClose={ disableIsAddingColor }
 					contentRef={ contentRef }
 				/>
 			) }

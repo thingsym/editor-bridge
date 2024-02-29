@@ -224,7 +224,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 		const accept = "image/*, video/*";
 		const editMediaButtonRef = createRef();
 		const POPOVER_PROPS = {
-			isAlternate: true,
+			variant: 'toolbar'
 		};
 
 		return (
@@ -251,7 +251,10 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 						) }
 						renderContent={ ( { onClose } ) => (
 							<>
-								<NavigableMenu className="block-editor-editor-bridge-backgound-image__media-upload-menu">
+								<NavigableMenu
+									className="block-editor-editor-bridge-backgound-image__media-upload-menu"
+									label={ __( 'Edit Background Image', 'editor-bridge' ) }
+								>
 									<MediaUpload
 										onSelect={ onSelectMedia }
 										allowedTypes={ ALLOWED_MEDIA_TYPES }

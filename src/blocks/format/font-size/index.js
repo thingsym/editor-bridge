@@ -4,21 +4,14 @@
  * WordPress dependencies
  */
 import { __ } from '@wordpress/i18n';
-import {
-	useCallback,
-	useState,
-} from '@wordpress/element';
-import {
-	RichTextToolbarButton,
-} from '@wordpress/block-editor';
+import { useCallback, useState } from '@wordpress/element';
+import { RichTextToolbarButton } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 
 /**
  * Internal dependencies
  */
-import {
-	default as InlineFontSizeUI
-} from './font-size-popover.js';
+import { default as InlineFontSizeUI } from './font-size-popover.js';
 import { fontSolid } from './icons';
 
 const name  = 'editor-bridge/font-size';
@@ -32,19 +25,20 @@ function FontSizeEdit( {
 	contentRef,
 } ) {
 	const [ isAddingFontSize, setIsAddingFontSize ] = useState( false );
-
-	const enableIsAddingFontSize = useCallback( () => setIsAddingFontSize( true ), [
-		setIsAddingFontSize,
-	] );
-
-	const disableIsAddingFontSize = useCallback( () => setIsAddingFontSize( false ), [
-		setIsAddingFontSize,
-	] );
+	const enableIsAddingFontSize = useCallback(
+		() => setIsAddingFontSize( true ),
+		[ setIsAddingFontSize ]
+	);
+	const disableIsAddingFontSize = useCallback(
+		() => setIsAddingFontSize( false ),
+		[ setIsAddingFontSize ]
+	);
 
 	return (
 		<>
 			<RichTextToolbarButton
 				isActive={ isActive }
+				className="editor-bridge-font-size-text-color-button"
 				icon={
 					<Icon
 						icon={ fontSolid }
@@ -55,8 +49,10 @@ function FontSizeEdit( {
 						}}
 					/>
 				}
+				label={ title }
 				title={ title }
 				onClick={ enableIsAddingFontSize }
+				role="menuitemcheckbox"
 			/>
 			{ isAddingFontSize && (
 				<InlineFontSizeUI

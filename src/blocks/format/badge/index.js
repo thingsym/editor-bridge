@@ -13,10 +13,7 @@ import {
  */
 import { __ } from '@wordpress/i18n';
 import { useSelect } from '@wordpress/data';
-import {
-	useCallback,
-	useState,
-} from '@wordpress/element';
+import { useCallback, useState } from '@wordpress/element';
 import { RichTextToolbarButton } from '@wordpress/block-editor';
 import { Icon } from '@wordpress/components';
 import { removeFormat } from '@wordpress/rich-text';
@@ -76,6 +73,7 @@ function BadgeEdit( {
 	return (
 		<>
 			<RichTextToolbarButton
+				className="editor-bridge-badge-text-color-button"
 				isActive={ isActive }
 				icon={
 					<Icon
@@ -94,13 +92,12 @@ function BadgeEdit( {
 						? enableIsAddingColor
 						: () => onChange( removeFormat( value, name ) )
 				}
+				role="menuitemcheckbox"
 			/>
 			{ isAddingColor && (
 				<InlineBadgeUI
 					name={ name }
-					addingColor={ isAddingColor }
 					onClose={ disableIsAddingColor }
-					isActive={ isActive }
 					activeAttributes={ activeAttributes }
 					value={ value }
 					onChange={ onChange }

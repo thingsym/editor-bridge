@@ -79,6 +79,7 @@ export default function IconSelectControl( {
 							<i
 								className={ option.class }
 								title={ option.label }
+								aria-label={ option.label }
 							>
 							</i>
 						</button>

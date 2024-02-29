@@ -129,7 +129,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 		return (
 			<>
 				<BlockEdit { ...props } />
-					<InspectorControls>
+					<InspectorControls __experimentalGroup="styles">
 						<PanelBody
 							title={ __( 'Icon Settings', 'editor-bridge' ) }
 							initialOpen={ false }

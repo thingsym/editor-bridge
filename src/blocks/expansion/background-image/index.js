@@ -467,6 +467,10 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 		}
 	);
 
+	if ( ! props.className ) {
+		props.className = undefined;
+	}
+
 	return props;
 };
 

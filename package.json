@@ -95,13 +95,15 @@
   },
   "eslintConfig": {
     "env": {
-      "browser": true,
       "es6": true
     },
     "plugins": [
       "react-hooks"
     ],
-    "extends": "eslint:recommended",
+    "extends": [
+      "eslint:recommended",
+      "plugin:@wordpress/eslint-plugin/recommended-with-formatting"
+    ],
     "globals": {
       "Atomics": "readonly",
       "SharedArrayBuffer": "readonly",
@@ -110,9 +112,13 @@
       "wp": true
     },
     "parserOptions": {
+      "sourceType": "module",
       "ecmaVersion": 2018
     },
     "rules": {
+      "import/no-extraneous-dependencies": "off",
+      "import/no-unresolved": "off",
+      "@wordpress/no-unsafe-wp-apis": "off",
       "no-func-assign": "off",
       "no-unused-vars": "off",
       "no-prototype-builtins": "off",
@@ -120,7 +126,11 @@
       "no-undef": "off",
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn"
-    }
+    },
+    "ignorePatterns": [
+      "node_modules/",
+      "vendor/"
+    ]
   },
   "scripts": {
     "makedata:fontawesome": "node src/helper/fontawesome-yml2json-convert/index.js > src/helper/fontawesome-yml2json-convert/fontawesome-converted-data.js",

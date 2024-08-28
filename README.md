@@ -81,7 +81,7 @@ There are three expansion points.
 
 Editor Bridge will need other recommended plugins to use icons library as Web Font.
 
-[Font Awesome](https://ja.wordpress.org/plugins/font-awesome/)
+[Font Awesome](https://ja.wordpress.org/plugins/font-awesome/) version 6.6.0
 
 ## WordPress Plugin Directory
 

@@ -3,7 +3,7 @@
  * Plugin Name: Editor Bridge
  * Plugin URI: https://github.com/thingsym/editor-bridge
  * Description: This WordPress plugin expands the functionality of core blocks and adds styles and formats.
- * Version: 1.8.2
+ * Version: 1.8.3
  * Author: thingsym
  * Author URI:  https://www.thingslabo.com/
  * License:     GPLv2 or later

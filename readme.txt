@@ -3,7 +3,7 @@
 Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
-Stable tag: 1.8.2
+Stable tag: 1.8.3
 Tested up to: 6.6.1
 Requires at least: 5.5
 Requires PHP: 7.1
@@ -138,6 +138,25 @@ For operation compatibility between PHP version and WordPress version, see below
 4. Have fun!
 
 == Changelog ==
+
+= 1.8.3 - 2024.08.28 =
+* tested up to 6.6.1
+* update github workflows
+* fix format
+* fix eslintConfig
+* fix wp_enqueue_script parameter to match changes in wp 6.3.0
+* fix nested rule.for sass Deprecation Warning
+* fix .gitignore
+* update icon-settings
+* update composer dependencies
+* update npm dependencies
+* move to styles tab
+* replace to Popover component and fix popover display position deviation
+* add aria-label for testability
+* fix blank className
+* bump up version cpy-cli and fix npm scripts
+* add fontawesome-yml2json-convert
+* remove e2e test case for jest
 
 = 1.8.2 - 2023.11.22 =
 * tested up to 6.4.1

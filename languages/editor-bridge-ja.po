@@ -2,7 +2,7 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Editor Bridge 1.8.2\n"
+"Project-Id-Version: Editor Bridge 1.8.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/editor-bridge\n"
 "POT-Creation-Date: 2022-12-05T08:55:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"

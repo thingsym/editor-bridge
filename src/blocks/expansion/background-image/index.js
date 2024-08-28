@@ -101,16 +101,16 @@ const addSettingsAttributes = ( settings, name ) => {
 			},
 			backgroundSize: {
 				type: 'string',
-				default: ''
+				default: '',
 			},
 			hasParallax: {
 				type: 'boolean',
-				default: false
+				default: false,
 			},
 			hasRepete: {
 				type: 'boolean',
-				default: false
-			}
+				default: false,
+			},
 		} );
 	}
 
@@ -120,7 +120,7 @@ const addSettingsAttributes = ( settings, name ) => {
 addFilter(
 	'blocks.registerBlockType',
 	'editor-bridge/expansion/background-image/add-settings-attributes',
-	addSettingsAttributes
+	addSettingsAttributes,
 );
 
 /**
@@ -132,7 +132,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 			name,
 			attributes,
 			setAttributes,
-			isSelected
+			isSelected,
 		} = props;
 
 		if ( ! isSelected ) {
@@ -160,7 +160,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 			if ( ! media || ! media.url ) {
 				setAttributes( {
 					backgroundUrl: undefined,
-					backgroundId: undefined
+					backgroundId: undefined,
 				} );
 				return;
 			}
@@ -221,10 +221,10 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 			}
 		};
 
-		const accept = "image/*, video/*";
+		const accept = 'image/*, video/*';
 		const editMediaButtonRef = createRef();
 		const POPOVER_PROPS = {
-			variant: 'toolbar'
+			variant: 'toolbar',
 		};
 
 		return (
@@ -242,7 +242,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 									aria-expanded={ isOpen }
 									onClick={ onToggle }
 									onKeyDown={ openOnArrowDown }
-									icon='format-image'
+									icon="format-image"
 									isPressed={ backgroundUrl ? true : false }
 									label={ __( 'Edit Background Image', 'editor-bridge' ) }
 								>
@@ -261,7 +261,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 										value={ backgroundId }
 										render={ ( { open } ) => (
 											<MenuItem
-												icon='admin-media'
+												icon="admin-media"
 												onClick={ open }
 											>
 												{ __( 'Open Media Library', 'editor-bridge' ) }
@@ -278,7 +278,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 											render={ ( { openFileDialog } ) => {
 												return (
 													<MenuItem
-													icon='upload'
+														icon="upload"
 														onClick={ () => {
 															openFileDialog();
 														} }
@@ -292,7 +292,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 
 									{ !! backgroundUrl && (
 										<MenuItem
-											icon='no'
+											icon="no"
 											onClick={ () => {
 												setAttributes( {
 													backgroundUrl: undefined,
@@ -357,7 +357,7 @@ const addBlockEditorControl = createHigherOrderComponent( ( BlockEdit ) => {
 addFilter(
 	'editor.BlockEdit',
 	'editor-bridge/expansion/background-image/add-blockeditor-control',
-	addBlockEditorControl
+	addBlockEditorControl,
 );
 
 const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock ) => {
@@ -390,7 +390,7 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 				'has-repete': hasRepete,
 				'has-no-repete': ! hasRepete,
 				'has-background-image': backgroundUrl,
-			}
+			},
 		);
 
 		let wrapperProps = props.wrapperProps ? props.wrapperProps : {};
@@ -399,7 +399,7 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 		const style = {
 			backgroundImage: backgroundUrl ? `url(${ backgroundUrl })` : undefined,
 			backgroundSize: backgroundSize ? backgroundSize : undefined,
-		}
+		};
 
 		wrapperProps = {
 			...wrapperProps,
@@ -417,7 +417,7 @@ const addBlockListBlockAttributes = createHigherOrderComponent( ( BlockListBlock
 addFilter(
 	'editor.BlockListBlock',
 	'editor-bridge/expansion/background-image/add-blocklistblock-attributes',
-	addBlockListBlockAttributes
+	addBlockListBlockAttributes,
 );
 
 /**
@@ -453,12 +453,12 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 	const style = {
 		backgroundImage: backgroundUrl ? `url(${ backgroundUrl })` : undefined,
 		backgroundSize: backgroundSize ? backgroundSize : undefined,
-	}
+	};
 
 	props.style = {
 		...props.style,
-		...style
-	}
+		...style,
+	};
 
 	props.className = classnames(
 		className,
@@ -467,7 +467,7 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 			'has-parallax': hasParallax,
 			'has-repete': hasRepete,
 			'has-no-repete': ! hasRepete,
-		}
+		},
 	);
 
 	if ( ! props.className ) {
@@ -480,5 +480,5 @@ const addPropsSaveContent = ( props, blockType, attributes ) => {
 addFilter(
 	'blocks.getSaveContent.extraProps',
 	'editor-bridge/expansion/background-image/add-props-save-content',
-	addPropsSaveContent
+	addPropsSaveContent,
 );

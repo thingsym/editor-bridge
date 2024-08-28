@@ -5937,9 +5937,24 @@ export const IconSettings = [
 		"unicode": "f00a"
 	},
 	{
+		"label": "table-cells-column-lock",
+		"class": "fas fa-table-cells-column-lock",
+		"unicode": "e678"
+	},
+	{
 		"label": "table-cells-large",
 		"class": "fas fa-table-cells-large",
 		"unicode": "f009"
+	},
+	{
+		"label": "table-cells-row-lock",
+		"class": "fas fa-table-cells-row-lock",
+		"unicode": "e67a"
+	},
+	{
+		"label": "table-cells-row-unlock",
+		"class": "fas fa-table-cells-row-unlock",
+		"unicode": "e691"
 	},
 	{
 		"label": "table-columns",
@@ -6140,6 +6155,11 @@ export const IconSettings = [
 		"label": "thumbtack",
 		"class": "fas fa-thumbtack",
 		"unicode": "f08d"
+	},
+	{
+		"label": "thumbtack-slash",
+		"class": "fas fa-thumbtack-slash",
+		"unicode": "e68f"
 	},
 	{
 		"label": "ticket",
@@ -6825,6 +6845,11 @@ export const IconSettings = [
 		"label": "wave-square",
 		"class": "fas fa-wave-square",
 		"unicode": "f83e"
+	},
+	{
+		"label": "web-awesome",
+		"class": "fas fa-web-awesome",
+		"unicode": "e682"
 	},
 	{
 		"label": "weight-hanging",

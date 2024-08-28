@@ -4,4 +4,5 @@ vendor/
 dist/
 tests/report/
 *.zip
-icons-converted-data.js
+
+fontawesome-converted-data.js

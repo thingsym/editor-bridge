@@ -140,7 +140,7 @@ class Editor_Bridge {
 			plugins_url( 'dist/js/blocks.js', EDITOR_BRIDGE ),
 			$this->asset_file['dependencies'],
 			$this->asset_file['version'],
-			true
+			[ 'in_footer' => true ]
 		);
 	}
 

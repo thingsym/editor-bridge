@@ -54,11 +54,13 @@ ol.is-style-list-inline {
 
 .is-style-list-reference {
 	list-style: none;
+	padding-left: 0;
+
 	ul,
 	ol {
 		list-style: none;
 	}
-	padding-left: 0;
+
 	li {
 		position: relative;
 
@@ -282,6 +284,8 @@ ul.is-style-list-circle {
 
 ol.is-style-list-square,
 ol.is-style-list-circle {
+	counter-reset: number;
+
 	li {
 		&:after {
 			content: "";
@@ -304,7 +308,6 @@ ol.is-style-list-circle {
 		}
 	}
 
-	counter-reset: number;
 	ol {
 		counter-reset: number;
 	}

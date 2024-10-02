@@ -5,4 +5,6 @@ dist/
 tests/report/
 *.zip
 
+playwright-screenshot.png
+tests/playwright-report/
 fontawesome-converted-data.js

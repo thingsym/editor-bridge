@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free": "^6.6.0",
-    "@playwright/test": "^1.46.1",
+    "@playwright/test": "^1.47.2",
     "@wordpress/browserslist-config": "^6.6.0",
     "@wordpress/e2e-test-utils": "^11.6.0",
     "@wordpress/e2e-test-utils-playwright": "^1.6.0",
@@ -160,6 +160,9 @@
     "lint": "run-p lint:*",
     "test:jest": "wp-scripts test-unit-js --config jest.config.js",
     "test:playwright": "npx playwright test",
+    "test:playwright:editor-bridge": "npx playwright test -g @editor-bridge",
+    "test:playwright:initial": "npx playwright test -g @initial",
+    "test:playwright:default-editor": "npx playwright test -g @default-editor",
     "test:playwright:codegen": "npx playwright codegen http://localhost:8080",
     "test:playwright:report": "npx playwright show-report",
     "test:playwright:trace": "npx playwright show-trace",

@@ -12,7 +12,9 @@ test.describe( '@initial sample', () => {
 
 	test( 'get started link', async ({ page } ) => {
 		await page.goto( '/' );
-		await page.getByRole( 'link', { name: 'Sample Page', exact: true }).click();
+		await page
+			.getByRole( 'link', { name: 'Sample Page', exact: true })
+			.click();
 
 		await expect( page ).toHaveURL( /.*page_id=2/ );
 	} );
@@ -20,6 +22,8 @@ test.describe( '@initial sample', () => {
 	test( 'site works', async ({ page } ) => {
 		await page.goto( '/wp-login.php' );
 
-		await expect( page.getByRole( 'heading', { name: 'Powered by WordPress' } ) ).toBeVisible();
+		await expect(
+			page.getByRole( 'heading', { name: 'Powered by WordPress' } )
+		).toBeVisible();
 	} );
 } );

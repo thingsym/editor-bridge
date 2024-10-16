@@ -15,21 +15,31 @@ test.describe( '@initial HTML block', () => {
 		await page.goto( '/wp-admin/post-new.php' );
 		await page.waitForLoadState();
 
-		const isVisibleModal = await page.locator( '.components-modal__frame[role="Close dialogdialog"][aria-label="Welcome to the block editor"]' ).isVisible();
+		const isVisibleModal = await page
+			.locator( '.components-modal__frame[role="Close dialogdialog"][aria-label="Welcome to the block editor"]' )
+			.isVisible();
 		if ( isVisibleModal ) {
-			await page.locator( 'button[aria-label="Close dialog"]' ).click();
+			await page
+				.locator( 'button[aria-label="Close dialog"]' )
+				.click();
 		}
 
-		await expect( page.locator( '.components-modal__frame[role="Close dialogdialog"][aria-label="Welcome to the block editor"]' ) ).not.toBeVisible();
+		await expect(
+			page.locator( '.components-modal__frame[role="Close dialogdialog"][aria-label="Welcome to the block editor"]' )
+		).not.toBeVisible();
 	} );
 
 	test( 'can be created by typing "/html"', async ({ editor, page }) => {
-		await page.locator( '.block-editor-default-block-appender' ).getByRole( 'button', { name: 'Add default block' } ).click();
-		// await page.locator('iframe[name="editor-canvas"]').contentFrame().getByLabel('Add default block').click();
+		await editor.canvas
+			.locator( '.block-editor-default-block-appender' )
+			.getByRole( 'button', { name: 'Add default block' } )
+			.click();
 
 		await page.keyboard.type( '/html' );
 		await expect(
-			page.locator( '.components-autocomplete__popover' ).getByRole( 'option', { name: 'Custom HTML', selected: true } )
+			page
+				.locator( '.components-autocomplete__popover' )
+				.getByRole( 'option', { name: 'Custom HTML', selected: true } )
 		).toBeVisible();
 		await page.keyboard.press( 'Enter' );
 		await page.keyboard.type( '<p>Pythagorean theorem: ' );
@@ -38,9 +48,7 @@ test.describe( '@initial HTML block', () => {
 			'<var>a</var><sup>2</sup> + <var>b</var><sup>2</sup> = <var>c</var><sup>2</sup> </p>'
 		);
 
-		// Check the content.
-		const content = await editor.getEditedPostContent();
-		expect( content ).toBe(
+		expect( await editor.getEditedPostContent() ).toBe(
 			`<!-- wp:html -->
 <p>Pythagorean theorem: 
 <var>a</var><sup>2</sup> + <var>b</var><sup>2</sup> = <var>c</var><sup>2</sup> </p>
@@ -49,11 +57,16 @@ test.describe( '@initial HTML block', () => {
 	} );
 
 	test( 'should not encode <', async ({ editor, page }) => {
-		await page.locator( '.block-editor-default-block-appender' ).getByRole( 'button', { name: 'Add default block' } ).click();
+		await editor.canvas
+			.locator( '.block-editor-default-block-appender' )
+			.getByRole( 'button', { name: 'Add default block' } )
+			.click();
 
 		await page.keyboard.type( '/html' );
 		await expect(
-			page.locator( '.components-autocomplete__popover' ).getByRole( 'option', { name: 'Custom HTML', selected: true } )
+			page
+				.locator( '.components-autocomplete__popover' )
+				.getByRole( 'option', { name: 'Custom HTML', selected: true } )
 		).toBeVisible();
 		await page.keyboard.press( 'Enter' );
 
@@ -64,7 +77,8 @@ test.describe( '@initial HTML block', () => {
 		// await page.waitForSelector( 'iframe[title="Editor canvas"i]' );
 
 		await expect(
-			page.locator( '[data-type="core/html"] textarea' )
+			editor.canvas
+				.locator( '[data-type="core/html"] textarea' )
 		).toBeVisible();
 	} );
 } );

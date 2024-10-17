@@ -17,16 +17,16 @@ test.describe( '@editor-bridge style', () => {
 		await page.waitForLoadState();
 
 		const isVisibleModal = await page
-			.locator( '.components-modal__frame[role="Close dialogdialog"][aria-label="Welcome to the block editor"]' )
+			.locator( '.edit-post-welcome-guide[role="dialog"][aria-label="Welcome to the block editor"]' )
 			.isVisible();
 		if ( isVisibleModal ) {
 			await page
-				.locator( 'button[aria-label="Close dialog"]' )
+				.locator( 'button[aria-label="Close"]' )
 				.click();
 		}
 
-		await expect(
-			page.locator( '.components-modal__frame[role="Close dialogdialog"][aria-label="Welcome to the block editor"]' )
+		expect(
+			page.locator( '.components-modal__frame[role="dialog"][aria-label="Welcome to the block editor"]' )
 		).not.toBeVisible();
 	} );
 

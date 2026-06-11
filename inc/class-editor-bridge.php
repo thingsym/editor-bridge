@@ -109,7 +109,7 @@ class Editor_Bridge {
 		return load_plugin_textdomain(
 			'editor-bridge',
 			false,
-			plugin_dir_path( EDITOR_BRIDGE ) . '/languages'
+			'editor-bridge/languages'
 		);
 	}
 

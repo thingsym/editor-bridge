@@ -24,4 +24,4 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/class-editor-bridge.php';
 
 if ( class_exists( 'Editor_Bridge\Editor_Bridge' ) ) {
 	new \Editor_Bridge\Editor_Bridge();
-};
+}

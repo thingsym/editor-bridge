@@ -197,5 +197,4 @@ class Editor_Bridge {
 
 		return $links;
 	}
-
 }

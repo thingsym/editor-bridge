@@ -363,3 +363,9 @@ For operation compatibility between PHP version and WordPress version, see below
 
 = 1.0.0 - 2020.10.21 =
 * Initial release
+
+== Upgrade Notice ==
+
+= 1.8.4 =
+* Requires at least version 5.9 of the WordPress
+* Requires PHP version 7.4

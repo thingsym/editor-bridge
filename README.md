@@ -423,6 +423,13 @@ For operation compatibility between PHP version and WordPress version, see below
 
 * initial release
 
+## Upgrade Notice
+
+### [1.8.4]
+
+* Requires at least version 5.9 of the WordPress
+* Requires PHP version 7.4
+
 ## License
 
 Licensed under [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html).

@@ -5,7 +5,7 @@ Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
 Stable tag: 1.8.3
 Tested up to: 6.6.1
-Requires at least: 5.5
+Requires at least: 5.9
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html

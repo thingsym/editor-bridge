@@ -6,7 +6,7 @@ Donate link: https://github.com/sponsors/thingsym
 Stable tag: 1.8.3
 Tested up to: 6.6.1
 Requires at least: 5.5
-Requires PHP: 7.1
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: block, block editor, gutenberg

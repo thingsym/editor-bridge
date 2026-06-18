@@ -179,6 +179,24 @@ For operation compatibility between PHP version and WordPress version, see below
 
 ## Changelog
 
+### [1.8.4] - 2026.06.18
+
+* tested up to 7.0
+* change requires at least to wordpress 5.9
+* change requires to PHP 7.4
+* update github workflows
+* improve code with phpcs
+* fix test case
+* remove jest
+* update npm dependencies
+* change translations to init action, Notice: Function _load_textdomain_just_in_time was called incorrectly
+* fix plugin_textdomain rel path
+* update phpunit v9 and wpcs v3
+* update composer dependencies
+* update wp-tests script
+* add playwright e2e test case
+* add phpcs job
+
 ### [1.8.3] - 2024.08.28
 
 * tested up to 6.6.1

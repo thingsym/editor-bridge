@@ -22,8 +22,8 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 */
 	function basic() {
 		// for renaming repo
-		$this->assertRegExp( '#/editor-bridge.php$#', EDITOR_BRIDGE );
-		// $this->assertRegExp( '#/editor-bridge/editor-bridge.php$#', EDITOR_BRIDGE );
+		$this->assertMatchesRegularExpression( '#/editor-bridge.php$#', EDITOR_BRIDGE );
+		// $this->assertMatchesRegularExpression( '#/editor-bridge/editor-bridge.php$#', EDITOR_BRIDGE );
 
 		$this->assertTrue( class_exists( '\Editor_Bridge\Editor_Bridge' ) );
 	}
@@ -45,7 +45,7 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	function constructor() {
-		$this->assertSame( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'load_plugin_data' ] ) );
+		$this->assertSame( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'load_textdomain' ] ) );
 		$this->assertSame( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'load_asset_file' ] ) );
 
 		$this->assertSame( 10, has_action( 'plugins_loaded', [ $this->editor_bridge, 'init' ] ) );
@@ -57,8 +57,7 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 */
 	function init() {
 		$this->editor_bridge->init();
-
-		$this->assertSame( 10, has_action( 'init', [ $this->editor_bridge, 'load_textdomain' ] ) );
+		$this->assertSame( 10, has_action( 'init', [ $this->editor_bridge, 'load_plugin_data' ] ) );
 		$this->assertSame( 10, has_filter( 'enqueue_block_editor_assets', [ $this->editor_bridge, 'set_block_editor_translations' ] ) );
 
 		$this->assertSame( 10, has_filter( 'wp_enqueue_scripts', [ $this->editor_bridge, 'enqueue_styles' ] ) );
@@ -96,10 +95,23 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 * @group basic
 	 */
 	public function load_textdomain() {
+		global $wp_version;
 		$loaded = $this->editor_bridge->load_textdomain();
-		$this->assertFalse( $loaded );
+		if ( version_compare( (string) $wp_version, '6.7', '>=' ) ) {
+			$this->assertTrue( $loaded );
+		}
+		else {
+			$this->assertFalse( $loaded );
+		}
+	}
 
+	/**
+	 * @test
+	 * @group basic
+	 */
+	public function load_textdomain_change() {
 		unload_textdomain( 'editor-bridge' );
+		$this->assertFalse( isset( $l10n[ 'editor-bridge' ] ) );
 
 		add_filter( 'locale', [ $this, '_change_locale' ] );
 		add_filter( 'load_textdomain_mofile', [ $this, '_change_textdomain_mofile' ], 10, 2 );
@@ -107,10 +119,13 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 		$loaded = $this->editor_bridge->load_textdomain();
 		$this->assertTrue( $loaded );
 
+		$this->assertSame( 'ja', get_locale() );
+
 		remove_filter( 'load_textdomain_mofile', [ $this, '_change_textdomain_mofile' ] );
 		remove_filter( 'locale', [ $this, '_change_locale' ] );
 
 		unload_textdomain( 'editor-bridge' );
+		$this->assertFalse( isset( $l10n[ 'editor-bridge' ] ) );
 	}
 
 	/**
@@ -136,15 +151,6 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 	 * @test
 	 * @group basic
 	 */
-	public function plugin_metadata_links() {
-		$links = $this->editor_bridge->plugin_metadata_links( array(), plugin_basename( EDITOR_BRIDGE ) );
-		$this->assertContains( '<a href="https://github.com/sponsors/thingsym">Become a sponsor</a>', $links );
-	}
-
-	/**
-	 * @test
-	 * @group basic
-	 */
 	public function set_block_editor_translations() {
 		$this->markTestIncomplete( 'This test has not been implemented yet.' );
 
@@ -154,6 +160,15 @@ class Test_Editor_Bridge_Basic extends WP_UnitTestCase {
 		// $this->assertArrayHasKey( 'editor-bridge-editor-script', wp_scripts()->registered );
 		// $this->assertSame( wp_scripts()->registered[ 'editor-bridge-editor-script' ]->textdomain, 'editor-bridge' );
 		// $this->assertSame( wp_scripts()->registered[ 'editor-bridge-editor-script' ]->translations_path, plugin_dir_path( EDITOR_BRIDGE ) . 'languages' );
+	}
+
+	/**
+	 * @test
+	 * @group basic
+	 */
+	public function plugin_metadata_links() {
+		$links = $this->editor_bridge->plugin_metadata_links( array(), plugin_basename( EDITOR_BRIDGE ) );
+		$this->assertContains( '<a href="https://github.com/sponsors/thingsym">Become a sponsor</a>', $links );
 	}
 
 	/**

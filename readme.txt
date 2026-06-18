@@ -4,9 +4,9 @@ Contributors: thingsym
 Link: https://github.com/thingsym/editor-bridge
 Donate link: https://github.com/sponsors/thingsym
 Stable tag: 1.8.3
-Tested up to: 6.6.1
-Requires at least: 5.5
-Requires PHP: 7.1
+Tested up to: 7.0
+Requires at least: 5.9
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: block, block editor, gutenberg
@@ -363,3 +363,9 @@ For operation compatibility between PHP version and WordPress version, see below
 
 = 1.0.0 - 2020.10.21 =
 * Initial release
+
+== Upgrade Notice ==
+
+= 1.8.4 =
+* Requires at least version 5.9 of the WordPress
+* Requires PHP version 7.4

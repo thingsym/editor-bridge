@@ -35,7 +35,7 @@ class Editor_Bridge {
 	public $asset_file = array();
 
 	public function __construct() {
-		add_action( 'plugins_loaded', [ $this, 'load_plugin_data' ] );
+		add_action( 'plugins_loaded', [ $this, 'load_textdomain' ] );
 		add_action( 'plugins_loaded', [ $this, 'load_asset_file' ] );
 
 		add_action( 'plugins_loaded', [ $this, 'init' ] );
@@ -55,7 +55,7 @@ class Editor_Bridge {
 			return;
 		}
 
-		add_action( 'init', [ $this, 'load_textdomain' ] );
+		add_action( 'init', [ $this, 'load_plugin_data' ] );
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 		add_action( 'enqueue_block_assets', [ $this, 'enqueue_block_asset_styles' ] );
@@ -109,7 +109,7 @@ class Editor_Bridge {
 		return load_plugin_textdomain(
 			'editor-bridge',
 			false,
-			plugin_dir_path( EDITOR_BRIDGE ) . '/languages'
+			'editor-bridge/languages'
 		);
 	}
 
@@ -197,5 +197,4 @@ class Editor_Bridge {
 
 		return $links;
 	}
-
 }
